@@ -2,14 +2,19 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "(Windows) Anexar",
+      "type": "cppvsdbg",
+      "request": "attach",
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Cliente/Documents/GitHub/Programa-Loja-Byke",
-      "program": "c:/Users/Cliente/Documents/GitHub/Programa-Loja-Byke/build/Debug/outDebug",
+      "cwd": "extension-output-ms-vscode.cpptools-#2-Avisos de Configuração de C",
+      "program": "extension-output-ms-vscode.cpptools-#2-Avisos de Configuração de C/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

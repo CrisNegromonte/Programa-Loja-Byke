@@ -12,6 +12,17 @@
             "compilerArgs": [
                 ""
             ]
+        },
+        {
+            "name": "o",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ]
         }
     ],
     "version": 4
