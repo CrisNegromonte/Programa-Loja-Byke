@@ -4,7 +4,7 @@
     {
       "name": "(Windows) Anexar",
       "type": "cppvsdbg",
-      "request": "attach",
+      "request": "attach"
     },
     {
       "name": "C/C++ Runner: Debug Session",
@@ -13,8 +13,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "extension-output-ms-vscode.cpptools-#2-Avisos de Configuração de C",
-      "program": "extension-output-ms-vscode.cpptools-#2-Avisos de Configuração de C/build/Debug/outDebug",
+      "cwd": "c:/Users/Cliente/Documents/GitHub/Programa-Loja-Byke",
+      "program": "c:/Users/Cliente/Documents/GitHub/Programa-Loja-Byke/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
