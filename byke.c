@@ -10,7 +10,8 @@
 ///                                Semana 1                                 ///
 ///////////////////////////////////////////////////////////////////////////////
 
-
+#include <stdio.h>
+#include <stdlib.h>
 
 /////
 // Assinatura das funções
@@ -76,7 +77,6 @@ void tela_menu_principal(void) {
     getchar();
 }
 
-
 void tela_sobre(void) {
     system("clear||cls");
     printf("\n");
@@ -86,31 +86,12 @@ void tela_sobre(void) {
     printf("///                 Centro de Ensino Superior do Seridó                     ///\n");
     printf("///               Departamento de Computação e Tecnologia                   ///\n");
     printf("///                  Disciplina DCT1106 -- Programação                      ///\n");
-    printf("///                      Docente: Flavius Gorgônio                          ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
     printf("///                       SISTEMA LOJA DO CICLISTA                          ///\n");
-    printf("///            Developed by @CrisNegromonte -- since Ago, 2023              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-
-
-void tela_funcionario(void);
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///             Universidade Federal do Rio Grande do Norte                 ///\n");
-    printf("///                 Centro de Ensino Superior do Seridó                     ///\n");
-    printf("///               Departamento de Computação e Tecnologia                   ///\n");
-    printf("///                  Disciplina DCT1106 -- Programação                      ///\n");
-    printf("///                      Docente: Flavius Gorgônio                          ///\n");
-    printf("///                   Projeto Sistema Loja do Ciclista                      ///\n");
-    printf("///           Developed by @CrisNegromonte -- since Ago, 2023               ///\n");
+    printf("///             Developed by @CrisNegromonte -- since Ago, 2023             ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
+    printf("///          = = = = = MAIS  INFORMAÇÕES  DO  PROJETO = = = = =             ///\n");
     printf("///             = = = = = Sistema Loja do Ciclista = = = = =                ///\n");
     printf("///                                                                         ///\n");
     printf("///        O projeto exemplo para o desenvolvimento desde projeto           ///\n");
@@ -125,7 +106,7 @@ void tela_funcionario(void);
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
-} 
+}
 
 
 void tela_menu_cliente(void) {
