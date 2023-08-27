@@ -11,56 +11,55 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
-
+#include <stdlib.h>
 
 /////
 // Assinatura das funções
+
 void tela_principal(void);
 void tela_sobre(void);
-void tela_funcionario(void);
 void tela_menu_cliente(void);
 void tela_cadastrar_cliente(void);
 void tela_pesquisar_cliente(void);
-void tela_alterar_cliente(void);
 void tela_excluir_cliente(void);
+void tela_alterar_cliente(void);
+void tela_cadastrar_produto(void);
+void tela_pesquisar_produto(void);
+void tela_alterar_produto(void);
+void tela_excluir_produto(void);
+void tela_cadastrar_vendedor(void);
+void tela_pesquisar_vendedor(void);
+void tela_alterar_vendedor(void);
+void tela_excluir_vendedores(void);
 
 
-
-//////
-////// Programa principal
-//////
+/////
+// Programa principal
 
 int main(void) {
-    char opcao;
-    do {
-        opcao = tela_principal();
-        switch(opcao) {
-            case '1':   moduloCliente();
-                        break;
-            case '2':   // Módulo Funcionário
-                        break;
-            case '3':   // Módulo Produto
-                        break;
-            case '4':   // Módulo Vendas
-                        break;
-            case '5':   // Módulo Relatórios
-                        break;
-            case '6':   // Tela Sobre
-                        break;
-        } 	
-    } while (opcao != '0');
+    tela_principal();
+    tela_sobre();
+    tela_menu_cadastro();
+    tela_cadastrar_cliente();
+    tela_pesquisar_cliente();
+    tela_alterar_cliente();
+    tela_excluir_cliente();
+    tela_cadastrar_produto();
+    tela_pesquisar_produto();
+    tela_alterar_produto();
+    tela_excluir_produto();
+    tela_cadastrar_vendedor();
+    tela_pesquisar_vendedor();
+    tela_alterar_vendedor();
+    tela_excluir_vendedor();
     return 0;
 }
+
 //////
 ////// Funções do Módulo Principal
 //////
 
-
-
-char tela_principal(void) {
-    char op;
-
-
+void tela_principal(void) {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -90,9 +89,8 @@ char tela_principal(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t<<< ... Aguarde ... >>>\n");
-    sleep(1);
-    return op;
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
 }
 
 void tela_sobre(void) {
