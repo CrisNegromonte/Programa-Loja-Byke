@@ -85,14 +85,17 @@ char tela_principal(void) {
     printf("///            4. Módulo Vendas                                             ///\n");
     printf("///            5. Módulo Relatórios                                         ///\n");
     printf("///            0. Sair                                                      ///\n");
+    printf("///           Escolha a opção desejada: ");
+	scanf("%c", &op);
+	getchar();
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    scanf("%c",&escolha);
-    return escolha;
-} 
+	delay(1);
+	return op;
+}
 
 void tela_sobre(void) {
     system("clear||cls");
@@ -159,8 +162,8 @@ void tela_menu_cliente(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+	delay(1);
+	return op;
 }
 
 
