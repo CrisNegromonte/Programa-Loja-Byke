@@ -14,12 +14,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "cliente.h"
-#include "funcionario.h"
-
 
 /////
 // Assinatura das funções
-void tela_menu_principal(void);
+void tela_principal(void);
 void tela_sobre(void);
 void tela_funcionario(void);
 void tela_menu_cliente(void);
@@ -28,26 +26,43 @@ void tela_pesquisar_cliente(void);
 void tela_alterar_cliente(void);
 void tela_excluir_cliente(void);
 
-/////
-// Programa principal
+
+
+//////
+////// Programa principal
+//////
+
 int main(void) {
-    tela_menu_principal();
-    tela_sobre();
-    tela_funcionario();
-    tela_menu_cliente();
-    tela_cadastrar_cliente();
-    tela_pesquisar_cliente();
-    tela_alterar_cliente();
-    tela_excluir_cliente();
+    char opcao;
+    do {
+        opcao = tela_principal();
+        switch(opcao) {
+            case '1':   moduloCliente();
+                        break;
+            case '2':   // Módulo Funcionário
+                        break;
+            case '3':   // Módulo Produto
+                        break;
+            case '4':   // Módulo Vendas
+                        break;
+            case '5':   // Módulo Relatórios
+                        break;
+            case '6':   // Tela Sobre
+                        break;
+        } 	
+    } while (opcao != '0');
     return 0;
 }
+//////
+////// Funções do Módulo Principal
+//////
 
 
-/////
-// Funções
 
-void tela_menu_principal(void) {
+char tela_principal(void) {
     char op;
+
+
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -77,10 +92,10 @@ void tela_menu_principal(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\t\t\t<<< ... Aguarde ... >>>\n");
+    sleep(1);
+    return op;
 }
-
 
 void tela_sobre(void) {
     system("clear||cls");
@@ -99,6 +114,20 @@ void tela_sobre(void) {
     printf("///            Developed by @CrisNegromonte -- since Ago, 2023              ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///        O projeto exemplo para o desenvolvimento desde projeto           ///\n");
+    printf("///                   foi desenvolvido pelo professor:                      ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Prof. Flavius Gorgônio                                       ///\n");
+    printf("///            E-mail: flavius.gorgonio@ufrn.br                             ///\n");
+    printf("///            Redes sociais: @flgorgonio                                   ///\n");
+    printf("///            Git: https://github.com/FlaviusGorgonio/LinguaSolta.git      ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
 
 
 void tela_funcionario(void);
