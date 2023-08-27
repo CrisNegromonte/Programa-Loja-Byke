@@ -10,8 +10,10 @@
 ///                                Semana 1                                 ///
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <stdio.h>
+
+#include <stdio.h> 
 #include <stdlib.h>
+
 
 /////
 // Assinatura das funções
@@ -59,7 +61,8 @@ int main(void) {
 ////// Funções do Módulo Principal
 //////
 
-void tela_principal(void) {
+char tela_principal(void) {
+    char escolha;
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -77,21 +80,19 @@ void tela_principal(void) {
     printf("///            = = = = =  SISTEMA LOJA DO CICLISTA  = = = = =               ///\n");
     printf("///                                                                         ///\n");
     printf("///            1. Módulo Cliente                                            ///\n");
-    printf("///            2. Módulo Vendedor                                        ///\n");
+    printf("///            2. Módulo Vendedor                                           ///\n");
     printf("///            3. Módulo Produto                                            ///\n");
     printf("///            4. Módulo Vendas                                             ///\n");
     printf("///            5. Módulo Relatórios                                         ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Escolha a opção desejada: ");
-    scanf("%c", &op);
-    getchar();
+    printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
+    scanf("%c",&escolha);
+    return escolha;
+} 
 
 void tela_sobre(void) {
     system("clear||cls");
@@ -124,38 +125,6 @@ void tela_sobre(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
 }
-
-
-void tela_funcionario(void);
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///             Universidade Federal do Rio Grande do Norte                 ///\n");
-    printf("///                 Centro de Ensino Superior do Seridó                     ///\n");
-    printf("///               Departamento de Computação e Tecnologia                   ///\n");
-    printf("///                  Disciplina DCT1106 -- Programação                      ///\n");
-    printf("///                      Docente: Flavius Gorgônio                          ///\n");
-    printf("///                   Projeto Sistema Loja do Ciclista                      ///\n");
-    printf("///           Developed by @CrisNegromonte -- since Ago, 2023               ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///             = = = = = Sistema Loja do Ciclista = = = = =                ///\n");
-    printf("///                                                                         ///\n");
-    printf("///        O projeto exemplo para o desenvolvimento desde projeto           ///\n");
-    printf("///                   foi desenvolvido pelo professor:                      ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Prof. Flavius Gorgônio                                       ///\n");
-    printf("///            E-mail: flavius.gorgonio@ufrn.br                             ///\n");
-    printf("///            Redes sociais: @flgorgonio                                   ///\n");
-    printf("///            Git: https://github.com/FlaviusGorgonio/LinguaSolta.git      ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-} 
 
 
 void tela_menu_cliente(void) {
