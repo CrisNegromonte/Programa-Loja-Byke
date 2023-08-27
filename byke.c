@@ -77,7 +77,7 @@ void tela_principal(void) {
     printf("///            = = = = =  SISTEMA LOJA DO CICLISTA  = = = = =               ///\n");
     printf("///                                                                         ///\n");
     printf("///            1. Módulo Cliente                                            ///\n");
-    printf("///            2. Módulo Funcionario                                        ///\n");
+    printf("///            2. Módulo Vendedor                                        ///\n");
     printf("///            3. Módulo Produto                                            ///\n");
     printf("///            4. Módulo Vendas                                             ///\n");
     printf("///            5. Módulo Relatórios                                         ///\n");
