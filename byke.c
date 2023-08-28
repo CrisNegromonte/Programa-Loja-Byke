@@ -61,8 +61,8 @@ int main(void) {
 ////// Funções do Módulo Principal
 //////
 
-char tela_principal(void) {
-    char escolha;
+void tela_principal(void) {
+    char op;
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -85,10 +85,10 @@ char tela_principal(void) {
     printf("///            4. Módulo Vendas                                             ///\n");
     printf("///            5. Módulo Relatórios                                         ///\n");
     printf("///            0. Sair                                                      ///\n");
-    printf("///           Escolha a opção desejada: ");
-	scanf("%c", &op);
-	getchar();
     printf("///                                                                         ///\n");
+    printf("///            Escolha a opção desejada: ");
+    scanf("%c", &op);
+    getchar();
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
