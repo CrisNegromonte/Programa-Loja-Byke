@@ -18,7 +18,7 @@
 
 /////
 // Assinatura das funções
-char menu_principal(void);
+void menu_principal(void);
 void tela_informacoes(void);
 void menu_cliente(void);
 void cadastrar_cliente(void);
@@ -79,7 +79,7 @@ int main(void) {
 ////// Funções do Módulo Principal
 //////
 
-char menu_principal(void) {
+void menu_principal(void) {
 	char op;
     system("clear||cls");
     printf("\n");
@@ -112,7 +112,7 @@ char menu_principal(void) {
 	printf("///                                                                        ///\n");
 	printf("//////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
-	return op;
+    getchar();
 }
 
 
