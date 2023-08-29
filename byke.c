@@ -11,49 +11,67 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 
 /////
 // Assinatura das funções
+char menu_principal(void);
+void tela_informacoes(void);
+void menu_cliente(void);
+void cadastrar_cliente(void);
+void pesquisar_cliente(void);
+void alterar_cliente(void);
+void excluir_cliente(void);
+void menu_vendedor(void);
+void cadastrar_vendedor(void);
+void pesquisar_vendedor(void);
+void alterar_vendedor(void);
+void excluir_vendedor(void);
+void menu_produto(void);
+void cadastrar_produto(void);
+void pesquisar_produto(void);
+void alterar_produto(void);
+void excluir_produto(void);
+void menu_vendas(void);
+void cadastrar_vendas(void);
+void pesquisar_vendas(void);
+void alterar_vendas(void);
+void excluir_vendas(void);
+void menu_relatorios(void);
 
-void tela_principal(void);
-void tela_sobre(void);
-void tela_menu_cliente(void);
-void tela_cadastrar_cliente(void);
-void tela_pesquisar_cliente(void);
-void tela_excluir_cliente(void);
-void tela_alterar_cliente(void);
-void tela_cadastrar_produto(void);
-void tela_pesquisar_produto(void);
-void tela_alterar_produto(void);
-void tela_excluir_produto(void);
-void tela_cadastrar_vendedor(void);
-void tela_pesquisar_vendedor(void);
-void tela_alterar_vendedor(void);
-void tela_excluir_vendedores(void);
+
 
 
 /////
 // Programa principal
 
 int main(void) {
-    tela_principal();
-    tela_sobre();
-    tela_menu_cadastro();
-    tela_cadastrar_cliente();
-    tela_pesquisar_cliente();
-    tela_alterar_cliente();
-    tela_excluir_cliente();
-    tela_cadastrar_produto();
-    tela_pesquisar_produto();
-    tela_alterar_produto();
-    tela_excluir_produto();
-    tela_cadastrar_vendedor();
-    tela_pesquisar_vendedor();
-    tela_alterar_vendedor();
-    tela_excluir_vendedor();
+    menu_principal();
+    tela_informacoes();
+    menu_cliente();
+    cadastrar_cliente();
+    pesquisar_cliente();
+    alterar_cliente();
+    excluir_cliente();
+    menu_vendedor();
+    cadastrar_vendedor();
+    pesquisar_vendedor();
+    alterar_vendedor();
+    excluir_vendedor();
+    menu_produto();
+    cadastrar_produto();
+    pesquisar_produto();
+    alterar_produto();
+    excluir_produto();
+    menu_vendas();
+    cadastrar_vendas();
+    pesquisar_vendas();
+    alterar_vendas();
+    excluir_vendas();
+    menu_relatorios();
     return 0;
 }
 
@@ -61,8 +79,8 @@ int main(void) {
 ////// Funções do Módulo Principal
 //////
 
-void tela_principal(void) {
-    char op;
+char menu_principal(void) {
+	char op;
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -84,20 +102,22 @@ void tela_principal(void) {
     printf("///            3. Módulo Produto                                            ///\n");
     printf("///            4. Módulo Vendas                                             ///\n");
     printf("///            5. Módulo Relatórios                                         ///\n");
+    printf("///            6. Informações Sobre o Sistema                               ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Escolha a opção desejada: ");
-    scanf("%c", &op);
-    getchar();
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-	delay(1);
+	printf("///           Escolha a opção desejada: ");
+	scanf("%c", &op);
+	getchar();
+	printf("///                                                                        ///\n");
+	printf("///                                                                        ///\n");
+	printf("//////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
 	return op;
 }
 
-void tela_sobre(void) {
+
+
+void tela_informacoes(void) {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -130,7 +150,7 @@ void tela_sobre(void) {
 }
 
 
-void tela_menu_cliente(void) {
+char tela_menu_cliente(void) {
     char op;
     system("clear||cls");
     printf("\n");
@@ -162,7 +182,6 @@ void tela_menu_cliente(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-	delay(1);
 	return op;
 }
 
