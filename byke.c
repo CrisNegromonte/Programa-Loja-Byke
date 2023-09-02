@@ -48,7 +48,7 @@ int main(void) {
     pesquisar_vendedor();
     alterar_vendedor();
     excluir_vendedor();
-    
+
     return 0;
 }
 
@@ -291,13 +291,13 @@ void menu_vendedor(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = =  MENU CLIENTE = = = = = = = =              ///\n");
+    printf("///            = = = = = = = = =  MENU VENDEDOR  = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            1. Cadastrar um novo cliente                                 ///\n");
-    printf("///            2. Pesquisar os dados de um cliente                          ///\n");
-    printf("///            3. Atualizar o cadastro de um cliente                        ///\n");
-    printf("///            4. Excluir um cliente do sistema                             ///\n");
+    printf("///            1. Cadastrar um novo vendedor                                ///\n");
+    printf("///            2. Pesquisar os dados de um vendedor                         ///\n");
+    printf("///            3. Atualizar o cadastro de um vendedor                       ///\n");
+    printf("///            4. Excluir um vendedor do sistema                            ///\n");
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
     printf("///            Escolha a opção desejada: ");
@@ -325,7 +325,7 @@ void cadastrar_vendedor(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  Cadastrar Cliente  = = = = = = =              ///\n");
+    printf("///            = = = = = = =  Cadastrar Vendedor   = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///            CPF (apenas números):                                        ///\n");
@@ -357,7 +357,7 @@ void pesquisar_vendedor(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = Pesquisar Cliente = = = = = = =              ///\n");
+    printf("///            = = = = = = = = Pesquisar Vendedor  = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe o CPF (apenas numeros):                              ///\n");
@@ -385,7 +385,7 @@ void alterar_vendedor(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =   Alterar Cliente   = = = = = = =              ///\n");
+    printf("///            = = = = = = =   Alterar Vendedor    = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe o CPF (apenas numeros):                              ///\n");
@@ -413,7 +413,7 @@ void excluir_vendedor(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  Excluir Cliente  = = = = = = = =              ///\n");
+    printf("///            = = = = = = =  Excluir Vendedor   = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe o CPF (apenas números):                              ///\n");
