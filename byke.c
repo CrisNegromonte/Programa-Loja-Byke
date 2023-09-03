@@ -30,6 +30,11 @@ void cadastrar_vendedor(void);
 void pesquisar_vendedor(void);
 void alterar_vendedor(void);
 void excluir_vendedor(void);
+void menu_produtos(void);
+void cadastrar_produto(void);
+void pesquisar_produto(void);
+void alterar_produto(void);
+void excluir_produto(void);
 
 
 /////
@@ -48,6 +53,11 @@ int main(void) {
     pesquisar_vendedor();
     alterar_vendedor();
     excluir_vendedor();
+    menu_produtos();
+    cadastrar_produto();
+    pesquisar_produto();
+    alterar_produto();
+    excluir_produto();
 
     return 0;
 }
