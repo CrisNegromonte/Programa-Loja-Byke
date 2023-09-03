@@ -1,11 +1,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 ///             Universidade Federal do Rio Grande do Norte                 ///
-///                 Centro de Ensino Superior do Seridó                     ///
-///               Departamento de Computação e Tecnologia                   ///
-///                  Disciplina DCT1106 -- Programação                      /// 
-///                      Docente: Flavius Gorgônio                          ///                     
+///                 Centro de Ensino Superior do Serido                     ///
+///               Departamento de Computacao e Tecnologia                   ///
+///                  Disciplina DCT1106 -- Programacao                      /// 
+///                      Docente: Flavius Gorgonio                          ///                     
 ///                      PROJETO LOJA DO CICLISTA                           ///
-///        Developed by Kátia Cristina N. Maia -- since Ago, 2023           ///
+///        Developed by Katia Cristina N. Maia -- since Ago, 2023           ///
 ///////////////////////////////////////////////////////////////////////////////
 ///                                Semana 1                                 ///
 ///////////////////////////////////////////////////////////////////////////////
@@ -15,9 +15,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-
+// baseadas no codigo do professor Flavius:
+// https://github.com/FlaviusGorgonio/LinguaSolta/blob/main/ls.c
 /////
-// Assinatura das funções
+// Assinatura das funcoes
+
 void menu_principal(void);
 void tela_informacoes(void);
 void menu_cliente(void);
@@ -73,7 +75,10 @@ int main(void) {
 }
 
 //////
-////// Funções do Módulo Principal
+////// Funcoes do Modulo Principal
+//////
+// funcoes e menus baseados no codigo do professor Flavius:
+// https://github.com/FlaviusGorgonio/LinguaSolta/blob/main/ls.c
 //////
 
 void menu_principal(void) {
@@ -135,7 +140,7 @@ void tela_informacoes(void) {
     printf("///        O projeto exemplo para o desenvolvimento desde projeto           ///\n");
     printf("///                   foi desenvolvido pelo professor:                      ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Prof. Flavius Gorgonio                                       ///\n");
+    printf("///            Flavius Gorgonio                                             ///\n");
     printf("///            E-mail: flavius.gorgonio@ufrn.br                             ///\n");
     printf("///            Redes sociais: @flgorgonio                                   ///\n");
     printf("///            Git: https://github.com/FlaviusGorgonio/LinguaSolta.git      ///\n");
@@ -199,8 +204,12 @@ void cadastrar_cliente(void) {
     printf("///            = = = = = = =  Cadastrar Cliente  = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            CPF (apenas números):                                        ///\n");
+    printf("///            CPF (apenas numeros):                                        ///\n");
     printf("///            Nome completo:                                               ///\n");
+    printf("///            Endereco (Rua, numero):                                      ///\n");
+    printf("///            Complemento:                                                 ///\n");
+    printf("///            Cidade:                                                      ///\n");
+    printf("///            Estado:                                                      ///\n");
     printf("///            E-mail:                                                      ///\n");
     printf("///            Data de Nascimento (dd/mm/aaaa):                             ///\n");
     printf("///            Celular  (apenas numeros):                                   ///\n");
@@ -287,7 +296,7 @@ void excluir_cliente(void) {
     printf("///            = = = = = = =  Excluir Cliente  = = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Informe o CPF (apenas números):                              ///\n");
+    printf("///            Informe o CPF (apenas numeros):                              ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -348,7 +357,7 @@ void cadastrar_vendedor(void) {
     printf("///            = = = = = = =  Cadastrar Vendedor   = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            CPF (apenas números):                                        ///\n");
+    printf("///            CPF (apenas numeros):                                        ///\n");
     printf("///            Nome completo:                                               ///\n");
     printf("///            E-mail:                                                      ///\n");
     printf("///            Data de Nascimento (dd/mm/aaaa):                             ///\n");
@@ -617,11 +626,11 @@ void menu_vendas(void) {
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///            1. Realizar nova venda                                       ///\n");
-    printf("///            2. Pesquisar venda ja realizada                              ///\n");
-    printf("///            4. Cancelar venda ja realizada                               ///\n");
+    printf("///            2. Pesquisar venda realizada                                 ///\n");
+    printf("///            4. Cancelar venda realizada                                  ///\n");
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Escolha a opção desejada: ");
+    printf("///            Escolha a opcao desejada: ");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
