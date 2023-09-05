@@ -22,26 +22,40 @@
 
 void menu_principal(void);
 void tela_informacoes(void);
+
 void menu_cliente(void);
 void cadastrar_cliente(void);
 void pesquisar_cliente(void);
 void alterar_cliente(void);
 void excluir_cliente(void);
+
 void menu_vendedor(void);
 void cadastrar_vendedor(void);
 void pesquisar_vendedor(void);
 void alterar_vendedor(void);
 void excluir_vendedor(void);
+
 void menu_produtos(void);
 void cadastrar_produto(void);
 void pesquisar_produto(void);
 void alterar_produto(void);
 void excluir_produto(void);
+
 void menu_vendas(void);
 void realizar_venda(void);
 void pesquisar_venda(void);
 void alterar_venda(void);
 void excluir_venda(void);
+
+void menu_relatorios(void);
+void relat_clientes_ativos(void);
+void relat_clientes_excluidos(void);
+void relat_vendedores_ativos(void);
+void relat_vendedores_excluidos(void);
+void relat_produtos_ativos(void);
+void relat_produtos_excluidos(void);
+void relat_vendas_ok(void);
+void relat_vendas_canceladas(void);     
 
 
 /////
@@ -50,26 +64,40 @@ void excluir_venda(void);
 int main(void) {
     menu_principal();
     tela_informacoes();
+
     menu_cliente();
     cadastrar_cliente();
     pesquisar_cliente();
     alterar_cliente();
     excluir_cliente();
+
     menu_vendedor();
     cadastrar_vendedor();
     pesquisar_vendedor();
     alterar_vendedor();
     excluir_vendedor();
+
     menu_produtos();
     cadastrar_produto();
     pesquisar_produto();
     alterar_produto();
     excluir_produto();
+
     menu_vendas();
     realizar_venda();
     pesquisar_venda();
     alterar_venda();
     excluir_venda();
+
+    menu_relatorios();
+    relat_clientes_ativos();
+    relat_clientes_excluidos();
+    relat_vendedores_ativos();
+    relat_vendedores_excluidos();
+    relat_produtos_ativos();
+    relat_produtos_excluidos();
+    relat_vendas_ok();
+    relat_vendas_canceladas(); 
 
     return 0;
 }
@@ -746,6 +774,265 @@ void excluir_venda(void) {
     printf("///                                                                         ///\n");
     printf("///            Informe o codigo do cupom da venda:                          ///\n");
     printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+void menu_relatorios(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = =       SISTEMA LOJA DO CICLISTA      = = = =          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            = = = = = = =   MENU RELATORIOS   = = = = = = =              ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            1. Relatorio de Clientes Ativos                              ///\n");
+    printf("///            2. Relatorio de Clientes Excluidos                           ///\n");
+    printf("///            3. Relatorio de Vendedores Ativos                            ///\n");
+    printf("///            4. Relatorio de Vendedores Excluidos                         ///\n");
+    printf("///            5. Relatorio de Produtos Ativos                              ///\n");
+    printf("///            6. Relatorio de Produtos Excluidos                           ///\n");
+    printf("///            7. Relatorio de Vendas Realizadas - Por Periodo              ///\n");
+    printf("///            8. Relatorio de Vendas Canceladas - Por Periodo              ///\n");
+    printf("///            0. Voltar ao menu anterior                                   ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Escolha a opcao desejada: ");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+void relat_clientes_ativos(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            = = =     Relatorio de Clientes Ativos    = = =              ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Lista todos os clientes ativos                               ///\n");
+    printf("///            PS: desenvolver mais  - pensar sobre                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+void relat_clientes_excluidos(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            = = =   Relatorio de Clientes Excluidos   = = =              ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Lista todos os clientes excluidos                            ///\n");
+    printf("///            PS: desenvolver mais  - pensar sobre                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+void relat_vendedores_ativos(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            = = =   Relatorio de Vendedores Ativos    = = =              ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Lista todos os vendedores ativos                             ///\n");
+    printf("///            PS: desenvolver mais  - pensar sobre                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+void relat_vendedores_excluidos(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            = = =  Relatorio de Vendedores Excluidos  = = =              ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Lista todos os vendedores excluidos                          ///\n");
+    printf("///            PS: desenvolver mais  - pensar sobre                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+void relat_produtos_ativos(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            = = =     Relatorio de Produtos Ativos    = = =              ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Lista todos os produtos ativos                               ///\n");
+    printf("///            PS: desenvolver mais  - pensar sobre                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+void relat_produtos_excluidos(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            = = =    Relatorio de Produtos Excluidos  = = =              ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Lista todos os produtos excluidos                            ///\n");
+    printf("///            PS: desenvolver mais  - pensar sobre                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+void relat_vendas_ok(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            = = =    Relatorio de Vendas Confirmadas  = = =              ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Digite o periodo inicial do relatorio (dia/mes/ano):         ///\n");
+    printf("///            Digite o periodo final do relatorio (dia/mes/ano):           ///\n");
+    printf("///            PS: desenvolver mais  - pensar sobre                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+void relat_vendas_canceladas(void) {
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            = = =    Relatorio de Vendas Canceladas   = = =              ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            Digite o periodo inicial do relatorio (dia/mes/ano):         ///\n");
+    printf("///            Digite o periodo final do relatorio (dia/mes/ano):           ///\n");
+    printf("///            PS: desenvolver mais  - pensar sobre                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
