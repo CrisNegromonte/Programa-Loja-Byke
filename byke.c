@@ -14,13 +14,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
 
 // baseadas no codigo do professor Flavius:
 // https://github.com/FlaviusGorgonio/LinguaSolta/blob/main/ls.c
 /////
 // Assinatura das funcoes
 
-void menu_principal(void);
+char menu_principal(void);
 void tela_informacoes(void);
 
 void menu_cliente(void);
@@ -55,7 +56,9 @@ void relat_vendedores_excluidos(void);
 void relat_produtos_ativos(void);
 void relat_produtos_excluidos(void);
 void relat_vendas_ok(void);
-void relat_vendas_canceladas(void);     
+void relat_vendas_canceladas(void);   
+
+void delay(int);
 
 
 /////
@@ -125,14 +128,8 @@ int main(void) {
     return 0;
 }
 
-//////
-////// Funcoes do Modulo Principal
-//////
-// funcoes e menus baseados no codigo do professor Flavius:
-// https://github.com/FlaviusGorgonio/LinguaSolta/blob/main/ls.c
-//////
 
-void menu_principal(void) {
+char menu_principal(void) {
 	char op;
     system("clear||cls");
     printf("\n");
@@ -165,7 +162,8 @@ void menu_principal(void) {
 	printf("///                                                                         ///\n");
 	printf("///////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
-    getchar();
+	delay(1);
+	return op;
 }
 
 
@@ -202,8 +200,55 @@ void tela_informacoes(void) {
     getchar();
 }
 
-
 void menu_cliente(void) {
+	char opcao;
+	do {
+		opcao = menu_cliente();
+		switch(opcao) {
+			case '1': 	cadastrar_cliente();
+						break;
+			case '2': 	pesquisar_cliente();
+						break;
+			case '3': 	alterar_cliente();
+						break;
+			case '4': 	excluir_cliente();
+						break;
+		} 		
+	} while (opcao != '0');
+}
+
+
+void cadastrar_cliente(void) {
+	// função ainda em desenvolvimento
+	// exibe a tela apenas para testes
+	cadastrar_cliente();
+}
+
+
+void pesquisar_cliente(void) {
+	// função ainda em desenvolvimento
+	// exibe a tela apenas para testes
+	pesquisar_cliente();
+}
+
+
+void alterar_cliente(void) {
+	// função ainda em desenvolvimento
+	// exibe a tela apenas para testes
+	alterar_cliente();
+}
+
+
+void excluir_cliente(void) {
+	// função ainda em desenvolvimento
+	// exibe a tela apenas para testes
+	excluir_cliente();
+}
+
+
+
+char menu_cliente(void) {
+    char op;
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -228,14 +273,15 @@ void menu_cliente(void) {
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
     printf("///            Escolha a opção desejada: ");
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    scanf("%c", &op);
+	getchar();
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+	delay(1);
+	return op;
 }
-
 
 void cadastrar_cliente(void) {
     system("clear||cls");
