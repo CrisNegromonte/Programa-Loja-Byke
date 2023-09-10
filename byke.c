@@ -24,7 +24,7 @@
 char menu_principal(void);
 void tela_informacoes(void);
 
-void menu_cliente(void);
+char menu_cliente(void);
 void cadastrar_cliente(void);
 void pesquisar_cliente(void);
 void alterar_cliente(void);
@@ -200,7 +200,7 @@ void tela_informacoes(void) {
     getchar();
 }
 
-void menu_cliente(void) {
+char menu_cliente(void) {
 	char opcao;
 	do {
 		opcao = menu_cliente();
@@ -216,35 +216,6 @@ void menu_cliente(void) {
 		} 		
 	} while (opcao != '0');
 }
-
-
-void cadastrar_cliente(void) {
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	cadastrar_cliente();
-}
-
-
-void pesquisar_cliente(void) {
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	pesquisar_cliente();
-}
-
-
-void alterar_cliente(void) {
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	alterar_cliente();
-}
-
-
-void excluir_cliente(void) {
-	// função ainda em desenvolvimento
-	// exibe a tela apenas para testes
-	excluir_cliente();
-}
-
 
 
 char menu_cliente(void) {
