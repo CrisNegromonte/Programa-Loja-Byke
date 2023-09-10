@@ -62,6 +62,29 @@ void relat_vendas_canceladas(void);
 // Programa principal
 
 int main(void) {
+	char opcao;
+	do {
+		opcao = menu_principal();
+		switch(opcao) {
+			case '1': 	menu_cliente();
+						break;
+			case '2': 	menu_vendedor();
+						break;
+			case '3': 	menu_produtos();
+						break;
+			case '4': 	menu_vendas();
+						break;
+			case '5': 	menu_relatorios();
+						break;
+            case '6': 	tela_informacoes();
+						break;
+		} 		
+	} while (opcao != '0');
+	return 0;    
+}
+
+
+int main(void) {
     menu_principal();
     tela_informacoes();
 
