@@ -23,6 +23,7 @@
 
 char menu_principal(void);
 void tela_informacoes(void);
+int main(void);
 
 char menu_cliente(void);
 void cadastrar_cliente(void);
@@ -179,7 +180,7 @@ char menu_cliente(void) {
 }
 
 
-char menu_cliente() {
+char menu_cliente(void) {
     char op;
     system("clear||cls");
     printf("\n");
