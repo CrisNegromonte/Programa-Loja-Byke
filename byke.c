@@ -30,25 +30,25 @@ void pesquisar_cliente(void);
 void alterar_cliente(void);
 void excluir_cliente(void);
 
-void menu_vendedor(void);
+char menu_vendedor(void);
 void cadastrar_vendedor(void);
 void pesquisar_vendedor(void);
 void alterar_vendedor(void);
 void excluir_vendedor(void);
 
-void menu_produtos(void);
+char menu_produtos(void);
 void cadastrar_produto(void);
 void pesquisar_produto(void);
 void alterar_produto(void);
 void excluir_produto(void);
 
-void menu_vendas(void);
+char menu_vendas(void);
 void realizar_venda(void);
 void pesquisar_venda(void);
 void alterar_venda(void);
 void excluir_venda(void);
 
-void menu_relatorios(void);
+char menu_relatorios(void);
 void relat_clientes_ativos(void);
 void relat_clientes_excluidos(void);
 void relat_vendedores_ativos(void);
@@ -64,11 +64,12 @@ void delay(int);
 /////
 // Programa principal
 
-int main(void) {
-	char opcao;
-	do {
-		opcao = menu_principal();
-		switch(opcao) {
+int main(){
+  char escolha;
+	  do {
+        menu_principal();
+        escolha = menu_principal();
+		switch(escolha){
 			case '1': 	menu_cliente();
 						break;
 			case '2': 	menu_vendedor();
@@ -82,51 +83,11 @@ int main(void) {
             case '6': 	tela_informacoes();
 						break;
 		} 		
-	} while (opcao != '0');
+	} while (escolha != '0');
 	return 0;    
 }
 
 
-int main(void) {
-    menu_principal();
-    tela_informacoes();
-
-    menu_cliente();
-    cadastrar_cliente();
-    pesquisar_cliente();
-    alterar_cliente();
-    excluir_cliente();
-
-    menu_vendedor();
-    cadastrar_vendedor();
-    pesquisar_vendedor();
-    alterar_vendedor();
-    excluir_vendedor();
-
-    menu_produtos();
-    cadastrar_produto();
-    pesquisar_produto();
-    alterar_produto();
-    excluir_produto();
-
-    menu_vendas();
-    realizar_venda();
-    pesquisar_venda();
-    alterar_venda();
-    excluir_venda();
-
-    menu_relatorios();
-    relat_clientes_ativos();
-    relat_clientes_excluidos();
-    relat_vendedores_ativos();
-    relat_vendedores_excluidos();
-    relat_produtos_ativos();
-    relat_produtos_excluidos();
-    relat_vendas_ok();
-    relat_vendas_canceladas(); 
-
-    return 0;
-}
 
 
 char menu_principal(void) {
@@ -201,10 +162,10 @@ void tela_informacoes(void) {
 }
 
 char menu_cliente(void) {
-	char opcao;
+	char op;
 	do {
-		opcao = menu_cliente();
-		switch(opcao) {
+		op = menu_cliente();
+		switch(op) {
 			case '1': 	cadastrar_cliente();
 						break;
 			case '2': 	pesquisar_cliente();
@@ -214,11 +175,11 @@ char menu_cliente(void) {
 			case '4': 	excluir_cliente();
 						break;
 		} 		
-	} while (opcao != '0');
+	} while (op != '0');
 }
 
 
-char menu_cliente(void) {
+char menu_cliente() {
     char op;
     system("clear||cls");
     printf("\n");
@@ -373,7 +334,7 @@ void excluir_cliente(void) {
     getchar();
 }
 
-void menu_vendedor(void) {
+char menu_vendedor() {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -523,7 +484,7 @@ void excluir_vendedor(void) {
 }
 
 
-void menu_produtos(void) {
+char menu_produtos() {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -675,7 +636,7 @@ void excluir_produto(void) {
 }
 
 
-void menu_vendas(void) {
+char menu_vendas() {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -822,7 +783,7 @@ void excluir_venda(void) {
 }
 
 
-void menu_relatorios(void) {
+char menu_relatorios() {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
