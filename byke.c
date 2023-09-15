@@ -205,7 +205,7 @@ char menu_cliente(void) {
     printf("///            4. Excluir um cliente do sistema                             ///\n");
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Escolha a opção desejada: ");
+    printf("///            Escolha a opcao desejada: ");
     scanf("%c", &op);
 	getchar();
 	printf("///                                                                       ///\n");
