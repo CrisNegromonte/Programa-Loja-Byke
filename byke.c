@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+#include "cliente.h"
 
 // baseadas no codigo do professor Flavius:
 // https://github.com/FlaviusGorgonio/LinguaSolta/blob/main/ls.c
@@ -25,31 +26,26 @@ char menu_principal(void);
 void tela_informacoes(void);
 int main(void);
 
-char menu_cliente(void);
-void cadastrar_cliente(void);
-void pesquisar_cliente(void);
-void alterar_cliente(void);
-void excluir_cliente(void);
 
-char menu_vendedor(void);
+void menu_vendedor(void);
 void cadastrar_vendedor(void);
 void pesquisar_vendedor(void);
 void alterar_vendedor(void);
 void excluir_vendedor(void);
 
-char menu_produtos(void);
+void menu_produtos(void);
 void cadastrar_produto(void);
 void pesquisar_produto(void);
 void alterar_produto(void);
 void excluir_produto(void);
 
-char menu_vendas(void);
+void menu_vendas(void);
 void realizar_venda(void);
 void pesquisar_venda(void);
 void alterar_venda(void);
 void excluir_venda(void);
 
-char menu_relatorios(void);
+void menu_relatorios(void);
 void relat_clientes_ativos(void);
 void relat_clientes_excluidos(void);
 void relat_vendedores_ativos(void);
@@ -59,31 +55,30 @@ void relat_produtos_excluidos(void);
 void relat_vendas_ok(void);
 void relat_vendas_canceladas(void);   
 
-void delay(int);
+//void delay(int);
 
 
 /////
 // Programa principal
 
 int main(){
-  char escolha;
-	  do {
-        menu_principal();
+    char escolha;
+    do {
         escolha = menu_principal();
-		switch(escolha){
-			case '1': 	menu_cliente();
-						break;
-			case '2': 	menu_vendedor();
-						break;
-			case '3': 	menu_produtos();
-						break;
-			case '4': 	menu_vendas();
-						break;
-			case '5': 	menu_relatorios();
-						break;
+        switch(escolha){
+            case '1': 	menu_cliente();
+                        break;
+            case '2': 	menu_vendedor();
+                        break;
+            case '3': 	menu_produtos();
+                        break;
+            case '4': 	menu_vendas();
+                        break;
+            case '5': 	menu_relatorios();
+                        break;
             case '6': 	tela_informacoes();
-						break;
-		} 		
+                        break;
+        } 		
 	} while (escolha != '0');
 	return 0;    
 }
@@ -124,7 +119,7 @@ char menu_principal(void) {
 	printf("///                                                                         ///\n");
 	printf("///////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
-	delay(1);
+	// delay(1);
 	return op;
 }
 
@@ -162,180 +157,8 @@ void tela_informacoes(void) {
     getchar();
 }
 
-char menu_cliente(void) {
-	char op;
-	do {
-		op = menu_cliente();
-		switch(op) {
-			case '1': 	cadastrar_cliente();
-						break;
-			case '2': 	pesquisar_cliente();
-						break;
-			case '3': 	alterar_cliente();
-						break;
-			case '4': 	excluir_cliente();
-						break;
-		} 		
-	} while (op != '0');
-}
 
-
-char menu_cliente(void) {
-    char op;
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = =       SISTEMA LOJA DO CICLISTA      = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = =  MENU CLIENTE = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            1. Cadastrar um novo cliente                                 ///\n");
-    printf("///            2. Pesquisar os dados de um cliente                          ///\n");
-    printf("///            3. Atualizar o cadastro de um cliente                        ///\n");
-    printf("///            4. Excluir um cliente do sistema                             ///\n");
-    printf("///            0. Voltar ao menu anterior                                   ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Escolha a opcao desejada: ");
-    scanf("%c", &op);
-	getchar();
-	printf("///                                                                       ///\n");
-	printf("///                                                                       ///\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("\n");
-	delay(1);
-	return op;
-}
-
-void cadastrar_cliente(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  Cadastrar Cliente  = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            CPF (apenas numeros):                                        ///\n");
-    printf("///            Nome completo:                                               ///\n");
-    printf("///            Endereco (Rua, numero):                                      ///\n");
-    printf("///            Complemento:                                                 ///\n");
-    printf("///            Cidade:                                                      ///\n");
-    printf("///            Estado:                                                      ///\n");
-    printf("///            E-mail:                                                      ///\n");
-    printf("///            Data de Nascimento (dd/mm/aaaa):                             ///\n");
-    printf("///            Celular  (apenas numeros):                                   ///\n");
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
-
-
-void pesquisar_cliente(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = Pesquisar Cliente = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Informe o CPF (apenas numeros):                              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
-
-
-void alterar_cliente(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = = SISTEMA LOJA DO CICLISTA   = =  = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =   Alterar Cliente   = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Informe o CPF (apenas numeros):                              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
-
-
-void excluir_cliente(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  Excluir Cliente  = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Informe o CPF (apenas numeros):                              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
-
-char menu_vendedor() {
+void menu_vendedor() {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -485,7 +308,7 @@ void excluir_vendedor(void) {
 }
 
 
-char menu_produtos() {
+void menu_produtos() {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -637,7 +460,7 @@ void excluir_produto(void) {
 }
 
 
-char menu_vendas() {
+void menu_vendas() {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -784,7 +607,7 @@ void excluir_venda(void) {
 }
 
 
-char menu_relatorios() {
+void menu_relatorios() {
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
