@@ -10,13 +10,11 @@ void menu_vendas(void) {
 	do {
 		op = tela_vendas();
 		switch(op) {
-			case '1': 	cadastrar_venda();
+			case '1': 	realizar_venda();
 						break;
 			case '2': 	pesquisar_venda();
 						break;
-			case '3': 	alterar_venda();
-						break;
-			case '4': 	cancelar_venda();
+			case '3': 	cancelar_venda();
 						break;
 		} 		
 	} while (op != '0');
