@@ -25,7 +25,7 @@ void menu_relatorios(void) {
 						break;
 			case '7': 	relat_vendas_efetivadas();
 						break;
-            case '8': 	elat_vendas_canceladas();
+            case '8': 	relat_vendas_canceladas();
 						break;
 
 		} 		
