@@ -39,7 +39,7 @@ char tela_vendedor(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = = =   MENU VENDEDOR = = = = = = = =              ///\n");
+    printf("///            = = = = = = = =   MENU VENDEDOR   = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///            1. Cadastrar um novo vendedor                                ///\n");
