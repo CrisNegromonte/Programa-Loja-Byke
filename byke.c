@@ -17,7 +17,7 @@
 #include <time.h>
 #include "cliente.h"
 
-// baseadas no codigo do professor Flavius:
+// baseadas no codigo do professor Flavius :
 // https://github.com/FlaviusGorgonio/LinguaSolta/blob/main/ls.c
 /////
 // Assinatura das funcoes
