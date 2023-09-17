@@ -17,6 +17,7 @@
 #include <time.h>
 #include "cliente.h"
 #include "vendedor.h"
+#include "produtos.h"
 
 // baseadas no codigo do professor Flavius :
 // https://github.com/FlaviusGorgonio/LinguaSolta/blob/main/ls.c
@@ -27,12 +28,6 @@ char menu_principal(void);
 void tela_informacoes(void);
 int main(void);
 
-
-void menu_produtos(void);
-void cadastrar_produto(void);
-void pesquisar_produto(void);
-void alterar_produto(void);
-void excluir_produto(void);
 
 void menu_vendas(void);
 void realizar_venda(void);
@@ -145,158 +140,6 @@ void tela_informacoes(void) {
     printf("///            E-mail: flavius.gorgonio@ufrn.br                             ///\n");
     printf("///            Redes sociais: @flgorgonio                                   ///\n");
     printf("///            Git: https://github.com/FlaviusGorgonio/LinguaSolta.git      ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
-
-
-void menu_produtos() {
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = =       SISTEMA LOJA DO CICLISTA      = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = =  MENU PRODUTOS  = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            1. Cadastrar um novo produto                                 ///\n");
-    printf("///            2. Pesquisar produto                                         ///\n");
-    printf("///            3. Atualizar o cadastro de um vendedor                       ///\n");
-    printf("///            4. Excluir um produto do sistema                             ///\n");
-    printf("///            0. Voltar ao menu anterior                                   ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Escolha a opção desejada: ");
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
-
-
-void cadastrar_produto(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  Cadastrar Produto    = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Nome do produto:                                             ///\n");
-    printf("///            Categoria do produto:                                        ///\n");
-    printf("///            Valor de compra do produto:                                  ///\n");
-    printf("///            Valor de venda do produto:                                   ///\n");
-    printf("///            Cor do produto:                                              ///\n");
-    printf("///            Descricao do produto:                                        ///\n");
-    printf("///            Codigo do produto: (?)                                       ///\n");
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
-
-
-void pesquisar_produto(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = Pesquisar Produto   = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Informe o nome ou codigo do produto:                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
-
-
-void alterar_produto(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = = SISTEMA LOJA DO CICLISTA   = =  = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =   Alterar Produto     = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Informe o nome ou codigo do produto:                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-}
-
-
-void excluir_produto(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  Excluir Produto    = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
-    printf("///            Informe o nome ou codigo do produto:                         ///\n");
-    printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
