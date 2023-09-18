@@ -6,6 +6,7 @@
 #include "cliente.h"
 
 
+
 void menu_cliente(void) {
 	char op;
 	do {

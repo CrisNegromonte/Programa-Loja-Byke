@@ -44,7 +44,7 @@ char tela_produtos(void) {
     printf("///                                                                         ///\n");
     printf("///            1. Cadastrar um novo produto                                 ///\n");
     printf("///            2. Pesquisar os dados de um produto                          ///\n");
-    printf("///            3. Atualizar o cadastro de um produto                        ///\n");
+    printf("///            3. Alterar o cadastro de um produto                          ///\n");
     printf("///            4. Excluir um produto do sistema                             ///\n");
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
