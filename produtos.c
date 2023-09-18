@@ -10,13 +10,13 @@ void menu_produtos(void) {
 	do {
 		op = tela_produtos();
 		switch(op) {
-			case '1': 	cadastrar_produtos();
+			case '1': 	cadastrar_produto();
 						break;
-			case '2': 	pesquisar_produtos();
+			case '2': 	pesquisar_produto();
 						break;
-			case '3': 	alterar_produtos();
+			case '3': 	alterar_produto();
 						break;
-			case '4': 	excluir_produtos();
+			case '4': 	excluir_produto();
 						break;
 		} 		
 	} while (op != '0');
