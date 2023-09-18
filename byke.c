@@ -34,9 +34,9 @@ int main(void){
     do {
         escolha = menu_principal();
         switch(escolha){
-            case '1': 	menu_cliente();
+            case '1': 	menu_clientes();
                         break;
-            case '2': 	menu_vendedor();
+            case '2': 	menu_vendedores();
                         break;
             case '3': 	menu_produtos();
                         break;

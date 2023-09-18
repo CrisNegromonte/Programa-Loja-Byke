@@ -7,10 +7,10 @@
 
 
 
-void menu_cliente(void) {
+void menu_clientes(void) {
 	char op;
 	do {
-		op = tela_cliente();
+		op = tela_clientes();
 		switch(op) {
 			case '1': 	cadastrar_cliente();
 						break;
@@ -25,7 +25,7 @@ void menu_cliente(void) {
 }
 
 
-char tela_cliente(void) {
+char tela_clientes(void) {
     char op;
     system("clear||cls");
     printf("\n");

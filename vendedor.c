@@ -5,10 +5,10 @@
 #include "vendedor.h"
 
 
-void menu_vendedor(void) {
+void menu_vendedores(void) {
 	char op;
 	do {
-		op = tela_vendedor();
+		op = tela_vendedores();
 		switch(op) {
 			case '1': 	cadastrar_vendedor();
 						break;
@@ -23,7 +23,7 @@ void menu_vendedor(void) {
 }
 
 
-char tela_vendedor(void) {
+char tela_vendedores(void) {
     char op;
     system("clear||cls");
     printf("\n");
