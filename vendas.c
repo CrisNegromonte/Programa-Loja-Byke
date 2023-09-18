@@ -42,7 +42,7 @@ char tela_vendas(void) {
     printf("///                                                                         ///\n");
     printf("///            1. Realizar nova venda                                       ///\n");
     printf("///            2. Pesquisar venda realizada                                 ///\n");
-    printf("///            4. Cancelar venda realizada                                  ///\n");
+    printf("///            3. Cancelar venda realizada                                  ///\n");
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
     printf("///            Escolha a opcao desejada: ");
@@ -79,8 +79,7 @@ void realizar_venda(void) {
     printf("///            4. Cancelar venda realizada                                  ///\n");
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Escolha a opcao desejada: ");
-    printf("///                                                                         ///\n");
+    printf("///            Escolha a opcao desejada:                                    ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
