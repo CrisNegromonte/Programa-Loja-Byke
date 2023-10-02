@@ -96,11 +96,11 @@ char tela_clientes(void) {
 }
 
 void cadastrar_cliente(void) {
-  char cpf[12];
-	char nome[50];
-	char email[40];
-	char nasc[11];
-	char fone[12];
+    char cpf[12];
+	  char nome[50];
+	  char email[40];
+	  char nasc[11];
+	  char fone[12];
 
     system("clear||cls");
     printf("\n");
