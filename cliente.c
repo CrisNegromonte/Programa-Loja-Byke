@@ -3,7 +3,17 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+#include <string.h>
 #include "cliente.h"
+
+/////
+////// Funcoes do Modulo Cliente
+//////
+void ler_cpf (char*);
+void ler_nome (char*);
+void ler_email (char*);
+void ler_nasc (char*);
+void ler_fone (char*);
 
 
 
@@ -24,6 +34,29 @@ void menu_clientes(void) {
 	} while (op != '0');
 }
 
+
+void cadastrar_cliente_f(void) {
+	// em desenvolvimento
+	cadastrar_cliente();
+}
+
+
+void pesquisar_cliente_f(void) {
+	// em desenvolvimento
+	pesquisar_cliente();
+}
+
+
+void alterar_cliente_f(void) {
+	// em desenvolvimento
+	alterar_cliente();
+}
+
+
+void excluir_cliente_f(void) {
+	//  em desenvolvimento
+	excluir_cliente();
+}
 
 char tela_clientes(void) {
     char op;
@@ -62,6 +95,12 @@ char tela_clientes(void) {
 }
 
 void cadastrar_cliente(void) {
+    char cpf[12];
+	char nome[50];
+	char email[40];
+	char nasc[11];
+	char fone[12];
+
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -79,15 +118,17 @@ void cadastrar_cliente(void) {
     printf("///            = = = = = = =  Cadastrar Cliente  = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            CPF (apenas numeros):                                        ///\n");
-    printf("///            Nome completo:                                               ///\n");
-    printf("///            Endereco (Rua, numero):                                      ///\n");
-    printf("///            Complemento:                                                 ///\n");
-    printf("///            Cidade:                                                      ///\n");
-    printf("///            Estado:                                                      ///\n");
-    printf("///            E-mail:                                                      ///\n");
-    printf("///            Data de Nascimento (dd/mm/aaaa):                             ///\n");
-    printf("///            Celular  (apenas numeros):                                   ///\n");
+    printf("///                                                                         ///\n");
+    ler_cpf(cpf);
+
+    ler_nome(nome);
+
+    ler_email(email);
+
+    ler_nasc(nasc);
+
+    ler_fone(fone);
+   
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -98,6 +139,8 @@ void cadastrar_cliente(void) {
 
 
 void pesquisar_cliente(void) {
+    char cpf[12];
+
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -115,17 +158,21 @@ void pesquisar_cliente(void) {
     printf("///            = = = = = = = = Pesquisar Cliente = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Informe o CPF (apenas numeros):                              ///\n");
+    printf("***                Digite o CPF (Apenas Números):  ");
+    scanf("%[0-9]", cpf);
+    getchar();
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\n");
+     delay(1);
 }
 
 
 void alterar_cliente(void) {
+    char cpf[12];
+
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -143,17 +190,22 @@ void alterar_cliente(void) {
     printf("///            = = = = = = =   Alterar Cliente   = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Informe o CPF (apenas numeros):                              ///\n");
+    printf("***                Digite o CPF (Apenas Números):  ");
+    scanf("%[0-9]", cpf);
+    getchar();
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\n");
+	   delay(1);
+   
 }
 
 
 void excluir_cliente(void) {
+    char cpf[12];
+
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -171,11 +223,116 @@ void excluir_cliente(void) {
     printf("///            = = = = = = =  Excluir Cliente  = = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Informe o CPF (apenas numeros):                              ///\n");
+    printf("***                Digite o CPF (Apenas Números):  ");
+    scanf("%[0-9]", cpf);
+    getchar();
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    printf("\n");
+	    delay(1);
+}
+
+
+
+// Funcoes
+
+void ler_cpf (char* cpf) {
+    fflush(stdin);
+    printf("Digite o CPF (Apenas Números): ");
+    fgets (cpf, 12, stdin);
+    while (!validarCpf (cpf)) {
+        printf("Erro! Digite novamente: ");
+        fgets (cpf, 12, stdin);
+    }
     getchar();
 }
+
+// Funcoes retiradas do programa exemplo do Prof. Flavius Gorgonio
+
+void ler_nome(char* nome) {
+  fflush(stdin);
+  printf("Digite o nome: ");
+  fgets(nome, 50, stdin); 
+  // Remove o caractere de nova linha do final, se houver
+  int tam = strlen(nome);
+  if (tam > 0 && nome[tam - 1] == '\n') {
+    nome[tam - 1] = '\0';
+    fflush(stdin);
+  }
+  while (!validarNome(nome)) {
+    printf("Nome inválido: %s\n", nome);
+    printf("Informe um novo nome: ");
+    fflush(stdin);
+    fgets(nome, 50, stdin); 
+    // Remove o caractere de nova linha do final, se houver
+    tam = strlen(nome);
+    if (tam > 0 && nome[tam - 1] == '\n') {
+      nome[tam - 1] = '\0';
+      fflush(stdin);
+    }
+  } 
+}
+
+
+void ler_email(char* email) {
+    fflush(stdin);
+    printf("Digite o Email: ");
+    fgets(email, 40, stdin);
+    while (!validarEmail(email)) {
+        printf("Erro! Digite novamente: ");
+        fgets(email, 40, stdin);
+        fflush(stdin);
+    }
+}
+
+
+void ler_nasc(char* nasc) {
+  int dia, mes, ano;
+  char dd[3], mm[3], aa[5];
+  fflush(stdin);
+  printf("Data de nascimento: ");
+  fgets(nasc, 11, stdin); 
+  getchar();
+  
+  strncpy(dd, &nasc[0], 2);
+  sscanf(dd, "%d", &dia);
+  
+  strncpy(mm, &nasc[3], 2);
+  sscanf(mm, "%d", &mes);
+
+  strncpy(aa, &nasc[6], 4);
+  sscanf(aa, "%d", &ano);
+
+  while (!validarData(dia, mes, ano)) {
+    printf("Data inválida: %d/%d/%d\n", dia, mes, ano);
+    printf("Informe uma nova data\n\n");
+    printf("Data de nascimento: ");
+    fgets(nasc, 11, stdin);
+    fflush(stdin);
+    getchar();
+    strncpy(dd, &nasc[0], 2);
+    sscanf(dd, "%d", &dia);
+    strncpy(mm, &nasc[3], 2);
+    sscanf(mm, "%d", &mes);
+    strncpy(aa, &nasc[6], 4);
+    sscanf(aa, "%d", &ano);
+    
+  } 
+}
+
+
+
+
+void ler_fone (char* fone) {
+    fflush (stdin);
+    printf("Digite o Telefone (Apenas Números): ");
+    fgets (fone, 12, stdin);
+
+    while (!validarFone (fone)) {
+        printf("Erro! Digite novamente: ");
+        fgets (fone, 12, stdin);
+    
+    }
+} 
