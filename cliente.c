@@ -86,17 +86,17 @@ char tela_clientes(void) {
     printf("///                                                                         ///\n");
     printf("///            Escolha a opcao desejada: ");
     scanf("%c", &op);
-	getchar();
-	printf("///                                                                       ///\n");
-	printf("///                                                                       ///\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("\n");
-	// delay(1);
+	  getchar();
+	  printf("///                                                                         ///\n");
+	  printf("///                                                                         ///\n");
+	  printf("///////////////////////////////////////////////////////////////////////////////\n");
+	  printf("\n");
+	  // delay(1);
 	return op;
 }
 
 void cadastrar_cliente(void) {
-    char cpf[12];
+  char cpf[12];
 	char nome[50];
 	char email[40];
 	char nasc[11];
