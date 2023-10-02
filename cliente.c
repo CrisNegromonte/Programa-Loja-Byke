@@ -241,7 +241,7 @@ void excluir_cliente(void) {
 
 void ler_cpf (char* cpf) {
     fflush(stdin);
-    printf("Digite o CPF (Apenas Números): ");
+    printf("Digite o CPF (Apenas Numeros): ");
     fgets (cpf, 12, stdin);
     while (!validarCpf (cpf)) {
         printf("Erro! Digite novamente: ");
@@ -263,8 +263,8 @@ void ler_nome(char* nome) {
     fflush(stdin);
   }
   while (!validarNome(nome)) {
-    printf("Nome inválido: %s\n", nome);
-    printf("Informe um novo nome: ");
+    printf("Nome invalido: %s\n", nome);
+    printf("Informe um nome valido (somente caracteres): ");
     fflush(stdin);
     fgets(nome, 50, stdin); 
     // Remove o caractere de nova linha do final, se houver
@@ -279,10 +279,10 @@ void ler_nome(char* nome) {
 
 void ler_email(char* email) {
     fflush(stdin);
-    printf("Digite o Email: ");
+    printf("Digite o email: ");
     fgets(email, 40, stdin);
     while (!validarEmail(email)) {
-        printf("Erro! Digite novamente: ");
+        printf("Erro! Digite novamente um email valido: ");
         fgets(email, 40, stdin);
         fflush(stdin);
     }
@@ -293,7 +293,7 @@ void ler_nasc(char* nasc) {
   int dia, mes, ano;
   char dd[3], mm[3], aa[5];
   fflush(stdin);
-  printf("Data de nascimento: ");
+  printf("Data de nascimento (somente numeros - diaXXmesXXanoXXXX): ");
   fgets(nasc, 11, stdin); 
   getchar();
   
@@ -307,9 +307,9 @@ void ler_nasc(char* nasc) {
   sscanf(aa, "%d", &ano);
 
   while (!validarData(dia, mes, ano)) {
-    printf("Data inválida: %d/%d/%d\n", dia, mes, ano);
-    printf("Informe uma nova data\n\n");
-    printf("Data de nascimento: ");
+    printf("Data invalida: %d/%d/%d\n", dia, mes, ano);
+    printf("Informe uma data valida:\n\n");
+    printf("Data de nascimento (somente numeros - diaXXmesXXanoXXXX): ");
     fgets(nasc, 11, stdin);
     fflush(stdin);
     getchar();
@@ -328,11 +328,11 @@ void ler_nasc(char* nasc) {
 
 void ler_fone (char* fone) {
     fflush (stdin);
-    printf("Digite o Telefone (Apenas Números): ");
+    printf("Digite o telefone com DDD (somente numeros): ");
     fgets (fone, 12, stdin);
 
     while (!validarFone (fone)) {
-        printf("Erro! Digite novamente: ");
+        printf("Invalido! Digite um numero de telefone valido com DDD (somente numeros): ");
         fgets (fone, 12, stdin);
     
     }
