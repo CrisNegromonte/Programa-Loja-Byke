@@ -15,3 +15,4 @@ void ler_nome (char* nome);
 void ler_email (char* email);
 void ler_nasc (char* nasc);
 void ler_fone (char* fone);
+

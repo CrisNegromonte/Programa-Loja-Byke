@@ -5,6 +5,7 @@
 #include <time.h>
 #include <string.h>
 #include "cliente.h"
+#include "util.h"
 
 /////
 ////// Funcoes do Modulo Cliente
@@ -166,7 +167,7 @@ void pesquisar_cliente(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     printf("\n");
-     delay(1);
+     //delay(1);
 }
 
 

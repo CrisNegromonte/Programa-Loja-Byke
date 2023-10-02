@@ -21,6 +21,7 @@
 #include "vendas.h"
 #include "relatorios.h"
 #include "infos.h"
+#include "util.h"
 
 
 char menu_principal(void);
