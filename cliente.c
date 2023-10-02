@@ -309,7 +309,7 @@ void ler_nasc(char* nasc) {
   while (!validarData(dia, mes, ano)) {
     printf("Data invalida: %d/%d/%d\n", dia, mes, ano);
     printf("Informe uma data valida:\n\n");
-    printf("Data de nascimento (somente numeros - diaXXmesXXanoXXXX): ");
+    printf("Data de nascimento (dia/mes/ano - XX/XX/XXXX): ");
     fgets(nasc, 11, stdin);
     fflush(stdin);
     getchar();
