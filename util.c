@@ -156,13 +156,13 @@ int validarCpf(char* cpf) {
 
 int validarEmail(char* email) {
   int tam = strlen(email);
-  int temArroba = 0;
+  int contemArroba = 0;
    // Verifica se o email tem pelo menos um caractere '@' e um ponto '.'
   for (int i = 0; i < tam; i++) {
     if (email[i] == '@') {
-      temArroba = 1;
+      contemArroba = 1;
     } else if (email[i] == '.') {
-      if (temArroba) {
+      if (contemArroba) {
         return true;
       }
     } else if (!ehValido(email[i])) {
