@@ -159,7 +159,7 @@ void pesquisar_cliente(void) {
     printf("///            = = = = = = = = Pesquisar Cliente = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("***                Digite o CPF (Apenas Números):  ");
+    printf("***                Digite o CPF (Apenas Numeros):  ");
     scanf("%[0-9]", cpf);
     getchar();
     printf("///                                                                         ///\n");
@@ -191,7 +191,7 @@ void alterar_cliente(void) {
     printf("///            = = = = = = =   Alterar Cliente   = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("***                Digite o CPF (Apenas Números):  ");
+    printf("***                Digite o CPF (Apenas Numeros):  ");
     scanf("%[0-9]", cpf);
     getchar();
     printf("///                                                                         ///\n");
@@ -224,7 +224,7 @@ void excluir_cliente(void) {
     printf("///            = = = = = = =  Excluir Cliente  = = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("***                Digite o CPF (Apenas Números):  ");
+    printf("***                Digite o CPF (Apenas Numeros):  ");
     scanf("%[0-9]", cpf);
     getchar();
     printf("///                                                                         ///\n");
@@ -241,10 +241,10 @@ void excluir_cliente(void) {
 
 void ler_cpf (char* cpf) {
     fflush(stdin);
-    printf("Digite o CPF (Apenas Numeros): ");
+    printf("Digite o CPF (somente numeros): ");
     fgets (cpf, 12, stdin);
     while (!validarCpf (cpf)) {
-        printf("Erro! Digite novamente: ");
+        printf("Invalido! Digite um CPF valido (somente numeros): ");
         fgets (cpf, 12, stdin);
     }
     getchar();
