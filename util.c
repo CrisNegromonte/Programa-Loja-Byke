@@ -98,17 +98,15 @@ int validarData(int dd, int mm, int aa) {
 }
 
 /// Adaptacao da funcao do professsor Flavius Gorgonio (programa exemplo)
-/// String exclusivamente alfabetico retorna 1, caso nao retorna 0
+
 int validarNome(char* nome) {
-  int tam;
-  
-  tam = strlen(nome);
-  for (int i = 0; i < tam-1; i++) {
+  for (int i=0; nome[i]!='\0'; i++) {
     if (!ehLetra(nome[i])) {
       return false;
     }
+
   }
-  return true;  
+  return true;
 }
 
 /// Adaptacao da funcao do professsor Flavius Gorgonio (programa exemplo)
