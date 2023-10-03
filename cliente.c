@@ -293,7 +293,7 @@ void ler_nasc(char* nasc) {
   int dia, mes, ano;
   char dd[3], mm[3], aa[5];
   fflush(stdin);
-  printf("Data de nascimento (somente numeros - diaXXmesXXanoXXXX): ");
+  printf("Data de nascimento (dia/mes/ano - XX/XX/XXXX): ");
   fgets(nasc, 11, stdin); 
   getchar();
   
