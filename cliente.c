@@ -7,15 +7,14 @@
 #include "cliente.h"
 #include "util.h"
 
-/////
-////// Funcoes do Modulo Cliente
+//////
+////// Funções
 //////
 void ler_cpf (char*);
 void ler_nome (char*);
 void ler_email (char*);
 void ler_nasc (char*);
 void ler_fone (char*);
-
 
 
 void menu_clientes(void) {
@@ -159,7 +158,7 @@ void pesquisar_cliente(void) {
     printf("///            = = = = = = = = Pesquisar Cliente = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("***                Digite o CPF (Apenas Numeros):  ");
+    printf("***            Digite o CPF do cliente (Apenas Numeros):  ");
     scanf("%[0-9]", cpf);
     getchar();
     printf("///                                                                         ///\n");
@@ -191,7 +190,7 @@ void alterar_cliente(void) {
     printf("///            = = = = = = =   Alterar Cliente   = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("***                Digite o CPF (Apenas Numeros):  ");
+    printf("***             Digite o CPF do cliente (Apenas Numeros):  ");
     scanf("%[0-9]", cpf);
     getchar();
     printf("///                                                                         ///\n");
@@ -224,7 +223,7 @@ void excluir_cliente(void) {
     printf("///            = = = = = = =  Excluir Cliente  = = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("***                Digite o CPF (Apenas Numeros):  ");
+    printf("***            Digite o CPF do cliente (Apenas Numeros):  ");
     scanf("%[0-9]", cpf);
     getchar();
     printf("///                                                                         ///\n");
