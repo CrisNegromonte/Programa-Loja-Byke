@@ -233,7 +233,7 @@ void excluir_vendedor(void) {
 	    //delay(1);
 }
 
-// // Funcoes adaptadas e/ou emprestadas do programa exemplo do Prof. Flavius Gorgonio
+// Funcoes adaptadas e/ou emprestadas do programa exemplo do Prof. Flavius Gorgonio
 
 void ler_cpf (char* cpf) {
     fflush(stdin);
