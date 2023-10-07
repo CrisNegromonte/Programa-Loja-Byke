@@ -9,11 +9,11 @@
 /////
 ////// Funcoes
 //////
-void ler_cpf (char*);
-void ler_nome (char*);
-void ler_email (char*);
-void ler_nasc (char*);
-void ler_fone (char*);
+void ler_cpf_vendedor (char*);
+void ler_nome_vendedor (char*);
+void ler_email_vendedor (char*);
+void ler_nasc_vendedor (char*);
+void ler_fone_vendedor (char*);
 
 
 void menu_vendedores(void) {
@@ -85,21 +85,21 @@ char tela_vendedores(void) {
     printf("///                                                                         ///\n");
     printf("///            Escolha a opcao desejada: ");
     scanf("%c", &op);
-	getchar();
-	printf("///                                                                        ///\n");
-	printf("///                                                                        ///\n");
-	printf("//////////////////////////////////////////////////////////////////////////////\n");
-	printf("\n");
-	// delay(1);
-	return op;
+	  getchar();
+  	printf("///                                                                        ///\n");
+	  printf("///                                                                        ///\n");
+  	printf("//////////////////////////////////////////////////////////////////////////////\n");
+  	printf("\n");
+  	// delay(1);
+	  return op;
 }
 
 void cadastrar_vendedor(void) {
     char cpf[12];
-	char nome[50];
-	char email[40];
-	char nasc[11];
-	char fone[12];
+	  char nome[50];
+	  char email[40];
+	  char nasc[11];
+	  char fone[12];
 
     system("clear||cls");
     printf("\n");
@@ -118,15 +118,15 @@ void cadastrar_vendedor(void) {
     printf("///            = = = = = = =  CADASTRAR VENDEDOR   = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    ler_cpf(cpf);
+    ler_cpf_vendedor(cpf);
 
-    ler_nome(nome);
+    ler_nome_vendedor(nome);
 
-    ler_email(email);
+    ler_email_vendedor(email);
 
-    ler_nasc(nasc);
+    ler_nasc_vendedor(nasc);
 
-    ler_fone(fone);
+    ler_fone_vendedor(fone);
    
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
@@ -233,9 +233,9 @@ void excluir_vendedor(void) {
 	    //delay(1);
 }
 
-// Funcoes adaptadas e/ou emprestadas do programa exemplo do Prof. Flavius Gorgonio
+// Funcoes adaptadas do programa exemplo do Prof. Flavius Gorgonio
 
-void ler_cpf (char* cpf) {
+void ler_cpf_vendedor (char* cpf) {
     fflush(stdin);
     printf("Digite o CPF (somente numeros): ");
     fgets (cpf, 12, stdin);
@@ -247,7 +247,7 @@ void ler_cpf (char* cpf) {
 }
 
 
-void ler_nome(char* nome) {
+void ler_nome_vendedor(char* nome) {
   fflush(stdin);
   printf("Digite o nome: ");
   fgets(nome, 50, stdin); 
@@ -272,7 +272,7 @@ void ler_nome(char* nome) {
 }
 
 
-void ler_email(char* email) {
+void ler_email_vendedor(char* email) {
     fflush(stdin);
     printf("Digite o email: ");
     fgets(email, 40, stdin);
@@ -284,7 +284,7 @@ void ler_email(char* email) {
 }
 
 
-void ler_nasc(char* nasc) {
+void ler_nasc_vendedor(char* nasc) {
   int dia, mes, ano;
   char dd[3], mm[3], aa[5];
   fflush(stdin);
@@ -319,7 +319,7 @@ void ler_nasc(char* nasc) {
 }
 
 
-void ler_fone (char* fone) {
+void ler_fone_vendedor (char* fone) {
     fflush (stdin);
     printf("Digite o telefone com DDD (somente numeros): ");
     fgets (fone, 12, stdin);
