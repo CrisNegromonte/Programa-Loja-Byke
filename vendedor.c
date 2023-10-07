@@ -95,6 +95,12 @@ char tela_vendedores(void) {
 }
 
 void cadastrar_vendedor(void) {
+    char cpf[12];
+	char nome[50];
+	char email[40];
+	char nasc[11];
+	char fone[12];
+
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -112,15 +118,16 @@ void cadastrar_vendedor(void) {
     printf("///            = = = = = = =  CADASTRAR VENDEDOR   = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            CPF (apenas numeros):                                        ///\n");
-    printf("///            Nome completo:                                               ///\n");
-    printf("///            Endereco (Rua, numero):                                      ///\n");
-    printf("///            Complemento:                                                 ///\n");
-    printf("///            Cidade:                                                      ///\n");
-    printf("///            Estado:                                                      ///\n");
-    printf("///            E-mail:                                                      ///\n");
-    printf("///            Data de Nascimento (dd/mm/aaaa):                             ///\n");
-    printf("///            Celular  (apenas numeros):                                   ///\n");
+    ler_cpf(cpf);
+
+    ler_nome(nome);
+
+    ler_email(email);
+
+    ler_nasc(nasc);
+
+    ler_fone(fone);
+   
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
