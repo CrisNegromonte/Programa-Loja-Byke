@@ -203,6 +203,8 @@ void alterar_vendedor(void) {
 
 
 void excluir_vendedor(void) {
+    char cpf[12];
+
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -220,13 +222,15 @@ void excluir_vendedor(void) {
     printf("///            = = = = = = =  EXCLUIR  VENDEDOR  = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Informe o CPF (apenas numeros):                              ///\n");
+    printf("***            Digite o CPF do vendedor (Apenas Numeros):  ");
+    scanf("%[0-9]", cpf);
+    getchar();
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\n");
+	    //delay(1);
 }
 
 // // Funcoes adaptadas e/ou emprestadas do programa exemplo do Prof. Flavius Gorgonio
