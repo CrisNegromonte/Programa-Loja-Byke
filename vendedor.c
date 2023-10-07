@@ -157,7 +157,7 @@ void pesquisar_vendedor(void) {
     printf("///            = = = = = = =  PESQUISAR VENDEDOR = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("***                Digite o CPF (Apenas Numeros):  ");
+    printf("***            Digite o CPF do vendedor (Apenas Numeros):  ");
     scanf("%[0-9]", cpf);
     getchar();
     printf("///                                                                         ///\n");
@@ -189,7 +189,7 @@ void alterar_vendedor(void) {
     printf("///            = = = = = = =  ALTERAR VENDEDOR   = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("***                Digite o CPF (Apenas Numeros):  ");
+    printf("***            Digite o CPF do vendedor (Apenas Numeros):  ");
     scanf("%[0-9]", cpf);
     getchar();
     printf("///                                                                         ///\n");
