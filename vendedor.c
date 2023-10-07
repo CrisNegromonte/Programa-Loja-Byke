@@ -2,7 +2,18 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+#include <string.h>
+#include "util.h"
 #include "vendedor.h"
+
+/////
+////// Ass funcoes
+//////
+void ler_cpf (char*);
+void ler_nome (char*);
+void ler_email (char*);
+void ler_nasc (char*);
+void ler_fone (char*);
 
 
 void menu_vendedores(void) {
@@ -20,6 +31,30 @@ void menu_vendedores(void) {
 						break;
 		} 		
 	} while (op != '0');
+}
+
+
+void cadastrar_vendedor_f(void) {
+	// em desenvolvimento
+	cadastrar_vendedor();
+}
+
+
+void pesquisar_vendedor_f(void) {
+	// em desenvolvimento
+	pesquisar_vendedor();
+}
+
+
+void alterar_vendedor_f(void) {
+	// em desenvolvimento
+	alterar_vendedor();
+}
+
+
+void excluir_vendedor_f(void) {
+	//  em desenvolvimento
+	excluir_vendedor();
 }
 
 
@@ -177,3 +212,101 @@ void excluir_vendedor(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
 }
+
+// // Funcoes adaptadas e/ou emprestadas do programa exemplo do Prof. Flavius Gorgonio
+
+void ler_cpf (char* cpf) {
+    fflush(stdin);
+    printf("Digite o CPF (somente numeros): ");
+    fgets (cpf, 12, stdin);
+    while (!validarCpf (cpf)) {
+        printf("Invalido! Digite um CPF valido (somente numeros): ");
+        fgets (cpf, 12, stdin);
+    }
+    getchar();
+}
+
+
+void ler_nome(char* nome) {
+  fflush(stdin);
+  printf("Digite o nome: ");
+  fgets(nome, 50, stdin); 
+  // Remove o caractere de nova linha do final, se houver
+  int tam = strlen(nome);
+  if (tam > 0 && nome[tam - 1] == '\n') {
+    nome[tam - 1] = '\0';
+    fflush(stdin);
+  }
+  while (!validarNome(nome)) {
+    printf("Nome invalido: %s\n", nome);
+    printf("Informe um nome valido (somente caracteres): ");
+    fflush(stdin);
+    fgets(nome, 50, stdin); 
+    // Remove o caractere de nova linha do final, se houver
+    tam = strlen(nome);
+    if (tam > 0 && nome[tam - 1] == '\n') {
+      nome[tam - 1] = '\0';
+      fflush(stdin);
+    }
+  } 
+}
+
+
+void ler_email(char* email) {
+    fflush(stdin);
+    printf("Digite o email: ");
+    fgets(email, 40, stdin);
+    while (!validarEmail(email)) {
+        printf("Erro! Digite novamente um email valido: ");
+        fgets(email, 40, stdin);
+        fflush(stdin);
+    }
+}
+
+
+void ler_nasc(char* nasc) {
+  int dia, mes, ano;
+  char dd[3], mm[3], aa[5];
+  fflush(stdin);
+  printf("Data de nascimento (dia/mes/ano - XX/XX/XXXX): ");
+  fgets(nasc, 11, stdin); 
+  getchar();
+  
+  strncpy(dd, &nasc[0], 2);
+  sscanf(dd, "%d", &dia);
+  
+  strncpy(mm, &nasc[3], 2);
+  sscanf(mm, "%d", &mes);
+
+  strncpy(aa, &nasc[6], 4);
+  sscanf(aa, "%d", &ano);
+
+  while (!validarData(dia, mes, ano)) {
+    printf("Data invalida: %d/%d/%d\n", dia, mes, ano);
+    printf("Informe uma data valida:\n\n");
+    printf("Data de nascimento (dia/mes/ano - XX/XX/XXXX): ");
+    fgets(nasc, 11, stdin);
+    fflush(stdin);
+    getchar();
+    strncpy(dd, &nasc[0], 2);
+    sscanf(dd, "%d", &dia);
+    strncpy(mm, &nasc[3], 2);
+    sscanf(mm, "%d", &mes);
+    strncpy(aa, &nasc[6], 4);
+    sscanf(aa, "%d", &ano);
+    
+  } 
+}
+
+
+void ler_fone (char* fone) {
+    fflush (stdin);
+    printf("Digite o telefone com DDD (somente numeros): ");
+    fgets (fone, 12, stdin);
+
+    while (!validarFone (fone)) {
+        printf("Invalido! Digite um numero de telefone valido com DDD (somente numeros): ");
+        fgets (fone, 12, stdin);
+    
+    }
+} 
