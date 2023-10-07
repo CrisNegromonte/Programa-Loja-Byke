@@ -138,6 +138,8 @@ void cadastrar_vendedor(void) {
 
 
 void pesquisar_vendedor(void) {
+    char cpf[12];
+
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -155,13 +157,15 @@ void pesquisar_vendedor(void) {
     printf("///            = = = = = = =  PESQUISAR VENDEDOR = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Informe o CPF (apenas numeros):                              ///\n");
+    printf("***                Digite o CPF (Apenas Numeros):  ");
+    scanf("%[0-9]", cpf);
+    getchar();
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    printf("\n");
+     //delay(1);
 }
 
 
