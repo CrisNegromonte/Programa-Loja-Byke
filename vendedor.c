@@ -7,7 +7,7 @@
 #include "vendedor.h"
 
 /////
-////// Ass funcoes
+////// Funcoes
 //////
 void ler_cpf (char*);
 void ler_nome (char*);
