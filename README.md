@@ -1,4 +1,4 @@
-Programa Para Loja de Bykes
+Programa Para Loja de Bicicletas
 
 Atividade do Segundo Periodo - Programacao
 
@@ -20,7 +20,7 @@ Aluna: Katia Cristina Negromonte Maia
 
 
 
-LOJA DO CICLISTA
+LOJA DO CICLISTA - NOME FANTASIA
 
 Projeto sem fins lucrativos, sendo feito para aprendizado da linguagem C, durante a disciplina DCT1106 - Programacao do curso de Bacharelado em Sistemas de Informacao da Universidade Federal do Rio Grande do Norte.
 
