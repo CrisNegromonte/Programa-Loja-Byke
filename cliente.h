@@ -1,3 +1,13 @@
+typedef struct cliente Cliente;
+
+struct cliente {
+    char cpf[12];
+    char nome[50];
+    char email[40];
+    char nasc[11];
+    char fone[12];
+};
+
 void menu_clientes(void);
 char tela_clientes(void);
 
@@ -11,9 +21,9 @@ void pesquisar_cliente_f(void);
 void alterar_cliente_f(void);
 void excluir_cliente_f(void);
 
-void ler_cpf (char* cpf);
-void ler_nome (char* nome);
-void ler_email (char* email);
-void ler_nasc (char* nasc);
-void ler_fone (char* fone);
+void ler_cpf (char*);
+void ler_nome (char*);
+void ler_email (char*);
+void ler_nasc (char*);
+void ler_fone (char*);
 

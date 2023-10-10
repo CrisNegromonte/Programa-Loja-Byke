@@ -95,11 +95,7 @@ char tela_clientes(void) {
 }
 
 void cadastrar_cliente(void) {
-    char cpf[12];
-	  char nome[50];
-	  char email[40];
-	  char nasc[11];
-	  char fone[12];
+    Cliente* cliente;
 
     system("clear||cls");
     printf("\n");
@@ -119,15 +115,18 @@ void cadastrar_cliente(void) {
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
-    ler_cpf(cpf);
+    
+    cliente = (Cliente*) malloc(sizeof(Cliente));
 
-    ler_nome(nome);
+    ler_cpf(cliente->cpf);
 
-    ler_email(email);
+    ler_nome(cliente->nome);
 
-    ler_nasc(nasc);
+    ler_email(cliente->email);
 
-    ler_fone(fone);
+    ler_nasc(cliente->nasc);
+
+    ler_fone(cliente->fone);
    
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
