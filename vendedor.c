@@ -9,11 +9,11 @@
 //////
 ////// Funções
 //////
-void ler_cpf (char*);
-void ler_nome (char*);
-void ler_email (char*);
-void ler_nasc (char*);
-void ler_fone (char*);
+void ler_cpf_v (char*);
+void ler_nome_v (char*);
+void ler_email_v (char*);
+void ler_nasc_v (char*);
+void ler_fone_v (char*);
 
 
 void menu_vendedores(void) {
@@ -94,15 +94,15 @@ void cadastrar_vendedor(void) {
 
     vendedor = (Vendedor*) malloc(sizeof(Vendedor));
 
-    ler_cpf(vendedor->cpf);
+    ler_cpf_v(vendedor->cpf);
 
-    ler_nome(vendedor->nome);
+    ler_nome_v(vendedor->nome);
 
-    ler_email(vendedor->email);
+    ler_email_v(vendedor->email);
 
-    ler_nasc(vendedor->nasc);
+    ler_nasc_v(vendedor->nasc);
 
-    ler_fone(vendedor->fone);
+    ler_fone_v(vendedor->fone);
    
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
@@ -211,7 +211,7 @@ void excluir_vendedor(void) {
 
 // Funcoes adaptadas do programa exemplo do Prof. Flavius Gorgonio
 
-void ler_cpf (char* cpf) {
+void ler_cpf_v (char* cpf) {
     fflush(stdin);
     printf("Digite o CPF (somente numeros): ");
     fgets (cpf, 12, stdin);
@@ -223,7 +223,7 @@ void ler_cpf (char* cpf) {
 }
 
 
-void ler_nome (char* nome) {
+void ler_nome_v (char* nome) {
   fflush(stdin);
   printf("Digite o nome: ");
   fgets(nome, 50, stdin); 
@@ -248,7 +248,7 @@ void ler_nome (char* nome) {
 }
 
 
-void ler_email (char* email) {
+void ler_email_v (char* email) {
     fflush(stdin);
     printf("Digite o email: ");
     fgets(email, 40, stdin);
@@ -260,7 +260,7 @@ void ler_email (char* email) {
 }
 
 
-void ler_nasc (char* nasc) {
+void ler_nasc_v (char* nasc) {
   int dia, mes, ano;
   char dd[3], mm[3], aa[5];
   fflush(stdin);
@@ -295,7 +295,7 @@ void ler_nasc (char* nasc) {
 }
 
 
-void ler_fone (char* fone) {
+void ler_fone_v (char* fone) {
     fflush (stdin);
     printf("Digite o telefone com DDD (somente numeros): ");
     fgets (fone, 12, stdin);
