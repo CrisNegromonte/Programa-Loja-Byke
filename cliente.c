@@ -35,29 +35,6 @@ void menu_clientes(void) {
 }
 
 
-void cadastrar_cliente_f(void) {
-	// em desenvolvimento
-	cadastrar_cliente();
-}
-
-
-void pesquisar_cliente_f(void) {
-	// em desenvolvimento
-	pesquisar_cliente();
-}
-
-
-void alterar_cliente_f(void) {
-	// em desenvolvimento
-	alterar_cliente();
-}
-
-
-void excluir_cliente_f(void) {
-	//  em desenvolvimento
-	excluir_cliente();
-}
-
 char tela_clientes(void) {
     char op;
     system("clear||cls");

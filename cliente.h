@@ -16,11 +16,6 @@ void pesquisar_cliente(void);
 void alterar_cliente(void);
 void excluir_cliente(void);
 
-void cadastrar_cliente_f(void);
-void pesquisar_cliente_f(void);
-void alterar_cliente_f(void);
-void excluir_cliente_f(void);
-
 void ler_cpf (char*);
 void ler_nome (char*);
 void ler_email (char*);
