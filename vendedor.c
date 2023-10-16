@@ -3,17 +3,17 @@
 #include <unistd.h>
 #include <time.h>
 #include <string.h>
+#include "cliente.h"
 #include "util.h"
-#include "vendedor.h"
 
-/////
-////// Funcoes
 //////
-void ler_cpf_vendedor (char*);
-void ler_nome_vendedor (char*);
-void ler_email_vendedor (char*);
-void ler_nasc_vendedor (char*);
-void ler_fone_vendedor (char*);
+////// Funções
+//////
+void ler_cpf (char*);
+void ler_nome (char*);
+void ler_email (char*);
+void ler_nasc (char*);
+void ler_fone (char*);
 
 
 void menu_vendedores(void) {
@@ -33,29 +33,6 @@ void menu_vendedores(void) {
 	} while (op != '0');
 }
 
-
-void cadastrar_vendedor_f(void) {
-	// em desenvolvimento
-	cadastrar_vendedor();
-}
-
-
-void pesquisar_vendedor_f(void) {
-	// em desenvolvimento
-	pesquisar_vendedor();
-}
-
-
-void alterar_vendedor_f(void) {
-	// em desenvolvimento
-	alterar_vendedor();
-}
-
-
-void excluir_vendedor_f(void) {
-	//  em desenvolvimento
-	excluir_vendedor();
-}
 
 
 char tela_vendedores(void) {
@@ -95,11 +72,7 @@ char tela_vendedores(void) {
 }
 
 void cadastrar_vendedor(void) {
-    char cpf[12];
-	  char nome[50];
-	  char email[40];
-	  char nasc[11];
-	  char fone[12];
+    Vendedor* vendedor;
 
     system("clear||cls");
     printf("\n");
@@ -118,15 +91,17 @@ void cadastrar_vendedor(void) {
     printf("///            = = = = = = =  CADASTRAR VENDEDOR   = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    ler_cpf_vendedor(cpf);
+    vendedor = (Vendedor*) malloc(sizeof(Vendedor));
 
-    ler_nome_vendedor(nome);
+    ler_cpf(vendedor->cpf);
 
-    ler_email_vendedor(email);
+    ler_nome(vendedor->nome);
 
-    ler_nasc_vendedor(nasc);
+    ler_email(cendedor->email);
 
-    ler_fone_vendedor(fone);
+    ler_nasc(vendedor->nasc);
+
+    ler_fone(vendedor->fone);
    
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
