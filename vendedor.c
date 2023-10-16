@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <string.h>
-#include "cliente.h"
+#include "vendedor.h"
 #include "util.h"
 
 //////
@@ -91,13 +91,14 @@ void cadastrar_vendedor(void) {
     printf("///            = = = = = = =  CADASTRAR VENDEDOR   = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
+
     vendedor = (Vendedor*) malloc(sizeof(Vendedor));
 
     ler_cpf(vendedor->cpf);
 
     ler_nome(vendedor->nome);
 
-    ler_email(cendedor->email);
+    ler_email(vendedor->email);
 
     ler_nasc(vendedor->nasc);
 
@@ -210,7 +211,7 @@ void excluir_vendedor(void) {
 
 // Funcoes adaptadas do programa exemplo do Prof. Flavius Gorgonio
 
-void ler_cpf_vendedor (char* cpf) {
+void ler_cpf (char* cpf) {
     fflush(stdin);
     printf("Digite o CPF (somente numeros): ");
     fgets (cpf, 12, stdin);
@@ -222,7 +223,7 @@ void ler_cpf_vendedor (char* cpf) {
 }
 
 
-void ler_nome_vendedor(char* nome) {
+void ler_nome (char* nome) {
   fflush(stdin);
   printf("Digite o nome: ");
   fgets(nome, 50, stdin); 
@@ -247,7 +248,7 @@ void ler_nome_vendedor(char* nome) {
 }
 
 
-void ler_email_vendedor(char* email) {
+void ler_email (char* email) {
     fflush(stdin);
     printf("Digite o email: ");
     fgets(email, 40, stdin);
@@ -259,7 +260,7 @@ void ler_email_vendedor(char* email) {
 }
 
 
-void ler_nasc_vendedor(char* nasc) {
+void ler_nasc (char* nasc) {
   int dia, mes, ano;
   char dd[3], mm[3], aa[5];
   fflush(stdin);
@@ -294,7 +295,7 @@ void ler_nasc_vendedor(char* nasc) {
 }
 
 
-void ler_fone_vendedor (char* fone) {
+void ler_fone (char* fone) {
     fflush (stdin);
     printf("Digite o telefone com DDD (somente numeros): ");
     fgets (fone, 12, stdin);
