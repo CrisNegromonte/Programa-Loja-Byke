@@ -225,7 +225,7 @@ void ler_cpf (char* cpf) {
     getchar();
 }
 
-// Funcoes retiradas do programa exemplo do Prof. Flavius Gorgonio
+// Funcao retirada do programa exemplo do Prof. Flavius Gorgonio
 
 void ler_nome(char* nome) {
   fflush(stdin);
@@ -251,7 +251,7 @@ void ler_nome(char* nome) {
   } 
 }
 
-
+// Funcao retirada do programa exemplo do Prof. Flavius Gorgonio
 void ler_email(char* email) {
     fflush(stdin);
     printf("Digite o email: ");
@@ -263,44 +263,37 @@ void ler_email(char* email) {
     }
 }
 
-
+// Funcao parcialmente feita pelo chat GPT, adaptada por mim
 void ler_nasc(char* nasc) {
   int dia, mes, ano;
-  char dd[3], mm[3], aa[5];
-  fflush(stdin);
-  printf("Data de nascimento (dia/mes/ano - XX/XX/XXXX): ");
-  fgets(nasc, 11, stdin); 
-  getchar();
-  
-  strncpy(dd, &nasc[0], 2);
-  sscanf(dd, "%d", &dia);
-  
-  strncpy(mm, &nasc[3], 2);
-  sscanf(mm, "%d", &mes);
+  char dd[3], mm[3], aaaa[5];
 
-  strncpy(aa, &nasc[6], 4);
-  sscanf(aa, "%d", &ano);
-
-  while (!validarData(dia, mes, ano)) {
-    printf("Data invalida: %d/%d/%d\n", dia, mes, ano);
-    printf("Informe uma data valida:\n\n");
-    printf("Data de nascimento (dia/mes/ano - XX/XX/XXXX): ");
-    fgets(nasc, 11, stdin);
+  while (1) {
     fflush(stdin);
-    getchar();
-    strncpy(dd, &nasc[0], 2);
-    sscanf(dd, "%d", &dia);
-    strncpy(mm, &nasc[3], 2);
-    sscanf(mm, "%d", &mes);
-    strncpy(aa, &nasc[6], 4);
-    sscanf(aa, "%d", &ano);
-    
-  } 
+    printf("Data de nascimento (dia/mes/ano - dd/mm/aaaa): ");
+    fgets(nasc, 11, stdin);
+
+    // Verificar o formato da data
+    if (sscanf(nasc, "%2[^/]/%2[^/]/%4[^/]", dd, mm, aaaa) == 3) {
+      // Converter partes para inteiros
+      sscanf(dd, "%d", &dia);
+      sscanf(mm, "%d", &mes);
+      sscanf(aaaa, "%d", &ano);
+
+      if (validarData(dia, mes, ano) && strlen(aaaa) == 4) {
+        break;  // Data valida fornecida pelo usuario com um ano de quatro digitos
+      } else {
+        printf("Data invalida: %d/%d/%d\n", dia, mes, ano);
+        printf("Informe uma data valida no formato dd/mm/aaaa:\n\n");
+      }
+    } else {
+      printf("Formato de data invalido. Use o formato dd/mm/aaaa.\n");
+    }
+  }
 }
 
 
-
-
+// Funcao retirada do programa exemplo do Prof. Flavius Gorgonio
 void ler_fone (char* fone) {
     fflush (stdin);
     printf("Digite o telefone com DDD (somente numeros): ");
