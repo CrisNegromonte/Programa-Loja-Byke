@@ -32,6 +32,8 @@ void menu_clientes(void) {
 						      break;
 			case '4': 	excluir_cliente();
 						      break;
+      case '5': 	listar_clientes();
+						      break;
 		} 		
 	} while (op != '0');
 }
@@ -329,4 +331,9 @@ void cad_cli(Cliente* cliente) {
     fwrite(cliente, sizeof(Cliente), 1, fp);
     fclose(fp);
   }
+}
+
+
+void listar_clientes(void){
+  //xx
 }
