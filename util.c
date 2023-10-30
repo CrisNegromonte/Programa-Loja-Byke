@@ -1,7 +1,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
-#include "util.h"
+
 
 #define true 1
 #define false 0
@@ -109,9 +109,7 @@ int validarNome(char* nome) {
   return true;
 }
 
-/// Adaptacao da funcao do professsor Flavius Gorgonio (programa exemplo)
-/// Celular valido retorna 1 
-/// Celular invalido retorna 0 
+/// Funcao do professsor Flavius Gorgonio (programa exemplo)
 
 int validarFone(char* fone) {
   int tam;
@@ -129,8 +127,21 @@ int validarFone(char* fone) {
 
 }
 
+/// Funcao do professsor Flavius Gorgonio (programa exemplo)
+int validarQuant(char* x) {
+  int tam;
+
+  tam = strlen(x);
+  for (int i = 0; i < tam; i++) {
+    if (!ehDigito(x[i])) {
+      return false;
+    }
+  }
+  return true;
+}
 
 
+/// Funcao do professsor Flavius Gorgonio (programa exemplo)
 /// cpf valido retorna 1
 /// cpf invalido retorna 0
 
@@ -149,6 +160,27 @@ int validarCpf(char* cpf) {
   return true;
 }
 
+// Função baseada no código de https://github.com/DayXL/Atividade-projeto-bonelaria.git
+
+int validarNumInteiro(char* numero) {
+    int i = 0;
+
+    while (numero[i] != '\0') {
+        if ((numero[i] >= '0') && (numero[i] <= '9')) {
+            i = i + 1;
+
+        }
+
+        else {
+            return false;
+
+        }
+
+    }
+
+    return true;
+
+}
 
 // Funcao feita pelo Chatgpt
 
@@ -169,3 +201,4 @@ int validarEmail(char* email) {
   }
   return false;
 }
+
