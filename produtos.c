@@ -2,7 +2,18 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+#include <string.h>
 #include "produtos.h"
+#include "util.h"
+
+
+// Funcoes
+void ler_cod_p (char* cod);
+void ler_nome_p (char* nome);
+void ler_cor_p (char* cor);
+void ler_marca_p (char* marca);
+void ler_valor_p (char* valor);
+void ler_quant_p (char* quant);
 
 
 void menu_produtos(void) {
@@ -60,6 +71,8 @@ char tela_produtos(void) {
 }
 
 void cadastrar_produto(void) {
+    Produtos* produtos;
+
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -77,12 +90,19 @@ void cadastrar_produto(void) {
     printf("///            = = = = = = =  CADASTRAR PRODUTO  = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Nome do produto:                                             ///\n");
-    printf("///            Quantidade:                                                  ///\n");
+    produtos = (Produtos*) malloc(sizeof(Produtos));
+    ler_cod_p(produtos->cod);
+    ler_nome_p(produtos->nome);
+    ler_cor_p(produtos->cor);
+    ler_marca_p(produtos->marca);
+    ler_valor_p(produtos->valor);
+    ler_quant_p(produtos->quant);
+    printf("///            Codigo do produto:                                           ///\n");
+    printf("///            Nome do Produto:                                             ///\n");
     printf("///            Cor do produto:                                              ///\n");
-    printf("///            Categoria:                                                   ///\n");
-    printf("///            Codigo:                                                      ///\n");
-    printf("///            Pensar mais sobre / em desenvolvmento                        ///\n");
+    printf("///            Marca:                                                       ///\n");
+    printf("///            Valor:                                                       ///\n");
+    printf("///            Quantidade:                                                  ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -173,4 +193,53 @@ void excluir_produto(void) {
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
+}
+
+
+void ler_cod_p (char* cod){
+    system("clear||cls");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    //em desenvolvimento
+}
+
+void ler_nome_p (char* nome){
+    system("clear||cls");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    //em desenvolvimento
+}
+
+void ler_cor_p (char* cor){
+    system("clear||cls");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    //em desenvolvimento
+}
+
+void ler_marca_p (char* marca){
+    system("clear||cls");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    //em desenvolvimento
+}
+
+void ler_valor_p (char* valor){
+    system("clear||cls");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    //em desenvolvimento
+}
+
+void ler_quant_p (char* quant){
+    system("clear||cls");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+    //em desenvolvimento
 }
