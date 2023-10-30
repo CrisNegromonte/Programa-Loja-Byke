@@ -18,18 +18,20 @@ void ler_fone (char*);
 
 
 void menu_clientes(void) {
+  Cliente* cli;
 	char op;
 	do {
 		op = tela_clientes();
 		switch(op) {
-			case '1': 	cadastrar_cliente();
-						break;
+			case '1': 	cli = cadastrar_cliente();
+                  cad_cli(cli);
+						      break;
 			case '2': 	pesquisar_cliente();
-						break;
+						      break;
 			case '3': 	alterar_cliente();
-						break;
+						      break;
 			case '4': 	excluir_cliente();
-						break;
+						      break;
 		} 		
 	} while (op != '0');
 }
@@ -68,10 +70,10 @@ char tela_clientes(void) {
 	  printf("///////////////////////////////////////////////////////////////////////////////\n");
 	  printf("\n");
 	  // delay(1);
-	return op;
+    return op;
 }
 
-void cadastrar_cliente(void) {
+Cliente* cadastrar_cliente(void) {
     Cliente* cliente;
 
     system("clear||cls");
@@ -104,15 +106,20 @@ void cadastrar_cliente(void) {
     ler_nasc(cliente->nasc);
 
     ler_fone(cliente->fone);
-   
+    
+    cliente->status = 'a';
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    printf("\t\t\t>>> Realizando cadastro...\n");
+    sleep(1);
+    printf("\t\t\t>>> Cadastro efetivado!\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
+    return cliente;
 }
-
+  
 
 void pesquisar_cliente(void) {
     char cpf[12];
@@ -305,3 +312,21 @@ void ler_fone (char* fone) {
     
     }
 } 
+
+/// Arquivos
+
+void cad_cli(Cliente* cliente) {
+  FILE* fp;
+  fp = fopen("cli.dat", "ab");
+  if (fp == NULL) {
+    printf("\t\t\t>>> Realizando operação...\n");
+    sleep(1);
+    printf("\t\t\t>>> Erro na abertura!\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+  }
+  else {
+    fwrite(cliente, sizeof(Cliente), 1, fp);
+    fclose(fp);
+  }
+}
