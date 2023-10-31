@@ -33,7 +33,7 @@ void menu_clientes(void) {
 			case '4': 	excluir_cliente();
 						      break;
       case '5': 	lista_clientes();
-                  printf("\t\t\t>>> Tecle <ENTER> para mostrar o próximo...\n");
+                  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
                   getchar();
 						      break;
 		} 		
@@ -127,7 +127,9 @@ Cliente* cadastrar_cliente(void) {
   
 
 void pesquisar_cliente(void) {
-    char cpf[12];
+    FILE* fp;
+    Cliente* cliente;
+    char cpf_lido[12];
 
     system("clear||cls");
     printf("\n");
@@ -147,14 +149,29 @@ void pesquisar_cliente(void) {
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("***            Digite o CPF do cliente (Apenas Numeros):  ");
-    scanf("%[0-9]", cpf);
-    getchar();
+    scanf("%s",cpf_lido);
+    cliente = (Cliente*) malloc(sizeof(Cliente));
+    fp = fopen("cli.dat", "rb");
+    if (fp == NULL) {
+      printf("\t\t\t>>> Erro ao abrir o arquivo!\n");
+      exit(1);
+    }
+  while (fread(cliente, sizeof(Cliente), 1, fp)) { 
+    if ((cliente->status != 'i') && (strcmp (cliente->cpf, cpf_lido) == 0)){
+      exibe_cliente(cliente);
+      getchar();
+    }
+  }
+  fclose(fp);
+  free(cliente);
+	  getchar();
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
     printf("\n");
      //delay(1);
+     // codigo parecido com o listar clientes com alteração
 }
 
 
@@ -223,6 +240,42 @@ void excluir_cliente(void) {
 }
 
 
+// Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
+void lista_clientes(void) {
+    FILE* fp;
+    Cliente* cliente;
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            = = = = = = =  Lista de Clientes  = = = = = = =              ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///                                                                         ///\n");
+    cliente = (Cliente*) malloc(sizeof(Cliente));
+    fp = fopen("cli.dat", "rb");
+    if (fp == NULL) {
+      printf("\t\t\t>>> Erro ao abrir o arquivo!\n");
+      exit(1);
+  }
+  while (fread(cliente, sizeof(Cliente), 1, fp)) { 
+    if (cliente->status != 'i') {
+      exibe_cliente(cliente);
+    }
+  }
+  fclose(fp);
+  free(cliente);
+	   
+}
 
 // Funcoes
 
@@ -324,7 +377,7 @@ void cad_cli(Cliente* cliente) {
   FILE* fp;
   fp = fopen("cli.dat", "ab");
   if (fp == NULL) {
-    printf("\t\t\t>>> Realizando operação...\n");
+    printf("\t\t\t>>> Realizando operacao...\n");
     sleep(1);
     printf("\t\t\t>>> Erro na abertura!\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -336,41 +389,20 @@ void cad_cli(Cliente* cliente) {
   }
 }
 
-void lista_clientes(void) {
-  FILE* fp;
-  Cliente* cliente;
-  printf("\n = Lista de Clientes = \n");
-  cliente = (Cliente*) malloc(sizeof(Cliente));
-  fp = fopen("cli.dat", "rb");
-  if (fp == NULL) {
-    printf("\t\t\t>>> Analisando os dados...\n");
-    sleep(1);
-    printf("\t\t\t>>> Erro ao abrir o arquivo!\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
-  }
-  while (fread(cliente, sizeof(Cliente), 1, fp)) { 
-    if (cliente->status != 'i') {
-      exibe_cliente(cliente);
-    }
-  }
-  fclose(fp);
-  free(cliente);
-}
 
-
+// Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
 void exibe_cliente(Cliente* cli) {
       if (cli == NULL) {
-              printf("\n= = Cliente Inexistente = = =\n");
+            printf("////////////////////////////   Cliente Inexistente! ///////////////////////////\n");
       } else {
-            printf("\n= = = Cliente Cadastrado = = =\n");
+            printf("/////////////////////////////  CLIENTE CADASTRADO:  ///////////////////////////\n");
+            printf("///                                                                         ///\n");
             printf("CPF: %s\n", cli->cpf);
             printf("Nome do cliente: %s\n", cli->nome);
             printf("E-mail: %s\n", cli->email);
             printf("Data de Nasc: %s\n", cli->nasc);
             printf("Telefone: %s\n", cli->fone);
             printf("Status: %d\n", cli->status);
+            printf("///                                                                         ///\n");
       }
-      printf("In\nTecle ENTER para continuar!\n\n");
-      getchar();
 }
