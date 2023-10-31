@@ -33,6 +33,8 @@ void menu_clientes(void) {
 			case '4': 	excluir_cliente();
 						      break;
       case '5': 	lista_clientes();
+                  printf("\t\t\t>>> Tecle <ENTER> para mostrar o próximo...\n");
+                  getchar();
 						      break;
 		} 		
 	} while (op != '0');
