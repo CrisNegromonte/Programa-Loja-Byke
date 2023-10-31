@@ -19,7 +19,8 @@ void cad_cli(Cliente*);
 void pesquisar_cliente(void);
 void alterar_cliente(void);
 void excluir_cliente(void);
-void listar_clientes(void);
+void lista_clientes(void);
+void exibe_cliente(Cliente* cliente);
 
 void ler_cpf (char*);
 void ler_nome (char*);

@@ -32,7 +32,7 @@ void menu_clientes(void) {
 						      break;
 			case '4': 	excluir_cliente();
 						      break;
-      case '5': 	listar_clientes();
+      case '5': 	lista_clientes();
 						      break;
 		} 		
 	} while (op != '0');
@@ -62,6 +62,7 @@ char tela_clientes(void) {
     printf("///            2. Pesquisar os dados de um cliente                          ///\n");
     printf("///            3. Atualizar o cadastro de um cliente                        ///\n");
     printf("///            4. Excluir um cliente do sistema                             ///\n");
+    printf("///            5. Listar todos os clientes                                  ///\n");
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
     printf("///            Escolha a opcao desejada: ");
@@ -333,7 +334,41 @@ void cad_cli(Cliente* cliente) {
   }
 }
 
+void lista_clientes(void) {
+  FILE* fp;
+  Cliente* cliente;
+  printf("\n = Lista de Clientes = \n");
+  cliente = (Cliente*) malloc(sizeof(Cliente));
+  fp = fopen("cli.dat", "rb");
+  if (fp == NULL) {
+    printf("\t\t\t>>> Analisando os dados...\n");
+    sleep(1);
+    printf("\t\t\t>>> Erro ao abrir o arquivo!\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+  }
+  while (fread(cliente, sizeof(Cliente), 1, fp)) { 
+    if (cliente->status != 'i') {
+      exibe_cliente(cliente);
+    }
+  }
+  fclose(fp);
+  free(cliente);
+}
 
-void listar_clientes(void){
-  //xx
+
+void exibe_cliente(Cliente* cli) {
+      if (cli == NULL) {
+              printf("\n= = Cliente Inexistente = = =\n");
+      } else {
+            printf("\n= = = Cliente Cadastrado = = =\n");
+            printf("CPF: %s\n", cli->cpf);
+            printf("Nome do cliente: %s\n", cli->nome);
+            printf("E-mail: %s\n", cli->email);
+            printf("Data de Nasc: %s\n", cli->nasc);
+            printf("Telefone: %s\n", cli->fone);
+            printf("Status: %d\n", cli->status);
+      }
+      printf("In\nTecle ENTER para continuar!\n\n");
+      getchar();
 }
