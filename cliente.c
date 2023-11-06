@@ -18,16 +18,19 @@ void ler_fone (char*);
 
 
 void menu_clientes(void) {
-  Cliente* cli;
+  Cliente* cliente;
 	char op;
 	do {
 		op = tela_clientes();
 		switch(op) {
-			case '1': 	cli = cadastrar_cliente();
-                  cad_cli(cli);
+			case '1': 	cliente = cadastrar_cliente();
+                  cad_cli(cliente);
+                  free(cliente);
 						      break;
-			case '2': 	pesquisar_cliente();
-						      break;
+			case '2': 	cliente = pesquisar_cliente();
+                  exibe_cliente(cliente);
+                  free(cliente);
+                  break;
 			case '3': 	alterar_cliente();
 						      break;
 			case '4': 	excluir_cliente();
@@ -126,7 +129,7 @@ Cliente* cadastrar_cliente(void) {
 }
   
 
-void pesquisar_cliente(void) {
+Cliente* pesquisar_cliente(void) {
     FILE* fp;
     Cliente* cliente;
     char cpf_lido[12];
@@ -392,17 +395,29 @@ void cad_cli(Cliente* cliente) {
 
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
 void exibe_cliente(Cliente* cli) {
-      if (cli == NULL) {
-            printf("////////////////////////////   Cliente Inexistente! ///////////////////////////\n");
-      } else {
-            printf("/////////////////////////////  CLIENTE CADASTRADO:  ///////////////////////////\n");
-            printf("///                                                                         ///\n");
-            printf("CPF: %s\n", cli->cpf);
-            printf("Nome do cliente: %s\n", cli->nome);
-            printf("E-mail: %s\n", cli->email);
-            printf("Data de Nasc: %s\n", cli->nasc);
-            printf("Telefone: %s\n", cli->fone);
-            printf("Status: %d\n", cli->status);
-            printf("///                                                                         ///\n");
-      }
+      if ((cli == NULL) || (cli->status == 'i')) {
+           printf("////////////////////////////   Cliente Inexistente! ///////////////////////////\n");
+           printf("\n");
+           printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+           getchar();
+      }else{
+           char sit[20];
+           printf("/////////////////////////////  CLIENTE CADASTRADO:  ///////////////////////////\n");
+           printf("///                                                                         ///\n");
+           printf("CPF: %s\n", cli->cpf);
+           printf("Nome do cliente: %s\n", cli->nome);
+           printf("E-mail: %s\n", cli->email);
+           printf("Data de Nasc: %s\n", cli->nasc);
+           printf("Telefone: %s\n", cli->fone);
+           printf("Status: %d\n", cli->status);
+           printf("///                                                                         ///\n");
+           if (cli->status == 'a') {
+             strcpy(sit, "Cliente Ativo");
+           } else {
+             strcpy(sit, "Cliente Inativo");
+           }
+           printf("Situação do cliente: %s\n", sit);
+           printf("\n");
+  }
 }
+      

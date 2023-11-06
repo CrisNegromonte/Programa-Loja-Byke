@@ -9,6 +9,7 @@ struct cliente {
     char email[40];
     char nasc[11];
     char fone[12];
+    char sit[20];
     char status;
 };
 
@@ -16,7 +17,7 @@ void menu_clientes(void);
 char tela_clientes(void);
 Cliente* cadastrar_cliente(void);
 void cad_cli(Cliente*);
-void pesquisar_cliente(void);
+Cliente* pesquisar_cliente(void);
 void alterar_cliente(void);
 void excluir_cliente(void);
 void lista_clientes(void);
