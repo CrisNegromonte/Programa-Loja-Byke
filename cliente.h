@@ -16,12 +16,13 @@ struct cliente {
 void menu_clientes(void);
 char tela_clientes(void);
 Cliente* cadastrar_cliente(void);
-void cad_cli(Cliente*);
+void cad_cli(Cliente* cliente);
 Cliente* pesquisar_cliente(void);
 void alterar_cliente(void);
 void excluir_cliente(void);
 void lista_clientes(void);
 void exibe_cliente(Cliente* cliente);
+void ler_Arqcliente(int num);
 
 void ler_cpf (char*);
 void ler_nome (char*);
