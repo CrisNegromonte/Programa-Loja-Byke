@@ -463,7 +463,7 @@ void exibe_vendedor(Vendedor* vendedor) {
            printf("/////////////////////////////  VENDEDOR CADASTRADO:  //////////////////////////\n");
            printf("///                                                                         ///\n");
            printf("CPF: %s\n", vendedor->cpf);
-           printf("Nome do cliente: %s\n", vendedor->nome);
+           printf("Nome do vendedor: %s\n", vendedor->nome);
            printf("E-mail: %s\n", vendedor->email);
            printf("Data de Nasc: %s\n", vendedor->nasc);
            printf("Telefone: %s\n", vendedor->fone);

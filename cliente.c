@@ -24,7 +24,7 @@ void menu_clientes(void) {
 		 op = tela_clientes();
 		 switch(op) {
 			  case '1': 	cliente = cadastrar_cliente();
-                    cad_cli(cliente);
+                    grava_cli(cliente);
 						        break;
 			  case '2': 	cliente = pesquisar_cliente();
                     exibe_cliente(cliente);
@@ -166,18 +166,20 @@ Cliente* pesquisar_cliente(void) {
            printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
            getchar();
            fclose(fp);
+           free (cliente);
            return cliente;
         }
       }
    }
    fclose(fp);
+   free (cliente);
    return NULL;
 }
 
 
 void alterar_cliente(void) {
     char cpf[12];
-    Cliente* cliente_a = (Cliente*) malloc(sizeof(Cliente));
+    Cliente* cliente = (Cliente*) malloc(sizeof(Cliente));
     FILE* fp;
     int sim = 0;
     system("clear||cls");
@@ -209,27 +211,27 @@ void alterar_cliente(void) {
       printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
       getchar();
     } else {
-      while (fread(cliente_a, sizeof(Cliente), 1, fp) == 1) {
-        if(strcmp(cliente_a->cpf, cpf) == 0) {
+      while (fread(cliente, sizeof(Cliente), 1, fp) == 1) {
+        if(strcmp(cliente->cpf, cpf) == 0) {
           printf("\n");
           printf("\t\t\t*** Cliente Encontrado ***\n");
           printf("\t\t\t*** Realize as alteracoes ***\n");
           printf("\n");
 
-          ler_cpf(cliente_a->cpf);
+          ler_cpf(cliente->cpf);
 
-          ler_nome(cliente_a->nome);
+          ler_nome(cliente->nome);
 
-          ler_email(cliente_a->email);
+          ler_email(cliente->email);
 
-          ler_nasc(cliente_a->nasc);
+          ler_nasc(cliente->nasc);
 
-          ler_fone(cliente_a->fone);
+          ler_fone(cliente->fone);
 
-          cliente_a->status = 'a';
+          cliente->status = 'a';
 
           fseek(fp, -sizeof(Cliente), SEEK_CUR);
-          fwrite(cliente_a, sizeof(Cliente), 1, fp);
+          fwrite(cliente, sizeof(Cliente), 1, fp);
           sim = 1;
           break;
         }
@@ -444,7 +446,7 @@ void ler_fone (char* fone) {
 
 /// Arquivos
 
-void cad_cli(Cliente* cliente) {
+void grava_cli(Cliente* cliente) {
   FILE* fp;
   fp = fopen("cli.dat", "ab");
   if (fp == NULL) {
@@ -454,25 +456,24 @@ void cad_cli(Cliente* cliente) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
   }
-  else {
-    fwrite(cliente, sizeof(Cliente), 1, fp);
-    fclose(fp);
-    free(cliente);
-  }
+  fwrite(cliente, sizeof(Cliente), 1, fp);
+  fclose(fp);
+  free(cliente);
 }
 
 
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
+      
 void exibe_cliente(Cliente* cliente) {
       char sit[20];
       if ((cliente == NULL) || (cliente->status == 'i')) {
-           printf("////////////////////////////   Cliente Inexistente! ///////////////////////////\n");
+           printf("////////////////////////////   Cliente Inexistente! //////////////////////////\n");
            printf("\n");
            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
            getchar();
       }else{
-           printf("/////////////////////////////  CLIENTE CADASTRADO:  ///////////////////////////\n");
-           printf("///                                                                         ///\n");
+           printf("/////////////////////////////  CLIENTE CADASTRADO:  //////////////////////////\n");
+           printf("///                                                                        ///\n");
            printf("CPF: %s\n", cliente->cpf);
            printf("Nome do cliente: %s\n", cliente->nome);
            printf("E-mail: %s\n", cliente->email);
@@ -488,4 +489,3 @@ void exibe_cliente(Cliente* cliente) {
            printf("\n");
   }
 }
-      
