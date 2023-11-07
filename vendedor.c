@@ -17,18 +17,24 @@ void ler_fone_v (char*);
 
 
 void menu_vendedores(void) {
+  Vendedor* vendedor;
 	char op;
 	do {
 		op = tela_vendedores();
 		switch(op) {
-			case '1': 	cadastrar_vendedor();
-						break;
-			case '2': 	pesquisar_vendedor();
-						break;
+			case '1': 	vendedor = cadastrar_vendedor();
+                  grava_vendedor(vendedor);
+					      	break;
+			case '2': 	vendedor = pesquisar_vendedor();
+                  exibe_vendedor(vendedor);
+						      break;
 			case '3': 	alterar_vendedor();
-						break;
+						      break;
 			case '4': 	excluir_vendedor();
-						break;
+					      	break;
+      case '5':   lista_vendedores();
+                  getchar();
+                  break;
 		} 		
 	} while (op != '0');
 }
@@ -71,7 +77,7 @@ char tela_vendedores(void) {
 	  return op;
 }
 
-void cadastrar_vendedor(void) {
+Vendedor* cadastrar_vendedor(void) {
     Vendedor* vendedor;
 
     system("clear||cls");
@@ -103,6 +109,8 @@ void cadastrar_vendedor(void) {
     ler_nasc_v(vendedor->nasc);
 
     ler_fone_v(vendedor->fone);
+
+    vendedor-> status = 'a';
    
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
@@ -110,12 +118,14 @@ void cadastrar_vendedor(void) {
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
+    return vendedor;
 }
 
 
-void pesquisar_vendedor(void) {
+Vendedor* pesquisar_vendedor(void) {
+    FILE* fp;
+    Vendedor* vendedor;
     char cpf[12];
-
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -134,20 +144,39 @@ void pesquisar_vendedor(void) {
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("***            Digite o CPF do vendedor (Apenas Numeros):  ");
-    scanf("%[0-9]", cpf);
+    fgets (cpf, 12, stdin);
     getchar();
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\n");
-     //delay(1);
+    vendedor = (Vendedor*) malloc(sizeof(Vendedor));
+    fp = fopen("vendedor.dat", "rb");
+    if (fp == NULL) {
+      printf("Erro na abertura do arquivo!\n");
+      printf("Nao foi possivel continuar...\n");
+      printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+      getchar();
+    } else {
+        while(!feof(fp)) {
+          fread(vendedor, sizeof(Vendedor), 1, fp);
+          if((strcmp(vendedor->cpf, cpf) == 0) && (vendedor->status != 'i')) {
+            exibe_vendedor(vendedor);
+            printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
+            getchar();
+            fclose(fp);
+            free(vendedor);
+            return vendedor;
+          } 
+        }
+    }
+    fclose(fp);
+    free(vendedor);
+    return NULL;
 }
 
 
 void alterar_vendedor(void) {
     char cpf[12];
-
+    Vendedor* vendedor = (Vendedor*) malloc(sizeof(Vendedor));
+    FILE* fp;
+    int sim = 0;
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -166,21 +195,57 @@ void alterar_vendedor(void) {
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("***            Digite o CPF do vendedor (Apenas Numeros):  ");
-    scanf("%[0-9]", cpf);
+    fgets(cpf, 12, stdin);
     getchar();
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\n");
-	  // delay(1);
-   
+    fp = fopen("vendedor.dat", "r+b");
+    if (fp == NULL) {
+      printf("\t\t\t*** Processando as informações...\n");
+      sleep(1);
+      printf("\t\t\t*** Erro na abertura do arquivo!\n");
+      printf("\t\t\t*** Nao foi possivel continuar...\n");
+      printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+      getchar();
+    } else {
+      while (fread(vendedor, sizeof(Vendedor), 1, fp) == 1) {
+        if(strcmp(vendedor->cpf, cpf) == 0) {
+          printf("\n");
+          printf("\t\t\t*** Vendedor Encontrado ***\n");
+          printf("\t\t\t*** Atualize o Cadastro ***\n");
+          printf("\n");
+          ler_cpf_v(vendedor->cpf);
+          ler_nome_v(vendedor->nome);
+          ler_email_v(vendedor->email);
+          ler_nasc_v(vendedor->nasc);
+          ler_fone_v(vendedor->fone);
+          vendedor-> status = 'a';
+          fseek(fp, -sizeof(Vendedor), SEEK_CUR);
+          fwrite(vendedor, sizeof(Vendedor), 1, fp);
+          sim = 1;
+          break;
+        }
+      }
+    }
+    if (!sim) {
+        printf("\n");
+        printf("\t\t\t CPF nao encontrado!\n");
+    } else {
+        printf("\n");
+        printf("\t\t\t Vendedor atualizado com sucesso!\n");
+    }
+  printf("\n");
+  printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
+  getchar();
+  fclose(fp);
+  free(vendedor);
 }
+
 
 
 void excluir_vendedor(void) {
     char cpf[12];
-
+    Vendedor* vendedor = (Vendedor*) malloc(sizeof(Vendedor));
+    FILE* fp;
+    int sim = 0;
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -199,15 +264,44 @@ void excluir_vendedor(void) {
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("***            Digite o CPF do vendedor (Apenas Numeros):  ");
-    scanf("%[0-9]", cpf);
+    fgets(cpf, 12, stdin);
     getchar();
-    printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    printf("\n");
-	    //delay(1);
+    fp = fopen("vendedor.dat", "r+b");
+    if (fp == NULL) {
+      printf("\t\t\t*** Processando as informacoes...\n");
+      sleep(1);
+      printf("\t\t\t*** Erro na abertura do arquivo!\n");
+      printf("\t\t\t*** Nao foi possivel continuar...\n");
+      printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+      getchar();
+    } else {
+      while (fread(vendedor, sizeof(Vendedor), 1, fp) == 1) {
+        if(strcmp(vendedor->cpf, cpf) == 0) {
+          printf("\n");
+          printf("\t\t\t*** Vendedor Encontrado ***\n");
+          printf("\n");
+          vendedor->status = 'i';
+          fseek(fp, -sizeof(Vendedor), SEEK_CUR);
+          fwrite(vendedor, sizeof(Vendedor), 1, fp);
+          sim = 1;
+          break;
+        }
+      }
+    }
+    if (!sim) {
+        printf("\n");
+        printf("\t\t\t Vendedor nao encontrado!\n");
+    } else {
+        printf("\n");
+        printf("\t\t\t Vendedor excluido com sucesso!\n");
+    }
+  printf("\n");
+  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+  getchar();
+  fclose(fp);
+  free(vendedor);
 }
+
 
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
 
@@ -303,3 +397,83 @@ void ler_fone_v (char* fone) {
     
     }
 } 
+
+void grava_vendedor(Vendedor* vendedor) {
+  FILE* fp;
+  fp = fopen("vendedor.dat", "ab");
+  if (fp == NULL) {
+    printf("\t\t\t>>> Processando as informacoes...\n");
+    sleep(1);
+    printf("\t\t\t>>> Erro! Nao foi possivel continuar! \n");
+    getchar();
+  }
+  fwrite(vendedor, sizeof(Vendedor), 1, fp);
+  fclose(fp);
+  free(vendedor);
+}
+
+
+
+void lista_vendedores(void) {
+  FILE* fp;
+  Vendedor* vendedor;
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            = = = = = = =  Lista de Vendedores  = = = = = = =            ///\n");
+    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n"); 
+    printf("///                                                                         ///\n");
+    vendedor = (Vendedor*) malloc(sizeof(Vendedor));
+    fp = fopen("vendedor.dat", "rb");
+    if (fp == NULL) {
+    printf("Erro na abertura do arquivo!/n");
+    printf("Nao foi possivel continuar...\n");
+    exit(1);
+  }
+  while (fread(vendedor, sizeof(Vendedor), 1, fp)) { 
+    if (vendedor->status != 'i') {
+      exibe_vendedor(vendedor);
+      printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
+      getchar();
+    }
+  }
+  fclose(fp);
+  free(vendedor);
+}
+
+
+void exibe_vendedor(Vendedor* vendedor) {
+      char sit[20];
+      if ((vendedor == NULL) || (vendedor->status == 'i')) {
+           printf("////////////////////////////   Vendedor Inexistente! //////////////////////////\n");
+           printf("\n");
+           printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+           getchar();
+      }else{
+           printf("/////////////////////////////  VENDEDOR CADASTRADO:  //////////////////////////\n");
+           printf("///                                                                         ///\n");
+           printf("CPF: %s\n", vendedor->cpf);
+           printf("Nome do cliente: %s\n", vendedor->nome);
+           printf("E-mail: %s\n", vendedor->email);
+           printf("Data de Nasc: %s\n", vendedor->nasc);
+           printf("Telefone: %s\n", vendedor->fone);
+           printf("///                                                                         ///\n");
+           if (vendedor->status == 'a') {
+             strcpy(sit, "Vendedor Ativo");
+           } else {
+             strcpy(sit, "Vendedor Inativo");
+           }
+           printf("Situacao do vendedor: %s\n", sit);
+           printf("\n");
+  }
+}
