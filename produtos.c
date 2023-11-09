@@ -304,11 +304,11 @@ void excluir_produto(void) {
 
 void ler_cod (char* cod) {
     fflush(stdin);
-    printf("Digite os 12 Numeros do Codigo de Barras: ");
-    fgets (cod, 13, stdin);
+    printf("Digite os 13 Numeros do Codigo de Barras: ");
+    fgets (cod, 14, stdin);
     while (!validarCod (cod)) {
         printf("Erro no codigo! Digite novamente: ");
-        fgets (cod, 13, stdin);
+        fgets (cod, 14, stdin);
     }
     getchar();
 }
@@ -322,7 +322,7 @@ void exibe_prod(Produto *produto) {
     printf("///            = = = = = = =  EXIBIR PRODUTO   = = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-  if ((produto == NULL) || (produto->status != 'i')) {
+  if ((produto == NULL) || (produto->status == 'i')) {
       printf("\n Produto nao encontrado!\n");
       printf("\n");
       printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
