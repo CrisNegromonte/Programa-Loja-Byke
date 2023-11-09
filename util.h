@@ -14,5 +14,12 @@ int validarQuant(char*);
 int validarNumInteiro(char*);
 int validarEmail(char*);
 int validarFone(char*);
+int validarCod(char*);
+int validarDesc(char*);
+int validarCor(char*);
+int validarMarca(char*);
+
+
+
 
 #endif 

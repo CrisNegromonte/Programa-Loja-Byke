@@ -1,6 +1,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
+#include "util.h"
 
 
 #define true 1
@@ -136,6 +137,53 @@ int validarQuant(char* x) {
     if (!ehDigito(x[i])) {
       return false;
     }
+  }
+  return true;
+}
+
+int validarCod(char* cod) {
+  int tam;
+
+  tam = strlen(cod);
+  if (tam < 12 || tam > 13) {
+    return false;
+  }
+  for (int i = 0; i < tam; i++) {
+    if (!ehDigito(cod[i])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+int validarDesc(char* desc) {
+  for (int i=0; desc[i]!='\0'; i++) {
+    if (!ehLetra(desc[i])) {
+      return false;
+    }
+
+  }
+  return true;
+}
+
+int validarCor(char* cor) {
+  for (int i=0; cor[i]!='\0'; i++) {
+    if (!ehLetra(cor[i])) {
+      return false;
+    }
+
+  }
+  return true;
+}
+
+
+int validarMarca(char* marca) {
+  for (int i=0; marca[i]!='\0'; i++) {
+    if (!ehLetra(marca[i])) {
+      return false;
+    }
+
   }
   return true;
 }
