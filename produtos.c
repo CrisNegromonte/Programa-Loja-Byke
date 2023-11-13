@@ -209,7 +209,6 @@ void alterar_produto(void) {
           printf("\t\t\t*** PRODUTO ENCONTRADO! ***\n");
           printf("\t\t\t*** Atualize o cadastro ***\n");
           printf("\n");
-          ler_cod(produto->cod);
           ler_desc(produto->desc);
           ler_cor(produto->cor);
           ler_marca(produto->marca);

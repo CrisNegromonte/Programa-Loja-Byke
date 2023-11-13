@@ -212,7 +212,6 @@ void alterar_vendedor(void) {
           printf("\t\t\t*** Vendedor Encontrado ***\n");
           printf("\t\t\t*** Atualize o Cadastro ***\n");
           printf("\n");
-          ler_cpf_v(vendedor->cpf);
           ler_nome_v(vendedor->nome);
           ler_email_v(vendedor->email);
           ler_nasc_v(vendedor->nasc);

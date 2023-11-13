@@ -218,8 +218,6 @@ void alterar_cliente(void) {
           printf("\t\t\t*** Realize as alteracoes ***\n");
           printf("\n");
 
-          ler_cpf(cliente->cpf);
-
           ler_nome(cliente->nome);
 
           ler_email(cliente->email);
