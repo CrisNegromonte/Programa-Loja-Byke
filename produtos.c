@@ -34,7 +34,7 @@ void menu_produtos(void) {
 			case '4': 	excluir_produto();
 						break;
              case '5':  lista_prod();
-                        printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
+                        printf("\t\t\t*** Tecle <ENTER> para voltar ao menu anterior...\n");
                         getchar();
                         break;
 		} 		
@@ -70,13 +70,11 @@ char tela_produtos(void) {
     printf("///                                                                         ///\n");
     printf("///            Escolha a opcao desejada: ");
     scanf("%c", &op);
-	getchar();
-	printf("///                                                                       ///\n");
-	printf("///                                                                       ///\n");
-	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("\n");
-	// delay(1);
-	return op;
+  	getchar();
+	  printf("\n");
+    printf("\t\t\t>>>>>> Processando... <<<<<<<\n");
+    sleep(1);
+	  return op;
 }
 
 Produto* cadastrar_produto(void) {
@@ -315,11 +313,8 @@ void ler_cod (char* cod) {
 
 void exibe_prod(Produto *produto) {
     char sit[20];
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  EXIBIR PRODUTO   = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    system("clear||cls");
+    printf("///            = = = = = = =   PRODUTO ATIVO   = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
   if ((produto == NULL) || (produto->status == 'i')) {
       printf("\n Produto nao encontrado!\n");
@@ -327,7 +322,6 @@ void exibe_prod(Produto *produto) {
       printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
       getchar();
   } else {
-      printf("\n*** Produto Cadastrado***\n");
       printf("\n");
       printf("*** DESCRICAO: ");
       printf("%s" ,produto->desc);

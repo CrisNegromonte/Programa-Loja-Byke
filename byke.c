@@ -31,10 +31,10 @@ char menu_principal(void);
 // Programa principal
 
 int main(void){
-    char escolha;
+    char op;
     do {
-        escolha = menu_principal();
-        switch(escolha){
+        op = menu_principal();
+        switch(op){
             case '1': 	menu_clientes();
                         break;
             case '2': 	menu_vendedores();
@@ -48,10 +48,9 @@ int main(void){
             case '6': 	tela_informacoes();
                         break;
         } 		
-	} while (escolha != '0');
+	} while (op != '0');
 	return 0;    
 }
-
 
 
 
@@ -81,7 +80,7 @@ char menu_principal(void) {
     printf("///            6. Informacoes Sobre o Sistema                               ///\n");
     printf("///            0. Sair                                                      ///\n");
     printf("///                                                                         ///\n");
-	printf("///           Escolha a opcao desejada: ");
+	printf("///           Digite a opcao desejada: ");
 	scanf("%c", &op);
 	getchar();
 	printf("///                                                                         ///\n");
