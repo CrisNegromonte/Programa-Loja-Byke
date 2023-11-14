@@ -138,7 +138,7 @@ Produto* pesquisar_produto(void) {
     printf("///                                                                         ///\n");
     printf("///            Informe o codigo de barras:                                  ///\n");
     getchar();
-    fgets (cod, 14, stdin);
+    fgets (cod, 13, stdin);
     getchar();
     produto = (Produto*) malloc(sizeof(Produto));
     fp = fopen("produtos.dat", "rb");
@@ -188,7 +188,7 @@ void alterar_produto(void) {
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe o codigo de barras para alterar:                     ///\n");
-    fgets(cod, 14, stdin);
+    fgets(cod, 13, stdin);
     getchar();
     fp = fopen("produtos.dat", "r+b");
     if (fp == NULL) {
@@ -258,7 +258,7 @@ void excluir_produto(void) {
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe o codigo de barras:                                  ///\n");
-    fgets(cod, 14, stdin);
+    fgets(cod, 13, stdin);
     getchar();
     fp = fopen("produtos.dat", "r+b");
     if (fp == NULL) {
@@ -297,16 +297,6 @@ void excluir_produto(void) {
 }
 
 
-void ler_cod (char* cod) {
-    fflush(stdin);
-    printf("Digite os 13 Numeros do Codigo de Barras: ");
-    fgets (cod, 14, stdin);
-    while (!validarCod (cod)) {
-        printf("Erro no codigo! Digite o codigo com 13 digitos: ");
-        fgets (cod, 14, stdin);
-    }
-    getchar();
-}
 
 
 void exibe_prod(Produto *produto) {
@@ -348,6 +338,7 @@ void exibe_prod(Produto *produto) {
 }
 
 
+
 // Funcoes adaptadas no codigo do Professor Flavius
 
 void ler_desc(char* desc) {
@@ -373,6 +364,22 @@ void ler_desc(char* desc) {
   } 
 }
 
+
+
+
+void ler_cod (char* cod) {
+    fflush(stdin);
+    printf("Digite os 13 Numeros do Codigo de Barras: ");
+    fgets (cod, 13, stdin);
+    while (!validarCod (cod)) {
+        printf("Erro no codigo! Digite o codigo com 13 digitos: ");
+        fgets (cod, 13, stdin);
+    }
+    getchar();
+}
+
+
+
 void ler_cor(char* cor) {
     fflush(stdin);
     printf("Digite a cor do produto: ");
@@ -395,6 +402,9 @@ void ler_cor(char* cor) {
     }
   } 
 }
+
+
+
 
 void ler_marca(char* marca) {
     fflush(stdin);
@@ -428,6 +438,7 @@ void ler_quant(int* quant) {
 }
 
 
+
 void ler_valor(float* valor) {
     printf("Digite o valor: R$ ");
     scanf("%f", valor);
@@ -455,12 +466,12 @@ void lista_prod(void) {
   FILE* fp;
   Produto* produto;
   system("clear||cls");
-  printf("///////////////////////////////////////////////////////////////////////////////\n");
-  printf("///                                                                         ///\n");
-  printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-  printf("///            = = = = =    LISTA PRODUTOS ATIVOS    = = = = =              ///\n");
-  printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-  printf("///                                                                         ///\n");
+  printf("///////////////////////////////////////////////////////////");
+  printf("\n");
+  printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
+  printf("     = = = = =    LISTA PRODUTOS ATIVOS    = = = = =\n");
+  printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
+  printf("\n");
   produto = (Produto*) malloc(sizeof(Produto));
   fp = fopen("produtos.dat", "rb");
   if (fp == NULL) {
