@@ -33,10 +33,9 @@ void menu_produtos(void) {
 						      break;
 			case '4': 	excluir_produto();
 						      break;
-      case '5':  lista_prod();
-                 printf("\t\t\t*** Tecle <ENTER> para voltar ao menu anterior...\n");
-                 getchar();
-                 break;
+      case '5':   lista_prod();
+                  getchar();
+                  break;
 		} 		
 	} while (op != '0');
 }
@@ -311,17 +310,14 @@ void ler_cod (char* cod) {
 
 
 void exibe_prod(Produto *produto) {
-    char sit[20];
-    system("clear||cls");
-    printf("///   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =   ///\n");
-    printf("///                                                                         ///\n");
+    char sit[20];                                                                       ///\n");
   if ((produto == NULL) || (produto->status == 'i')) {
       printf("\n Produto nao encontrado!\n");
       printf("\n");
       printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
       getchar();
   } else {
-      printf("///            = = = = = = =   PRODUTO ATIVO   = = = = = = = =           ///\n");
+      printf("  = = = = = = =   PRODUTO ATIVO   = = = = = = = = ");
       printf("\n");
       printf("*** DESCRICAO: ");
       printf("%s" ,produto->desc);
@@ -458,6 +454,7 @@ void grava_prod(Produto* produto) {
 void lista_prod(void) {
   FILE* fp;
   Produto* produto;
+  system("clear||cls");
   produto = (Produto*) malloc(sizeof(Produto));
   fp = fopen("produtos.dat", "rb");
   if (fp == NULL) {
@@ -469,8 +466,6 @@ void lista_prod(void) {
   while (fread(produto, sizeof(Produto), 1, fp)) { 
     if (produto->status != 'i') {
       exibe_prod(produto);
-      printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
-      getchar();
     }
   }
   fclose(fp);
