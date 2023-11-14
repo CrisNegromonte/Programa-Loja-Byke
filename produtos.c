@@ -317,7 +317,7 @@ void exibe_prod(Produto *produto) {
       printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
       getchar();
   } else {
-      printf("  = = = = = = =   PRODUTO ATIVO   = = = = = = = = ");
+      printf("================================================= ");
       printf("\n");
       printf("*** DESCRICAO: ");
       printf("%s" ,produto->desc);
@@ -455,6 +455,12 @@ void lista_prod(void) {
   FILE* fp;
   Produto* produto;
   system("clear||cls");
+  printf("///////////////////////////////////////////////////////////////////////////////\n");
+  printf("///                                                                         ///\n");
+  printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+  printf("///            = = = = =    LISTA PRODUTOS ATIVOS    = = = = =              ///\n");
+  printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+  printf("///                                                                         ///\n");
   produto = (Produto*) malloc(sizeof(Produto));
   fp = fopen("produtos.dat", "rb");
   if (fp == NULL) {
