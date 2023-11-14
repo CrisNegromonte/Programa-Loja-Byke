@@ -105,7 +105,6 @@ Produto* cadastrar_produto(void) {
     ler_valor(&(produto->valor));
     produto->status = 'a';
     printf("///                                                                         ///\n");
-    printf("///                                                                         ///\n");
     printf("///                           PRODUTO CADASTRADO!                           ///\n");
     printf("///                       TECLE ENTER PARA CONTINUAR...                     ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -120,7 +119,7 @@ Produto* cadastrar_produto(void) {
 Produto* pesquisar_produto(void) {
     FILE* fp;
     Produto* produto;
-    char cod[15];
+    char cod[13];
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -146,7 +145,7 @@ Produto* pesquisar_produto(void) {
     fp = fopen("produtos.dat", "rb");
     if (fp == NULL) {
       printf("ERRO na busca!\n");
-      printf("Nao foi possivel continuar...\n");
+      printf("\t\t\t*** Talvez ainda nao exista produto cadastrado!\n");
       printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
       getchar();
     } else {
@@ -197,7 +196,7 @@ void alterar_produto(void) {
       printf("\t\t\t*** Processando...\n");
       sleep(1);
       printf("\t\t\t*** ERRO na busca!\n");
-      printf("\t\t\t*** Nao foi possivel continuar...\n");
+      printf("\t\t\t*** Talvez ainda nao exista produto cadastrado!\n");
       printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
       getchar();
     } else {
@@ -267,7 +266,7 @@ void excluir_produto(void) {
        printf("\t\t\t*** Processando as informacoes...\n");
        sleep(1);
        printf("\t\t\t*** ERRO na busca!\n");
-       printf("\t\t\t*** Nao foi possivel continuar...\n");
+       printf("\t\t\t*** Talvez ainda nao exista produto cadastrado!\n");
        printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
        getchar();
     } else {
@@ -276,7 +275,7 @@ void excluir_produto(void) {
           printf("\n");
           printf("\t\t\t*** Produto Encontrado ***\n");
           printf("\n");
-          produto->status = 'e';
+          produto->status = 'i';
           fseek(fp, -sizeof(Produto), SEEK_CUR);
           fwrite(produto, sizeof(Produto), 1, fp);
           sim = 1;
@@ -314,7 +313,7 @@ void ler_cod (char* cod) {
 void exibe_prod(Produto *produto) {
     char sit[20];
     system("clear||cls");
-    printf("///            = = = = = = =   PRODUTO ATIVO   = = = = = = = =              ///\n");
+    printf("///   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =   ///\n");
     printf("///                                                                         ///\n");
   if ((produto == NULL) || (produto->status == 'i')) {
       printf("\n Produto nao encontrado!\n");
@@ -322,6 +321,7 @@ void exibe_prod(Produto *produto) {
       printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
       getchar();
   } else {
+      printf("///            = = = = = = =   PRODUTO ATIVO   = = = = = = = =              ///\n");
       printf("\n");
       printf("*** DESCRICAO: ");
       printf("%s" ,produto->desc);
@@ -445,7 +445,7 @@ void grava_prod(Produto* produto) {
   if (fp == NULL) {
     printf("\t\t\t>>> Processando as informacoes...\n");
     sleep(1);
-    printf("\t\t\t>>> Erro!\n");
+    printf("\t\t\t>>> ERRO !\n");
     printf("\t\t\t>>> Nao foi possivel continuar...\n");
     getchar();
   }
@@ -462,6 +462,7 @@ void lista_prod(void) {
   fp = fopen("produtos.dat", "rb");
   if (fp == NULL) {
     printf("Erro na abertura!/n");
+    printf("Talvez ainda nao exista produto cadastrado!\n");
     printf("Nao foi possivel continuar...\n");
     exit(1);
   }

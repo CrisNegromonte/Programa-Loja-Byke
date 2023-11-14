@@ -145,7 +145,7 @@ int validarCod(char* cod) {
   int tam;
 
   tam = strlen(cod);
-  if (tam < 12 || tam > 13) {
+  if (tam < 13 || tam > 14) {
     return false;
   }
   for (int i = 0; i < tam; i++) {
@@ -190,8 +190,6 @@ int validarMarca(char* marca) {
 
 
 /// Funcao do professsor Flavius Gorgonio (programa exemplo)
-/// cpf valido retorna 1
-/// cpf invalido retorna 0
 
 int validarCpf(char* cpf) {
   int tam;
