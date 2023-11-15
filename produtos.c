@@ -26,7 +26,7 @@ void menu_produtos(void) {
 		switch(op) {
 			case '1': 	produto = cadastrar_produto();
                   grava_prod(produto);
-                  free(produto);
+                  getchar();
 					 	      break;
 			case '2': 	produto = pesquisar_produto();
                   exibe_prod(produto);
@@ -106,11 +106,13 @@ Produto* cadastrar_produto(void) {
     ler_valor(&(produto->valor));
     produto->status = 'a';
     printf("///                                                                         ///\n");
-    printf("///                           PRODUTO CADASTRADO!                           ///\n");
-    printf("///                       TECLE ENTER PARA CONTINUAR...                     ///\n");
+    printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    printf("\t\t\t>>> Realizando cadastro...\n");
     sleep(1);
+    printf("\t\t\t>>> Cadastro efetivado!\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
     return produto;
 }

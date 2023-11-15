@@ -25,6 +25,7 @@ void menu_clientes(void) {
 		 switch(op) {
 			  case '1': 	cliente = cadastrar_cliente();
                     grava_cli(cliente);
+                    getchar();
 						        break;
 			  case '2': 	cliente = pesquisar_cliente();
                     exibe_cliente(cliente);

@@ -24,6 +24,7 @@ void menu_vendedores(void) {
 		switch(op) {
 			case '1': 	vendedor = cadastrar_vendedor();
                   grava_vendedor(vendedor);
+                  getchar();
 					      	break;
 			case '2': 	vendedor = pesquisar_vendedor();
                   exibe_vendedor(vendedor);
@@ -33,6 +34,8 @@ void menu_vendedores(void) {
 			case '4': 	excluir_vendedor();
 					      	break;
       case '5':   lista_vendedores();
+                  printf("\n");
+                  printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
                   getchar();
                   break;
 		} 		
@@ -64,6 +67,7 @@ char tela_vendedores(void) {
     printf("///            2. Pesquisar os dados de um vendedor                         ///\n");
     printf("///            3. Atualizar o cadastro de um vendedor                       ///\n");
     printf("///            4. Excluir um vendedor do sistema                            ///\n");
+    printf("///            5. Listar todos os vendedores                                ///\n");
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
     printf("///            Escolha a opcao desejada: ");
@@ -111,11 +115,13 @@ Vendedor* cadastrar_vendedor(void) {
     ler_fone_v(vendedor->fone);
 
     vendedor-> status = 'a';
-   
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
+    printf("\t\t\t>>> Realizando cadastro...\n");
+    sleep(1);
+    printf("\t\t\t>>> Cadastro efetivado!\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
     return vendedor;
@@ -414,65 +420,66 @@ void grava_vendedor(Vendedor* vendedor) {
 
 
 void lista_vendedores(void) {
-  FILE* fp;
-  Vendedor* vendedor;
+    FILE* fp;
+    Vendedor* vendedor;
+    system("clear||cls");
+    printf("//////////////////////////////////////////////////////");
     printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  Lista de Vendedores  = = = = = = =            ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n"); 
-    printf("///                                                                         ///\n");
+    printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
+    printf("     = = =     LISTAGEM |  VENDEDORES(AS)      = = =\n");
+    printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
+    printf("\n");                                                                        
     vendedor = (Vendedor*) malloc(sizeof(Vendedor));
     fp = fopen("vendedor.dat", "rb");
     if (fp == NULL) {
-    printf("Erro na abertura do arquivo!/n");
-    printf("Nao foi possivel continuar...\n");
-    exit(1);
+      printf("Erro na abertura!/n");
+      printf("Talvez ainda nao exista vendedor(a) cadastrado(a)!\n");
+      printf("Realize um cadastro para continuar...\n");
+      exit(1);
   }
   while (fread(vendedor, sizeof(Vendedor), 1, fp)) { 
     if (vendedor->status != 'i') {
       exibe_vendedor(vendedor);
-      printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
-      getchar();
     }
   }
   fclose(fp);
   free(vendedor);
+	   
 }
+
 
 
 void exibe_vendedor(Vendedor* vendedor) {
       char sit[20];
       if ((vendedor == NULL) || (vendedor->status == 'i')) {
-           printf("////////////////////////////   Vendedor Inexistente! //////////////////////////\n");
+           printf(">>>>>>>>    VENDEDOR(A) INEXISTENTE!    <<<<<<<\n");
+           printf("================================================ ");
            printf("\n");
            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
            getchar();
       }else{
-           printf("/////////////////////////////  VENDEDOR CADASTRADO:  //////////////////////////\n");
-           printf("///                                                                         ///\n");
-           printf("CPF: %s\n", vendedor->cpf);
-           printf("Nome do vendedor: %s\n", vendedor->nome);
-           printf("E-mail: %s\n", vendedor->email);
-           printf("Data de Nasc: %s\n", vendedor->nasc);
-           printf("Telefone: %s\n", vendedor->fone);
-           printf("///                                                                         ///\n");
-           if (vendedor->status == 'a') {
-             strcpy(sit, "Vendedor Ativo");
-           } else {
-             strcpy(sit, "Vendedor Inativo");
-           }
-           printf("Situacao do vendedor: %s\n", sit);
+           printf("==================================================== ");
            printf("\n");
-  }
+           printf("|| CLIENTE: ");
+           printf("%s" ,vendedor->nome);
+           printf("\n");
+           printf("|| CPF: ");
+           printf("%s" ,vendedor->cpf);
+           printf("\n");
+           printf("|| TELEFONE: ");
+           printf("%s" ,vendedor->fone);
+           printf("\n");
+           printf("|| DATA DE NASC.: ");
+           printf("%s" ,vendedor->nasc);
+           printf("\n");
+           printf("|| E-MAIL: ");
+           printf("%s" ,vendedor->email);
+           if (vendedor->status == 'a') {
+             strcpy(sit, "Vendedor(a) Ativo(a)");
+           } else {
+             strcpy(sit, "Vendedor(a) Inativo(a)");
+        }
+        printf("|| STATUS: %s\n", sit);
+        printf("\n");
+      }
 }
