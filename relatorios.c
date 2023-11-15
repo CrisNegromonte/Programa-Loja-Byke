@@ -73,13 +73,13 @@ void relat_todos_clientes(void) {
     Cliente* cliente;
     system("clear||cls");
     printf("\n");
-    printf("////////////////////////////////////////////////////////////////////////////////////////////\n");
-    printf("||                                                                                        ||\n");
-    printf("||                    = = = = = = = = = = = = = = = = = = = = = = = =                     ||\n");
-    printf("||                    = = =   RELATORIO || TODOS OS CLIENTES    = = =                     ||\n");
-    printf("||                    = = = = = = = = = = = = = = = = = = = = = = = =                     ||\n");
-    printf("||                                                                                        ||\n");
-    printf("||                                                                                        ||\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("||                                                                                                                 ||\n");
+    printf("||                                = = = = = = = = = = = = = = = = = = = = = = = =                                  ||\n");
+    printf("||                                = = =   RELATORIO || TODOS OS CLIENTES    = = =                                  ||\n");
+    printf("||                                = = = = = = = = = = = = = = = = = = = = = = = =                                  ||\n");
+    printf("||                                                                                                                 ||\n");
+    printf("||                                                                                                                 ||\n");
     cliente = (Cliente*) malloc(sizeof(Cliente));
     fp = fopen("cli.dat", "rb");
     if (fp == NULL) {
@@ -90,27 +90,31 @@ void relat_todos_clientes(void) {
       printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
       getchar();
     }
-    printf("--------------------------------------------------------------------------------------------");
+    printf("---------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     printf("%-12s", "CPF");
     printf("||");
-    printf("%-45s", "CLIENTE");
+    printf("%-40s", "CLIENTE");
     printf("||");
     printf("%-12s", "TELEFONE");
     printf("||");
-    printf("%-13s", "DATA DE NASC.");
+    printf("%-11s", "DATA NASC.");
+    printf("||");
+    printf("%-33s", "E-MAIL");
     printf("\n");
-    printf("--------------------------------------------------------------------------------------------");
+    printf("---------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     while (fread(cliente, sizeof(Cliente), 1, fp)) { 
       if (cliente->status != 'i') {
         printf("%-12s", cliente->cpf);
         printf("||");
-        printf("%-45s", cliente->nome);
+        printf("%-40s", cliente->nome);
         printf("||");
         printf("%-12s", cliente->fone);
         printf("||");
-        printf("%-13s", cliente->nasc);
+        printf("%-11s", cliente->nasc);
+        printf("||");
+        printf("%-33s", cliente->email);
         printf("\n");
       }
     }
@@ -119,55 +123,62 @@ void relat_todos_clientes(void) {
 }
 
 
+
 void relat_todos_vendedores(void) {
-  FILE* fp;
-  Vendedor* vendedor;
-  system("clear||cls");
-  printf("\n");
-  printf("||//////////////////////////////////////////////////////////////////////////////////////||\n");
-  printf("||                                                                                      ||\n");
-  printf("||                    = = = = = = = = = = = = = = = = = = = = = = = =                   ||\n");
-  printf("||                    = =  RELATORIO || TODOS OS VENDEDORES(AS)   = =                   ||\n");
-  printf("||                    = = = = = = = = = = = = = = = = = = = = = = = =                   ||\n");
-  printf("||                                                                                      ||\n");
-  printf("||                                                                                      ||\n");
-  vendedor = (Vendedor*) malloc(sizeof(Vendedor));
-  fp = fopen("vendedor.dat", "rb");
-  if (fp == NULL) {
-    printf("\t\t\t>>>>>>>>  Processando...   <<<<<<<<\n");
-    sleep(1);
-    printf("\t\t\t>>> ERRO ao abrir o arquivo!\n");
-    printf("\t\t\t>>> Verifique se ja existe vendedor(a) cadastrado(a)! \n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
-    getchar();
-  }
-  printf("------------------------------------------------------------------------------------------");
-  printf("\n");
-  printf("%-12s", "CPF");
-  printf("||");
-  printf("%-45s", "VENDEDOR(A)");
-  printf("||");
-  printf("%-12s", "TELEFONE");
-  printf("||");
-  printf("%-13s", "DATA DE NASC.");
-  printf("\n");
-  printf("------------------------------------------------------------------------------------------");
-  printf("\n"); 
-  while (fread(vendedor, sizeof(Vendedor), 1, fp)) { 
-    if (vendedor->status != 'i') {
-      printf("%-12s", vendedor->cpf);
-      printf("||");
-      printf("%-45s", vendedor->nome);
-      printf("||");
-      printf("%-12s", vendedor->fone);
-      printf("||");
-      printf("%-13s", vendedor->nasc);
-      printf("\n");
+    FILE* fp;
+    Vendedor* vendedor;
+    system("clear||cls");
+    printf("\n");
+    printf("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n");
+    printf("||                                                                                                                 ||\n");
+    printf("||                                = = = = = = = = = = = = = = = = = = = = = = = =                                  ||\n");
+    printf("||                                = =   RELATORIO || TODOS OS VENDEDORES(AS)  = =                                  ||\n");
+    printf("||                                = = = = = = = = = = = = = = = = = = = = = = = =                                  ||\n");
+    printf("||                                                                                                                 ||\n");
+    printf("||                                                                                                                 ||\n");
+    vendedor = (Vendedor*) malloc(sizeof(Vendedor));
+    fp = fopen("vendedor.dat", "rb");
+    if (fp == NULL) {
+      printf("\t\t\t>>>>>>>>  Processando...   <<<<<<<<\n");
+      sleep(1);
+      printf("\t\t\t>>> ERRO ao abrir o arquivo!\n");
+      printf("\t\t\t>>> Verifique se ja existe vendedor(a) cadastrado(a)! \n");
+      printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+      getchar();
     }
-  }
-  fclose(fp);
-  free(vendedor);
+    printf("---------------------------------------------------------------------------------------------------------------------");
+    printf("\n");
+    printf("%-12s", "CPF");
+    printf("||");
+    printf("%-40s", "VENDEDOR(A)");
+    printf("||");
+    printf("%-12s", "TELEFONE");
+    printf("||");
+    printf("%-11s", "DATA NASC.");
+    printf("||");
+    printf("%-33s", "E-MAIL");
+    printf("\n");
+    printf("---------------------------------------------------------------------------------------------------------------------");
+    printf("\n");
+    while (fread(vendedor, sizeof(Vendedor), 1, fp)) { 
+      if (vendedor->status != 'i') {
+        printf("%-12s", vendedor->cpf);
+        printf("||");
+        printf("%-40s", vendedor->nome);
+        printf("||");
+        printf("%-12s", vendedor->fone);
+        printf("||");
+        printf("%-11s", vendedor->nasc);
+        printf("||");
+        printf("%-33s", vendedor->email);
+        printf("\n");
+      }
+    }
+   fclose(fp);
+   free(vendedor);
 }
+
+
 
 
 void relat_todos_produtos(void) {
