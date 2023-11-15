@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <stdbool.h>
+#include <ctype.h>
 #include <string.h>
 #include "produtos.h"
 #include "util.h"
@@ -119,7 +120,7 @@ Produto* cadastrar_produto(void) {
 Produto* pesquisar_produto(void) {
     FILE* fp;
     Produto* produto;
-    char cod[15];
+    char cod[14];
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -137,10 +138,10 @@ Produto* pesquisar_produto(void) {
     printf("///            = = = = = = = = PESQUISAR PRODUTO = = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Informe o codigo de barras:                                  ///\n");
+    printf("***            Digite o Codigo de Barras (13 Numeros):  ");
     //getchar();
-    fgets (cod, 13, stdin);
-    //getchar();
+    fgets (cod, 14, stdin);
+    getchar();
     produto = (Produto*) malloc(sizeof(Produto));
     fp = fopen("produtos.dat", "rb");
     if (fp == NULL) {
@@ -149,14 +150,17 @@ Produto* pesquisar_produto(void) {
       printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
       getchar();
     } else {
-        while(fread(produto, sizeof(Produto), 1, fp)) {
+         while(!feof(fp)) {
+          fread(produto, sizeof(Produto), 1, fp);
           if((strcmp(produto->cod, cod) == 0) && (produto->status != 'i')) {
             exibe_prod(produto);
+            printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
+            getchar();
             fclose(fp);
             free(produto);
             return produto;
           } 
-        }
+         }
     }
     fclose(fp);
     free(produto); 
@@ -166,7 +170,7 @@ Produto* pesquisar_produto(void) {
 
 
 void alterar_produto(void) {
-    char cod[15];
+    char cod[14];
     Produto* produto = (Produto*) malloc(sizeof(Produto));
     FILE* fp;
     int sim = 0;
@@ -188,7 +192,7 @@ void alterar_produto(void) {
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe o codigo de barras para alterar:                     ///\n");
-    fgets(cod, 13, stdin);
+    fgets(cod, 14, stdin);
     getchar();
     fp = fopen("produtos.dat", "r+b");
     if (fp == NULL) {
@@ -236,7 +240,7 @@ void alterar_produto(void) {
 
 
 void excluir_produto(void) {
-    char cod[15];
+    char cod[14];
     Produto* produto = (Produto*) malloc(sizeof(Produto));
     FILE* fp;
     int sim = 0;
@@ -258,7 +262,7 @@ void excluir_produto(void) {
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe o codigo de barras:                                  ///\n");
-    fgets(cod, 13, stdin);
+    fgets(cod, 14, stdin);
     getchar();
     fp = fopen("produtos.dat", "r+b");
     if (fp == NULL) {
@@ -301,12 +305,12 @@ void excluir_produto(void) {
 
 void exibe_prod(Produto *produto) {
     char sit[20];                                                                       ///\n");
-  if ((produto == NULL) || (produto->status == 'i')) {
+    if ((produto == NULL) || (produto->status == 'i')) {
       printf("\n Produto nao encontrado!\n");
       printf("\n");
       printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
       getchar();
-  } else {
+    } else {
       printf("================================================= ");
       printf("\n");
       printf("*** DESCRICAO: ");
@@ -327,14 +331,13 @@ void exibe_prod(Produto *produto) {
       printf("*** VALOR: ");
       printf("%.2f" ,produto->valor);
       printf("\n");
-    if (produto->status == 'a') {
+      if (produto->status == 'a') {
       strcpy(sit, "Produto Ativo");
-    } else {
+      } else {
       strcpy(sit, "Produto Inativo");
     }
     printf("Status do produto: %s\n", sit);
     printf("\n");
-    getchar();
   }   
 }
 
@@ -345,7 +348,7 @@ void exibe_prod(Produto *produto) {
 void ler_desc(char* desc) {
     fflush(stdin);
     printf("Digite a descricao do produto: ");
-    fgets(desc, 50, stdin); 
+    fgets(desc, 35, stdin); 
     int tam = strlen(desc);
     if (tam > 0 && desc[tam - 1] == '\n') {  
         desc[tam - 1] = '\0';
@@ -355,7 +358,7 @@ void ler_desc(char* desc) {
         printf("Descricao invalida: %s\n", desc);
         printf("Informe novamente a descricao: ");
         fflush(stdin);
-        fgets(desc, 50, stdin); 
+        fgets(desc, 35, stdin); 
         // Remove o caractere de nova linha do final, caso exista
         tam = strlen(desc);
         if (tam > 0 && desc[tam - 1] == '\n') {
@@ -371,10 +374,10 @@ void ler_desc(char* desc) {
 void ler_cod (char* cod) {
     fflush(stdin);
     printf("Digite os 13 Numeros do Codigo de Barras: ");
-    fgets (cod, 13, stdin);
+    fgets (cod, 14, stdin);
     while (!validarCod (cod)) {
         printf("Erro no codigo! Digite o codigo com 13 digitos: ");
-        fgets (cod, 13, stdin);
+        fgets (cod, 14, stdin);
     }
     getchar();
 }
@@ -384,7 +387,7 @@ void ler_cod (char* cod) {
 void ler_cor(char* cor) {
     fflush(stdin);
     printf("Digite a cor do produto: ");
-    fgets(cor, 25, stdin); 
+    fgets(cor, 12, stdin); 
     int tam = strlen(cor);
     if (tam > 0 && cor[tam - 1] == '\n') {  
         cor[tam - 1] = '\0';
@@ -394,7 +397,7 @@ void ler_cor(char* cor) {
         printf("Cor invalida: %s\n", cor);
         printf("Informe novamente a cor do produto: ");
         fflush(stdin);
-        fgets(cor, 25, stdin); 
+        fgets(cor, 12, stdin); 
         // Remove o caractere de nova linha do final, caso exista
         tam = strlen(cor);
         if (tam > 0 && cor[tam - 1] == '\n') {
@@ -410,7 +413,7 @@ void ler_cor(char* cor) {
 void ler_marca(char* marca) {
     fflush(stdin);
     printf("Digite a marca do produto: ");
-    fgets(marca, 25, stdin); 
+    fgets(marca, 12, stdin); 
     int tam = strlen(marca);
     if (tam > 0 && marca[tam - 1] == '\n') {  
         marca[tam - 1] = '\0';
@@ -420,7 +423,7 @@ void ler_marca(char* marca) {
         printf("Marca invalida: %s\n", marca);
         printf("Informe novamente a marca: ");
         fflush(stdin);
-        fgets(marca, 25, stdin); 
+        fgets(marca, 12, stdin); 
         // Remove o caractere de nova linha do final, caso exista
         tam = strlen(marca);
         if (tam > 0 && marca[tam - 1] == '\n') {

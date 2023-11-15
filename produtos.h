@@ -2,10 +2,10 @@
 typedef struct produto Produto;
 
 struct produto {
-    char cod[15];
-	char desc[50];
-    char marca[25];
-    char cor[25];
+    char cod[14];
+	char desc[35];
+    char marca[12];
+    char cor[12];
 	int quant;
 	float valor;
 	char status;

@@ -2,11 +2,31 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
 #include "util.h"
 
 
 #define true 1
 #define false 0
+
+
+
+int validarCod(char* cod) { 
+  int tam;
+
+  tam = strlen(cod);
+  if (tam  < 13 || tam > 14) {
+    return false;
+  }
+  for (int c = 0; c < tam; c++) {
+    if (!ehDigito(cod[c])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
 
 /// Pausa
 void delay(int segundos) {
@@ -63,6 +83,7 @@ int ehLetra(char c) {
 }
 
 
+
 int ehValido(char c) {
   if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
     return true;
@@ -76,6 +97,7 @@ int ehValido(char c) {
     return false;
   }
 }
+
 
 /// Adaptacao da funcao do professsor Flavius Gorgonio (programa exemplo)
 /// Se mes e ano correspondem a uma data valida retorna 1, incluindo anos bissextos
@@ -99,6 +121,7 @@ int validarData(int dd, int mm, int aa) {
   return true;
 }
 
+
 /// Adaptacao da funcao do professsor Flavius Gorgonio (programa exemplo)
 
 int validarNome(char* nome) {
@@ -110,6 +133,7 @@ int validarNome(char* nome) {
   }
   return true;
 }
+
 
 /// Funcao do professsor Flavius Gorgonio (programa exemplo)
 
@@ -129,6 +153,8 @@ int validarFone(char* fone) {
 
 }
 
+
+
 /// Funcao do professsor Flavius Gorgonio (programa exemplo)
 int validarQuant(char* x) {
   int tam;
@@ -142,20 +168,6 @@ int validarQuant(char* x) {
   return true;
 }
 
-int validarCod(char* cod) { 
-  int tam;
-
-  tam = strlen(cod);
-  if (tam != 13) {
-    return false;
-  }
-  for (int i = 0; i < tam; i++) {
-    if (!ehDigito(cod[i])) {
-      return false;
-    }
-  }
-  return true;
-}
 
 
 int validarDesc(char* desc) {
@@ -167,6 +179,8 @@ int validarDesc(char* desc) {
   }
   return true;
 }
+
+
 
 int validarCor(char* cor) {
   for (int i=0; cor[i]!='\0'; i++) {
