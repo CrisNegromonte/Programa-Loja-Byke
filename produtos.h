@@ -4,8 +4,8 @@ typedef struct produto Produto;
 struct produto {
     char cod[14];
 	char desc[35];
+	char cor[12];
     char marca[12];
-    char cor[12];
 	int quant;
 	float valor;
 	char status;

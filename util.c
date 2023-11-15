@@ -15,7 +15,7 @@ int validarCod(char* cod) {
   int tam;
 
   tam = strlen(cod);
-  if (tam  < 13 || tam > 14) {
+  if (tam  < 13 || tam > 13) {
     return false;
   }
   for (int c = 0; c < tam; c++) {
@@ -156,12 +156,11 @@ int validarFone(char* fone) {
 
 
 /// Funcao do professsor Flavius Gorgonio (programa exemplo)
-int validarQuant(char* x) {
+int validarQuant(char* qt) {
   int tam;
-
-  tam = strlen(x);
+  tam = strlen(qt);
   for (int i = 0; i < tam; i++) {
-    if (!ehDigito(x[i])) {
+    if (!ehDigito(qt[i])) {
       return false;
     }
   }
@@ -242,6 +241,8 @@ int validarNumInteiro(char* numero) {
     return true;
 
 }
+
+
 
 // Funcao feita pelo Chatgpt
 

@@ -319,11 +319,11 @@ void exibe_prod(Produto *produto) {
       printf("*** CODIGO: ");
       printf("%s" ,produto->cod);
       printf("\n");
-      printf("*** MARCA: ");
-      printf("%s" ,produto->marca);
-      printf("\n");
       printf("*** COR: ");
       printf("%s" ,produto->cor);
+      printf("\n");
+      printf("*** MARCA: ");
+      printf("%s" ,produto->marca);
       printf("\n");
       printf("*** QUANTIDADE: ");
       printf("%d" ,produto->quant);
