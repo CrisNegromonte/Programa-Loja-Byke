@@ -259,27 +259,26 @@ void excluir_cliente(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
     printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
     printf("///            ===================================================          ///\n");
     printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  Excluir Cliente  = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///              = = = = = = =  Excluir Cliente  = = = = = = = =            ///\n");
+    printf("///            ===================================================          ///\n");
     printf("///                                                                         ///\n");
-    printf("***            Digite o CPF do cliente (Apenas Numeros):  ");
+    printf("\n");
+    printf("    Digite o CPF do cliente (Apenas Numeros):  ");
     fgets(cpf, 12, stdin);
     getchar();
     fp = fopen("cli.dat", "r+b");
     if (fp == NULL) {
       printf("\t\t\t*** Processando as informacoes...\n");
       sleep(1);
-      printf("\t\t\t*** Erro na abertura do arquivo!\n");
-      printf("\t\t\t*** Não foi possivel continuar...\n");
+      printf("\t\t\t*** ERRO na busca!\n");
+      printf("\t\t\t*** Talvez ainda nao exista cliente cadastrado!\n");
       printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
       getchar();
     } else {
@@ -311,31 +310,24 @@ void excluir_cliente(void) {
 
 
 
-// Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
+// Funcoes abaixo adaptadas do programa exemplo do Prof. Flavius Gorgonio
+
 void lista_clientes(void) {
     FILE* fp;
     Cliente* cliente;
     system("clear||cls");
+    printf("//////////////////////////////////////////////////////");
     printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  Lista de Clientes  = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
+    printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
+    printf("     = = =    LISTAGEM |  TODOS OS CLIENTES    = = =\n");
+    printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
+    printf("\n");                                                                        
     cliente = (Cliente*) malloc(sizeof(Cliente));
     fp = fopen("cli.dat", "rb");
     if (fp == NULL) {
-      printf("\t\t\t>>> Erro ao abrir o arquivo!\n");
+      printf("Erro na abertura!/n");
+      printf("Ainda nao exista produto cadastrado!\n");
+      printf("Cadastre um produto para continuar...\n");
       exit(1);
   }
   while (fread(cliente, sizeof(Cliente), 1, fp)) { 
@@ -366,7 +358,7 @@ void ler_cpf (char* cpf) {
 void ler_nome(char* nome) {
   fflush(stdin);
   printf("Digite o nome: ");
-  fgets(nome, 50, stdin); 
+  fgets(nome, 40, stdin); 
   // Remove o caractere de nova linha do final, se houver
   int tam = strlen(nome);
   if (tam > 0 && nome[tam - 1] == '\n') {
@@ -377,7 +369,7 @@ void ler_nome(char* nome) {
     printf("Nome invalido: %s\n", nome);
     printf("Informe um nome valido (somente caracteres): ");
     fflush(stdin);
-    fgets(nome, 50, stdin); 
+    fgets(nome, 40, stdin); 
     // Remove o caractere de nova linha do final, se houver
     tam = strlen(nome);
     if (tam > 0 && nome[tam - 1] == '\n') {
@@ -391,10 +383,10 @@ void ler_nome(char* nome) {
 void ler_email(char* email) {
     fflush(stdin);
     printf("Digite o email: ");
-    fgets(email, 40, stdin);
+    fgets(email, 33, stdin);
     while (!validarEmail(email)) {
         printf("Erro! Digite novamente um email valido: ");
-        fgets(email, 40, stdin);
+        fgets(email, 33, stdin);
         fflush(stdin);
     }
 }
@@ -465,26 +457,38 @@ void grava_cli(Cliente* cliente) {
 void exibe_cliente(Cliente* cliente) {
       char sit[20];
       if ((cliente == NULL) || (cliente->status == 'i')) {
-           printf("////////////////////////////   Cliente Inexistente! //////////////////////////\n");
+           printf(">>>>>>>>>>>>   CLIENTE INEXISTENTE! <<<<<<<<<<<\n");
+           printf("================================================ ");
            printf("\n");
            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
            getchar();
       }else{
-           printf("/////////////////////////////  CLIENTE CADASTRADO:  //////////////////////////\n");
-           printf("///                                                                        ///\n");
-           printf("CPF: %s\n", cliente->cpf);
-           printf("Nome do cliente: %s\n", cliente->nome);
-           printf("E-mail: %s\n", cliente->email);
-           printf("Data de Nasc: %s\n", cliente->nasc);
-           printf("Telefone: %s\n", cliente->fone);
-           printf("///                                                                         ///\n");
+           printf("==================================================== ");
+           printf("\n");
+           printf("|| CLIENTE: ");
+           printf("%s" ,cliente->nome);
+           printf("\n");
+           printf("|| CPF: ");
+           printf("%s" ,cliente->cpf);
+           printf("\n");
+           printf("|| TELEFONE: ");
+           printf("%s" ,cliente->fone);
+           printf("\n");
+           printf("|| DATA DE NASC.: ");
+           printf("%s" ,cliente->nasc);
+           printf("\n");
+           printf("|| E-MAIL: ");
+           printf("%s" ,cliente->email);
            if (cliente->status == 'a') {
              strcpy(sit, "Cliente Ativo");
            } else {
              strcpy(sit, "Cliente Inativo");
-           }
-           printf("Situacao do cliente: %s\n", sit);
-           printf("\n");
-  }
+        }
+        printf("|| STATUS: %s\n", sit);
+        printf("\n");
+      }
 }
-/////
+
+
+
+           

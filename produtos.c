@@ -276,7 +276,7 @@ void excluir_produto(void) {
       while (fread(produto, sizeof(Produto), 1, fp) == 1) {
         if(strcmp(produto->cod, cod) == 0) {
           printf("\n");
-          printf("\t\t\t*** Produto Encontrado ***\n");
+          printf("\t\t\t>>>> PRODUTO ENCONTRADO <<<<\n");
           printf("\n");
           produto->status = 'i';
           fseek(fp, -sizeof(Produto), SEEK_CUR);
@@ -288,10 +288,10 @@ void excluir_produto(void) {
   }
   if (!sim) {
       printf("\n");
-      printf("\t\t\tCodigo nao encontrado!\n");
+      printf("\t\t\t>>>>  Codigo nao encontrado!  <<<< \n");
   } else {
       printf("\n");
-      printf("\t\t\tProduto excluido com sucesso!\n");
+      printf("\t\t\t>>>>  Produto excluido com sucesso!  <<<< \n");
   }
   getchar();
   printf("\n");
@@ -313,22 +313,22 @@ void exibe_prod(Produto *produto) {
     } else {
       printf("================================================= ");
       printf("\n");
-      printf("*** DESCRICAO: ");
+      printf("|| DESCRICAO: ");
       printf("%s" ,produto->desc);
       printf("\n");
-      printf("*** CODIGO: ");
+      printf("|| CODIGO: ");
       printf("%s" ,produto->cod);
       printf("\n");
-      printf("*** COR: ");
+      printf("|| COR: ");
       printf("%s" ,produto->cor);
       printf("\n");
-      printf("*** MARCA: ");
+      printf("|| MARCA: ");
       printf("%s" ,produto->marca);
       printf("\n");
-      printf("*** QUANTIDADE: ");
+      printf("|| QUANTIDADE: ");
       printf("%d" ,produto->quant);
       printf("\n");
-      printf("*** VALOR: ");
+      printf("|| VALOR: ");
       printf("%.2f" ,produto->valor);
       printf("\n");
       if (produto->status == 'a') {
@@ -480,8 +480,8 @@ void lista_prod(void) {
   fp = fopen("produtos.dat", "rb");
   if (fp == NULL) {
     printf("Erro na abertura!/n");
-    printf("Talvez ainda nao exista produto cadastrado!\n");
-    printf("Nao foi possivel continuar...\n");
+    printf("Ainda nao exista produto cadastrado!\n");
+    printf("Cadastre um produto para continuar...\n");
     exit(1);
   }
   while (fread(produto, sizeof(Produto), 1, fp)) { 
