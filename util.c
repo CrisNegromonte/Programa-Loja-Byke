@@ -1,6 +1,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "util.h"
 
 
@@ -141,11 +142,11 @@ int validarQuant(char* x) {
   return true;
 }
 
-int validarCod(char* cod) {
+int validarCod(char* cod) { 
   int tam;
 
   tam = strlen(cod);
-  if (tam < 12 || tam > 13) {
+  if (tam != 13) {
     return false;
   }
   for (int i = 0; i < tam; i++) {

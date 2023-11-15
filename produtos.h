@@ -2,7 +2,7 @@
 typedef struct produto Produto;
 
 struct produto {
-    char cod[13];
+    char cod[15];
 	char desc[50];
     char marca[25];
     char cor[25];

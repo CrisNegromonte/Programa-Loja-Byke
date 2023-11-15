@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+#include <stdbool.h>
 #include <string.h>
 #include "produtos.h"
 #include "util.h"
@@ -118,7 +119,7 @@ Produto* cadastrar_produto(void) {
 Produto* pesquisar_produto(void) {
     FILE* fp;
     Produto* produto;
-    char cod[13];
+    char cod[15];
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -137,9 +138,9 @@ Produto* pesquisar_produto(void) {
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
     printf("///            Informe o codigo de barras:                                  ///\n");
-    getchar();
+    //getchar();
     fgets (cod, 13, stdin);
-    getchar();
+    //getchar();
     produto = (Produto*) malloc(sizeof(Produto));
     fp = fopen("produtos.dat", "rb");
     if (fp == NULL) {
@@ -148,8 +149,7 @@ Produto* pesquisar_produto(void) {
       printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
       getchar();
     } else {
-        while(!feof(fp)) {
-          fread(produto, sizeof(Produto), 1, fp);
+        while(fread(produto, sizeof(Produto), 1, fp)) {
           if((strcmp(produto->cod, cod) == 0) && (produto->status != 'i')) {
             exibe_prod(produto);
             fclose(fp);
@@ -166,7 +166,7 @@ Produto* pesquisar_produto(void) {
 
 
 void alterar_produto(void) {
-    char cod[13];
+    char cod[15];
     Produto* produto = (Produto*) malloc(sizeof(Produto));
     FILE* fp;
     int sim = 0;
@@ -236,7 +236,7 @@ void alterar_produto(void) {
 
 
 void excluir_produto(void) {
-    char cod[13];
+    char cod[15];
     Produto* produto = (Produto*) malloc(sizeof(Produto));
     FILE* fp;
     int sim = 0;
@@ -334,6 +334,7 @@ void exibe_prod(Produto *produto) {
     }
     printf("Status do produto: %s\n", sit);
     printf("\n");
+    getchar();
   }   
 }
 
