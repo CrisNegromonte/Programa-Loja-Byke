@@ -3,37 +3,38 @@
 #include <unistd.h>
 #include <time.h>
 #include <string.h>
-#include "vendedor.h"
+#include "colab.h"
 #include "util.h"
 
 //////
 ////// Funções
 //////
-void ler_cpf_v (char*);
-void ler_nome_v (char*);
-void ler_email_v (char*);
-void ler_nasc_v (char*);
-void ler_fone_v (char*);
+void ler_cpf_colab (char*);
+void ler_nome_colab (char*);
+void ler_func_colab (char*);
+void ler_email_colab (char*);
+void ler_nasc_colab (char*);
+void ler_fone_colab (char*);
 
 
-void menu_vendedores(void) {
-  Vendedor* vendedor;
+void menu_colab(void) {
+  Colab* colab;
 	char op;
 	do {
-		op = tela_vendedores();
+		op = tela_colab();
 		switch(op) {
-			case '1': 	vendedor = cadastrar_vendedor();
-                  grava_vendedor(vendedor);
+			case '1': 	colab = cadastrar_colab();
+                  grava_colab(colab);
                   getchar();
 					      	break;
-			case '2': 	vendedor = pesquisar_vendedor();
-                  exibe_vendedor(vendedor);
+			case '2': 	colab = pesquisar_colab();
+                  exibe_colab(colab);
 						      break;
-			case '3': 	alterar_vendedor();
+			case '3': 	alterar_colab();
 						      break;
-			case '4': 	excluir_vendedor();
+			case '4': 	excluir_colab();
 					      	break;
-      case '5':   lista_vendedores();
+      case '5':   lista_colab();
                   printf("\n");
                   printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
                   getchar();
@@ -44,77 +45,67 @@ void menu_vendedores(void) {
 
 
 
-char tela_vendedores(void) {
+char tela_colab(void) {
     char op;
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = =       SISTEMA LOJA DO CICLISTA      = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+    printf("///            = = = = =   SISTEMA LOJA DE BICICLETAS    = = = = =           ///\n");
     printf("///            ===================================================          ///\n");
     printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = = =   MENU VENDEDOR   = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = = =   MENU COLABORADORES    = = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
     printf("///                                                                         ///\n");
-    printf("///            1. Cadastrar um novo vendedor                                ///\n");
-    printf("///            2. Pesquisar os dados de um vendedor                         ///\n");
-    printf("///            3. Atualizar o cadastro de um vendedor                       ///\n");
-    printf("///            4. Excluir um vendedor do sistema                            ///\n");
-    printf("///            5. Listar todos os vendedores                                ///\n");
-    printf("///            0. Voltar ao menu anterior                                   ///\n");
+    printf("///            1. CADASTRAR um(a) novo(a) colaborador(a)                    ///\n");
+    printf("///            2. PESQUISAR os dados de um(a) colaborador(a)                ///\n");
+    printf("///            3. ATUALIZAR o cadastro de um(a) colaborador(a)              ///\n");
+    printf("///            4. EXCLUIR um colaborador(a) do sistema                      ///\n");
+    printf("///            5. LISTAR todos os colaboradores                             ///\n");
+    printf("///            0. VOLTAR ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Escolha a opcao desejada: ");
+    printf("///            Digite a opcao desejada: ");
     scanf("%c", &op);
 	  getchar();
-  	printf("///                                                                        ///\n");
-	  printf("///                                                                        ///\n");
-  	printf("//////////////////////////////////////////////////////////////////////////////\n");
+  	printf("///                                                                         ///\n");
+	  printf("///                                                                         ///\n");
+  	printf("///////////////////////////////////////////////////////////////////////////////\n");
   	printf("\n");
   	// delay(1);
 	  return op;
 }
 
-Vendedor* cadastrar_vendedor(void) {
-    Vendedor* vendedor;
+Colab* cadastrar_colab(void) {
+    Colab* colab;
 
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///           = = = = =   SISTEMA LOJA DE BICICLETAS    = = = = =           ///\n");
+    printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  CADASTRAR VENDEDOR   = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///           = = = = = =   CADASTRAR COLABORADOR(A)  = = = = = =           ///\n");
+    printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
-
-    vendedor = (Vendedor*) malloc(sizeof(Vendedor));
-
-    ler_cpf_v(vendedor->cpf);
-
-    ler_nome_v(vendedor->nome);
-
-    ler_email_v(vendedor->email);
-
-    ler_nasc_v(vendedor->nasc);
-
-    ler_fone_v(vendedor->fone);
-
-    vendedor-> status = 'a';
+    printf("\n");
+    colab = (Colab*) malloc(sizeof(Colab));
+    ler_cpf_colab(colab->cpf);
+    ler_nome_colab(colab->nome);
+    ler_func_colab(colab->func);
+    ler_email_colab(colab->email);
+    ler_nasc_colab(colab->nasc);
+    ler_fone_colab(colab->fone);
+    colab-> status = 'a';
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -124,36 +115,34 @@ Vendedor* cadastrar_vendedor(void) {
     printf("\t\t\t>>> Cadastro efetivado!\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
-    return vendedor;
+    return colab;
 }
 
 
-Vendedor* pesquisar_vendedor(void) {
+Colab* pesquisar_colab(void) {
     FILE* fp;
-    Vendedor* vendedor;
+    Colab* colab;
     char cpf[12];
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///           = = = = =   SISTEMA LOJA DE BICICLETAS    = = = = =           ///\n");
+    printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  PESQUISAR VENDEDOR = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///           = = = = =    PESQUISAR COLABORADOR(A)   = = = = = =           ///\n");
+    printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
-    printf("***            Digite o CPF do vendedor (Apenas Numeros):  ");
+    printf("\n");
+    printf(">>>  Digite o CPF do(a) colaborador(a) (Apenas Numeros/11 Dig.):  ");
     fgets (cpf, 12, stdin);
     getchar();
-    vendedor = (Vendedor*) malloc(sizeof(Vendedor));
-    fp = fopen("vendedor.dat", "rb");
+    colab = (Colab*) malloc(sizeof(Colab));
+    fp = fopen("colab.dat", "rb");
     if (fp == NULL) {
       printf("Erro na abertura do arquivo!\n");
       printf("Nao foi possivel continuar...\n");
@@ -161,26 +150,26 @@ Vendedor* pesquisar_vendedor(void) {
       getchar();
     } else {
         while(!feof(fp)) {
-          fread(vendedor, sizeof(Vendedor), 1, fp);
-          if((strcmp(vendedor->cpf, cpf) == 0) && (vendedor->status != 'i')) {
-            exibe_vendedor(vendedor);
+          fread(colab, sizeof(Colab), 1, fp);
+          if((strcmp(colab->cpf, cpf) == 0) && (colab->status != 'i')) {
+            exibe_colab(colab);
             printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
             getchar();
             fclose(fp);
-            free(vendedor);
-            return vendedor;
+            free(colab);
+            return colab;
           } 
         }
     }
     fclose(fp);
-    free(vendedor);
+    free(colab);
     return NULL;
 }
 
 
-void alterar_vendedor(void) {
+void alterar_colab(void) {
     char cpf[12];
-    Vendedor* vendedor = (Vendedor*) malloc(sizeof(Vendedor));
+    Colab* colab = (Colab*) malloc(sizeof(Colab));
     FILE* fp;
     int sim = 0;
     system("clear||cls");
@@ -189,7 +178,7 @@ void alterar_vendedor(void) {
     printf("///                                                                         ///\n");
     printf("///            ===================================================          ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = = SISTEMA LOJA DO CICLISTA   = =  = = = =          ///\n");
+    printf("///            = = = = =   SISTEMA LOJA DE BICICLETAS    = = = = =          ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
     printf("///            ===================================================          ///\n");
     printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
@@ -197,34 +186,35 @@ void alterar_vendedor(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  ALTERAR VENDEDOR   = = = = = = =              ///\n");
+    printf("///            = = = = =   ALTERAR COLABORADOR(A)  = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("***            Digite o CPF do vendedor (Apenas Numeros):  ");
+    printf(">>>   Digite o CPF do(a) colaborador(a) (Apenas Numeros):  ");
     fgets(cpf, 12, stdin);
     getchar();
-    fp = fopen("vendedor.dat", "r+b");
+    fp = fopen("colab.dat", "r+b");
     if (fp == NULL) {
-      printf("\t\t\t*** Processando as informações...\n");
+      printf("\t\t\t>>> Processando...\n");
       sleep(1);
-      printf("\t\t\t*** Erro na abertura do arquivo!\n");
-      printf("\t\t\t*** Nao foi possivel continuar...\n");
-      printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+      printf("\t\t\t>>> Erro na abertura do arquivo!\n");
+      printf("\t\t\t>>> Nao foi possivel continuar...\n");
+      printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
       getchar();
     } else {
-      while (fread(vendedor, sizeof(Vendedor), 1, fp) == 1) {
-        if(strcmp(vendedor->cpf, cpf) == 0) {
+      while (fread(colab, sizeof(Colab), 1, fp) == 1) {
+        if(strcmp(colab->cpf, cpf) == 0) {
           printf("\n");
-          printf("\t\t\t*** Vendedor Encontrado ***\n");
-          printf("\t\t\t*** Atualize o Cadastro ***\n");
+          printf("\t\t\t>>> Colaborador(a) Encontrado(a) <<<\n");
+          printf("\t\t\t>>> Atualize o Cadastro <<<\n");
           printf("\n");
-          ler_nome_v(vendedor->nome);
-          ler_email_v(vendedor->email);
-          ler_nasc_v(vendedor->nasc);
-          ler_fone_v(vendedor->fone);
-          vendedor-> status = 'a';
-          fseek(fp, -sizeof(Vendedor), SEEK_CUR);
-          fwrite(vendedor, sizeof(Vendedor), 1, fp);
+          ler_nome_colab(colab->nome);
+          ler_nome_colab(colab->func);
+          ler_email_colab(colab->email);
+          ler_nasc_colab(colab->nasc);
+          ler_fone_colab(colab->fone);
+          colab-> status = 'a';
+          fseek(fp, -sizeof(Colab), SEEK_CUR);
+          fwrite(colab, sizeof(Colab), 1, fp);
           sim = 1;
           break;
         }
@@ -235,20 +225,20 @@ void alterar_vendedor(void) {
         printf("\t\t\t CPF nao encontrado!\n");
     } else {
         printf("\n");
-        printf("\t\t\t Vendedor atualizado com sucesso!\n");
+        printf("\t\t\t Colaborador(a) atualizado(a) com sucesso!\n");
     }
   printf("\n");
-  printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
+  printf("\t\t\t>>> Tecle <ENTER> para continuar...  <<<\n");
   getchar();
   fclose(fp);
-  free(vendedor);
+  free(colab);
 }
 
 
 
-void excluir_vendedor(void) {
+void excluir_colab(void) {
     char cpf[12];
-    Vendedor* vendedor = (Vendedor*) malloc(sizeof(Vendedor));
+    Colab* colab = (Colab*) malloc(sizeof(Colab));
     FILE* fp;
     int sim = 0;
     system("clear||cls");
@@ -257,7 +247,7 @@ void excluir_vendedor(void) {
     printf("///                                                                         ///\n");
     printf("///            ===================================================          ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
+    printf("///            = = = = =   SISTEMA LOJA DE BICICLETAS    = = = = =          ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
     printf("///            ===================================================          ///\n");
     printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
@@ -265,29 +255,29 @@ void excluir_vendedor(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  EXCLUIR  VENDEDOR  = = = = = = =              ///\n");
+    printf("///            = = = = =  EXCLUIR  COLABORADOR(A)  = = = = = =              ///\n");
     printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
     printf("///                                                                         ///\n");
-    printf("***            Digite o CPF do vendedor (Apenas Numeros):  ");
+    printf(">>>   Digite o CPF do(a) colaborador(a) (Apenas Numeros):  ");
     fgets(cpf, 12, stdin);
     getchar();
-    fp = fopen("vendedor.dat", "r+b");
+    fp = fopen("colab.dat", "r+b");
     if (fp == NULL) {
-      printf("\t\t\t*** Processando as informacoes...\n");
+      printf("\t\t\t>>>   Processando...  <<<\n");
       sleep(1);
-      printf("\t\t\t*** Erro na abertura do arquivo!\n");
-      printf("\t\t\t*** Nao foi possivel continuar...\n");
-      printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+      printf("\t\t\t>>> Erro na abertura do arquivo!\n");
+      printf("\t\t\t>>> Nao foi possivel continuar...\n");
+      printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
       getchar();
     } else {
-      while (fread(vendedor, sizeof(Vendedor), 1, fp) == 1) {
-        if(strcmp(vendedor->cpf, cpf) == 0) {
+      while (fread(colab, sizeof(Colab), 1, fp) == 1) {
+        if(strcmp(colab->cpf, cpf) == 0) {
           printf("\n");
-          printf("\t\t\t*** Vendedor Encontrado ***\n");
+          printf("\t\t\t>>> Colaborador(a) Encontrado(a) <<<\n");
           printf("\n");
-          vendedor->status = 'i';
-          fseek(fp, -sizeof(Vendedor), SEEK_CUR);
-          fwrite(vendedor, sizeof(Vendedor), 1, fp);
+          colab->status = 'i';
+          fseek(fp, -sizeof(Colab), SEEK_CUR);
+          fwrite(colab, sizeof(Colab), 1, fp);
           sim = 1;
           break;
         }
@@ -295,22 +285,22 @@ void excluir_vendedor(void) {
     }
     if (!sim) {
         printf("\n");
-        printf("\t\t\t Vendedor nao encontrado!\n");
+        printf("\t\t\t Colaborador(a) nao encontrado!\n");
     } else {
         printf("\n");
-        printf("\t\t\t Vendedor excluido com sucesso!\n");
+        printf("\t\t\t Colaborador(a) excluido(a) com sucesso!\n");
     }
   printf("\n");
   printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
   getchar();
   fclose(fp);
-  free(vendedor);
+  free(colab);
 }
 
 
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
 
-void ler_cpf_v (char* cpf) {
+void ler_cpf_colab (char* cpf) {
     fflush(stdin);
     printf("Digite o CPF (somente numeros): ");
     fgets (cpf, 12, stdin);
@@ -322,10 +312,10 @@ void ler_cpf_v (char* cpf) {
 }
 
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
-void ler_nome_v (char* nome) {
+void ler_nome_colab (char* nome) {
   fflush(stdin);
   printf("Digite o nome: ");
-  fgets(nome, 50, stdin); 
+  fgets(nome, 38, stdin); 
   // Remove o caractere de nova linha do final, se houver
   int tam = strlen(nome);
   if (tam > 0 && nome[tam - 1] == '\n') {
@@ -336,7 +326,7 @@ void ler_nome_v (char* nome) {
     printf("Nome invalido: %s\n", nome);
     printf("Informe um nome valido (somente caracteres): ");
     fflush(stdin);
-    fgets(nome, 50, stdin); 
+    fgets(nome, 38, stdin); 
     // Remove o caractere de nova linha do final, se houver
     tam = strlen(nome);
     if (tam > 0 && nome[tam - 1] == '\n') {
@@ -347,21 +337,47 @@ void ler_nome_v (char* nome) {
 }
 
 
+
+void ler_func_colab (char* func) {
+  fflush(stdin);
+  printf("Digite a funcao: ");
+  fgets(func, 15, stdin); 
+  // Remove o caractere de nova linha do final, se houver
+  int tam = strlen(func);
+  if (tam > 0 && func[tam - 1] == '\n') {
+    func[tam - 1] = '\0';
+    fflush(stdin);
+  }
+  while (!validarFunc(func)) {
+    printf("Nome de funcao invalido: %s\n", func);
+    printf("Informe um nome valido de funcao (somente caracteres): ");
+    fflush(stdin);
+    fgets(func, 15, stdin); 
+    // Remove o caractere de nova linha do final, se houver
+    tam = strlen(func);
+    if (tam > 0 && func[tam - 1] == '\n') {
+      func[tam - 1] = '\0';
+      fflush(stdin);
+    }
+  } 
+}
+
+
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
-void ler_email_v (char* email) {
+void ler_email_colab (char* email) {
     fflush(stdin);
     printf("Digite o email: ");
-    fgets(email, 40, stdin);
+    fgets(email, 33, stdin);
     while (!validarEmail(email)) {
         printf("Erro! Digite novamente um email valido: ");
-        fgets(email, 40, stdin);
+        fgets(email, 33, stdin);
         fflush(stdin);
     }
 }
 
 
 // Funcao feita parcialmente pelo chat GPT, adaptada por mim
-void ler_nasc_v (char* nasc) {
+void ler_nasc_colab (char* nasc) {
   int dia, mes, ano;
   char dd[3], mm[3], aaaa[5];
 
@@ -391,7 +407,7 @@ void ler_nasc_v (char* nasc) {
 
 
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
-void ler_fone_v (char* fone) {
+void ler_fone_colab (char* fone) {
     fflush (stdin);
     printf("Digite o telefone com DDD (somente numeros): ");
     fgets (fone, 12, stdin);
@@ -403,81 +419,84 @@ void ler_fone_v (char* fone) {
     }
 } 
 
-void grava_vendedor(Vendedor* vendedor) {
+void grava_colab(Colab* colab) {
   FILE* fp;
-  fp = fopen("vendedor.dat", "ab");
+  fp = fopen("colab.dat", "ab");
   if (fp == NULL) {
-    printf("\t\t\t>>> Processando as informacoes...\n");
+    printf("\t\t\t>>> Processando...  <<<\n");
     sleep(1);
-    printf("\t\t\t>>> Erro! Nao foi possivel continuar! \n");
+    printf("\t\t\t>>>  Erro! Nao foi possivel continuar!  <<< \n");
     getchar();
   }
-  fwrite(vendedor, sizeof(Vendedor), 1, fp);
+  fwrite(colab, sizeof(Colab), 1, fp);
   fclose(fp);
-  free(vendedor);
+  free(colab);
 }
 
 
 
-void lista_vendedores(void) {
+void lista_colab(void) {
     FILE* fp;
-    Vendedor* vendedor;
+    Colab* colab;
     system("clear||cls");
     printf("//////////////////////////////////////////////////////");
     printf("\n");
     printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
-    printf("     = = =     LISTAGEM |  VENDEDORES(AS)      = = =\n");
+    printf("     = = =      LISTAGEM |  COLABORADORES      = = =\n");
     printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
     printf("\n");                                                                        
-    vendedor = (Vendedor*) malloc(sizeof(Vendedor));
-    fp = fopen("vendedor.dat", "rb");
+    colab = (Colab*) malloc(sizeof(Colab));
+    fp = fopen("colab.dat", "rb");
     if (fp == NULL) {
       printf("Erro na abertura!/n");
-      printf("Talvez ainda nao exista vendedor(a) cadastrado(a)!\n");
+      printf("Talvez ainda nao exista colaborador(a) cadastrado(a)!\n");
       printf("Realize um cadastro para continuar...\n");
       exit(1);
   }
-  while (fread(vendedor, sizeof(Vendedor), 1, fp)) { 
-    if (vendedor->status != 'i') {
-      exibe_vendedor(vendedor);
+  while (fread(colab, sizeof(Colab), 1, fp)) { 
+    if (colab->status != 'i') {
+      exibe_colab(colab);
     }
   }
   fclose(fp);
-  free(vendedor);
+  free(colab);
 	   
 }
 
 
 
-void exibe_vendedor(Vendedor* vendedor) {
+void exibe_colab(Colab* colab) {
       char sit[20];
-      if ((vendedor == NULL) || (vendedor->status == 'i')) {
-           printf(">>>>>>>>    VENDEDOR(A) INEXISTENTE!    <<<<<<<\n");
-           printf("================================================ ");
+      if ((colab == NULL) || (colab->status == 'i')) {
+           printf(">>>>>>>>>>  COLABORADOR(A) INEXISTENTE!   <<<<<<<<<\n");
+           printf("==================================================== ");
            printf("\n");
            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
            getchar();
       }else{
            printf("==================================================== ");
            printf("\n");
-           printf("|| CLIENTE: ");
-           printf("%s" ,vendedor->nome);
-           printf("\n");
            printf("|| CPF: ");
-           printf("%s" ,vendedor->cpf);
+           printf("%s" ,colab->cpf);
+           printf("\n");
+           printf("|| COLABORADOR(A): ");
+           printf("%s" ,colab->nome);
+           printf("\n");
+           printf("|| FUNCAO: ");
+           printf("%s" ,colab->func);
            printf("\n");
            printf("|| TELEFONE: ");
-           printf("%s" ,vendedor->fone);
+           printf("%s" ,colab->fone);
            printf("\n");
            printf("|| DATA DE NASC.: ");
-           printf("%s" ,vendedor->nasc);
+           printf("%s" ,colab->nasc);
            printf("\n");
            printf("|| E-MAIL: ");
-           printf("%s" ,vendedor->email);
-           if (vendedor->status == 'a') {
-             strcpy(sit, "Vendedor(a) Ativo(a)");
+           printf("%s" ,colab->email);
+           if (colab->status == 'a') {
+             strcpy(sit, "Colaborador(a) Ativo(a)");
            } else {
-             strcpy(sit, "Vendedor(a) Inativo(a)");
+             strcpy(sit, "Colaborador(a) Inativo(a)");
         }
         printf("|| STATUS: %s\n", sit);
         printf("\n");

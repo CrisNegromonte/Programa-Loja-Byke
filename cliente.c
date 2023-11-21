@@ -49,18 +49,16 @@ char tela_clientes(void) {
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = =       SISTEMA LOJA DO CICLISTA      = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///           = = = =       SISTEMA LOJA DO CICLISTA      = = = =           ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///             Developed by @CrisNegromonte -- since Ago, 2023             ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = =  MENU CLIENTE = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///            = = = = = = = =   MENU CLIENTE    = = = = = = =              ///\n");
+    printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///            1. Cadastrar um novo cliente                                 ///\n");
     printf("///            2. Pesquisar os dados de um cliente                          ///\n");
@@ -87,33 +85,25 @@ Cliente* cadastrar_cliente(void) {
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = =     SISTEMA LOJA DO CICLISTA    = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///           = = = = =    SISTEMA LOJA DO CICLISTA     = = = = =           ///\n");
+    printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =  Cadastrar Cliente  = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///             = = = = = = =  CADASTRAR CLIENTE  = = = = = = =             ///\n");
+    printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     
     cliente = (Cliente*) malloc(sizeof(Cliente));
-
     ler_cpf(cliente->cpf);
-
     ler_nome(cliente->nome);
-
+    ler_cidade(cliente->cidade);
     ler_email(cliente->email);
-
     ler_nasc(cliente->nasc);
-
     ler_fone(cliente->fone);
-    
     cliente->status = 'a';
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
@@ -135,21 +125,18 @@ Cliente* pesquisar_cliente(void) {
 
     system("clear||cls");
     printf("\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
-    printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
-    printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = = = Pesquisar Cliente = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///                                                                         ///\n");
+    printf("////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                          ///\n");
+    printf("///           ===================================================            ///\n");
+    printf("///           = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =            ///\n");
+    printf("///           ===================================================            ///\n");
+    printf("///                                                                          ///\n");
+    printf("////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                          ///\n");
+    printf("///             ===============================================              ///\n");
+    printf("///             = = = = = =    PESQUISAR CLIENTE    = = = = = =              ///\n");
+    printf("///             ===============================================              ///\n");
+    printf("///                                                                          ///\n");
     printf("***            Digite o CPF do cliente (Apenas Numeros):  ");
     fgets (cpf, 12, stdin);
     getchar();
@@ -187,18 +174,15 @@ void alterar_cliente(void) {
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            = = = = = = SISTEMA LOJA DO CICLISTA   = =  = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///           = = = = = = SISTEMA LOJA DO CICLISTA   = =  = = = =           ///\n");
+    printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = = = =   Alterar Cliente   = = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///             ===============================================             ///\n");
+    printf("///             = = = = = =   ATUALIZAR CLIENTE   = = = = = = =             ///\n");
+    printf("///             ===============================================             ///\n");
     printf("///                                                                         ///\n");
     printf("***             Digite o CPF do cliente (Apenas Numeros):  ");
     fgets(cpf, 12, stdin);
@@ -220,13 +204,11 @@ void alterar_cliente(void) {
           printf("\n");
 
           ler_nome(cliente->nome);
-
-          ler_email(cliente->email);
-
-          ler_nasc(cliente->nasc);
-
+          ler_cidade(cliente->cidade);
           ler_fone(cliente->fone);
-
+          ler_email(cliente->email);
+          ler_nasc(cliente->nasc);
+          ler_fone(cliente->fone);
           cliente->status = 'a';
 
           fseek(fp, -sizeof(Cliente), SEEK_CUR);
@@ -259,16 +241,15 @@ void excluir_cliente(void) {
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///            = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =          ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///           = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =           ///\n");
+    printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            ===================================================          ///\n");
-    printf("///              = = = = = = =  Excluir Cliente  = = = = = = = =            ///\n");
-    printf("///            ===================================================          ///\n");
+    printf("///           ===================================================           ///\n");
+    printf("///            = = = = = = =   EXCLUIR CLIENTE   = = = = = = = =            ///\n");
+    printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("\n");
     printf("    Digite o CPF do cliente (Apenas Numeros):  ");
@@ -317,18 +298,18 @@ void lista_clientes(void) {
     FILE* fp;
     Cliente* cliente;
     system("clear||cls");
-    printf("//////////////////////////////////////////////////////");
+    printf("////////////////////////////////////////////////////////");
     printf("\n");
-    printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
-    printf("     = = =    LISTAGEM |  TODOS OS CLIENTES    = = =\n");
-    printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
+    printf("   ===================================================\n");
+    printf("   = = = =    LISTAGEM |  TODOS OS CLIENTES    = = = =\n");
+    printf("   ===================================================\n");
     printf("\n");                                                                        
     cliente = (Cliente*) malloc(sizeof(Cliente));
     fp = fopen("cli.dat", "rb");
     if (fp == NULL) {
       printf("Erro na abertura!/n");
-      printf("Ainda nao exista produto cadastrado!\n");
-      printf("Cadastre um produto para continuar...\n");
+      printf("Talvez ainda nao exista clientes cadastrados!\n");
+      printf("Cadastre um cliente para continuar...\n");
       exit(1);
   }
   while (fread(cliente, sizeof(Cliente), 1, fp)) { 
@@ -358,7 +339,7 @@ void ler_cpf (char* cpf) {
 
 void ler_nome(char* nome) {
   fflush(stdin);
-  printf("Digite o nome: ");
+  printf("Digite o nome (sem acentos): ");
   fgets(nome, 40, stdin); 
   // Remove o caractere de nova linha do final, se houver
   int tam = strlen(nome);
@@ -368,7 +349,7 @@ void ler_nome(char* nome) {
   }
   while (!validarNome(nome)) {
     printf("Nome invalido: %s\n", nome);
-    printf("Informe um nome valido (somente caracteres): ");
+    printf("Informe um nome valido (somente caracteres/sem acentos): ");
     fflush(stdin);
     fgets(nome, 40, stdin); 
     // Remove o caractere de nova linha do final, se houver
@@ -379,6 +360,35 @@ void ler_nome(char* nome) {
     }
   } 
 }
+
+
+
+void ler_cidade(char* cidade) {
+  fflush(stdin);
+  printf("Cidade (sem acentos): ");
+  fgets(cidade, 25, stdin); 
+  // Remove o caractere de nova linha do final, se houver
+  int tam = strlen(cidade);
+  if (tam > 0 && cidade[tam - 1] == '\n') {
+    cidade[tam - 1] = '\0';
+    fflush(stdin);
+  }
+  while (!validarCidade(cidade)) {
+    printf("Cidade invalida: %s\n", cidade);
+    printf("Informe um nome de cidade valido (somente caracteres/sem acentos): ");
+    fflush(stdin);
+    fgets(cidade, 25, stdin); 
+    // Remove o caractere de nova linha do final, se houver
+    tam = strlen(cidade);
+    if (tam > 0 && cidade[tam - 1] == '\n') {
+      cidade[tam - 1] = '\0';
+      fflush(stdin);
+    }
+  } 
+}
+
+
+
 
 // Funcao retirada do programa exemplo do Prof. Flavius Gorgonio
 void ler_email(char* email) {
@@ -458,22 +468,25 @@ void grava_cli(Cliente* cliente) {
 void exibe_cliente(Cliente* cliente) {
       char sit[20];
       if ((cliente == NULL) || (cliente->status == 'i')) {
-           printf(">>>>>>>>>>>>   CLIENTE INEXISTENTE! <<<<<<<<<<<\n");
-           printf("================================================ ");
+           printf(">>>>>>>>>>>>>>   CLIENTE INEXISTENTE! <<<<<<<<<<<<<\n");
+           printf("==================================================== ");
            printf("\n");
            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
            getchar();
       }else{
            printf("==================================================== ");
            printf("\n");
-           printf("|| CLIENTE: ");
-           printf("%s" ,cliente->nome);
-           printf("\n");
            printf("|| CPF: ");
            printf("%s" ,cliente->cpf);
            printf("\n");
+           printf("|| CLIENTE: ");
+           printf("%s" ,cliente->nome);
+           printf("\n");
            printf("|| TELEFONE: ");
            printf("%s" ,cliente->fone);
+           printf("\n");
+           printf("|| CIDADE: ");
+           printf("%s" ,cliente->cidade);
            printf("\n");
            printf("|| DATA DE NASC.: ");
            printf("%s" ,cliente->nasc);

@@ -3,14 +3,20 @@ typedef struct produto Produto;
 
 struct produto {
     char cod[14];
-	char desc[35];
+	char desc[40];
 	char cor[12];
     char marca[12];
 	int quant;
 	float valor;
 	char status;
 	char sit[20];
+    struct Produto* prox; // Adicionando o ponteiro para o próximo produto
 };
+
+typedef struct Node {
+    Produto produto;
+    struct Node* prox;
+} Node;
 
 char tela_produtos(void);
 void menu_produtos(void);

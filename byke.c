@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <time.h>
 #include "cliente.h"
-#include "vendedor.h"
+#include "colab.h"
 #include "produtos.h"
 #include "vendas.h"
 #include "relatorios.h"
@@ -37,7 +37,7 @@ int main(void){
         switch(op){
             case '1': 	menu_clientes();
                         break;
-            case '2': 	menu_vendedores();
+            case '2': 	menu_colab();
                         break;
             case '3': 	menu_produtos();
                         break;
@@ -70,15 +70,17 @@ char menu_principal(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = =  SISTEMA LOJA DO CICLISTA  = = = = =               ///\n");
+    printf("///          ==========  SISTEMA LOJA DE BICICLETAS   ==========            ///\n");
+    printf("///         >> Para melhor visualizacao, navegue em tela cheia <<           ///\n");
+    printf("///          ===================================================            ///\n");
     printf("///                                                                         ///\n");
-    printf("///            1. Modulo Cliente                                            ///\n");
-    printf("///            2. Modulo Vendedor                                           ///\n");
-    printf("///            3. Modulo Produto                                            ///\n");
-    printf("///            4. Modulo Vendas                                             ///\n");
-    printf("///            5. Modulo Relatorios                                         ///\n");
+    printf("///            1. CLIENTES | Modulo                                         ///\n");
+    printf("///            2. COLABORADORES |                                           ///\n");
+    printf("///            3. PRODUTOS | Modulo                                         ///\n");
+    printf("///            4. VENDAS | Modulo                                           ///\n");
+    printf("///            5. RELATORIOS | Modulo                                       ///\n");
     printf("///            6. Informacoes Sobre o Sistema                               ///\n");
-    printf("///            0. Sair                                                      ///\n");
+    printf("///            0. ENCERRAR SISTEMA                                          ///\n");
     printf("///                                                                         ///\n");
 	printf("///           Digite a opcao desejada: ");
 	scanf("%c", &op);

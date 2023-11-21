@@ -10,6 +10,8 @@ int ehValido(char);
 int validarData(int, int, int);
 int validarCpf(char*);
 int validarNome(char*);
+int validarFunc(char*);
+int validarCidade(char*);
 int validarQuant(char*);
 int validarNumInteiro(char*);
 int validarEmail(char*);

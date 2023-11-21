@@ -350,7 +350,7 @@ void exibe_prod(Produto *produto) {
 void ler_desc(char* desc) {
     fflush(stdin);
     printf("Digite a descricao do produto: ");
-    fgets(desc, 35, stdin); 
+    fgets(desc, 40, stdin); 
     int tam = strlen(desc);
     if (tam > 0 && desc[tam - 1] == '\n') {  
         desc[tam - 1] = '\0';
@@ -360,7 +360,7 @@ void ler_desc(char* desc) {
         printf("Descricao invalida: %s\n", desc);
         printf("Informe novamente a descricao: ");
         fflush(stdin);
-        fgets(desc, 35, stdin); 
+        fgets(desc, 40, stdin); 
         // Remove o caractere de nova linha do final, caso exista
         tam = strlen(desc);
         if (tam > 0 && desc[tam - 1] == '\n') {

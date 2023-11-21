@@ -135,6 +135,29 @@ int validarNome(char* nome) {
 }
 
 
+int validarCidade(char* cidade) {
+  for (int i=0; cidade[i]!='\0'; i++) {
+    if (!ehLetra(cidade[i])) {
+      return false;
+    }
+
+  }
+  return true;
+}
+
+
+int validarFunc(char* func) {
+  for (int i=0; func[i]!='\0'; i++) {
+    if (!ehLetra(func[i])) {
+      return false;
+    }
+
+  }
+  return true;
+}
+
+
+
 /// Funcao do professsor Flavius Gorgonio (programa exemplo)
 
 int validarFone(char* fone) {
