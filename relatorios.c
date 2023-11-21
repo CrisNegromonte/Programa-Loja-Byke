@@ -70,11 +70,12 @@ char tela_relat(void) {
     printf("///            6. PRODUTOS - por MARCA                                      ///\n");
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Escolha a opcao desejada: ");
+    printf("\n");
+    printf(">>>>>>>       Escolha a opcao desejada: ");
     scanf("%c", &op);
     getchar();
     printf("\n");
-    printf("\t\t\t>>>>>> Processando... <<<<<<<\n");
+    printf(">>>>>>  Processando... <<<<<\n");
     sleep(1);
     return op;
  }
@@ -92,14 +93,15 @@ void relat_todos_clientes(void) {
     printf("                          = = = = = = = = = = = = = = = = = = = = = = = =                  \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
+    printf("\n");
     cliente = (Cliente*) malloc(sizeof(Cliente));
     fp = fopen("cli.dat", "rb");
     if (fp == NULL) {
-      printf("\t\t\t>>>>>>>>  Processando...   <<<<<<<<\n");
+      printf(">>>>>>>>  Processando...   <<<<<<<<\n");
       sleep(1);
-      printf("\t\t\t>>> ERRO ao abrir o arquivo!\n");
-      printf("\t\t\t>>> Verifique se ja existe cliente cadastrado! \n");
-      printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+      printf(">>> ERRO ao abrir o arquivo!\n");
+      printf(">>> Verifique se ja existe cliente cadastrado! \n");
+      printf(">>> Tecle <ENTER> para voltar...\n");
       getchar();
     }
     printf("---------------------------------------------------------------------------------------------------------------------------------");
@@ -152,14 +154,15 @@ void relat_todos_colab(void) {
     printf("                          = = = = = = = = = = = = = = = = = = = = = = = =                  \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
+    printf("\n");
     colab = (Colab*) malloc(sizeof(Colab));
     fp = fopen("colab.dat", "rb");
     if (fp == NULL) {
-      printf("\t\t\t>>>>>>>>  Processando...   <<<<<<<<\n");
+      printf(">>>>>>>>  Processando...   <<<<<<<<\n");
       sleep(1);
-      printf("\t\t\t>>> ERRO ao abrir o arquivo!\n");
-      printf("\t\t\t>>> Verifique se ja existe colaborador(a) cadastrado(a)! \n");
-      printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+      printf(">>> ERRO ao abrir o arquivo!\n");
+      printf(">>> Verifique se ja existe colaborador(a) cadastrado(a)! \n");
+      printf(">>> Tecle <ENTER> para voltar...\n");
       getchar();
     }
     printf("---------------------------------------------------------------------------------------------------------------------------------");
@@ -213,14 +216,15 @@ void relat_todos_produtos(void) {
     printf("                          = = = = = = = = = = = = = = = = = = = = = = = =                  \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
+    printf("\n");
     produto = (Produto*) malloc(sizeof(Produto));
     fp = fopen("produtos.dat", "rb");
     if (fp == NULL) {
         printf("\t\t\t>>> Processando...\n");
         sleep(1);
-        printf("\t\t\t>>> ERRO ao abrir o arquivo!\n");
-        printf("\t\t\t>>> Verifique se ja existe produto cadastrado! \n");
-        printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+        printf(">>> ERRO ao abrir o arquivo!\n");
+        printf(">>> Verifique se ja existe produto cadastrado! \n");
+        printf(">>> Tecle <ENTER> para voltar...\n");
         getchar();
     }
      printf("---------------------------------------------------------------------------------------------------------------------------------");
@@ -266,6 +270,7 @@ void relat_todos_produtos(void) {
 
 void relat_produtos_por_marca(void) {
     char marca[12];
+    printf("\n");
     printf("Digite a marca desejada(sem acentos): ");
     scanf("%11s", marca);
     getchar();
@@ -283,9 +288,9 @@ void relat_produtos_por_marca(void) {
 
     fp = fopen("produtos.dat", "rb");
     if (fp == NULL) {
-        printf("\t\t\t>>> ERRO ao abrir o arquivo!\n");
-        printf("\t\t\t>>> Verifique se já existe um produto cadastrado!\n");
-        printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+        printf(">>> ERRO ao abrir o arquivo!\n");
+        printf(">>> Verifique se já existe um produto cadastrado!\n");
+        printf(">>> Tecle <ENTER> para voltar...\n");
         getchar();
         return;
     }
@@ -297,7 +302,7 @@ void relat_produtos_por_marca(void) {
         if (produto.status != 'i' && strcmp(produto.marca, marca) == 0) {
             Node* novo = (Node*)malloc(sizeof(Node));
             if (novo == NULL) {
-                printf("\t\t\t>>> Erro de alocacao de memoria! <<<\n");
+                printf(">>> Erro de alocacao de memoria! <<<\n");
                 return;
             }
 
@@ -317,13 +322,13 @@ void relat_produtos_por_marca(void) {
     fclose(fp);
 
     if (inicio == NULL) {
-        printf("\t\t\t>>> Nenhum produto encontrado para a marca '%s'!\n", marca);
+        printf(">>> Nenhum produto encontrado para a marca '%s'!\n", marca);
         printf("\n");
-        printf("\t\t\t>>> Por favor, verifique se digitou corretamente!\n");
-        printf("\t\t\t>>> ATENCAO: Caracteres sensives a Maiuscula e Minuscula.\n");
-        printf("\t\t\t>>> ATENCAO: Nao usar acentuacao ou caracteres especiais.\n");
+        printf(">>> Por favor, verifique se digitou corretamente!\n");
+        printf(">>> ATENCAO: Caracteres sensives a Maiuscula e Minuscula.\n");
+        printf(">>> ATENCAO: Nao usar acentuacao ou caracteres especiais.\n");
         printf("\n");
-        printf("\t\t\t>>> Tecle <ENTER> para voltar ao menu anterior...\n");
+        printf(">>> Tecle <ENTER> para voltar ao menu anterior...\n");
         getchar();
         return;
     }
@@ -366,7 +371,7 @@ void relat_produtos_por_marca(void) {
     }
     printf("\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    printf(">>> Tecle <ENTER> para voltar ao menu...  <<<\n");
     getchar();
 }
 
@@ -376,7 +381,7 @@ void relat_produtos_por_marca(void) {
 
 void relat_clientes_por_cidade(void) {
     char cidade[25];
-    printf("Digite a cidade desejada(sem acentos): ");
+    printf("Digite a cidade(sem acentos): ");
     scanf("%11s", cidade);
     getchar();
     FILE* fp;
@@ -392,9 +397,9 @@ void relat_clientes_por_cidade(void) {
     printf("                                                                                           \n");
     fp = fopen("cli.dat", "rb");
     if (fp == NULL) {
-        printf("\t\t\t>>> ERRO ao abrir o arquivo!\n");
-        printf("\t\t\t>>> Verifique se já existe clientes cadastrados!\n");
-        printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+         printf(">>> ERRO ao abrir o arquivo!\n");
+        printf(">>> Talvez ainda nao existam cadastrados!\n");
+        printf(">>> Realize um cadastro e volte aqui...\n");
         getchar();
         return;
     }
@@ -406,7 +411,7 @@ void relat_clientes_por_cidade(void) {
         if (cliente.status != 'i' && strcmp(cliente.cidade, cidade) == 0) {
             Node2* novo = (Node2*)malloc(sizeof(Node2));
             if (novo == NULL) {
-                printf("\t\t\t>>> Erro de alocacao de memoria! <<<\n");
+                printf(">>> Erro de alocacao de memoria! <<<\n");
                 return;
             }
 
@@ -428,11 +433,11 @@ void relat_clientes_por_cidade(void) {
     if (inicio == NULL) {
         printf("\t\t\t>>> Nenhum cliente encontrado na cidade '%s'!\n", cidade);
         printf("\n");
-        printf("\t\t\t>>> Por favor, verifique se digitou corretamente!\n");
-        printf("\t\t\t>>> ATENCAO: Caracteres sensives a Maiuscula e Minuscula.\n");
-        printf("\t\t\t>>> ATENCAO: Nao usar acentuacao ou caracteres especiais.\n");
+        printf(">>> Por favor, verifique se digitou corretamente!\n");
+        printf(">>> ATENCAO: Caracteres sensives a Maiuscula e Minuscula.\n");
+        printf(">>> ATENCAO: Nao usar acentuacao ou caracteres especiais.\n");
         printf("\n");
-        printf("\t\t\t>>> Tecle <ENTER> para voltar ao menu anterior...\n");
+        printf(">>> Tecle <ENTER> para voltar ao menu anterior...\n");
         getchar();
         return;
     }
@@ -475,7 +480,7 @@ void relat_clientes_por_cidade(void) {
     }
     printf("\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    printf("\t\t\t>>> Tecle <ENTER> para voltar ao menu...\n");
     getchar();
 }
 
@@ -484,7 +489,7 @@ void relat_clientes_por_cidade(void) {
 
 void relat_colab_por_funcao(void) {
     char func[15];
-    printf("Digite a funcao desejada(sem acentos): ");
+    printf("Digite a funcao (sem acentos): ");
     scanf("%15s", func);
     getchar();
     FILE* fp;
@@ -494,16 +499,16 @@ void relat_colab_por_funcao(void) {
     printf("---------------------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                          = = = = = = = = = = = = = = = = = = = = = = = =                  \n");
-    printf("                          = =  RELATORIO  | COLABORADORES POR FUCAO   = =                  \n");
+    printf("                          = =  RELATORIO  | COLABORADORES POR FUNCAO  = =                  \n");
     printf("                          = = = = = = = = = = = = = = = = = = = = = = = =                  \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
 
     fp = fopen("colab.dat", "rb");
     if (fp == NULL) {
-        printf("\t\t\t>>> ERRO ao abrir o arquivo!\n");
-        printf("\t\t\t>>> Verifique se já existe colaboradores cadastrados!\n");
-        printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+        printf(">>> ERRO ao abrir o arquivo!\n");
+        printf(">>> Talvez ainda nao existam colaboradores cadastrados!\n");
+        printf(">>> Realize um cadastro e volte aqui...\n");
         getchar();
         return;
     }
@@ -566,7 +571,7 @@ void relat_colab_por_funcao(void) {
     printf("\n");
     atual = inicio;
     while (atual != NULL) {
-        printf("%-25s", atual->colab.func);
+        printf("%-15s", atual->colab.func);
         printf("||");
         printf("%-12s", atual->colab.cpf);
         printf("||");
@@ -585,7 +590,7 @@ void relat_colab_por_funcao(void) {
     }
     printf("\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    printf(">>> Tecle <ENTER> para voltar ao menu...\n");
     getchar();
 }
 

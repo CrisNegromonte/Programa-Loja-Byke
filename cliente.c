@@ -35,7 +35,7 @@ void menu_clientes(void) {
 			  case '4': 	excluir_cliente();
 						        break;
         case '5': 	lista_clientes();
-                    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+                    printf("\t\t\t>>>  Tecle <ENTER> para continuar...  <<<\n");
                     getchar();
 						        break;
 	  	} 		
@@ -50,7 +50,7 @@ char tela_clientes(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///           ===================================================           ///\n");
-    printf("///           = = = =       SISTEMA LOJA DO CICLISTA      = = = =           ///\n");
+    printf("///           ==========  SISTEMA LOJA DE BICICLETAS   ==========           ///\n");
     printf("///           ===================================================           ///\n");
     printf("///             Developed by @CrisNegromonte -- since Ago, 2023             ///\n");
     printf("///                                                                         ///\n");
@@ -60,14 +60,14 @@ char tela_clientes(void) {
     printf("///            = = = = = = = =   MENU CLIENTE    = = = = = = =              ///\n");
     printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
-    printf("///            1. Cadastrar um novo cliente                                 ///\n");
-    printf("///            2. Pesquisar os dados de um cliente                          ///\n");
-    printf("///            3. Atualizar o cadastro de um cliente                        ///\n");
-    printf("///            4. Excluir um cliente do sistema                             ///\n");
-    printf("///            5. Listar todos os clientes                                  ///\n");
-    printf("///            0. Voltar ao menu anterior                                   ///\n");
+    printf("///            1. CADASTRAR novo cliente                                    ///\n");
+    printf("///            2. PESQUISAR  um cliente                                     ///\n");
+    printf("///            3. ATUALIZAR um cliente                                      ///\n");
+    printf("///            4. EXCLUIR um cliente                                        ///\n");
+    printf("///            5. LISTAR todos os clientes                                  ///\n");
+    printf("///            0. VOLTAR ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Escolha a opcao desejada: ");
+    printf(">>>>>>>>>  Escolha a opcao desejada e tecle enter: ");
     scanf("%c", &op);
 	  getchar();
 	  printf("///                                                                         ///\n");
@@ -80,13 +80,12 @@ char tela_clientes(void) {
 
 Cliente* cadastrar_cliente(void) {
     Cliente* cliente;
-
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///           ===================================================           ///\n");
-    printf("///           = = = = =    SISTEMA LOJA DO CICLISTA     = = = = =           ///\n");
+    printf("///           ==========  SISTEMA LOJA DE BICICLETAS   ==========           ///\n");
     printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -96,7 +95,7 @@ Cliente* cadastrar_cliente(void) {
     printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
-    
+    printf("\n");
     cliente = (Cliente*) malloc(sizeof(Cliente));
     ler_cpf(cliente->cpf);
     ler_nome(cliente->nome);
@@ -109,10 +108,10 @@ Cliente* cadastrar_cliente(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Realizando cadastro...\n");
+    printf("\t\t\t>>> Realizando cadastro...  <<<\n");
     sleep(1);
-    printf("\t\t\t>>> Cadastro efetivado!\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    printf("\t\t\t>>> Cadastro efetivado!  <<<\n");
+    printf("\t\t\t>>> Tecle <ENTER> para voltar ao menu...  <<<\n");
     getchar();
     return cliente;
 }
@@ -122,13 +121,12 @@ Cliente* pesquisar_cliente(void) {
     FILE* fp;
     Cliente* cliente;
     char cpf[12];
-
     system("clear||cls");
     printf("\n");
     printf("////////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                          ///\n");
     printf("///           ===================================================            ///\n");
-    printf("///           = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =            ///\n");
+    printf("///           ==========  SISTEMA LOJA DE BICICLETAS   ==========            ///\n");
     printf("///           ===================================================            ///\n");
     printf("///                                                                          ///\n");
     printf("////////////////////////////////////////////////////////////////////////////////\n");
@@ -137,21 +135,24 @@ Cliente* pesquisar_cliente(void) {
     printf("///             = = = = = =    PESQUISAR CLIENTE    = = = = = =              ///\n");
     printf("///             ===============================================              ///\n");
     printf("///                                                                          ///\n");
-    printf("***            Digite o CPF do cliente (Apenas Numeros):  ");
+    printf("\n");
+    printf("\n");
+    printf(">>>   Digite o CPF do cliente (11 digitos): ");
     fgets (cpf, 12, stdin);
     getchar();
     cliente = (Cliente*) malloc(sizeof(Cliente));
     fp = fopen("cli.dat", "rb");
     if (fp == NULL) {
-      printf("Erro! Nao encontrado! Nao podemos continuar...\n");
-      printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+      printf(">>>  Erro na abertura do arquivo!  <<<\n");
+      printf(">>>  Talvez ainda nao exista cliente cadastrado...  <<<\n");
+      printf(">>>  Realize um cadastro e volte aqui.  <<<\n");
       getchar();
     } else {
        while(!feof(fp)) {
          fread(cliente, sizeof(Cliente), 1, fp);
          if((strcmp(cliente->cpf, cpf) == 0) && (cliente->status != 'i')) {
            exibe_cliente(cliente);
-           printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
+           printf(">>> Tecle <ENTER> para voltar ao menu...  <<<\n");
            getchar();
            fclose(fp);
            free (cliente);
@@ -175,7 +176,7 @@ void alterar_cliente(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///           ===================================================           ///\n");
-    printf("///           = = = = = = SISTEMA LOJA DO CICLISTA   = =  = = = =           ///\n");
+    printf("///           ==========  SISTEMA LOJA DE BICICLETAS   ==========           ///\n");
     printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -184,23 +185,25 @@ void alterar_cliente(void) {
     printf("///             = = = = = =   ATUALIZAR CLIENTE   = = = = = = =             ///\n");
     printf("///             ===============================================             ///\n");
     printf("///                                                                         ///\n");
-    printf("***             Digite o CPF do cliente (Apenas Numeros):  ");
+    printf("\n");
+    printf("\n");
+    printf(">>>>>>>>>>  Digite o CPF do cliente (11 digitos): ");
     fgets(cpf, 12, stdin);
     getchar();
     fp = fopen("cli.dat", "r+b");
     if (fp == NULL) {
-      printf("\t\t\t*** Processando as informacoes...\n");
+      printf(">>>  Processando...  <<<\n");
       sleep(1);
-      printf("\t\t\t*** Erro na abertura do arquivo!\n");
-      printf("\t\t\t*** Nao foi possivel continuar...\n");
-      printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+      printf(">>>  Erro na abertura do arquivo!  <<<\n");
+      printf(">>>  Talvez ainda nao exista cliente cadastrado...  <<<\n");
+      printf(">>>  Realize um cadastro e volte aqui.  <<<\n");
       getchar();
     } else {
       while (fread(cliente, sizeof(Cliente), 1, fp) == 1) {
         if(strcmp(cliente->cpf, cpf) == 0) {
           printf("\n");
-          printf("\t\t\t*** Cliente Encontrado ***\n");
-          printf("\t\t\t*** Realize as alteracoes ***\n");
+          printf(">>>  Cliente Encontrado! <<<\n");
+          printf(">>>  Realize as alteracoes... <<<\n");
           printf("\n");
 
           ler_nome(cliente->nome);
@@ -220,13 +223,13 @@ void alterar_cliente(void) {
     }
     if (!sim) {
         printf("\n");
-        printf("\t\t\t CPF nao encontrado!\n");
+        printf(">>>  CPF nao encontrado!  <<<\n");
     } else {
         printf("\n");
-        printf("\t\t\t Cliente atualizado com sucesso!\n");
+        printf(">>>  Cliente atualizado com sucesso!  <<<\n");
     }
   printf("\n");
-  printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
+  printf(">>>  Tecle <ENTER> para voltar ao menu...  <<<\n");
   getchar();
   fclose(fp);
 }
@@ -242,7 +245,7 @@ void excluir_cliente(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///           ===================================================           ///\n");
-    printf("///           = = = = = =  SISTEMA LOJA DO CICLISTA   = = = = = =           ///\n");
+    printf("///           ==========  SISTEMA LOJA DE BICICLETAS   ==========           ///\n");
     printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -252,22 +255,23 @@ void excluir_cliente(void) {
     printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("\n");
-    printf("    Digite o CPF do cliente (Apenas Numeros):  ");
+    printf("\n");
+    printf(" >>>>>>>>  Digite o CPF do cliente (11 digitos):  ");
     fgets(cpf, 12, stdin);
     getchar();
     fp = fopen("cli.dat", "r+b");
     if (fp == NULL) {
-      printf("\t\t\t*** Processando as informacoes...\n");
+      printf(">>> Processando as informacoes... <<<\n");
       sleep(1);
-      printf("\t\t\t*** ERRO na busca!\n");
-      printf("\t\t\t*** Talvez ainda nao exista cliente cadastrado!\n");
-      printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+      printf(">>> ERRO na busca!  <<<\n");
+      printf(">>> Talvez ainda nao exista cliente cadastrado!  <<<\n");
+      printf(">>>  Realize um cadastro e volte aqui.  <<<\n");
       getchar();
     } else {
       while (fread(cliente_a, sizeof(Cliente), 1, fp) == 1) {
         if(strcmp(cliente_a->cpf, cpf) == 0) {
           printf("\n");
-          printf("\t\t\t*** Cliente Encontrado ***\n");
+          printf(">>>  Cliente Encontrado!  <<<\n");
           printf("\n");
           cliente_a->status = 'i';
           fseek(fp, -sizeof(Cliente), SEEK_CUR);
@@ -279,13 +283,13 @@ void excluir_cliente(void) {
     }
     if (!sim) {
         printf("\n");
-        printf("\t\t\tCPF nao encontrado!\n");
+        printf(">>>  CPF nao encontrado!  <<<\n");
     } else {
         printf("\n");
-        printf("\t\t\tCliente excluido com sucesso!\n");
+        printf(">>>  Cliente excluido com sucesso!  <<<\n");
     }
   printf("\n");
-  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+  printf(">>> Tecle <ENTER> para voltar ao menu...  <<<\n");
   getchar();
   fclose(fp);
 }
@@ -298,19 +302,20 @@ void lista_clientes(void) {
     FILE* fp;
     Cliente* cliente;
     system("clear||cls");
-    printf("////////////////////////////////////////////////////////");
+    printf("////////////////////////////////////////////////////////////////");
     printf("\n");
-    printf("   ===================================================\n");
-    printf("   = = = =    LISTAGEM |  TODOS OS CLIENTES    = = = =\n");
-    printf("   ===================================================\n");
-    printf("\n");                                                                        
+    printf("   ===========================================================\n");
+    printf("   = = = = = = =    LISTA |  TODOS OS CLIENTES   = = = = = = =\n");
+    printf("   ===========================================================\n");
+    printf("\n");      
+    printf("\n");                                                                  
     cliente = (Cliente*) malloc(sizeof(Cliente));
     fp = fopen("cli.dat", "rb");
     if (fp == NULL) {
-      printf("Erro na abertura!/n");
-      printf("Talvez ainda nao exista clientes cadastrados!\n");
-      printf("Cadastre um cliente para continuar...\n");
-      exit(1);
+      printf(">>>  Erro na abertura!  <<<\n");
+      printf(">>>  Talvez ainda nao exista clientes cadastrados!  <<<\n");
+      printf(">>>  Cadastre um cliente e retorne aqui...  <<<\n");
+      getchar();
   }
   while (fread(cliente, sizeof(Cliente), 1, fp)) { 
     if (cliente->status != 'i') {
@@ -326,10 +331,10 @@ void lista_clientes(void) {
 
 void ler_cpf (char* cpf) {
     fflush(stdin);
-    printf("Digite o CPF (somente numeros): ");
+    printf(">>> Digite o CPF (somente os 11 digitos): ");
     fgets (cpf, 12, stdin);
     while (!validarCpf (cpf)) {
-        printf("Invalido! Digite um CPF valido (somente numeros): ");
+        printf(">>> Invalido! Digite um CPF valido (somente os 11 digitos): ");
         fgets (cpf, 12, stdin);
     }
     getchar();
@@ -409,7 +414,7 @@ void ler_nasc(char* nasc) {
 
   while (1) {
     fflush(stdin);
-    printf("Data de nascimento (dia/mes/ano - dd/mm/aaaa): ");
+    printf("Data de nascimento (dd/mm/aaaa): ");
     fgets(nasc, 11, stdin);
 
     // Verificar o formato da data
@@ -451,10 +456,10 @@ void grava_cli(Cliente* cliente) {
   FILE* fp;
   fp = fopen("cli.dat", "ab");
   if (fp == NULL) {
-    printf("\t\t\t>>> Realizando operacao...\n");
+    printf(">>> Realizando operacao...  <<<\n");
     sleep(1);
-    printf("\t\t\t>>> Erro na abertura!\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    printf(">>> Erro na abertura!  <<<\n");
+    printf(">>> Tecle <ENTER> para sair...  <<<\n");
     getchar();
   }
   fwrite(cliente, sizeof(Cliente), 1, fp);
@@ -471,10 +476,10 @@ void exibe_cliente(Cliente* cliente) {
            printf(">>>>>>>>>>>>>>   CLIENTE INEXISTENTE! <<<<<<<<<<<<<\n");
            printf("==================================================== ");
            printf("\n");
-           printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+           printf(">>>  Tecle <ENTER> para continuar...  <<<\n");
            getchar();
       }else{
-           printf("==================================================== ");
+           printf("============================================================= ");
            printf("\n");
            printf("|| CPF: ");
            printf("%s" ,cliente->cpf);

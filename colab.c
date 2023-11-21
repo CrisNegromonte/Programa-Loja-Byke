@@ -36,7 +36,7 @@ void menu_colab(void) {
 					      	break;
       case '5':   lista_colab();
                   printf("\n");
-                  printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+                  printf("\t\t\t>>> Tecle <ENTER> para voltar ao menu...\n");
                   getchar();
                   break;
 		} 		
@@ -52,7 +52,7 @@ char tela_colab(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            ===================================================          ///\n");
-    printf("///            = = = = =   SISTEMA LOJA DE BICICLETAS    = = = = =           ///\n");
+    printf("///            = = = = =   SISTEMA LOJA DE BICICLETAS    = = = = =          ///\n");
     printf("///            ===================================================          ///\n");
     printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
     printf("///                                                                         ///\n");
@@ -69,7 +69,9 @@ char tela_colab(void) {
     printf("///            5. LISTAR todos os colaboradores                             ///\n");
     printf("///            0. VOLTAR ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
-    printf("///            Digite a opcao desejada: ");
+    printf("\n");
+    printf("\n");
+    printf(">>>>>>>>>>>   Digite a opcao desejada: ");
     scanf("%c", &op);
 	  getchar();
   	printf("///                                                                         ///\n");
@@ -82,7 +84,6 @@ char tela_colab(void) {
 
 Colab* cadastrar_colab(void) {
     Colab* colab;
-
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -110,10 +111,10 @@ Colab* cadastrar_colab(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Realizando cadastro...\n");
+    printf(">>> Realizando cadastro...  <<<\n");
     sleep(1);
-    printf("\t\t\t>>> Cadastro efetivado!\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    printf(">>> Cadastro efetivado!  <<<\n");
+    printf(">>> Tecle <ENTER> para continuar...  <<<\n");
     getchar();
     return colab;
 }
@@ -138,22 +139,24 @@ Colab* pesquisar_colab(void) {
     printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("\n");
-    printf(">>>  Digite o CPF do(a) colaborador(a) (Apenas Numeros/11 Dig.):  ");
+    printf("\n");
+    printf(">>>>>>> Digite o CPF do colaborador (apenas 11 numeros):  ");
     fgets (cpf, 12, stdin);
     getchar();
     colab = (Colab*) malloc(sizeof(Colab));
     fp = fopen("colab.dat", "rb");
     if (fp == NULL) {
-      printf("Erro na abertura do arquivo!\n");
-      printf("Nao foi possivel continuar...\n");
-      printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+      printf(">>>  Erro na abertura do arquivo!  <<<\n");
+      printf(">>>  Talvez ainda nao exista nenhum cadastro efetivado...  <<<\n");
+      printf(">>>  Realize um cadastro e volte aqui...  <<<\n");
+      printf(">>>  Tecle <ENTER> para sair...  <<<\n");
       getchar();
     } else {
         while(!feof(fp)) {
           fread(colab, sizeof(Colab), 1, fp);
           if((strcmp(colab->cpf, cpf) == 0) && (colab->status != 'i')) {
             exibe_colab(colab);
-            printf("\t\t\t*** Tecle <ENTER> para continuar...\n");
+            printf(">>> Tecle <ENTER> para voltar ao menu...  <<<\n");
             getchar();
             fclose(fp);
             free(colab);
@@ -177,35 +180,36 @@ void alterar_colab(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
     printf("///            = = = = =   SISTEMA LOJA DE BICICLETAS    = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
     printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = =   ALTERAR COLABORADOR(A)  = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = =    ATUALIZAR COLABORADOR    = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
     printf("///                                                                         ///\n");
-    printf(">>>   Digite o CPF do(a) colaborador(a) (Apenas Numeros):  ");
+    printf("\n");
+    printf("\n");
+    printf(">>>>>>>  Digite o CPF do colaborador (apenas 11 numeros):  ");
     fgets(cpf, 12, stdin);
     getchar();
     fp = fopen("colab.dat", "r+b");
     if (fp == NULL) {
-      printf("\t\t\t>>> Processando...\n");
+      printf(">>> Processando...  <<<\n");
       sleep(1);
-      printf("\t\t\t>>> Erro na abertura do arquivo!\n");
-      printf("\t\t\t>>> Nao foi possivel continuar...\n");
-      printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+      printf(">>>  Erro na abertura do arquivo! <<<\n");
+      printf(">>>  Talvez ainda nao exista nenhum cadastro efetivado...  <<<\n");
+      printf(">>>  Realize um cadastro e volte aqui...  <<<\n");
+      printf(">>>  Tecle <ENTER> para sair...  <<<\n");
       getchar();
     } else {
       while (fread(colab, sizeof(Colab), 1, fp) == 1) {
         if(strcmp(colab->cpf, cpf) == 0) {
           printf("\n");
-          printf("\t\t\t>>> Colaborador(a) Encontrado(a) <<<\n");
-          printf("\t\t\t>>> Atualize o Cadastro <<<\n");
+          printf(">>>  Colaborador Encontrado!  <<<\n");
+          printf(">>>  Atualize o Cadastro...  <<<\n");
+          printf("\n");
           printf("\n");
           ler_nome_colab(colab->nome);
           ler_nome_colab(colab->func);
@@ -222,13 +226,13 @@ void alterar_colab(void) {
     }
     if (!sim) {
         printf("\n");
-        printf("\t\t\t CPF nao encontrado!\n");
+        printf(">>>  CPF nao encontrado!   <<<\n");
     } else {
         printf("\n");
-        printf("\t\t\t Colaborador(a) atualizado(a) com sucesso!\n");
+        printf(">>>  cadastro atualizado com sucesso!  <<<\n");
     }
   printf("\n");
-  printf("\t\t\t>>> Tecle <ENTER> para continuar...  <<<\n");
+  printf(">>>  Tecle <ENTER> para voltar ao menu...  <<<\n");
   getchar();
   fclose(fp);
   free(colab);
@@ -246,34 +250,34 @@ void excluir_colab(void) {
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
     printf("///            ===================================================          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
     printf("///            = = = = =   SISTEMA LOJA DE BICICLETAS    = = = = =          ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
     printf("///            ===================================================          ///\n");
-    printf("///              Developed by @CrisNegromonte -- since Ago, 2023            ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
-    printf("///            = = = = =  EXCLUIR  COLABORADOR(A)  = = = = = =              ///\n");
-    printf("///            = = = = = = = = = = = = = = = = = = = = = = = =              ///\n");
+    printf("///            ===================================================          ///\n");
+    printf("///            = = = = = =   EXCLUIR  COLABORADOR(A)   = = = = = =          ///\n");
+    printf("///            ===================================================          ///\n");
     printf("///                                                                         ///\n");
-    printf(">>>   Digite o CPF do(a) colaborador(a) (Apenas Numeros):  ");
+    printf("\n");
+    printf("\n");
+    printf(">>>>>> Digite o CPF do colaborador (apenas 11 numeros): ");
     fgets(cpf, 12, stdin);
     getchar();
     fp = fopen("colab.dat", "r+b");
     if (fp == NULL) {
-      printf("\t\t\t>>>   Processando...  <<<\n");
+      printf(">>>   Processando...  <<<\n");
       sleep(1);
-      printf("\t\t\t>>> Erro na abertura do arquivo!\n");
-      printf("\t\t\t>>> Nao foi possivel continuar...\n");
-      printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+      printf(">>>  Erro na abertura do arquivo! <<<\n");
+      printf(">>>  Talvez ainda nao exista nenhum cadastro efetivado...  <<<\n");
+      printf(">>>  Realize um cadastro e volte aqui...  <<<\n");
+      printf(">>>  Tecle <ENTER> para sair...  <<<\n");
       getchar();
     } else {
       while (fread(colab, sizeof(Colab), 1, fp) == 1) {
         if(strcmp(colab->cpf, cpf) == 0) {
           printf("\n");
-          printf("\t\t\t>>> Colaborador(a) Encontrado(a) <<<\n");
+          printf(">>>  Cadastro Nao Encontrado!  <<<\n");
           printf("\n");
           colab->status = 'i';
           fseek(fp, -sizeof(Colab), SEEK_CUR);
@@ -285,13 +289,13 @@ void excluir_colab(void) {
     }
     if (!sim) {
         printf("\n");
-        printf("\t\t\t Colaborador(a) nao encontrado!\n");
+        printf(">>>  Cadastro Nao Encontrado!  <<<\n");
     } else {
         printf("\n");
-        printf("\t\t\t Colaborador(a) excluido(a) com sucesso!\n");
+        printf(">>>  Cadastro excluido com sucesso!  <<<\n");
     }
   printf("\n");
-  printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+  printf(">>>  Tecle <ENTER> para voltar ao menu...  <<<\n");
   getchar();
   fclose(fp);
   free(colab);
@@ -314,7 +318,7 @@ void ler_cpf_colab (char* cpf) {
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
 void ler_nome_colab (char* nome) {
   fflush(stdin);
-  printf("Digite o nome: ");
+  printf("Digite o nome (sem acentos): ");
   fgets(nome, 38, stdin); 
   // Remove o caractere de nova linha do final, se houver
   int tam = strlen(nome);
@@ -324,7 +328,7 @@ void ler_nome_colab (char* nome) {
   }
   while (!validarNome(nome)) {
     printf("Nome invalido: %s\n", nome);
-    printf("Informe um nome valido (somente caracteres): ");
+    printf("Informe um nome valido (sem acentos): ");
     fflush(stdin);
     fgets(nome, 38, stdin); 
     // Remove o caractere de nova linha do final, se houver
@@ -340,7 +344,7 @@ void ler_nome_colab (char* nome) {
 
 void ler_func_colab (char* func) {
   fflush(stdin);
-  printf("Digite a funcao: ");
+  printf("Digite a funcao (sem acentos): ");
   fgets(func, 15, stdin); 
   // Remove o caractere de nova linha do final, se houver
   int tam = strlen(func);
@@ -350,7 +354,7 @@ void ler_func_colab (char* func) {
   }
   while (!validarFunc(func)) {
     printf("Nome de funcao invalido: %s\n", func);
-    printf("Informe um nome valido de funcao (somente caracteres): ");
+    printf("Informe um nome valido de funcao (sem acentos): ");
     fflush(stdin);
     fgets(func, 15, stdin); 
     // Remove o caractere de nova linha do final, se houver
@@ -369,7 +373,7 @@ void ler_email_colab (char* email) {
     printf("Digite o email: ");
     fgets(email, 33, stdin);
     while (!validarEmail(email)) {
-        printf("Erro! Digite novamente um email valido: ");
+        printf(">>> Erro! Digite novamente um email valido: ");
         fgets(email, 33, stdin);
         fflush(stdin);
     }
@@ -383,7 +387,7 @@ void ler_nasc_colab (char* nasc) {
 
   while (1) {
     fflush(stdin);
-    printf("Data de nascimento (dia/mes/ano - dd/mm/aaaa): ");
+    printf("Data de nascimento (dd/mm/aaaa): ");
     fgets(nasc, 11, stdin);
 
     // Verificar o formato da data
@@ -423,9 +427,9 @@ void grava_colab(Colab* colab) {
   FILE* fp;
   fp = fopen("colab.dat", "ab");
   if (fp == NULL) {
-    printf("\t\t\t>>> Processando...  <<<\n");
+    printf(">>> Processando...  <<<\n");
     sleep(1);
-    printf("\t\t\t>>>  Erro! Nao foi possivel continuar!  <<< \n");
+    printf(">>>  Erro! Nao foi possivel continuar!  <<< \n");
     getchar();
   }
   fwrite(colab, sizeof(Colab), 1, fp);
@@ -439,11 +443,11 @@ void lista_colab(void) {
     FILE* fp;
     Colab* colab;
     system("clear||cls");
-    printf("//////////////////////////////////////////////////////");
+    printf("////////////////////////////////////////////////////////////////");
     printf("\n");
-    printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
-    printf("     = = =      LISTAGEM |  COLABORADORES      = = =\n");
-    printf("     = = = = = = = = = = = = = = = = = = = = = = = =\n");
+    printf("==============================================================\n");
+    printf("  = = = = = =   LISTA |  TODOS OS COLABORADORES  = = = = = =  \n");
+    printf("==============================================================\n");
     printf("\n");                                                                        
     colab = (Colab*) malloc(sizeof(Colab));
     fp = fopen("colab.dat", "rb");
@@ -451,7 +455,7 @@ void lista_colab(void) {
       printf("Erro na abertura!/n");
       printf("Talvez ainda nao exista colaborador(a) cadastrado(a)!\n");
       printf("Realize um cadastro para continuar...\n");
-      exit(1);
+      getchar();
   }
   while (fread(colab, sizeof(Colab), 1, fp)) { 
     if (colab->status != 'i') {
@@ -474,7 +478,7 @@ void exibe_colab(Colab* colab) {
            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
            getchar();
       }else{
-           printf("==================================================== ");
+           printf("=========================================================== ");
            printf("\n");
            printf("|| CPF: ");
            printf("%s" ,colab->cpf);
