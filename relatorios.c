@@ -478,7 +478,7 @@ void relat_clientes_por_cidade(void) {
     }
     printf("\n");
     printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar ao menu...\n");
+    printf(">>> Tecle <ENTER> para voltar ao menu...\n");
     getchar();
 }
 
@@ -518,7 +518,7 @@ void relat_colab_por_funcao(void) {
         if (colab.status != 'i' && strcmp(colab.func, func) == 0) {
             Node3* novo = (Node3*)malloc(sizeof(Node3));
             if (novo == NULL) {
-                printf("\t\t\t>>> Erro de alocacao de memoria! <<<\n");
+                printf(">>> Erro de alocacao de memoria! <<<\n");
                 return;
             }
 
