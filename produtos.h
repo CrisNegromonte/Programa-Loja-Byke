@@ -2,14 +2,14 @@
 typedef struct produto Produto;
 
 struct produto {
-    char cod[14];
-	char desc[40];
-	char cor[12];
-    char marca[12];
-	int quant;
-	float valor;
-	char status;
-	char sit[20];
+    char cod_p[14];
+	char desc_p[40];
+	char cor_p[12];
+    char marca_p[12];
+	int quant_p;
+	float valor_p;
+	char status_p;
+	char sit_p[20];
     struct Produto* prox; // Adicionando o ponteiro para o próximo produto
 };
 
@@ -30,9 +30,9 @@ void grava_prod(Produto* produto);
 void exibe_prod(Produto *produto);
 void lista_prod(void);
 
-void ler_cod(char*);
-void ler_desc(char*);
-void ler_marca(char*);
-void ler_cor(char*);
-void ler_quant(int*);
-void ler_valor(float*);
+void ler_cod_p(char*);
+void ler_desc_p(char*);
+void ler_marca_p(char*);
+void ler_cor_p(char*);
+void ler_quant_p(int*);
+void ler_valor_p(float*);

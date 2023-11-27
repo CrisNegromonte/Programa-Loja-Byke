@@ -17,21 +17,21 @@ void menu_relatorios(void) {
         switch (op) {
             case '1':   relat_todos_clientes();
                         printf("\n");
-                        printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
                         getchar();
                         break;
             case '2':   relat_clientes_por_cidade();
                         break;
             case '3':   relat_todos_colab();
                         printf("\n");
-                        printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
                         getchar();
                         break;
             case '4':   relat_colab_por_funcao();
                         break;
             case '5':   relat_todos_produtos();
                         printf("\n");
-                        printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
                         getchar();
                         break;
             case '6':   relat_produtos_por_marca();
@@ -119,18 +119,18 @@ void relat_todos_clientes(void) {
     printf("---------------------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     while (fread(cliente, sizeof(Cliente), 1, fp)) { 
-      if (cliente->status != 'i') {
-        printf("%-12s", cliente->cpf);
+      if (cliente->status_cli != 'i') {
+        printf("%-12s", cliente->cpf_cli);
         printf("||");
-        printf("%-40s", cliente->nome);
+        printf("%-40s", cliente->nome_cli);
         printf("||");
-        printf("%-25s", cliente->cidade);
+        printf("%-25s", cliente->cidade_cli);
         printf("||");
-        printf("%-12s", cliente->fone);
+        printf("%-12s", cliente->fone_cli);
         printf("||");
-        printf("%-11s", cliente->nasc);
+        printf("%-11s", cliente->nasc_cli);
         printf("||");
-        printf("%-33s", cliente->email);
+        printf("%-33s", cliente->email_cli);
         printf("\n");
       }
     }
@@ -180,18 +180,18 @@ void relat_todos_colab(void) {
     printf("---------------------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     while (fread(colab, sizeof(Colab), 1, fp)) { 
-      if (colab->status != 'i') {
-        printf("%-12s", colab->cpf);
+      if (colab->status_colab != 'i') {
+        printf("%-12s", colab->cpf_colab);
         printf("||");
-        printf("%-40s", colab->nome);
+        printf("%-40s", colab->nome_colab);
         printf("||");
-        printf("%-15s", colab->func);
+        printf("%-15s", colab->func_colab);
         printf("||");
-        printf("%-12s", colab->fone);
+        printf("%-12s", colab->fone_colab);
         printf("||");
-        printf("%-11s", colab->nasc);
+        printf("%-11s", colab->nasc_colab);
         printf("||");
-        printf("%-33s", colab->email);
+        printf("%-33s", colab->email_colab);
         printf("\n");
       }
     }
@@ -242,18 +242,18 @@ void relat_todos_produtos(void) {
      printf("---------------------------------------------------------------------------------------------------------------------------------");
      printf("\n"); 
      while (fread(produto, sizeof(Produto), 1, fp)) { 
-        if (produto->status != 'i') {
-          printf("%-14s", produto->cod);
+        if (produto->status_p != 'i') {
+          printf("%-14s", produto->cod_p);
           printf("||");
-          printf("%-40s", produto->desc);
+          printf("%-40s", produto->desc_p);
           printf("||");
-          printf("%-12s", produto->cor);
+          printf("%-12s", produto->cor_p);
           printf("||");
-          printf("%-12s", produto->marca);
+          printf("%-12s", produto->marca_p);
           printf("||");
-          printf("%-9.2f", produto->valor);
+          printf("%-9.2f", produto->valor_p);
           printf("||");
-          printf("%-5d", produto->quant);
+          printf("%-5d", produto->quant_p);
           printf("\n");
         }
      }
@@ -267,10 +267,10 @@ void relat_todos_produtos(void) {
 
 
 void relat_produtos_por_marca(void) {
-    char marca[12];
+    char marca_p[12];
     printf("\n");
     printf("Digite a marca desejada(sem acentos): ");
-    scanf("%11s", marca);
+    scanf("%11s", marca_p);
     getchar();
     FILE* fp;
     Produto produto;
@@ -297,7 +297,7 @@ void relat_produtos_por_marca(void) {
     Node* atual = NULL;
 
     while (fread(&produto, sizeof(Produto), 1, fp)) {
-        if (produto.status != 'i' && strcmp(produto.marca, marca) == 0) {
+        if (produto.status_p != 'i' && strcmp(produto.marca_p, marca_p) == 0) {
             Node* novo = (Node*)malloc(sizeof(Node));
             if (novo == NULL) {
                 printf(">>> Erro de alocacao de memoria! <<<\n");
@@ -320,7 +320,7 @@ void relat_produtos_por_marca(void) {
     fclose(fp);
 
     if (inicio == NULL) {
-        printf(">>> Nenhum produto encontrado para a marca '%s'!\n", marca);
+        printf(">>> Nenhum produto encontrado para a marca '%s'!\n", marca_p);
         printf("\n");
         printf(">>> Por favor, verifique se digitou corretamente!\n");
         printf(">>> ATENCAO: Caracteres sensives a Maiuscula e Minuscula.\n");
@@ -350,17 +350,17 @@ void relat_produtos_por_marca(void) {
     printf("\n");
     atual = inicio;
     while (atual != NULL) {
-        printf("%-14s", atual->produto.cod);
+        printf("%-14s", atual->produto.cod_p);
         printf("||");
-        printf("%-40s", atual->produto.desc);
+        printf("%-40s", atual->produto.desc_p);
         printf("||");
-        printf("%-12s", atual->produto.cor);
+        printf("%-12s", atual->produto.cor_p);
         printf("||");
-        printf("%-12s", atual->produto.marca);
+        printf("%-12s", atual->produto.marca_p);
         printf("||");
-        printf("%-9.2f", atual->produto.valor);
+        printf("%-9.2f", atual->produto.valor_p);
         printf("||");
-        printf("%-5d", atual->produto.quant);
+        printf("%-5d", atual->produto.quant_p);
         printf("\n");
 
         Node* temp = atual;
@@ -378,9 +378,9 @@ void relat_produtos_por_marca(void) {
 
 
 void relat_clientes_por_cidade(void) {
-    char cidade[25];
+    char cidade_cli[25];
     printf("Digite a cidade(sem acentos): ");
-    scanf("%11s", cidade);
+    scanf("%11s", cidade_cli);
     getchar();
     FILE* fp;
     Cliente cliente;
@@ -395,7 +395,7 @@ void relat_clientes_por_cidade(void) {
     printf("                                                                                           \n");
     fp = fopen("cli.dat", "rb");
     if (fp == NULL) {
-         printf(">>> ERRO ao abrir o arquivo!\n");
+        printf(">>> ERRO ao abrir o arquivo!\n");
         printf(">>> Talvez ainda nao existam cadastrados!\n");
         printf(">>> Realize um cadastro e volte aqui...\n");
         getchar();
@@ -406,7 +406,12 @@ void relat_clientes_por_cidade(void) {
     Node2* atual = NULL;
 
     while (fread(&cliente, sizeof(Cliente), 1, fp)) {
-        if (cliente.status != 'i' && strcmp(cliente.cidade, cidade) == 0) {
+        // char cidade1[25];
+        // char cidade2[25];
+        // strcpy(cidade1, cliente.cidade);
+        // strcpy(cidade2, cidade);
+        // toupper() ver funcao que converte string inteira em maiusculas
+        if (cliente.status_cli != 'i' && strcmp(cliente.cidade_cli, cidade_cli) == 0) {
             Node2* novo = (Node2*)malloc(sizeof(Node2));
             if (novo == NULL) {
                 printf(">>> Erro de alocacao de memoria! <<<\n");
@@ -429,7 +434,7 @@ void relat_clientes_por_cidade(void) {
     fclose(fp);
 
     if (inicio == NULL) {
-        printf("\t\t\t>>> Nenhum cliente encontrado na cidade '%s'!\n", cidade);
+        printf(">>> Nenhum cliente encontrado na cidade '%s'!\n", cidade_cli);
         printf("\n");
         printf(">>> Por favor, verifique se digitou corretamente!\n");
         printf(">>> ATENCAO: Caracteres sensives a Maiuscula e Minuscula.\n");
@@ -459,17 +464,17 @@ void relat_clientes_por_cidade(void) {
     printf("\n");
     atual = inicio;
     while (atual != NULL) {
-        printf("%-25s", atual->cliente.cidade);
+        printf("%-25s", atual->cliente.cidade_cli);
         printf("||");
-        printf("%-12s", atual->cliente.cpf);
+        printf("%-12s", atual->cliente.cpf_cli);
         printf("||");
-        printf("%-40s", atual->cliente.nome);
+        printf("%-40s", atual->cliente.nome_cli);
         printf("||");
-        printf("%-12s", atual->cliente.fone);
+        printf("%-12s", atual->cliente.fone_cli);
         printf("||");
-        printf("%-11s", atual->cliente.nasc);
+        printf("%-11s", atual->cliente.nasc_cli);
         printf("||");
-        printf("%-33s", atual->cliente.email);
+        printf("%-33s", atual->cliente.email_cli);
         printf("\n");
 
         Node2* temp = atual;
@@ -486,9 +491,9 @@ void relat_clientes_por_cidade(void) {
 
 
 void relat_colab_por_funcao(void) {
-    char func[15];
+    char func_colab[15];
     printf("Digite a funcao (sem acentos): ");
-    scanf("%15s", func);
+    scanf("%15s", func_colab);
     getchar();
     FILE* fp;
     Colab colab;
@@ -515,7 +520,7 @@ void relat_colab_por_funcao(void) {
     Node3* atual = NULL;
 
     while (fread(&colab, sizeof(Colab), 1, fp)) {
-        if (colab.status != 'i' && strcmp(colab.func, func) == 0) {
+        if (colab.status_colab != 'i' && strcmp(colab.func_colab, func_colab) == 0) {
             Node3* novo = (Node3*)malloc(sizeof(Node3));
             if (novo == NULL) {
                 printf(">>> Erro de alocacao de memoria! <<<\n");
@@ -538,13 +543,13 @@ void relat_colab_por_funcao(void) {
     fclose(fp);
 
     if (inicio == NULL) {
-        printf("\t\t\t>>> Nenhum colaborador(a) encontrado(a) na funcao '%s'!\n", func);
+        printf(">>> Nenhum colaborador(a) encontrado(a) na funcao '%s'!\n", func_colab);
         printf("\n");
-        printf("\t\t\t>>> Por favor, verifique se digitou corretamente!\n");
-        printf("\t\t\t>>> ATENCAO: Caracteres sensives a Maiuscula e Minuscula.\n");
-        printf("\t\t\t>>> ATENCAO: Nao usar acentuacao ou caracteres especiais.\n");
+        printf(">>> Por favor, verifique se digitou corretamente! <<<\n");
+        printf(">>> ATENCAO: Caracteres sensives a Maiuscula e Minuscula. <<<\n");
+        printf(">>> ATENCAO: Nao usar acentuacao ou caracteres especiais. <<<\n");
         printf("\n");
-        printf("\t\t\t>>> Tecle <ENTER> para voltar ao menu anterior...\n");
+        printf(">>> Tecle <ENTER> para voltar ao menu anterior... <<<\n");
         getchar();
         return;
     }
@@ -569,17 +574,17 @@ void relat_colab_por_funcao(void) {
     printf("\n");
     atual = inicio;
     while (atual != NULL) {
-        printf("%-15s", atual->colab.func);
+        printf("%-15s", atual->colab.func_colab);
         printf("||");
-        printf("%-12s", atual->colab.cpf);
+        printf("%-12s", atual->colab.cpf_colab);
         printf("||");
-        printf("%-40s", atual->colab.nome);
+        printf("%-40s", atual->colab.nome_colab);
         printf("||");
-        printf("%-12s", atual->colab.fone);
+        printf("%-12s", atual->colab.fone_colab);
         printf("||");
-        printf("%-11s", atual->colab.nasc);
+        printf("%-11s", atual->colab.nasc_colab);
         printf("||");
-        printf("%-33s", atual->colab.email);
+        printf("%-33s", atual->colab.email_colab);
         printf("\n");
 
         Node3* temp = atual;
@@ -588,7 +593,7 @@ void relat_colab_por_funcao(void) {
     }
     printf("\n");
     printf("\n");
-    printf(">>> Tecle <ENTER> para voltar ao menu...\n");
+    printf(">>> Tecle <ENTER> para voltar ao menu... <<<\n");
     getchar();
 }
 

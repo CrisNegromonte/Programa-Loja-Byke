@@ -1,14 +1,14 @@
 typedef struct colab Colab;
 
 struct colab {
-    char cpf[12];
-    char nome[38];
-    char func[15];
-    char email[33];
-    char nasc[11];
-    char fone[12];
-    char sit[20];
-    char status;
+    char cpf_colab[12];
+    char nome_colab[38];
+    char func_colab[15];
+    char email_colab[33];
+    char nasc_colab[11];
+    char fone_colab[12];
+    char sit_colab[20];
+    char status_colab;
 };
 
 typedef struct Node3 {

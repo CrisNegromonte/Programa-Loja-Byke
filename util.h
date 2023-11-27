@@ -17,6 +17,7 @@ int validarNumInteiro(char*);
 int validarEmail(char*);
 int validarFone(char*);
 int validarCod(char*);
+int validarCupom(char*);
 int validarDesc(char*);
 int validarCor(char*);
 int validarMarca(char*);

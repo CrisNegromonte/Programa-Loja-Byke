@@ -5,14 +5,14 @@
 typedef struct cliente Cliente;
 
 struct cliente {
-    char cpf[12];
-    char nome[40];
-    char cidade[25];
-    char email[33];
-    char nasc[11];
-    char fone[12];
-    char sit[20];
-    char status;
+    char cpf_cli[12];
+    char nome_cli[40];
+    char cidade_cli[25];
+    char email_cli[33];
+    char nasc_cli[11];
+    char fone_cli[12];
+    char sit_cli[20];
+    char status_cli;
     struct Cliente* prox;
 };
 
@@ -34,9 +34,9 @@ void lista_clientes(void);
 void exibe_cliente(Cliente* cliente);
 void grava_cli(Cliente* cliente);
 
-void ler_cpf (char*);
-void ler_nome (char*);
-void ler_cidade (char*);
-void ler_email (char*);
-void ler_nasc (char*);
-void ler_fone (char*);
+void ler_cpf_cli (char*);
+void ler_nome_cli (char*);
+void ler_cidade_cli (char*);
+void ler_email_cli (char*);
+void ler_nasc_cli (char*);
+void ler_fone_cli (char*);

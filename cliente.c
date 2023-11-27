@@ -10,11 +10,11 @@
 //////
 ////// Funções
 //////
-void ler_cpf (char*);
-void ler_nome (char*);
-void ler_email (char*);
-void ler_nasc (char*);
-void ler_fone (char*);
+void ler_cpf_cli (char*);
+void ler_nome_cli (char*);
+void ler_email_cli (char*);
+void ler_nasc_cli (char*);
+void ler_fone_cli (char*);
 
 
 void menu_clientes(void) {
@@ -97,13 +97,13 @@ Cliente* cadastrar_cliente(void) {
     printf("///                                                                         ///\n");
     printf("\n");
     cliente = (Cliente*) malloc(sizeof(Cliente));
-    ler_cpf(cliente->cpf);
-    ler_nome(cliente->nome);
-    ler_cidade(cliente->cidade);
-    ler_email(cliente->email);
-    ler_nasc(cliente->nasc);
-    ler_fone(cliente->fone);
-    cliente->status = 'a';
+    ler_cpf_cli(cliente->cpf_cli);
+    ler_nome_cli(cliente->nome_cli);
+    ler_cidade_cli(cliente->cidade_cli);
+    ler_email_cli(cliente->email_cli);
+    ler_nasc_cli(cliente->nasc_cli);
+    ler_fone_cli(cliente->fone_cli);
+    cliente->status_cli = 'a';
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -120,7 +120,7 @@ Cliente* cadastrar_cliente(void) {
 Cliente* pesquisar_cliente(void) {
     FILE* fp;
     Cliente* cliente;
-    char cpf[12];
+    char cpf_cli[12];
     system("clear||cls");
     printf("\n");
     printf("////////////////////////////////////////////////////////////////////////////////\n");
@@ -138,7 +138,7 @@ Cliente* pesquisar_cliente(void) {
     printf("\n");
     printf("\n");
     printf(">>>   Digite o CPF do cliente (11 digitos): ");
-    fgets (cpf, 12, stdin);
+    fgets (cpf_cli, 12, stdin);
     getchar();
     cliente = (Cliente*) malloc(sizeof(Cliente));
     fp = fopen("cli.dat", "rb");
@@ -150,7 +150,7 @@ Cliente* pesquisar_cliente(void) {
     } else {
        while(!feof(fp)) {
          fread(cliente, sizeof(Cliente), 1, fp);
-         if((strcmp(cliente->cpf, cpf) == 0) && (cliente->status != 'i')) {
+         if((strcmp(cliente->cpf_cli, cpf_cli) == 0) && (cliente->status_cli != 'i')) {
            exibe_cliente(cliente);
            printf(">>> Tecle <ENTER> para voltar ao menu...  <<<\n");
            getchar();
@@ -167,7 +167,7 @@ Cliente* pesquisar_cliente(void) {
 
 
 void alterar_cliente(void) {
-    char cpf[12];
+    char cpf_cli[12];
     Cliente* cliente = (Cliente*) malloc(sizeof(Cliente));
     FILE* fp;
     int sim = 0;
@@ -188,7 +188,7 @@ void alterar_cliente(void) {
     printf("\n");
     printf("\n");
     printf(">>>>>>>>>>  Digite o CPF do cliente (11 digitos): ");
-    fgets(cpf, 12, stdin);
+    fgets(cpf_cli, 12, stdin);
     getchar();
     fp = fopen("cli.dat", "r+b");
     if (fp == NULL) {
@@ -200,19 +200,19 @@ void alterar_cliente(void) {
       getchar();
     } else {
       while (fread(cliente, sizeof(Cliente), 1, fp) == 1) {
-        if(strcmp(cliente->cpf, cpf) == 0) {
+        if(strcmp(cliente->cpf_cli, cpf_cli) == 0) {
           printf("\n");
           printf(">>>  Cliente Encontrado! <<<\n");
           printf(">>>  Realize as alteracoes... <<<\n");
           printf("\n");
 
-          ler_nome(cliente->nome);
-          ler_cidade(cliente->cidade);
-          ler_fone(cliente->fone);
-          ler_email(cliente->email);
-          ler_nasc(cliente->nasc);
-          ler_fone(cliente->fone);
-          cliente->status = 'a';
+          ler_nome_cli(cliente->nome_cli);
+          ler_cidade_cli(cliente->cidade_cli);
+          ler_fone_cli(cliente->fone_cli);
+          ler_email_cli(cliente->email_cli);
+          ler_nasc_cli(cliente->nasc_cli);
+          ler_fone_cli(cliente->fone_cli);
+          cliente->status_cli = 'a';
 
           fseek(fp, -sizeof(Cliente), SEEK_CUR);
           fwrite(cliente, sizeof(Cliente), 1, fp);
@@ -236,7 +236,7 @@ void alterar_cliente(void) {
 
 
 void excluir_cliente(void) {
-    char cpf[12];
+    char cpf_cli[12];
     Cliente* cliente_a = (Cliente*) malloc(sizeof(Cliente));
     FILE* fp;
     int sim = 0;
@@ -257,7 +257,7 @@ void excluir_cliente(void) {
     printf("\n");
     printf("\n");
     printf(" >>>>>>>>  Digite o CPF do cliente (11 digitos):  ");
-    fgets(cpf, 12, stdin);
+    fgets(cpf_cli, 12, stdin);
     getchar();
     fp = fopen("cli.dat", "r+b");
     if (fp == NULL) {
@@ -269,11 +269,11 @@ void excluir_cliente(void) {
       getchar();
     } else {
       while (fread(cliente_a, sizeof(Cliente), 1, fp) == 1) {
-        if(strcmp(cliente_a->cpf, cpf) == 0) {
+        if(strcmp(cliente_a->cpf_cli, cpf_cli) == 0) {
           printf("\n");
           printf(">>>  Cliente Encontrado!  <<<\n");
           printf("\n");
-          cliente_a->status = 'i';
+          cliente_a->status_cli = 'i';
           fseek(fp, -sizeof(Cliente), SEEK_CUR);
           fwrite(cliente_a, sizeof(Cliente), 1, fp);
           sim = 1;
@@ -318,7 +318,7 @@ void lista_clientes(void) {
       getchar();
   }
   while (fread(cliente, sizeof(Cliente), 1, fp)) { 
-    if (cliente->status != 'i') {
+    if (cliente->status_cli != 'i') {
       exibe_cliente(cliente);
     }
   }
@@ -329,38 +329,38 @@ void lista_clientes(void) {
 
 // Funcoes
 
-void ler_cpf (char* cpf) {
+void ler_cpf_cli (char* cpf_cli) {
     fflush(stdin);
     printf(">>> Digite o CPF (somente os 11 digitos): ");
-    fgets (cpf, 12, stdin);
-    while (!validarCpf (cpf)) {
+    fgets (cpf_cli, 12, stdin);
+    while (!validarCpf (cpf_cli)) {
         printf(">>> Invalido! Digite um CPF valido (somente os 11 digitos): ");
-        fgets (cpf, 12, stdin);
+        fgets (cpf_cli, 12, stdin);
     }
     getchar();
 }
 
 // Funcao retirada do programa exemplo do Prof. Flavius Gorgonio
 
-void ler_nome(char* nome) {
+void ler_nome_cli(char* nome_cli) {
   fflush(stdin);
   printf("Digite o nome (sem acentos): ");
-  fgets(nome, 40, stdin); 
+  fgets(nome_cli, 40, stdin); 
   // Remove o caractere de nova linha do final, se houver
-  int tam = strlen(nome);
-  if (tam > 0 && nome[tam - 1] == '\n') {
-    nome[tam - 1] = '\0';
+  int tam = strlen(nome_cli);
+  if (tam > 0 && nome_cli[tam - 1] == '\n') {
+    nome_cli[tam - 1] = '\0';
     fflush(stdin);
   }
-  while (!validarNome(nome)) {
-    printf("Nome invalido: %s\n", nome);
+  while (!validarNome(nome_cli)) {
+    printf("Nome invalido: %s\n", nome_cli);
     printf("Informe um nome valido (somente caracteres/sem acentos): ");
     fflush(stdin);
-    fgets(nome, 40, stdin); 
+    fgets(nome_cli, 40, stdin); 
     // Remove o caractere de nova linha do final, se houver
-    tam = strlen(nome);
-    if (tam > 0 && nome[tam - 1] == '\n') {
-      nome[tam - 1] = '\0';
+    tam = strlen(nome_cli);
+    if (tam > 0 && nome_cli[tam - 1] == '\n') {
+      nome_cli[tam - 1] = '\0';
       fflush(stdin);
     }
   } 
@@ -368,25 +368,25 @@ void ler_nome(char* nome) {
 
 
 
-void ler_cidade(char* cidade) {
+void ler_cidade_cli(char* cidade_cli) {
   fflush(stdin);
   printf("Cidade (sem acentos): ");
-  fgets(cidade, 25, stdin); 
+  fgets(cidade_cli, 25, stdin); 
   // Remove o caractere de nova linha do final, se houver
-  int tam = strlen(cidade);
-  if (tam > 0 && cidade[tam - 1] == '\n') {
-    cidade[tam - 1] = '\0';
+  int tam = strlen(cidade_cli);
+  if (tam > 0 && cidade_cli[tam - 1] == '\n') {
+    cidade_cli[tam - 1] = '\0';
     fflush(stdin);
   }
-  while (!validarCidade(cidade)) {
-    printf("Cidade invalida: %s\n", cidade);
+  while (!validarCidade(cidade_cli)) {
+    printf("Cidade invalida: %s\n", cidade_cli);
     printf("Informe um nome de cidade valido (somente caracteres/sem acentos): ");
     fflush(stdin);
-    fgets(cidade, 25, stdin); 
+    fgets(cidade_cli, 25, stdin); 
     // Remove o caractere de nova linha do final, se houver
-    tam = strlen(cidade);
-    if (tam > 0 && cidade[tam - 1] == '\n') {
-      cidade[tam - 1] = '\0';
+    tam = strlen(cidade_cli);
+    if (tam > 0 && cidade_cli[tam - 1] == '\n') {
+      cidade_cli[tam - 1] = '\0';
       fflush(stdin);
     }
   } 
@@ -396,29 +396,29 @@ void ler_cidade(char* cidade) {
 
 
 // Funcao retirada do programa exemplo do Prof. Flavius Gorgonio
-void ler_email(char* email) {
+void ler_email_cli(char* email_cli) {
     fflush(stdin);
     printf("Digite o email: ");
-    fgets(email, 33, stdin);
-    while (!validarEmail(email)) {
+    fgets(email_cli, 33, stdin);
+    while (!validarEmail(email_cli)) {
         printf("Erro! Digite novamente um email valido: ");
-        fgets(email, 33, stdin);
+        fgets(email_cli, 33, stdin);
         fflush(stdin);
     }
 }
 
 // Funcao parcialmente feita pelo chat GPT, adaptada por mim
-void ler_nasc(char* nasc) {
+void ler_nasc_cli(char* nasc_cli) {
   int dia, mes, ano;
   char dd[3], mm[3], aaaa[5];
 
   while (1) {
     fflush(stdin);
     printf("Data de nascimento (dd/mm/aaaa): ");
-    fgets(nasc, 11, stdin);
+    fgets(nasc_cli, 11, stdin);
 
     // Verificar o formato da data
-    if (sscanf(nasc, "%2[^/]/%2[^/]/%4[^/]", dd, mm, aaaa) == 3) {
+    if (sscanf(nasc_cli, "%2[^/]/%2[^/]/%4[^/]", dd, mm, aaaa) == 3) {
       // Converter partes para inteiros
       sscanf(dd, "%d", &dia);
       sscanf(mm, "%d", &mes);
@@ -438,14 +438,14 @@ void ler_nasc(char* nasc) {
 
 
 // Funcao retirada do programa exemplo do Prof. Flavius Gorgonio
-void ler_fone (char* fone) {
+void ler_fone_cli (char* fone_cli) {
     fflush (stdin);
     printf("Digite o telefone com DDD (somente numeros): ");
-    fgets (fone, 12, stdin);
+    fgets (fone_cli, 12, stdin);
 
-    while (!validarFone (fone)) {
+    while (!validarFone (fone_cli)) {
         printf("Invalido! Digite um numero de telefone valido com DDD (somente numeros): ");
-        fgets (fone, 12, stdin);
+        fgets (fone_cli, 12, stdin);
     
     }
 } 
@@ -471,8 +471,8 @@ void grava_cli(Cliente* cliente) {
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
       
 void exibe_cliente(Cliente* cliente) {
-      char sit[20];
-      if ((cliente == NULL) || (cliente->status == 'i')) {
+      char sit_cli[20];
+      if ((cliente == NULL) || (cliente->status_cli == 'i')) {
            printf(">>>>>>>>>>>>>>   CLIENTE INEXISTENTE! <<<<<<<<<<<<<\n");
            printf("==================================================== ");
            printf("\n");
@@ -482,28 +482,28 @@ void exibe_cliente(Cliente* cliente) {
            printf("============================================================= ");
            printf("\n");
            printf("|| CPF: ");
-           printf("%s" ,cliente->cpf);
+           printf("%s" ,cliente->cpf_cli);
            printf("\n");
            printf("|| CLIENTE: ");
-           printf("%s" ,cliente->nome);
+           printf("%s" ,cliente->nome_cli);
            printf("\n");
            printf("|| TELEFONE: ");
-           printf("%s" ,cliente->fone);
+           printf("%s" ,cliente->fone_cli);
            printf("\n");
            printf("|| CIDADE: ");
-           printf("%s" ,cliente->cidade);
+           printf("%s" ,cliente->cidade_cli);
            printf("\n");
            printf("|| DATA DE NASC.: ");
-           printf("%s" ,cliente->nasc);
+           printf("%s" ,cliente->nasc_cli);
            printf("\n");
            printf("|| E-MAIL: ");
-           printf("%s" ,cliente->email);
-           if (cliente->status == 'a') {
-             strcpy(sit, "Cliente Ativo");
+           printf("%s" ,cliente->email_cli);
+           if (cliente->status_cli == 'a') {
+             strcpy(sit_cli, "Ativo");
            } else {
-             strcpy(sit, "Cliente Inativo");
+             strcpy(sit_cli, "Inativo");
         }
-        printf("|| STATUS: %s\n", sit);
+        printf("|| STATUS CLIENTE: %s\n", sit_cli);
         printf("\n");
       }
 }

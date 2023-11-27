@@ -100,13 +100,13 @@ Colab* cadastrar_colab(void) {
     printf("///                                                                         ///\n");
     printf("\n");
     colab = (Colab*) malloc(sizeof(Colab));
-    ler_cpf_colab(colab->cpf);
-    ler_nome_colab(colab->nome);
-    ler_func_colab(colab->func);
-    ler_email_colab(colab->email);
-    ler_nasc_colab(colab->nasc);
-    ler_fone_colab(colab->fone);
-    colab-> status = 'a';
+    ler_cpf_colab(colab->cpf_colab);
+    ler_nome_colab(colab->nome_colab);
+    ler_func_colab(colab->func_colab);
+    ler_email_colab(colab->email_colab);
+    ler_nasc_colab(colab->nasc_colab);
+    ler_fone_colab(colab->fone_colab);
+    colab-> status_colab = 'a';
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -123,7 +123,7 @@ Colab* cadastrar_colab(void) {
 Colab* pesquisar_colab(void) {
     FILE* fp;
     Colab* colab;
-    char cpf[12];
+    char cpf_colab[12];
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -141,7 +141,7 @@ Colab* pesquisar_colab(void) {
     printf("\n");
     printf("\n");
     printf(">>>>>>> Digite o CPF do colaborador (apenas 11 numeros):  ");
-    fgets (cpf, 12, stdin);
+    fgets (cpf_colab, 12, stdin);
     getchar();
     colab = (Colab*) malloc(sizeof(Colab));
     fp = fopen("colab.dat", "rb");
@@ -154,7 +154,7 @@ Colab* pesquisar_colab(void) {
     } else {
         while(!feof(fp)) {
           fread(colab, sizeof(Colab), 1, fp);
-          if((strcmp(colab->cpf, cpf) == 0) && (colab->status != 'i')) {
+          if((strcmp(colab->cpf_colab, cpf_colab) == 0) && (colab->status_colab != 'i')) {
             exibe_colab(colab);
             printf(">>> Tecle <ENTER> para voltar ao menu...  <<<\n");
             getchar();
@@ -171,7 +171,7 @@ Colab* pesquisar_colab(void) {
 
 
 void alterar_colab(void) {
-    char cpf[12];
+    char cpf_colab[12];
     Colab* colab = (Colab*) malloc(sizeof(Colab));
     FILE* fp;
     int sim = 0;
@@ -192,7 +192,7 @@ void alterar_colab(void) {
     printf("\n");
     printf("\n");
     printf(">>>>>>>  Digite o CPF do colaborador (apenas 11 numeros):  ");
-    fgets(cpf, 12, stdin);
+    fgets(cpf_colab, 12, stdin);
     getchar();
     fp = fopen("colab.dat", "r+b");
     if (fp == NULL) {
@@ -205,18 +205,18 @@ void alterar_colab(void) {
       getchar();
     } else {
       while (fread(colab, sizeof(Colab), 1, fp) == 1) {
-        if(strcmp(colab->cpf, cpf) == 0) {
+        if(strcmp(colab->cpf_colab, cpf_colab) == 0) {
           printf("\n");
           printf(">>>  Colaborador Encontrado!  <<<\n");
           printf(">>>  Atualize o Cadastro...  <<<\n");
           printf("\n");
           printf("\n");
-          ler_nome_colab(colab->nome);
-          ler_nome_colab(colab->func);
-          ler_email_colab(colab->email);
-          ler_nasc_colab(colab->nasc);
-          ler_fone_colab(colab->fone);
-          colab-> status = 'a';
+          ler_nome_colab(colab->nome_colab);
+          ler_nome_colab(colab->func_colab);
+          ler_email_colab(colab->email_colab);
+          ler_nasc_colab(colab->nasc_colab);
+          ler_fone_colab(colab->fone_colab);
+          colab-> status_colab = 'a';
           fseek(fp, -sizeof(Colab), SEEK_CUR);
           fwrite(colab, sizeof(Colab), 1, fp);
           sim = 1;
@@ -241,7 +241,7 @@ void alterar_colab(void) {
 
 
 void excluir_colab(void) {
-    char cpf[12];
+    char cpf_colab[12];
     Colab* colab = (Colab*) malloc(sizeof(Colab));
     FILE* fp;
     int sim = 0;
@@ -262,7 +262,7 @@ void excluir_colab(void) {
     printf("\n");
     printf("\n");
     printf(">>>>>> Digite o CPF do colaborador (apenas 11 numeros): ");
-    fgets(cpf, 12, stdin);
+    fgets(cpf_colab, 12, stdin);
     getchar();
     fp = fopen("colab.dat", "r+b");
     if (fp == NULL) {
@@ -275,11 +275,11 @@ void excluir_colab(void) {
       getchar();
     } else {
       while (fread(colab, sizeof(Colab), 1, fp) == 1) {
-        if(strcmp(colab->cpf, cpf) == 0) {
+        if(strcmp(colab->cpf_colab, cpf_colab) == 0) {
           printf("\n");
           printf(">>>  Cadastro Nao Encontrado!  <<<\n");
           printf("\n");
-          colab->status = 'i';
+          colab->status_colab = 'i';
           fseek(fp, -sizeof(Colab), SEEK_CUR);
           fwrite(colab, sizeof(Colab), 1, fp);
           sim = 1;
@@ -304,37 +304,37 @@ void excluir_colab(void) {
 
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
 
-void ler_cpf_colab (char* cpf) {
+void ler_cpf_colab (char* cpf_colab) {
     fflush(stdin);
     printf("Digite o CPF (somente numeros): ");
-    fgets (cpf, 12, stdin);
-    while (!validarCpf (cpf)) {
+    fgets (cpf_colab, 12, stdin);
+    while (!validarCpf (cpf_colab)) {
         printf("Invalido! Digite um CPF valido (somente numeros): ");
-        fgets (cpf, 12, stdin);
+        fgets (cpf_colab, 12, stdin);
     }
     getchar();
 }
 
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
-void ler_nome_colab (char* nome) {
+void ler_nome_colab (char* nome_colab) {
   fflush(stdin);
   printf("Digite o nome (sem acentos): ");
-  fgets(nome, 38, stdin); 
+  fgets(nome_colab, 38, stdin); 
   // Remove o caractere de nova linha do final, se houver
-  int tam = strlen(nome);
-  if (tam > 0 && nome[tam - 1] == '\n') {
-    nome[tam - 1] = '\0';
+  int tam = strlen(nome_colab);
+  if (tam > 0 && nome_colab[tam - 1] == '\n') {
+    nome_colab[tam - 1] = '\0';
     fflush(stdin);
   }
-  while (!validarNome(nome)) {
-    printf("Nome invalido: %s\n", nome);
+  while (!validarNome(nome_colab)) {
+    printf("Nome invalido: %s\n", nome_colab);
     printf("Informe um nome valido (sem acentos): ");
     fflush(stdin);
-    fgets(nome, 38, stdin); 
+    fgets(nome_colab, 38, stdin); 
     // Remove o caractere de nova linha do final, se houver
-    tam = strlen(nome);
-    if (tam > 0 && nome[tam - 1] == '\n') {
-      nome[tam - 1] = '\0';
+    tam = strlen(nome_colab);
+    if (tam > 0 && nome_colab[tam - 1] == '\n') {
+      nome_colab[tam - 1] = '\0';
       fflush(stdin);
     }
   } 
@@ -342,25 +342,25 @@ void ler_nome_colab (char* nome) {
 
 
 
-void ler_func_colab (char* func) {
+void ler_func_colab (char* func_colab) {
   fflush(stdin);
   printf("Digite a funcao (sem acentos): ");
-  fgets(func, 15, stdin); 
+  fgets(func_colab, 15, stdin); 
   // Remove o caractere de nova linha do final, se houver
-  int tam = strlen(func);
-  if (tam > 0 && func[tam - 1] == '\n') {
-    func[tam - 1] = '\0';
+  int tam = strlen(func_colab);
+  if (tam > 0 && func_colab[tam - 1] == '\n') {
+    func_colab[tam - 1] = '\0';
     fflush(stdin);
   }
-  while (!validarFunc(func)) {
-    printf("Nome de funcao invalido: %s\n", func);
+  while (!validarFunc(func_colab)) {
+    printf("Nome de funcao invalido: %s\n", func_colab);
     printf("Informe um nome valido de funcao (sem acentos): ");
     fflush(stdin);
-    fgets(func, 15, stdin); 
+    fgets(func_colab, 15, stdin); 
     // Remove o caractere de nova linha do final, se houver
-    tam = strlen(func);
-    if (tam > 0 && func[tam - 1] == '\n') {
-      func[tam - 1] = '\0';
+    tam = strlen(func_colab);
+    if (tam > 0 && func_colab[tam - 1] == '\n') {
+      func_colab[tam - 1] = '\0';
       fflush(stdin);
     }
   } 
@@ -368,30 +368,30 @@ void ler_func_colab (char* func) {
 
 
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
-void ler_email_colab (char* email) {
+void ler_email_colab (char* email_colab) {
     fflush(stdin);
     printf("Digite o email: ");
-    fgets(email, 33, stdin);
-    while (!validarEmail(email)) {
+    fgets(email_colab, 33, stdin);
+    while (!validarEmail(email_colab)) {
         printf(">>> Erro! Digite novamente um email valido: ");
-        fgets(email, 33, stdin);
+        fgets(email_colab, 33, stdin);
         fflush(stdin);
     }
 }
 
 
 // Funcao feita parcialmente pelo chat GPT, adaptada por mim
-void ler_nasc_colab (char* nasc) {
+void ler_nasc_colab (char* nasc_colab) {
   int dia, mes, ano;
   char dd[3], mm[3], aaaa[5];
 
   while (1) {
     fflush(stdin);
     printf("Data de nascimento (dd/mm/aaaa): ");
-    fgets(nasc, 11, stdin);
+    fgets(nasc_colab, 11, stdin);
 
     // Verificar o formato da data
-    if (sscanf(nasc, "%2[^/]/%2[^/]/%4[^/]", dd, mm, aaaa) == 3) {
+    if (sscanf(nasc_colab, "%2[^/]/%2[^/]/%4[^/]", dd, mm, aaaa) == 3) {
       // Converter partes para inteiros
       sscanf(dd, "%d", &dia);
       sscanf(mm, "%d", &mes);
@@ -411,14 +411,14 @@ void ler_nasc_colab (char* nasc) {
 
 
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
-void ler_fone_colab (char* fone) {
+void ler_fone_colab (char* fone_colab) {
     fflush (stdin);
     printf("Digite o telefone com DDD (somente numeros): ");
-    fgets (fone, 12, stdin);
+    fgets (fone_colab, 12, stdin);
 
-    while (!validarFone (fone)) {
+    while (!validarFone (fone_colab)) {
         printf("Invalido! Digite um numero de telefone valido com DDD (somente numeros): ");
-        fgets (fone, 12, stdin);
+        fgets (fone_colab, 12, stdin);
     
     }
 } 
@@ -458,7 +458,7 @@ void lista_colab(void) {
       getchar();
   }
   while (fread(colab, sizeof(Colab), 1, fp)) { 
-    if (colab->status != 'i') {
+    if (colab->status_colab != 'i') {
       exibe_colab(colab);
     }
   }
@@ -470,8 +470,8 @@ void lista_colab(void) {
 
 
 void exibe_colab(Colab* colab) {
-      char sit[20];
-      if ((colab == NULL) || (colab->status == 'i')) {
+      char sit_colab[20];
+      if ((colab == NULL) || (colab->status_colab == 'i')) {
            printf(">>>>>>>>>>  COLABORADOR(A) INEXISTENTE!   <<<<<<<<<\n");
            printf("==================================================== ");
            printf("\n");
@@ -481,28 +481,28 @@ void exibe_colab(Colab* colab) {
            printf("=========================================================== ");
            printf("\n");
            printf("|| CPF: ");
-           printf("%s" ,colab->cpf);
+           printf("%s" ,colab->cpf_colab);
            printf("\n");
            printf("|| COLABORADOR(A): ");
-           printf("%s" ,colab->nome);
+           printf("%s" ,colab->nome_colab);
            printf("\n");
            printf("|| FUNCAO: ");
-           printf("%s" ,colab->func);
+           printf("%s" ,colab->func_colab);
            printf("\n");
            printf("|| TELEFONE: ");
-           printf("%s" ,colab->fone);
+           printf("%s" ,colab->fone_colab);
            printf("\n");
            printf("|| DATA DE NASC.: ");
-           printf("%s" ,colab->nasc);
+           printf("%s" ,colab->nasc_colab);
            printf("\n");
            printf("|| E-MAIL: ");
-           printf("%s" ,colab->email);
-           if (colab->status == 'a') {
-             strcpy(sit, "Colaborador(a) Ativo(a)");
+           printf("%s" ,colab->email_colab);
+           if (colab->status_colab == 'a') {
+             strcpy(sit_colab, "Ativo(a)");
            } else {
-             strcpy(sit, "Colaborador(a) Inativo(a)");
+             strcpy(sit_colab, "Inativo(a)");
         }
-        printf("|| STATUS: %s\n", sit);
+        printf("|| STATUS COLABORADOR(A): %s\n", sit_colab);
         printf("\n");
       }
 }
