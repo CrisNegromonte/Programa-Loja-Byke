@@ -377,6 +377,9 @@ void relat_produtos_por_marca(void) {
 
 
 
+
+
+
 void relat_clientes_por_cidade(void) {
     char cidade_cli[25];
     printf("Digite a cidade(sem acentos): ");

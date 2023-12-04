@@ -35,7 +35,7 @@ void menu_clientes(void) {
 			  case '4': 	excluir_cliente();
 						        break;
         case '5': 	lista_clientes();
-                    printf("\t\t\t>>>  Tecle <ENTER> para continuar...  <<<\n");
+                    printf(">>>  Tecle <ENTER> para continuar...  <<<\n");
                     getchar();
 						        break;
 	  	} 		
@@ -108,10 +108,10 @@ Cliente* cadastrar_cliente(void) {
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("\n");
-    printf("\t\t\t>>> Realizando cadastro...  <<<\n");
+    printf(">>> Realizando cadastro...  <<<\n");
     sleep(1);
-    printf("\t\t\t>>> Cadastro efetivado!  <<<\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar ao menu...  <<<\n");
+    printf("\>>> Cadastro efetivado!  <<<\n");
+    printf("\>>> Tecle <ENTER> para voltar ao menu...  <<<\n");
     getchar();
     return cliente;
 }
