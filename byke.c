@@ -74,11 +74,11 @@ char menu_principal(void) {
     printf("///         >> Para melhor visualizacao, navegue em tela cheia <<           ///\n");
     printf("///          ===================================================            ///\n");
     printf("///                                                                         ///\n");
-    printf("///            1. CLIENTES | Modulo                                         ///\n");
-    printf("///            2. COLABORADORES |                                           ///\n");
-    printf("///            3. PRODUTOS | Modulo                                         ///\n");
-    printf("///            4. VENDAS | Modulo                                           ///\n");
-    printf("///            5. RELATORIOS | Modulo                                       ///\n");
+    printf("///            1. CLIENTES                                                  ///\n");
+    printf("///            2. COLABORADORES                                             ///\n");
+    printf("///            3. PRODUTOS                                                  ///\n");
+    printf("///            4. VENDAS                                                    ///\n");
+    printf("///            5. RELATORIOS                                                ///\n");
     printf("///            6. Informacoes Sobre o Sistema                               ///\n");
     printf("///            0. ENCERRAR SISTEMA                                          ///\n");
     printf("///                                                                         ///\n");

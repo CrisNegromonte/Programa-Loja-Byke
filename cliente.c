@@ -110,8 +110,8 @@ Cliente* cadastrar_cliente(void) {
     printf("\n");
     printf(">>> Realizando cadastro...  <<<\n");
     sleep(1);
-    printf("\>>> Cadastro efetivado!  <<<\n");
-    printf("\>>> Tecle <ENTER> para voltar ao menu...  <<<\n");
+    printf("\n>>> Cadastro efetivado!  <<<\n");
+    printf("\n>>> Tecle <ENTER> para voltar ao menu...  <<<\n");
     getchar();
     return cliente;
 }

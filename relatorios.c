@@ -20,21 +20,36 @@ void menu_relatorios(void) {
                         printf(">>> Tecle <ENTER> para voltar...\n");
                         getchar();
                         break;
-            case '2':   relat_clientes_por_cidade();
-                        break;
-            case '3':   relat_todos_colab();
+            case '2':   relat_cli_inativos();
                         printf("\n");
                         printf(">>> Tecle <ENTER> para voltar...\n");
                         getchar();
                         break;
-            case '4':   relat_colab_por_funcao();
+            case '3':   relat_clientes_por_cidade();
                         break;
-            case '5':   relat_todos_produtos();
+            case '4':   relat_todos_colab();
                         printf("\n");
                         printf(">>> Tecle <ENTER> para voltar...\n");
                         getchar();
                         break;
-            case '6':   relat_produtos_por_marca();
+            case '5':   relat_colab_inativos();
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+            case '6':   relat_colab_por_funcao();
+                        break;
+            case '7':   relat_todos_produtos();
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+            case '8':   relat_prod_inativos();
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+            case '9':   relat_produtos_por_marca();
                         break;
 
         } 		
@@ -53,19 +68,23 @@ char tela_relat(void) {
     printf("///           ==========  SISTEMA LOJA DE BICICLETAS   ==========           ///\n");
     printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
-    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///=========================================================================///\n");
     printf("///                                                                         ///\n");
-    printf("///           ===================================================           ///\n");
-    printf("///           = = = = = = = =   TELA RELATORIOS   = = = = = = = =           ///\n");
-    printf("///           ===================================================           ///\n");
+    printf("///           ===============   TELA RELATORIOS   ===============           ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
-    printf("///            1. CLIENTES - geral                                          ///\n");
-    printf("///            2. CLIENTES - por CIDADE                                     ///\n");
-    printf("///            3. COLABORADORES - geral                                     ///\n");
-    printf("///            4. COLABORADORES - por FUNCAO                                ///\n");
-    printf("///            5. PRODUTOS - geral                                          ///\n");
-    printf("///            6. PRODUTOS - por MARCA                                      ///\n");
+    printf("///            1. CLIENTES - Ativos                                         ///\n");
+    printf("///            2. CLIENTES - Inativos                                       ///\n");
+    printf("///            3. CLIENTES - por Cidade                                     ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            4. COLABORADORES - Ativos                                    ///\n");
+    printf("///            5. COLABORADORES - Inativos                                  ///\n");
+    printf("///            6. COLABORADORES - por Funcao                                ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            7. PRODUTOS - Ativos                                         ///\n");
+    printf("///            8. PRODUTOS - Inativos                                       ///\n");
+    printf("///            9. PRODUTOS - por Marca                                      ///\n");
+    printf("///                                                                         ///\n");
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
     printf("\n");
@@ -87,7 +106,7 @@ void relat_todos_clientes(void) {
     printf("---------------------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                   ===================================================                     \n");
-    printf("                   = = = =   RELATORIO || TODOS OS CLIENTES    = = = =                     \n");
+    printf("                   = = = =    RELATORIO || CLIENTES ATIVOS     = = = =                     \n");
     printf("                   ===================================================                     \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
@@ -140,6 +159,74 @@ void relat_todos_clientes(void) {
 
 
 
+
+
+
+void relat_cli_inativos(void) {
+    FILE* fp;
+    Cliente* cliente;
+    system("clear||cls");
+    printf("\n");
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("                                                                                           \n");
+    printf("                   ===================================================                     \n");
+    printf("                   = = = =  RELATORIO ||  CLIENTES  INATIVOS   = = = =                     \n");
+    printf("                   ===================================================                     \n");
+    printf("                                                                                           \n");
+    printf("                                                                                           \n");
+    printf("\n");
+    cliente = (Cliente*) malloc(sizeof(Cliente));
+    fp = fopen("cli.dat", "rb");
+    if (fp == NULL) {
+      printf(">>>>>>>>  Processando...   <<<<<<<<\n");
+      sleep(1);
+      printf(">>> ERRO ao abrir o arquivo!\n");
+      printf(">>> Verifique se ja existe cliente cadastrado! \n");
+      printf(">>> Tecle <ENTER> para voltar...\n");
+      getchar();
+    }
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("\n");
+    printf("%-12s", "CPF");
+    printf("||");
+    printf("%-40s", "CLIENTE");
+    printf("||");
+    printf("%-25s", "CIDADE");
+    printf("||");
+    printf("%-12s", "TELEFONE");
+    printf("||");
+    printf("%-11s", "DATA NASC.");
+    printf("||");
+    printf("%-33s", "E-MAIL");
+    printf("\n");
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("\n");
+    while (fread(cliente, sizeof(Cliente), 1, fp)) { 
+      if (cliente->status_cli != 'a') {
+        printf("%-12s", cliente->cpf_cli);
+        printf("||");
+        printf("%-40s", cliente->nome_cli);
+        printf("||");
+        printf("%-25s", cliente->cidade_cli);
+        printf("||");
+        printf("%-12s", cliente->fone_cli);
+        printf("||");
+        printf("%-11s", cliente->nasc_cli);
+        printf("||");
+        printf("%-33s", cliente->email_cli);
+        printf("\n");
+      }
+    }
+   fclose(fp);
+   free(cliente);
+}
+
+
+
+
+
+
+
 void relat_todos_colab(void) {
     FILE* fp;
     Colab* colab;
@@ -148,7 +235,7 @@ void relat_todos_colab(void) {
     printf("---------------------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
-    printf("                    = = =   RELATORIO || TODOS OS COLABORADORES   = = =                    \n");
+    printf("                    = = =    RELATORIO || COLABORADORES ATIVOS    = = =                    \n");
     printf("                    ===================================================                    \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
@@ -202,6 +289,73 @@ void relat_todos_colab(void) {
 
 
 
+
+
+void relat_colab_inativos(void) {
+    FILE* fp;
+    Colab* colab;
+    system("clear||cls");
+    printf("\n");
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("                                                                                           \n");
+    printf("                    ===================================================                    \n");
+    printf("                    = = =   RELATORIO || COLABORADORES INATIVOS   = = =                    \n");
+    printf("                    ===================================================                    \n");
+    printf("                                                                                           \n");
+    printf("                                                                                           \n");
+    printf("\n");
+    colab = (Colab*) malloc(sizeof(Colab));
+    fp = fopen("colab.dat", "rb");
+    if (fp == NULL) {
+      printf(">>>>>>>>  Processando...   <<<<<<<<\n");
+      sleep(1);
+      printf(">>> ERRO ao abrir o arquivo!\n");
+      printf(">>> Verifique se ja existe colaborador(a) cadastrado(a)! \n");
+      printf(">>> Tecle <ENTER> para voltar...\n");
+      getchar();
+    }
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("\n");
+    printf("%-12s", "CPF");
+    printf("||");
+    printf("%-40s", "COLABORADOR(A)");
+    printf("||");
+    printf("%-15s", "FUNCAO");
+    printf("||");
+    printf("%-12s", "TELEFONE");
+    printf("||");
+    printf("%-11s", "DATA NASC.");
+    printf("||");
+    printf("%-33s", "E-MAIL");
+    printf("\n");
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("\n");
+    while (fread(colab, sizeof(Colab), 1, fp)) { 
+      if (colab->status_colab != 'a') {
+        printf("%-12s", colab->cpf_colab);
+        printf("||");
+        printf("%-40s", colab->nome_colab);
+        printf("||");
+        printf("%-15s", colab->func_colab);
+        printf("||");
+        printf("%-12s", colab->fone_colab);
+        printf("||");
+        printf("%-11s", colab->nasc_colab);
+        printf("||");
+        printf("%-33s", colab->email_colab);
+        printf("\n");
+      }
+    }
+   fclose(fp);
+   free(colab);
+}
+
+
+
+
+
+
+
 void relat_todos_produtos(void) {
     FILE* fp;
     Produto* produto;
@@ -210,7 +364,7 @@ void relat_todos_produtos(void) {
     printf("---------------------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
-    printf("                    = = = =   RELATORIO || TODOS OS PRODUTOS   =  = = =                    \n");
+    printf("                    = = = =   RELATORIO ||  PRODUTOS  ATIVOS    = = = =                    \n");
     printf("                    ===================================================                    \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
@@ -243,6 +397,70 @@ void relat_todos_produtos(void) {
      printf("\n"); 
      while (fread(produto, sizeof(Produto), 1, fp)) { 
         if (produto->status_p != 'i') {
+          printf("%-14s", produto->cod_p);
+          printf("||");
+          printf("%-40s", produto->desc_p);
+          printf("||");
+          printf("%-12s", produto->cor_p);
+          printf("||");
+          printf("%-12s", produto->marca_p);
+          printf("||");
+          printf("%-9.2f", produto->valor_p);
+          printf("||");
+          printf("%-5d", produto->quant_p);
+          printf("\n");
+        }
+     }
+     fclose(fp);
+     free(produto);
+ }
+
+
+
+
+
+
+void relat_prod_inativos(void) {
+    FILE* fp;
+    Produto* produto;
+    system("clear||cls");
+    printf("\n");
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("                                                                                           \n");
+    printf("                    ===================================================                    \n");
+    printf("                    = = = =   RELATORIO || PRODUTOS INATIVOS    = = = =                    \n");
+    printf("                    ===================================================                    \n");
+    printf("                                                                                           \n");
+    printf("                                                                                           \n");
+    printf("\n");
+    produto = (Produto*) malloc(sizeof(Produto));
+    fp = fopen("produtos.dat", "rb");
+    if (fp == NULL) {
+        printf("\t\t\t>>> Processando...\n");
+        sleep(1);
+        printf(">>> ERRO ao abrir o arquivo!\n");
+        printf(">>> Verifique se ja existe produto cadastrado! \n");
+        printf(">>> Tecle <ENTER> para voltar...\n");
+        getchar();
+    }
+     printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("\n");
+     printf("%-14s", "CODIGO");
+     printf("||");
+     printf("%-40s", "DESCRICAO");
+     printf("||");
+     printf("%-12s", "COR");
+     printf("||");
+     printf("%-12s", "MARCA");
+     printf("||");
+     printf("%-9s", "VALOR");
+     printf("||");
+     printf("%-5s", "ESTOQUE");
+     printf("\n");
+     printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("\n"); 
+     while (fread(produto, sizeof(Produto), 1, fp)) { 
+        if (produto->status_p != 'a') {
           printf("%-14s", produto->cod_p);
           printf("||");
           printf("%-40s", produto->desc_p);
@@ -372,8 +590,6 @@ void relat_produtos_por_marca(void) {
     printf(">>> Tecle <ENTER> para voltar ao menu...  <<<\n");
     getchar();
 }
-
-
 
 
 

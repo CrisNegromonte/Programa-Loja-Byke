@@ -36,7 +36,7 @@ void menu_colab(void) {
 					      	break;
       case '5':   lista_colab();
                   printf("\n");
-                  printf("\t\t\t>>> Tecle <ENTER> para voltar ao menu...\n");
+                  printf(">>> Tecle <ENTER> para voltar ao menu...\n");
                   getchar();
                   break;
 		} 		
@@ -156,6 +156,7 @@ Colab* pesquisar_colab(void) {
           fread(colab, sizeof(Colab), 1, fp);
           if((strcmp(colab->cpf_colab, cpf_colab) == 0) && (colab->status_colab != 'i')) {
             exibe_colab(colab);
+            getchar();
             printf(">>> Tecle <ENTER> para voltar ao menu...  <<<\n");
             getchar();
             fclose(fp);
@@ -212,7 +213,7 @@ void alterar_colab(void) {
           printf("\n");
           printf("\n");
           ler_nome_colab(colab->nome_colab);
-          ler_nome_colab(colab->func_colab);
+          ler_func_colab(colab->func_colab);
           ler_email_colab(colab->email_colab);
           ler_nasc_colab(colab->nasc_colab);
           ler_fone_colab(colab->fone_colab);
@@ -230,6 +231,7 @@ void alterar_colab(void) {
     } else {
         printf("\n");
         printf(">>>  cadastro atualizado com sucesso!  <<<\n");
+        getchar();
     }
   printf("\n");
   printf(">>>  Tecle <ENTER> para voltar ao menu...  <<<\n");
@@ -277,7 +279,7 @@ void excluir_colab(void) {
       while (fread(colab, sizeof(Colab), 1, fp) == 1) {
         if(strcmp(colab->cpf_colab, cpf_colab) == 0) {
           printf("\n");
-          printf(">>>  Cadastro Nao Encontrado!  <<<\n");
+          printf(">>>  Cadastro Encontrado!  <<<\n");
           printf("\n");
           colab->status_colab = 'i';
           fseek(fp, -sizeof(Colab), SEEK_CUR);
