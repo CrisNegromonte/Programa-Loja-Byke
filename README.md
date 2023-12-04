@@ -1,9 +1,9 @@
 
-PARA COMPILAR E RODAR:
-NO TERMINAL, APÓS O CAMINHO DA PASTA COLOQUE:
-gcc -c -Wall *.c
-gcc -c -Wall *.h
-gcc -o bike *.o
+PARA COMPILAR E RODAR: >>>
+NO TERMINAL, APÓS O CAMINHO DA PASTA COLOQUE: >>>
+gcc -c -Wall *.c >>>
+gcc -c -Wall *.h >>>
+gcc -o bike *.o >>>
 ./bike  (OU bike.exe)
 
 
