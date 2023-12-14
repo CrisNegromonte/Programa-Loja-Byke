@@ -1120,6 +1120,7 @@ char relat_vendas(void) {
  void relat_todas_vendas(void) {
     FILE* fp;
     Vendas* venda;
+    
     system("clear||cls");
     printf("\n");
     printf("-----------------------------------------------------------------------------------------------------------------------");
@@ -1132,6 +1133,7 @@ char relat_vendas(void) {
     
     venda = (Vendas*) malloc(sizeof(Vendas));
     fp = fopen("vendas.dat", "rb");
+   
     if (fp == NULL) {
         printf(">>> Processando...\n");
         sleep(1);
@@ -1140,22 +1142,35 @@ char relat_vendas(void) {
         printf(">>> Efetue uma venda e volte aqui...\n");
         getchar();
     }
-    printf("%-13s", "CUPOM");
-    printf("||");
-    printf("%-51s", "CODIGO PRODUTO");
-    printf("||");
-    printf("%-13s", "CPF");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("\n");
-    printf("%14s", "|");
-    printf("%51s", "|");
+    printf("%-7s", "CUPOM");
+    printf("||");
+    printf("%-14s", "COD. PROD.");
+    printf("||");
+    //printf("%-25s", "PRODUTO");
+    //printf("||");
+    //printf("%-25s", "CLIENTE");
+    //printf("||");
+    printf("%-14s", "VALOR TOTAL");
+    printf("||");
+    printf("%-20s", "DATA/HORA");
+    printf("\n");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     while (fread(venda, sizeof(Vendas), 1, fp)) { 
         if (venda->status != 'e') {
-            printf("%-13s", venda->cupom);
-            printf("|");
-            printf("%-50ld", venda->cod_p);
-            printf("|");
-            printf("%-13s", venda->cpf_cli);
+            printf("%-7s", venda->cupom);
+            printf("||");
+            printf("%-14ld", venda->cod_p);
+            printf("||");
+            //printf("%-25s", desc_p);
+            //printf("||");
+            //printf("%-25s", nome_cli);
+            //printf("||");
+            printf("R$ %-11.2f", venda->preco);
+            printf("||");
+            printf("%-20s", venda->dataHora);
             printf("\n");
         }
     }
@@ -1171,6 +1186,7 @@ char relat_vendas(void) {
 void relat_vendas_exc(void) {
     FILE* fp;
     Vendas* venda;
+    
     system("clear||cls");
     printf("\n");
     printf("-----------------------------------------------------------------------------------------------------------------------");
@@ -1191,22 +1207,35 @@ void relat_vendas_exc(void) {
         printf(">>> Efetue uma venda e volte aqui...\n");
         getchar();
     }
-    printf("%-13s", "CUPOM");
-    printf("||");
-    printf("%-51s", "CODIGO PRODUTO");
-    printf("||");
-    printf("%-13s", "CPF");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("\n");
-    printf("%14s", "|");
-    printf("%51s", "|");
+    printf("%-7s", "CUPOM");
+    printf("||");
+    printf("%-14s", "COD. PROD.");
+    printf("||");
+    //printf("%-25s", "PRODUTO");
+    //printf("||");
+    //printf("%-25s", "CLIENTE");
+    //printf("||");
+    printf("%-14s", "VALOR TOTAL");
+    printf("||");
+    printf("%-20s", "DATA/HORA");
+    printf("\n");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     while (fread(venda, sizeof(Vendas), 1, fp)) { 
         if (venda->status != 'a') {
-            printf("%-13s", venda->cupom);
-            printf("|");
-            printf("%-50ld", venda->cod_p);
-            printf("|");
-            printf("%-13s", venda->cpf_cli);
+            printf("%-7s", venda->cupom);
+            printf("||");
+            printf("%-14ld", venda->cod_p);
+            printf("||");
+            //printf("%-25s", desc_p);
+            //printf("||");
+            //printf("%-25s", nome_cli);
+            //printf("||");
+            printf("R$ %-11.2f", venda->preco);
+            printf("||");
+            printf("%-20s", venda->dataHora);
             printf("\n");
         }
     }

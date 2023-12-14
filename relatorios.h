@@ -2,6 +2,8 @@
 #define RELATORIOS_H
 
 
+
+
 void menu_relatorios(void);
 
 char tela_relat(void);
@@ -25,6 +27,7 @@ void relat_todos_prod(void);
 void relat_prod_inativos(void);
 void relat_prod_por_marca(void);
 void relat_prod_por_cor(void);
+
 
 void tela_relat_vendas(void);
 char relat_vendas(void);

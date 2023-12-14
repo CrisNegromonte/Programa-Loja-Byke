@@ -97,7 +97,7 @@ char tela_vendas(void) {
     printf("///           = = = = = = =     EFETUAR  VENDA      = = = = = = =           ///\n");
     printf("///           ===================================================           ///\n");
     printf("\n");
-    venda = (Vendas*) malloc(sizeof(Vendas) +1 ); 
+    venda = (Vendas*) malloc(sizeof(Vendas)); 
     
     printf("Codigo do Produto: ");
     scanf("%ld", &venda->cod_p);
@@ -223,9 +223,9 @@ void excluir_venda(void) {
   if (fp == NULL) {
     printf(">>>  Processando...  <<<\n");
     sleep(1);
-    printf(">>>   Erro na abertura do arquivo!   <<<\n");
+    printf(">>>   Erro na abertura do arquivo!    <<<\n");
     printf(">>>   Nao foi possivel continuar...   <<<\n");
-    printf(">>>   Tecle <ENTER> para voltar...   <<<\n");
+    printf(">>>   Tecle <ENTER> para voltar...    <<<\n");
     getchar();
   } else {
     while (fread(venda, sizeof(Vendas), 1, fp) == 1) {

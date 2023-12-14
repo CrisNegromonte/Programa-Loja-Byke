@@ -1,6 +1,7 @@
 
 typedef struct venda Vendas;
 
+
 struct venda {
     
     long int cod_p;
@@ -20,12 +21,13 @@ struct venda {
     //struct vendas *prox;
 };
 
+
 void menu_vendas(void); 
 char tela_vendas(void);
 
 void grava_venda(Vendas* venda);
 void exibe_venda(Vendas* venda);
-void listar_vendas(void);
+
 
 
 void ler_cupom(char*);
@@ -37,7 +39,7 @@ void ler_desc_p(char*);
 Vendas* efetuar_venda(void);
 Vendas* consultar_venda(void);
 void excluir_venda(void);
-
+void listar_vendas(void);
 
 
 
