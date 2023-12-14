@@ -27,6 +27,7 @@ void menu_produtos(void) {
 		switch(op) {
 			case '1': 	produto = cadastrar_produto();
                   grava_prod(produto);
+                  getchar();
 					 	      break;
 			case '2': 	produto = pesquisar_produto();
                   exibe_prod(produto);
@@ -100,7 +101,7 @@ Produto* cadastrar_produto(void) {
     produto = (Produto*) malloc(sizeof(Produto));
     //ler_cod_p(produto->cod_p);
     //ler_cod_p(&(produto->cod_p));
-    printf("Codigo de Barras: ");
+    printf("Codigo do Produto: ");
     scanf("%ld", &produto->cod_p);
     getchar();
     ler_desc_p(produto->desc_p);
@@ -370,7 +371,7 @@ void exibe_prod(Produto *produto) {
       //char sit_p[20];
       printf("============================================================= ");
       printf("\n");
-      printf("|| CODIGO BARRAS: ");
+      printf("|| CODIGO PROD.: ");
       printf(" %ld" ,produto->cod_p);
       printf("\n");
       printf("|| DESCRICAO: ");
@@ -464,7 +465,7 @@ void ler_desc_p(char* desc_p) {
 
 
 void ler_cod_p(long int* cod_p) {
-    printf("Codigo de Barras: ");
+    printf("Codigo do Produto: ");
     scanf("%ld", cod_p);
 
     // Limpa o buffer para evitar problemas com a entrada de dados posterior

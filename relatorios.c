@@ -270,7 +270,7 @@ void relat_cli_inativos(void) {
 
 
 
-//Cód inspirado em https://github.com/AronSilva04
+
 
 void relat_cli_alfa(void) {
     FILE* fp = fopen("cli.dat", "rb");
@@ -417,7 +417,7 @@ char relat_colab(void) {
     printf("///                                                                         ///\n");
     printf("///            1. COLABORADORES ATIVOS                                      ///\n");
     printf("///                                                                         ///\n");
-    printf("///            2. COLABORADORES INATIVOS                                    ///\n");
+    printf("///            2. COLABORADORES DESLIGADOS                                  ///\n");
     printf("///                                                                         ///\n");
     printf("///            3. COLABORADORES - ORDEM ALFABETICA                          ///\n");
     printf("///                                                                         ///\n");
@@ -440,7 +440,7 @@ void relat_todos_colab(void) {
     Colab* colab;
     system("clear||cls");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
     printf("                    = = =    RELATORIO || COLABORADORES ATIVOS    = = =                    \n");
@@ -458,7 +458,7 @@ void relat_todos_colab(void) {
       printf(">>> Tecle <ENTER> para voltar...\n");
       getchar();
     }
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     printf("%-12s", "CPF");
     printf("||");
@@ -472,7 +472,7 @@ void relat_todos_colab(void) {
     printf("||");
     printf("%-33s", "E-MAIL");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     while (fread(colab, sizeof(Colab), 1, fp)) { 
       if (colab->status_colab != 'i') {
@@ -504,10 +504,10 @@ void relat_colab_inativos(void) {
     Colab* colab;
     system("clear||cls");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
-    printf("                    = = =   RELATORIO || COLABORADORES INATIVOS   = = =                    \n");
+    printf("                    = = =  RELATORIO | COLABORADORES DESLIGADOS   = = =                    \n");
     printf("                    ===================================================                    \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
@@ -522,7 +522,7 @@ void relat_colab_inativos(void) {
       printf(">>> Tecle <ENTER> para voltar...\n");
       getchar();
     }
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     printf("%-12s", "CPF");
     printf("||");
@@ -536,7 +536,7 @@ void relat_colab_inativos(void) {
     printf("||");
     printf("%-33s", "E-MAIL");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     while (fread(colab, sizeof(Colab), 1, fp)) { 
       if (colab->status_colab != 'a') {
@@ -560,6 +560,8 @@ void relat_colab_inativos(void) {
 
 
 
+
+
 void relat_colab_alfa(void) {
     FILE* fp = fopen("colab.dat", "rb");
     Colab* novo_colab;
@@ -569,27 +571,31 @@ void relat_colab_alfa(void) {
         printf(">>> Processando...\n");
         sleep(1);
         printf(">>> Erro ao abrir o arquivo!\n");
-        printf(">>> Tecle <ENTER> para continuar...\n");
+        printf(">>> Talvez ainda nao existam colaboradores para listar...\n");
+        printf(">>> Cadastre colaboradores e volte aqui...\n");
         getchar();
     }
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
-    printf("                                                                                           \n");
-    printf("                   ===================================================                     \n");
-    printf("                   = = =   COLABORADORES  -  ORDEM ALFABETICA    = = =                     \n");
-    printf("                   ===================================================                     \n");
-    printf("                                                                                           \n");
-    printf("                                                                                           \n");
+    printf("------------------------------------------------------------------------------------------------------------");
+    printf("                                                                                                          \n");
+    printf("                   ===================================================                                    \n");
+    printf("                   = = =   COLABORADORES  |  ORDEM ALFABETICA    = = =                                    \n");
+    printf("                   ===================================================                                    \n");
+    printf("                                                                                                          \n");
+    printf("                                                                                                          \n");
     printf("\n");
-    printf("\n Colaboradores em Ordem Alfabetica = \n");
+    printf("------------------------------------------------------------------------------------------------------------");
     printf("\n");
     printf("%-12s", "CPF");
     printf("||");
-    printf("%-30s", "Colaborador");
+    printf("%-40s", "COLABORADOR(A)");
+    printf("||");
+    printf("%-15s", "TELEFONE");
+    printf("||");
+    printf("%-40s", "E-MAIL");
     printf("\n");
-    printf("%13s", "|");
+    printf("------------------------------------------------------------------------------------------------------------");
     printf("\n");
-    lista = NULL;
     novo_colab = (Colab*)malloc(sizeof(Colab));
     if (novo_colab == NULL) {
         printf(">>> Processando...\n");
@@ -597,6 +603,7 @@ void relat_colab_alfa(void) {
         printf(">>> Erro ao alocar a memória!\n");
         printf(">>> Tecle <ENTER> para continuar...\n");
         getchar();
+
     }
     while(fread(novo_colab, sizeof(Colab), 1, fp) == 1) {
         novo_colab->prox = NULL;
@@ -620,14 +627,19 @@ void relat_colab_alfa(void) {
             printf(">>> Houve um erro ao alocar a memória!\n");
             printf(">>> Tecle <ENTER> para continuar...\n");
             getchar();
+
     }
   }
   fclose(fp);
   novo_colab = lista;
   while(novo_colab != NULL) {
     printf("%-12s", novo_colab->cpf_colab);
-    printf("|");
-    printf("%-30s", novo_colab->nome_colab);
+    printf("||");
+    printf("%-40s", novo_colab->nome_colab);
+    printf("||");
+    printf("%-15s", novo_colab->fone_colab);
+    printf("||");
+    printf("%-40s", novo_colab->email_colab);
     printf("\n");
     novo_colab = novo_colab->prox;
   }
@@ -637,10 +649,14 @@ void relat_colab_alfa(void) {
     free(novo_colab);
     novo_colab = lista;
   }
+  fclose(fp);
   printf("\n");
-  printf(">>> Tecle <ENTER> para continuar...\n");
+  printf(">>> Tecle <ENTER> para voltar...\n");
   getchar();
 }
+
+
+
 
 
 
@@ -858,14 +874,14 @@ void relat_prod_por_marca(void) {
 
     system("clear||cls");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
     printf("                    = = = =   RELATORIO || PRODUTOS POR MARCA   = = = =                    \n");
     printf("                    ===================================================                    \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
      printf("\n");
      printf("%-15s", "CODIGO");
      printf("||");
@@ -879,7 +895,7 @@ void relat_prod_por_marca(void) {
      printf("||");
      printf("%-7s", "ESTOQUE");
      printf("\n");
-     printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("-----------------------------------------------------------------------------------------------------------------------");
      printf("\n"); 
 
     fp = fopen("produtos.dat", "rb");
@@ -936,14 +952,14 @@ void relat_prod_por_cor(void) {
 
     system("clear||cls");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
     printf("                    = = = =    RELATORIO || PRODUTOS POR COR    = = = =                    \n");
     printf("                    ===================================================                    \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
      printf("\n");
      printf("%-15s", "CODIGO");
      printf("||");
@@ -957,7 +973,7 @@ void relat_prod_por_cor(void) {
      printf("||");
      printf("%-7s", "ESTOQUE");
      printf("\n");
-     printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("-----------------------------------------------------------------------------------------------------------------------");
      printf("\n"); 
 
     fp = fopen("produtos.dat", "rb");
@@ -1106,7 +1122,7 @@ char relat_vendas(void) {
     Vendas* venda;
     system("clear||cls");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
     printf("                    =======    RELATORIO || VENDAS REALIZADAS    ======                    \n");
@@ -1120,7 +1136,8 @@ char relat_vendas(void) {
         printf(">>> Processando...\n");
         sleep(1);
         printf(">>> Houve um erro ao abrir o arquivo!\n");
-        printf(">>> Tecle <ENTER> para continuar...\n");
+        printf(">>> Talvez ainda nao exista venda para listar...\n");
+        printf(">>> Efetue uma venda e volte aqui...\n");
         getchar();
     }
     printf("%-13s", "CUPOM");
@@ -1156,7 +1173,7 @@ void relat_vendas_exc(void) {
     Vendas* venda;
     system("clear||cls");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
     printf("                    =======    RELATORIO || VENDAS EXCLUIDAS     ======                    \n");
@@ -1170,7 +1187,8 @@ void relat_vendas_exc(void) {
         printf(">>> Processando...\n");
         sleep(1);
         printf(">>> Houve um erro ao abrir o arquivo!\n");
-        printf(">>> Tecle <ENTER> para continuar...\n");
+        printf(">>> Talvez ainda nao exista venda para listar...\n");
+        printf(">>> Efetue uma venda e volte aqui...\n");
         getchar();
     }
     printf("%-13s", "CUPOM");
@@ -1224,7 +1242,7 @@ void relat_vendas_cpf_cli(Vendas* venda) {
         sleep(1);
         printf(">>>  Erro na abertura do arquivo!\n");
         printf(">>>  Talvez ainda nao haja vendas neste CPF...\n");
-        printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+        printf(">>> Tecle <ENTER> para voltar...\n");
         getchar();
     }
     printf("-----------------------------------------------------------------------------------------------------------------------");
@@ -1276,7 +1294,7 @@ void relat_vendas_cpf_colab(Vendas* venda) {
     char cpf_colab[12];
     system("clear||cls");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-------------------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
     printf("                    ===   RELATORIO || VENDAS por VENDEDOR (CPF)    ===                    \n");
@@ -1296,34 +1314,37 @@ void relat_vendas_cpf_colab(Vendas* venda) {
         printf(">>>  Tecle <ENTER> para voltar...\n");
         getchar();
     }
-    printf("%-10s", "CUPOM");
-    printf("||");
-    printf("%-14s", "COD. PRODUTO");
-    printf("||");
-    printf("%-19s", "PRODUTO");
-    printf("||");
-    printf("%-19s", "VENDEDOR");
-    printf("||");
-    printf("%-12s", "VALOR");
-    printf("||");
-    printf("%-10s", "DATA DA VENDA");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("\n");
-    printf("%8s", "||");
-    printf("%14s", "||");
-    printf("%20s", "||");
-    printf("%20s", "||");
-    printf("%13s", "||");
+    printf("%-7s", "CUPOM");
+    printf("||");
+    printf("%-14s", "COD. PROD.");
+    printf("||");
+    printf("%-25s", "PRODUTO");
+    printf("||");
+    printf("%-25s", "VENDEDOR");
+    printf("||");
+    printf("%-14s", "VALOR TOTAL");
+    printf("||");
+    printf("%-20s", "DATA/HORA");
+    printf("\n");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     while (fread(venda, sizeof(Vendas), 1, fp) == 1){
         if (strcmp(venda->cpf_colab, cpf_colab) == 0){
             nome_colab = get_colab(cpf_colab);
             desc_p = get_prod(venda->cod_p);
-            printf("%-11s", venda->cupom);
-            printf("%-15ld", venda->cod_p);
-            printf("%-20s", desc_p);
-            printf("%-20s", nome_colab);
-            printf("R$ %-10.2f", venda->preco);
-            printf("%-17s", venda->dataHora);
+            printf("%-7s", venda->cupom);
+            printf("||");
+            printf("%-14ld", venda->cod_p);
+            printf("||");
+            printf("%-25s", desc_p);
+            printf("||");
+            printf("%-25s", nome_colab);
+            printf("||");
+            printf("R$ %-11.2f", venda->preco);
+            printf("||");
+            printf("%-20s", venda->dataHora);
             printf("\n");
         }
     }

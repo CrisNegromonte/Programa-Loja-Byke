@@ -245,7 +245,7 @@ void excluir_venda(void) {
   }
   if (!achado) {
       printf("\n");
-      printf(">>>  Cupom Fiscal nao encontrado!  <<<\n");
+      printf(">>>  Cupom Fiscal  encontrado!  <<<\n");
   } else {
       printf("\n");
       exibe_venda(venda);
@@ -371,9 +371,6 @@ void exibe_venda(Vendas *venda) {
        printf("\n");
        printf(">>> COD. PRODUTO: ");
        printf("%ld" ,venda->cod_p);
-       printf("\n");
-       printf(">>> PRODUTO: ");
-       printf("%s" ,venda->desc_p);
        printf("\n");
        printf(">>> QUANTIDADE: ");
        printf("%d" ,venda->quant_p);

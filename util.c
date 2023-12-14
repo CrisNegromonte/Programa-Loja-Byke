@@ -15,7 +15,7 @@ int validarCod(char* cod) {
   int tam;
 
   tam = strlen(cod);
-  if (tam  < 13 || tam > 13) {
+  if (tam  < 4 || tam > 9) {
     return false;
   }
   for (int c = 0; c < tam; c++) {
