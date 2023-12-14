@@ -9,12 +9,10 @@ struct colab {
     char fone_colab[12];
     char sit_colab[20];
     char status_colab;
+    Colab* prox;
 };
 
-typedef struct Node3 {
-    Colab colab;
-    struct Node3 *prox;
-} Node3;
+
 
 char tela_colab(void);
 void menu_colab(void);

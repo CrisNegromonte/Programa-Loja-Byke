@@ -6,20 +6,17 @@ typedef struct cliente Cliente;
 
 struct cliente {
     char cpf_cli[12];
-    char nome_cli[40];
+    char nome_cli[38];
     char cidade_cli[25];
     char email_cli[33];
     char nasc_cli[11];
     char fone_cli[12];
     char sit_cli[20];
     char status_cli;
-    struct Cliente* prox;
+    Cliente* prox;
 };
 
-typedef struct Node2 {
-    Cliente cliente;
-    struct Node2 *prox;
-} Node2;
+
 
 void menu_clientes(void);
 char tela_clientes(void);

@@ -211,7 +211,6 @@ void alterar_cliente(void) {
           ler_fone_cli(cliente->fone_cli);
           ler_email_cli(cliente->email_cli);
           ler_nasc_cli(cliente->nasc_cli);
-          ler_fone_cli(cliente->fone_cli);
           cliente->status_cli = 'a';
 
           fseek(fp, -sizeof(Cliente), SEEK_CUR);
@@ -312,9 +311,10 @@ void lista_clientes(void) {
     cliente = (Cliente*) malloc(sizeof(Cliente));
     fp = fopen("cli.dat", "rb");
     if (fp == NULL) {
-      printf(">>>  Erro na abertura!  <<<\n");
-      printf(">>>  Talvez ainda nao exista clientes cadastrados!  <<<\n");
-      printf(">>>  Cadastre um cliente e retorne aqui...  <<<\n");
+      printf("Erro!\n");
+      printf("Talvez ainda nao exista cliente cadastrado(a)!\n");
+      printf("Realize um cadastro e retorne aqui...\n");
+      //printf("Tecle <ENTER> para voltar ao menu anterior...\n");
       getchar();
   }
   while (fread(cliente, sizeof(Cliente), 1, fp)) { 
@@ -327,11 +327,14 @@ void lista_clientes(void) {
 	   
 }
 
-// Funcoes
+
+
+
+// Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
 
 void ler_cpf_cli (char* cpf_cli) {
     fflush(stdin);
-    printf(">>> Digite o CPF (somente os 11 digitos): ");
+    printf(">>> Digite o CPF do Cliente (11 digitos): ");
     fgets (cpf_cli, 12, stdin);
     while (!validarCpf (cpf_cli)) {
         printf(">>> Invalido! Digite um CPF valido (somente os 11 digitos): ");
@@ -340,12 +343,15 @@ void ler_cpf_cli (char* cpf_cli) {
     getchar();
 }
 
-// Funcao retirada do programa exemplo do Prof. Flavius Gorgonio
+
+
+
+// Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
 
 void ler_nome_cli(char* nome_cli) {
   fflush(stdin);
-  printf("Digite o nome (sem acentos): ");
-  fgets(nome_cli, 40, stdin); 
+  printf("Digite o nome: ");
+  fgets(nome_cli, 38, stdin); 
   // Remove o caractere de nova linha do final, se houver
   int tam = strlen(nome_cli);
   if (tam > 0 && nome_cli[tam - 1] == '\n') {
@@ -356,7 +362,7 @@ void ler_nome_cli(char* nome_cli) {
     printf("Nome invalido: %s\n", nome_cli);
     printf("Informe um nome valido (somente caracteres/sem acentos): ");
     fflush(stdin);
-    fgets(nome_cli, 40, stdin); 
+    fgets(nome_cli, 38, stdin); 
     // Remove o caractere de nova linha do final, se houver
     tam = strlen(nome_cli);
     if (tam > 0 && nome_cli[tam - 1] == '\n') {
@@ -370,9 +376,9 @@ void ler_nome_cli(char* nome_cli) {
 
 void ler_cidade_cli(char* cidade_cli) {
   fflush(stdin);
-  printf("Cidade (sem acentos): ");
+  printf("Cidade: ");
   fgets(cidade_cli, 25, stdin); 
-  // Remove o caractere de nova linha do final, se houver
+   //Remove o caractere de nova linha do final, se houver
   int tam = strlen(cidade_cli);
   if (tam > 0 && cidade_cli[tam - 1] == '\n') {
     cidade_cli[tam - 1] = '\0';
@@ -380,10 +386,10 @@ void ler_cidade_cli(char* cidade_cli) {
   }
   while (!validarCidade(cidade_cli)) {
     printf("Cidade invalida: %s\n", cidade_cli);
-    printf("Informe um nome de cidade valido (somente caracteres/sem acentos): ");
+   printf("Informe um nome de cidade valido (somente caracteres/sem acentos): ");
     fflush(stdin);
     fgets(cidade_cli, 25, stdin); 
-    // Remove o caractere de nova linha do final, se houver
+     //Remove o caractere de nova linha do final, se houver
     tam = strlen(cidade_cli);
     if (tam > 0 && cidade_cli[tam - 1] == '\n') {
       cidade_cli[tam - 1] = '\0';
@@ -391,6 +397,9 @@ void ler_cidade_cli(char* cidade_cli) {
     }
   } 
 }
+
+
+
 
 
 
@@ -503,7 +512,7 @@ void exibe_cliente(Cliente* cliente) {
            } else {
              strcpy(sit_cli, "Inativo");
         }
-        printf("|| STATUS CLIENTE: %s\n", sit_cli);
+        printf("|| STATUS: %s\n", sit_cli);
         printf("\n");
       }
 }

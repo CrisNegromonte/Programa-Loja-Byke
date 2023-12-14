@@ -10,7 +10,8 @@
 
 
 // Funcoes
-void ler_cod_p(char*);
+//void ler_cod_p(char*);
+void ler_cod_p(long int*);
 void ler_desc_p(char*);
 void ler_marca_p(char*);
 void ler_cor_p(char*);
@@ -71,12 +72,14 @@ char tela_produtos(void) {
     scanf("%c", &op);
   	getchar();
 	  printf("\n");
-    printf(">>>>>>  Processando...  <<<<<<<\n");
     sleep(1);
 	  return op;
 }
 
+
+
 Produto* cadastrar_produto(void) {
+    
     Produto* produto;
     system("clear||cls");
     printf("\n");
@@ -95,7 +98,11 @@ Produto* cadastrar_produto(void) {
     printf("///                                                                         ///\n");
     printf("\n");
     produto = (Produto*) malloc(sizeof(Produto));
-    ler_cod_p(produto->cod_p);
+    //ler_cod_p(produto->cod_p);
+    //ler_cod_p(&(produto->cod_p));
+    printf("Codigo de Barras: ");
+    scanf("%ld", &produto->cod_p);
+    getchar();
     ler_desc_p(produto->desc_p);
     ler_cor_p(produto->cor_p);
     ler_marca_p(produto->marca_p);
@@ -119,7 +126,8 @@ Produto* cadastrar_produto(void) {
 Produto* pesquisar_produto(void) {
     FILE* fp;
     Produto* produto;
-    char cod_p[14];
+    //char cod_p[14];
+    long int cod_p;
     system("clear||cls");
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
@@ -136,9 +144,10 @@ Produto* pesquisar_produto(void) {
     printf("///                                                                         ///\n");
     printf("\n");
     printf("\n");
-    printf(">>>>>>>>>  Digite o Codigo de Barras (13 numeros): ");
+    printf(">>>>>>  Digite o Codigo do Produto: ");
     //getchar();
-    fgets (cod_p, 14, stdin);
+    //fgets (cod_p, 14, stdin);
+    scanf("%ld", &cod_p);
     getchar();
     produto = (Produto*) malloc(sizeof(Produto));
     fp = fopen("produtos.dat", "rb");
@@ -150,15 +159,16 @@ Produto* pesquisar_produto(void) {
       getchar();
     } else {
          while(!feof(fp)) {
-          fread(produto, sizeof(Produto), 1, fp);
-          if((strcmp(produto->cod_p, cod_p) == 0) && (produto->status_p != 'i')) {
-            exibe_prod(produto);
-            printf(">>>  Tecle <ENTER> para continuar... <<<\n");
-            getchar();
-            fclose(fp);
-            free(produto);
-            return produto;
-          } 
+            fread(produto, sizeof(Produto), 1, fp);
+            //if((strcmp(produto->cod_p, cod_p) == 0) && (produto->status_p != 'i')) {
+            if((produto->cod_p == cod_p) && (produto->status_p != 'i')) {
+              exibe_prod(produto);
+              printf(">>>  Tecle <ENTER> para continuar... <<<\n");
+              getchar();
+              fclose(fp);
+              free(produto);
+              return produto;
+            } 
          }
     }
     fclose(fp);
@@ -169,7 +179,8 @@ Produto* pesquisar_produto(void) {
 
 
 void alterar_produto(void) {
-    char cod_p[14];
+    //char cod_p[14];
+    long int cod_p;
     Produto* produto = (Produto*) malloc(sizeof(Produto));
     FILE* fp;
     int sim = 0;
@@ -189,8 +200,9 @@ void alterar_produto(void) {
     printf("///                                                                         ///\n");
     printf("\n");
     printf("\n");
-    printf(">>>>>>>   Digite o codigo de barras (13 numeros):\n");
-    fgets(cod_p, 14, stdin);
+    printf(">>>>>>>   Digite o codigo do Produto:\n");
+    //fgets(cod_p, 14, stdin);
+    scanf("%ld", &cod_p);
     getchar();
     fp = fopen("produtos.dat", "r+b");
     if (fp == NULL) {
@@ -203,7 +215,8 @@ void alterar_produto(void) {
       getchar();
     } else {
       while (fread(produto, sizeof(Produto), 1, fp) == 1) {
-        if(strcmp(produto->cod_p, cod_p) == 0) {
+      //if(strcmp(produto->cod_p, cod_p) == 0) {
+        if((produto->cod_p == cod_p) && (produto->status_p != 'i')) {
           printf("\n");
           printf(">>>  PRODUTO ENCONTRADO!  <<<\n");
           printf(">>>  Atualize o cadastro  <<<\n");
@@ -226,10 +239,12 @@ void alterar_produto(void) {
         printf(">>>   Codigo nao encontrado!   <<<\n");
     } else {
         printf("\n");
+        printf("===========================================\n");
         printf(">>>   Produto atualizado com sucesso!   <<<\n");
     }
   printf("\n");
   sleep(1);
+  printf("\n");
   printf(">>>  Tecle <ENTER> para voltar ao menu...\n");
   getchar();
   fclose(fp);
@@ -239,7 +254,8 @@ void alterar_produto(void) {
 
 
 void excluir_produto(void) {
-    char cod_p[14];
+    //char cod_p[14];
+    long int cod_p;
     Produto* produto = (Produto*) malloc(sizeof(Produto));
     FILE* fp;
     int sim = 0;
@@ -259,12 +275,13 @@ void excluir_produto(void) {
     printf("///                                                                         ///\n");
     printf("\n");
     printf("\n");
-    printf(">>>>>>>  Digite o codigo de barras (13 numeros): \n");
-    fgets(cod_p, 14, stdin);
+    printf(">>>>>>>  Digite o codigo do Produto: \n");
+    //fgets(cod_p, 14, stdin);
+    scanf("%ld", &cod_p);
     getchar();
     fp = fopen("produtos.dat", "r+b");
     if (fp == NULL) {
-       printf(">>>   Processando as informacoes...   <<<\n");
+       printf(">>>   Processando...   <<<\n");
        sleep(1);
        printf(">>>  ERRO na busca!  <<<\n");
        printf(">>>  Talvez ainda nao exista produto cadastrado!  <<<\n");
@@ -273,7 +290,8 @@ void excluir_produto(void) {
        getchar();
     } else {
       while (fread(produto, sizeof(Produto), 1, fp) == 1) {
-        if(strcmp(produto->cod_p, cod_p) == 0) {
+     // if(strcmp(produto->cod_p, cod_p) == 0) {
+        if((produto->cod_p == cod_p) && (produto->status_p != 'i')) {
           printf("\n");
           printf(">>>>  PRODUTO ENCONTRADO!   <<<<\n");
           printf("\n");
@@ -303,21 +321,60 @@ void excluir_produto(void) {
 
 
 
+
+void lista_prod(void) {
+   FILE* fp;
+   Produto* produto;
+   system("clear||cls");
+   printf("//////////////////////////////////////////////////////////////");
+   printf("\n");
+   printf("=============================================================\n");
+   printf("  = = = = = = = =   LISTA PRODUTOS ATIVOS    = = = = = = =   \n");
+   printf("=============================================================\n");
+   printf("\n");
+   produto = (Produto*) malloc(sizeof(Produto));
+   fp = fopen("produtos.dat", "rb");
+   if (fp == NULL) {
+      printf(">>>  Erro!  <<<\n");
+      printf(">>>  Talvez ainda nao exista produto cadastrado!  \n");
+      printf(">>>  Cadastre um produto e volte aqui...  \n");
+      printf(">>>  Tecle <ENTER> para voltar ao menu anterior... \n");
+      getchar();
+  }
+  while (fread(produto, sizeof(Produto), 1, fp)) { 
+    if (produto->status_p == 'a') {
+      exibe_prod(produto);
+    }
+  }
+  fclose(fp);
+  free(produto);
+    
+}
+
+
+
+
+
+
+
 void exibe_prod(Produto *produto) {
-    char sit_p[20];                                                                       ///\n");
+    char sit_p[20];                                                                      
     if ((produto == NULL) || (produto->status_p == 'i')) {
+      printf("============================================================= ");
+      printf("\n");
       printf("\n>>>  Produto nao encontrado!  <<<\n");
       printf("\n");
-      printf(">>>  Tecle <ENTER> para sair... <<<\n");
+      printf(">>>  Tecle <ENTER> para voltar... <<<\n");
       getchar();
     } else {
+      //char sit_p[20];
       printf("============================================================= ");
+      printf("\n");
+      printf("|| CODIGO BARRAS: ");
+      printf(" %ld" ,produto->cod_p);
       printf("\n");
       printf("|| DESCRICAO: ");
       printf("%s" ,produto->desc_p);
-      printf("\n");
-      printf("|| CODIGO: ");
-      printf("%s" ,produto->cod_p);
       printf("\n");
       printf("|| COR: ");
       printf("%s" ,produto->cor_p);
@@ -325,29 +382,51 @@ void exibe_prod(Produto *produto) {
       printf("|| MARCA: ");
       printf("%s" ,produto->marca_p);
       printf("\n");
-      printf("|| QUANTIDADE: ");
+      printf("|| ESTOQUE: ");
       printf("%d" ,produto->quant_p);
       printf("\n");
-      printf("|| VALOR: ");
+      printf("|| VALOR UN: ");
       printf("%.2f" ,produto->valor_p);
-      printf("\n");
       if (produto->status_p == 'a') {
-      strcpy(sit_p, "Produto Ativo");
+      strcpy(sit_p, "Ativo");
       } else {
-      strcpy(sit_p, "Produto Inativo");
+      strcpy(sit_p, "Inativo");
     }
-    printf("Status do produto: %s\n", sit_p);
+    printf("\n");
+    printf("|| STATUS: %s\n", sit_p);
     printf("\n");
   }   
 }
 
 
 
-// Funcoes adaptadas no codigo do Professor Flavius
+
+
+void grava_prod(Produto* produto) {
+  FILE* fp;
+  fp = fopen("produtos.dat", "ab");
+  if (fp == NULL) {
+    printf(">>> Processando...  <<<\n");
+    sleep(1);
+    printf(">>> ERRO !  <<<\n");
+    printf(">>> Nao foi possivel continuar... <<<<\n");
+    printf(">>>  Tecle <ENTER> para voltar... <<<\n");
+    getchar();
+  }
+  fwrite(produto, sizeof(Produto), 1, fp);
+  fclose(fp);
+  free(produto);
+}
+
+
+
+
+
+// Funcao adaptada do codigo do Professor Flavius
 
 void ler_desc_p(char* desc_p) {
     fflush(stdin);
-    printf("Descricao do produto (sem acentos): ");
+    printf("Descricao: ");
     fgets(desc_p, 40, stdin); 
     int tam = strlen(desc_p);
     if (tam > 0 && desc_p[tam - 1] == '\n') {  
@@ -356,10 +435,9 @@ void ler_desc_p(char* desc_p) {
     }
     while (!validarDesc(desc_p)) {
         printf("Descricao invalida: %s\n", desc_p);
-        printf("Informe novamente a descricao (sem acentos): ");
+        printf("Informe a descricao (sem acentos ou numeros): ");
         fflush(stdin);
         fgets(desc_p, 40, stdin); 
-        // Remove o caractere de nova linha do final, caso exista
         tam = strlen(desc_p);
         if (tam > 0 && desc_p[tam - 1] == '\n') {
             desc_p[tam - 1] = '\0';
@@ -371,22 +449,35 @@ void ler_desc_p(char* desc_p) {
 
 
 
-void ler_cod_p (char* cod_p) {
-    fflush(stdin);
-    printf("Digite o Codigo de Barras (13 digitos): ");
-    fgets (cod_p, 14, stdin);
-    while (!validarCod (cod_p)) {
-        printf("Erro no codigo! Digite o codigo com 13 digitos: ");
-        fgets (cod_p, 14, stdin);
-    }
-    getchar();
+//void ler_cod_p (char* cod_p) {
+ //   fflush(stdin);
+  //  printf("Digite o Codigo de Barras (13 digitos): ");
+  //  fgets (cod_p, 14, stdin);
+  //  while (!validarCod (cod_p)) {
+  //      printf("Erro no codigo! Digite o codigo com 13 digitos: ");
+  //     fgets (cod_p, 14, stdin);
+  //  }
+  //  getchar();
+//}
+
+
+
+
+void ler_cod_p(long int* cod_p) {
+    printf("Codigo de Barras: ");
+    scanf("%ld", cod_p);
+
+    // Limpa o buffer para evitar problemas com a entrada de dados posterior
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {}
 }
+
 
 
 
 void ler_cor_p(char* cor_p) {
     fflush(stdin);
-    printf("Digite a cor do produto (sem acentos): ");
+    printf("Cor: ");
     fgets(cor_p, 12, stdin); 
     int tam = strlen(cor_p);
     if (tam > 0 && cor_p[tam - 1] == '\n') {  
@@ -395,7 +486,7 @@ void ler_cor_p(char* cor_p) {
     }
     while (!validarDesc(cor_p)) {
         printf("Cor invalida: %s\n", cor_p);
-        printf("Informe novamente a cor do produto (sem acentos): ");
+        printf("Informe novamente a cor do produto (sem acentos: ");
         fflush(stdin);
         fgets(cor_p, 12, stdin); 
         // Remove o caractere de nova linha do final, caso exista
@@ -412,7 +503,7 @@ void ler_cor_p(char* cor_p) {
 
 void ler_marca_p(char* marca_p) {
     fflush(stdin);
-    printf("Digite a marca do produto (sem acentos): ");
+    printf("Marca: ");
     fgets(marca_p, 12, stdin); 
     int tam = strlen(marca_p);
     if (tam > 0 && marca_p[tam - 1] == '\n') {  
@@ -444,53 +535,41 @@ void ler_quant_p(int* quant_p) {
 
 
 void ler_valor_p(float* valor_p) {
-    printf("Digite o valor: R$ ");
+    printf("Valor (un): R$ ");
     scanf("%f", valor_p);
     getchar();
 }
 
 
-void grava_prod(Produto* produto) {
-  FILE* fp;
-  fp = fopen("produtos.dat", "ab");
-  if (fp == NULL) {
-    printf(">>> Processando as informacoes...  <<<\n");
-    sleep(1);
-    printf(">>> ERRO !  <<<\n");
-    printf(">>> Nao foi possivel continuar... <<<<\n");
-    printf(">>>  Tecle <ENTER> para sair... <<<\n");
-    getchar();
-  }
-  fwrite(produto, sizeof(Produto), 1, fp);
-  fclose(fp);
-}
 
 
 
-void lista_prod(void) {
-  FILE* fp;
-  Produto* produto;
-  system("clear||cls");
-  printf("//////////////////////////////////////////////////////////////");
-  printf("\n");
-  printf("=============================================================\n");
-  printf("  = = = = = = = =   LISTA PRODUTOS ATIVOS    = = = = = = =   \n");
-  printf("=============================================================\n");
-  printf("\n");
-  produto = (Produto*) malloc(sizeof(Produto));
-  fp = fopen("produtos.dat", "rb");
-  if (fp == NULL) {
-    printf(">>>  Erro na abertura!  <<<\n");
-    printf(">>>  Ainda nao exista produto cadastrado!  <<<\n");
-    printf(">>>  Cadastre um produto e volte aqui...  <<<\n");
-    printf(">>>  Tecle <ENTER> para sair... <<<\n");
-    getchar();
-  }
-  while (fread(produto, sizeof(Produto), 1, fp)) { 
-    if (produto->status_p != 'i') {
-      exibe_prod(produto);
-    }
-  }
-  fclose(fp);
-  free(produto);
-}
+
+//char* get_prod(const int cod_p) {
+ // Produto produto;
+ // FILE* fp = fopen("produtos.dat", "rb");
+
+  //if (fp == NULL) {
+    //printf(">>> Processando...\n");
+    //sleep(1);
+    //printf(">>> Houve um erro ao abrir o arquivo!\n");
+    //printf(">>> Tecle <ENTER> para continuar...\n");
+    //getchar();
+  //}
+ // while (fread(&produto, sizeof(produto), 1, fp) == 1) {
+    //if(produto.cod_p == cod_p) { 
+      //char* x = (char*)malloc(strlen(produto.desc_p) + 1);
+      //if (x == NULL) {
+        //printf("Ocorreu um erro.\n");
+        //fclose(fp);
+        //return NULL;
+      //}
+      //strcpy(x, produto.desc_p);
+      //fclose(fp);
+      //return x;
+      
+    //}
+  //}
+  //fclose(fp);
+  //return NULL;
+//}

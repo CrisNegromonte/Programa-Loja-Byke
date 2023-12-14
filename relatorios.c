@@ -10,51 +10,39 @@
 #include "vendas.h"
 #include "produtos.h"
 
-void menu_relatorios(void) {
-    char op;
-    do{
-        op = tela_relat();
-        switch (op) {
-            case '1':   relat_todos_clientes();
-                        printf("\n");
-                        printf(">>> Tecle <ENTER> para voltar...\n");
-                        getchar();
-                        break;
-            case '2':   relat_cli_inativos();
-                        printf("\n");
-                        printf(">>> Tecle <ENTER> para voltar...\n");
-                        getchar();
-                        break;
-            case '3':   relat_clientes_por_cidade();
-                        break;
-            case '4':   relat_todos_colab();
-                        printf("\n");
-                        printf(">>> Tecle <ENTER> para voltar...\n");
-                        getchar();
-                        break;
-            case '5':   relat_colab_inativos();
-                        printf("\n");
-                        printf(">>> Tecle <ENTER> para voltar...\n");
-                        getchar();
-                        break;
-            case '6':   relat_colab_por_funcao();
-                        break;
-            case '7':   relat_todos_produtos();
-                        printf("\n");
-                        printf(">>> Tecle <ENTER> para voltar...\n");
-                        getchar();
-                        break;
-            case '8':   relat_prod_inativos();
-                        printf("\n");
-                        printf(">>> Tecle <ENTER> para voltar...\n");
-                        getchar();
-                        break;
-            case '9':   relat_produtos_por_marca();
-                        break;
 
-        } 		
-    } while (op != '0');
+void relat_vendas_cpf_cli(Vendas*);
+void relat_vendas_cpf_colab(Vendas*);
+
+
+void menu_relatorios(void) {
+    char opcao;
+    do {
+        opcao = tela_relat();
+        switch(opcao) {
+            case '1':   tela_relat_cli();
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+            case '2':   tela_relat_colab();
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+            case '3':   tela_relat_prod();
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+            case '4':   tela_relat_vendas();
+                        break;
+          } 		
+    } while (opcao != '0');
 }
+
+
+
 
 
 
@@ -64,26 +52,20 @@ char tela_relat(void) {
     printf("\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
-    printf("///           ===================================================           ///\n");
     printf("///           ==========  SISTEMA LOJA DE BICICLETAS   ==========           ///\n");
-    printf("///           ===================================================           ///\n");
     printf("///                                                                         ///\n");
     printf("///=========================================================================///\n");
     printf("///                                                                         ///\n");
-    printf("///           ===============   TELA RELATORIOS   ===============           ///\n");
+    printf("///           ===============   MENU RELATORIOS   ===============           ///\n");
     printf("///                                                                         ///\n");
     printf("///                                                                         ///\n");
-    printf("///            1. CLIENTES - Ativos                                         ///\n");
-    printf("///            2. CLIENTES - Inativos                                       ///\n");
-    printf("///            3. CLIENTES - por Cidade                                     ///\n");
+    printf("///            1. CLIENTES - Relatorios                                     ///\n");
     printf("///                                                                         ///\n");
-    printf("///            4. COLABORADORES - Ativos                                    ///\n");
-    printf("///            5. COLABORADORES - Inativos                                  ///\n");
-    printf("///            6. COLABORADORES - por Funcao                                ///\n");
+    printf("///            2. COLABORADORES - Relatorios                                ///\n");
     printf("///                                                                         ///\n");
-    printf("///            7. PRODUTOS - Ativos                                         ///\n");
-    printf("///            8. PRODUTOS - Inativos                                       ///\n");
-    printf("///            9. PRODUTOS - por Marca                                      ///\n");
+    printf("///            3. PRODUTOS - Relatorios                                     ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            4. VENDAS - Relatorios                                       ///\n");
     printf("///                                                                         ///\n");
     printf("///            0. Voltar ao menu anterior                                   ///\n");
     printf("///                                                                         ///\n");
@@ -92,10 +74,77 @@ char tela_relat(void) {
     scanf("%c", &op);
     getchar();
     printf("\n");
-    printf(">>>>>>  Processando... <<<<<\n");
+    //printf(">>>>>>  Processando... <<<<<\n");
     sleep(1);
     return op;
  }
+
+
+
+
+
+ void tela_relat_cli(void){
+    char opcao;
+
+    do {
+        opcao = relat_cli();
+        switch(opcao) {
+            case '1':   relat_todos_clientes();
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+            case '2':   relat_cli_inativos();;
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+            case '3':   relat_cli_alfa();
+                        break;
+            //case '4':   relat_clientes_por_cidade();
+                        //printf("\n");
+                        //printf("\t\t\t>>> Tecle <ENTER> para voltarr...\n");
+                        //getchar();
+                        //break;
+          } 		
+    } while (opcao != '0');
+}
+
+
+
+char relat_cli(void) {
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///           ==========  SISTEMA LOJA DE BICICLETAS   ==========           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///=========================================================================///\n");
+    printf("///                                                                         ///\n");
+    printf("///           ===========    RELATORIOS - CLIENTES    ===========           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            1. CLIENTES ATIVOS                                           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            2. CLIENTES INATIVOS                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            3. CLIENTES - ORDEM ALFABETICA                               ///\n");
+    printf("///                                                                         ///\n");
+    //printf("///            4. CLIENTES por CIDADE                                       ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            0. Voltar ao menu anterior                                   ///\n");
+    printf("///                                                                         ///\n");
+    printf("\n");
+    printf(">>>>>>>       Escolha a opcao desejada: ");
+    scanf("%c", &op);
+    getchar();
+    printf("\n");
+    sleep(1);
+    return op;
+ }
+
+
 
 
 void relat_todos_clientes(void) {
@@ -103,7 +152,7 @@ void relat_todos_clientes(void) {
     Cliente* cliente;
     system("clear||cls");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                   ===================================================                     \n");
     printf("                   = = = =    RELATORIO || CLIENTES ATIVOS     = = = =                     \n");
@@ -121,7 +170,7 @@ void relat_todos_clientes(void) {
       printf(">>> Tecle <ENTER> para voltar...\n");
       getchar();
     }
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     printf("%-12s", "CPF");
     printf("||");
@@ -131,11 +180,11 @@ void relat_todos_clientes(void) {
     printf("||");
     printf("%-12s", "TELEFONE");
     printf("||");
-    printf("%-11s", "DATA NASC.");
-    printf("||");
+    //printf("%-11s", "DATA NASC.");
+    //printf("||");
     printf("%-33s", "E-MAIL");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     while (fread(cliente, sizeof(Cliente), 1, fp)) { 
       if (cliente->status_cli != 'i') {
@@ -147,8 +196,8 @@ void relat_todos_clientes(void) {
         printf("||");
         printf("%-12s", cliente->fone_cli);
         printf("||");
-        printf("%-11s", cliente->nasc_cli);
-        printf("||");
+        //printf("%-11s", cliente->nasc_cli);
+        //printf("||");
         printf("%-33s", cliente->email_cli);
         printf("\n");
       }
@@ -167,7 +216,7 @@ void relat_cli_inativos(void) {
     Cliente* cliente;
     system("clear||cls");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                   ===================================================                     \n");
     printf("                   = = = =  RELATORIO ||  CLIENTES  INATIVOS   = = = =                     \n");
@@ -185,7 +234,7 @@ void relat_cli_inativos(void) {
       printf(">>> Tecle <ENTER> para voltar...\n");
       getchar();
     }
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     printf("%-12s", "CPF");
     printf("||");
@@ -195,11 +244,9 @@ void relat_cli_inativos(void) {
     printf("||");
     printf("%-12s", "TELEFONE");
     printf("||");
-    printf("%-11s", "DATA NASC.");
-    printf("||");
     printf("%-33s", "E-MAIL");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("------------------------------------------------------------------------------------------------------------------");
     printf("\n");
     while (fread(cliente, sizeof(Cliente), 1, fp)) { 
       if (cliente->status_cli != 'a') {
@@ -211,8 +258,8 @@ void relat_cli_inativos(void) {
         printf("||");
         printf("%-12s", cliente->fone_cli);
         printf("||");
-        printf("%-11s", cliente->nasc_cli);
-        printf("||");
+        //printf("%-11s", cliente->nasc_cli);
+        //printf("||");
         printf("%-33s", cliente->email_cli);
         printf("\n");
       }
@@ -223,7 +270,168 @@ void relat_cli_inativos(void) {
 
 
 
+//Cód inspirado em https://github.com/AronSilva04
 
+void relat_cli_alfa(void) {
+    FILE* fp = fopen("cli.dat", "rb");
+    Cliente* novo_cli;
+    Cliente* lista;
+    system("clear||cls");
+    if (fp == NULL) {
+        printf(">>> Processando...\n");
+        sleep(1);
+        printf(">>> Erro ao abrir o arquivo!\n");
+        printf(">>> Tecle <ENTER> para continuar...\n");
+        printf(">>> Talvez ainda nao existam clientes para listar...\n");
+        printf(">>> Cadastre clientes e volte aqui...\n");
+        getchar();
+    }
+    printf("\n");
+    printf("------------------------------------------------------------------------------------------------------------");
+    printf("                                                                                           \n");
+    printf("                   ===================================================                     \n");
+    printf("                   = = = =    CLIENTES  -  ORDEM ALFABETICA    = = = =                     \n");
+    printf("                   ===================================================                     \n");
+    printf("                                                                                           \n");
+    printf("                                                                                           \n");
+    printf("\n");
+    printf("------------------------------------------------------------------------------------------------------------");
+    printf("\n");
+    printf("%-12s", "CPF");
+    printf("||");
+    printf("%-40s", "NOME DO CLIENTE");
+    printf("||");
+    printf("%-15s", "TELEFONE");
+    printf("||");
+    printf("%-40s", "E-MAIL");
+    printf("\n");
+    printf("------------------------------------------------------------------------------------------------------------");
+    printf("\n");
+
+    
+    
+    lista = NULL;
+    novo_cli = (Cliente*)malloc(sizeof(Cliente));
+    if (novo_cli == NULL) {
+        printf(">>> Processando...\n");
+        sleep(1);
+        printf(">>> Erro ao alocar a memoria!\n");
+        printf(">>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    while(fread(novo_cli, sizeof(Cliente), 1, fp) == 1) {
+        novo_cli->prox = NULL;
+        if ((lista == NULL) || (strcmp(novo_cli->nome_cli, lista->nome_cli) < 0)) {
+            novo_cli->prox = lista;
+            lista = novo_cli;
+        } else {
+            Cliente* ant = lista;
+            Cliente* atual = lista->prox;
+            while ((atual != NULL) && strcmp(atual->nome_cli, novo_cli->nome_cli) < 0) {
+                ant = atual;
+                atual = atual->prox;
+            }
+            ant->prox = novo_cli;
+            novo_cli->prox = atual;
+        }
+        novo_cli = (Cliente*)malloc(sizeof(Cliente));
+        if (novo_cli == NULL) {
+            printf(">>> Processando...\n");
+            sleep(1);
+            printf(">>> Houve um erro ao alocar a memoria!\n");
+            printf(">>> Tecle <ENTER> para voltar...\n");
+            getchar();
+    }
+  }
+  fclose(fp);
+  novo_cli = lista;
+  while(novo_cli != NULL)  {
+    //printf("\n");
+    printf("%-12s", novo_cli->cpf_cli);
+    printf("||");
+    printf("%-40s", novo_cli->nome_cli);
+    printf("||");
+    printf("%-15s", novo_cli->fone_cli);
+    printf("||");
+    printf("%-40s", novo_cli->email_cli);
+    printf("\n");
+    novo_cli = novo_cli->prox;
+  }
+  novo_cli = lista;
+  while (lista != NULL) {
+    lista = lista->prox;
+    free(novo_cli);
+    novo_cli = lista;
+  }
+  fclose(fp);
+  
+  printf("\n");
+  printf("\n");
+  printf(">>> Tecle <ENTER> para voltar...\n");
+  getchar();
+}
+
+
+
+
+
+
+
+
+void tela_relat_colab(void){
+    char opcao;
+
+    do {
+        opcao = relat_colab();
+        switch(opcao) {
+            case '1':   relat_todos_colab();
+                        printf("\n");
+                        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+                        getchar();
+                        break;
+            case '2':   relat_colab_inativos();;
+                        printf("\n");
+                        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+                        getchar();
+                        break;
+            case '3':   relat_colab_alfa();
+                        break;
+          } 		
+    } while (opcao != '0');
+}
+
+
+
+char relat_colab(void) {
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///           ==========  SISTEMA LOJA DE BICICLETAS   ==========           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///=========================================================================///\n");
+    printf("///                                                                         ///\n");
+    printf("///           ========    RELATORIOS - COLABORADORES    =========           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            1. COLABORADORES ATIVOS                                      ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            2. COLABORADORES INATIVOS                                    ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            3. COLABORADORES - ORDEM ALFABETICA                          ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            0. Voltar ao menu anterior                                   ///\n");
+    printf("///                                                                         ///\n");
+    printf("\n");
+    printf(">>>>>>>       Escolha a opcao desejada: ");
+    scanf("%c", &op);
+    getchar();
+    printf("\n");
+    printf(">>>>>>  Processando... <<<<<\n");
+    sleep(1);
+    return op;
+ }
 
 
 
@@ -352,34 +560,183 @@ void relat_colab_inativos(void) {
 
 
 
+void relat_colab_alfa(void) {
+    FILE* fp = fopen("colab.dat", "rb");
+    Colab* novo_colab;
+    Colab* lista;
+    system("clear||cls");
+    if (fp == NULL) {
+        printf(">>> Processando...\n");
+        sleep(1);
+        printf(">>> Erro ao abrir o arquivo!\n");
+        printf(">>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    printf("\n");
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("                                                                                           \n");
+    printf("                   ===================================================                     \n");
+    printf("                   = = =   COLABORADORES  -  ORDEM ALFABETICA    = = =                     \n");
+    printf("                   ===================================================                     \n");
+    printf("                                                                                           \n");
+    printf("                                                                                           \n");
+    printf("\n");
+    printf("\n Colaboradores em Ordem Alfabetica = \n");
+    printf("\n");
+    printf("%-12s", "CPF");
+    printf("||");
+    printf("%-30s", "Colaborador");
+    printf("\n");
+    printf("%13s", "|");
+    printf("\n");
+    lista = NULL;
+    novo_colab = (Colab*)malloc(sizeof(Colab));
+    if (novo_colab == NULL) {
+        printf(">>> Processando...\n");
+        sleep(1);
+        printf(">>> Erro ao alocar a memória!\n");
+        printf(">>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    while(fread(novo_colab, sizeof(Colab), 1, fp) == 1) {
+        novo_colab->prox = NULL;
+        if ((lista == NULL) || (strcmp(novo_colab->nome_colab, lista->nome_colab) < 0)) {
+            novo_colab->prox = lista;
+            lista = novo_colab;
+        } else {
+            Colab* ant = lista;
+            Colab* atual = lista->prox;
+            while ((atual != NULL) && strcmp(atual->nome_colab, novo_colab->nome_colab) < 0) {
+                ant = atual;
+                atual = atual->prox;
+            }
+            ant->prox = novo_colab;
+            novo_colab->prox = atual;
+        }
+        novo_colab = (Colab*)malloc(sizeof(Colab));
+        if (novo_colab == NULL) {
+            printf(">>> Processando...\n");
+            sleep(1);
+            printf(">>> Houve um erro ao alocar a memória!\n");
+            printf(">>> Tecle <ENTER> para continuar...\n");
+            getchar();
+    }
+  }
+  fclose(fp);
+  novo_colab = lista;
+  while(novo_colab != NULL) {
+    printf("%-12s", novo_colab->cpf_colab);
+    printf("|");
+    printf("%-30s", novo_colab->nome_colab);
+    printf("\n");
+    novo_colab = novo_colab->prox;
+  }
+  novo_colab = lista;
+  while (lista != NULL) {
+    lista = lista->prox;
+    free(novo_colab);
+    novo_colab = lista;
+  }
+  printf("\n");
+  printf(">>> Tecle <ENTER> para continuar...\n");
+  getchar();
+}
 
 
 
 
-void relat_todos_produtos(void) {
+
+void tela_relat_prod(void){
+    char opcao;
+
+    do {
+        opcao = relat_prod();
+        switch(opcao) {
+            case '1':   relat_todos_prod();
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+            case '2':   relat_prod_inativos();;
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+            case '3':   relat_prod_por_marca();;
+                        printf("\n");
+                        //printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+            case '4':   relat_prod_por_cor();;
+                        printf("\n");
+                        //printf(">>> Tecle <ENTER> para voltar...\n");
+                        getchar();
+                        break;
+          } 		
+    } while (opcao != '0');
+}
+
+
+
+char relat_prod(void) {
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///           ==========  SISTEMA LOJA DE BICICLETAS   ==========           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///=========================================================================///\n");
+    printf("///                                                                         ///\n");
+    printf("///           ===========    RELATORIOS - PRODUTOS    ===========           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            1. PRODUTOS - ATIVOS                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            2. PRODUTOS - INATIVOS                                       ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            3. PRODUTOS - por MARCA                                      ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            4. PRODUTOS - por COR                                        ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            0. Voltar ao menu anterior                                   ///\n");
+    printf("///                                                                         ///\n");
+    printf("\n");
+    printf(">>>>>>>       Escolha a opcao desejada: ");
+    scanf("%c", &op);
+    getchar();
+    printf("\n");
+    //printf(">>>>>>  Processando... <<<<<\n");
+    sleep(1);
+    return op;
+ }
+
+
+
+
+void relat_todos_prod(void) {
     FILE* fp;
     Produto* produto;
     system("clear||cls");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
     printf("                    = = = =   RELATORIO ||  PRODUTOS  ATIVOS    = = = =                    \n");
     printf("                    ===================================================                    \n");
     printf("                                                                                           \n");
-    printf("                                                                                           \n");
     printf("\n");
     produto = (Produto*) malloc(sizeof(Produto));
     fp = fopen("produtos.dat", "rb");
     if (fp == NULL) {
-        printf("\t\t\t>>> Processando...\n");
+        printf(">>> Processando...\n");
         sleep(1);
         printf(">>> ERRO ao abrir o arquivo!\n");
         printf(">>> Verifique se ja existe produto cadastrado! \n");
         printf(">>> Tecle <ENTER> para voltar...\n");
         getchar();
     }
-     printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("-----------------------------------------------------------------------------------------------------------------------");
      printf("\n");
      printf("%-14s", "CODIGO");
      printf("||");
@@ -389,15 +746,16 @@ void relat_todos_produtos(void) {
      printf("||");
      printf("%-12s", "MARCA");
      printf("||");
-     printf("%-9s", "VALOR");
+     printf("%-11s", "VALOR");
      printf("||");
      printf("%-5s", "ESTOQUE");
      printf("\n");
-     printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("-----------------------------------------------------------------------------------------------------------------------");
      printf("\n"); 
      while (fread(produto, sizeof(Produto), 1, fp)) { 
-        if (produto->status_p != 'i') {
-          printf("%-14s", produto->cod_p);
+
+        if (produto->status_p == 'a') {
+          printf("%-14ld", produto->cod_p);
           printf("||");
           printf("%-40s", produto->desc_p);
           printf("||");
@@ -405,14 +763,15 @@ void relat_todos_produtos(void) {
           printf("||");
           printf("%-12s", produto->marca_p);
           printf("||");
-          printf("%-9.2f", produto->valor_p);
+          printf("%-11.2f", produto->valor_p);
           printf("||");
           printf("%-5d", produto->quant_p);
           printf("\n");
+
         }
      }
-     fclose(fp);
-     free(produto);
+     //fclose(fp);
+     //free(produto);
  }
 
 
@@ -425,7 +784,7 @@ void relat_prod_inativos(void) {
     Produto* produto;
     system("clear||cls");
     printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
     printf("                    = = = =   RELATORIO || PRODUTOS INATIVOS    = = = =                    \n");
@@ -443,7 +802,7 @@ void relat_prod_inativos(void) {
         printf(">>> Tecle <ENTER> para voltar...\n");
         getchar();
     }
-     printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("-----------------------------------------------------------------------------------------------------------------------");
      printf("\n");
      printf("%-14s", "CODIGO");
      printf("||");
@@ -453,15 +812,15 @@ void relat_prod_inativos(void) {
      printf("||");
      printf("%-12s", "MARCA");
      printf("||");
-     printf("%-9s", "VALOR");
+     printf("%-11s", "VALOR");
      printf("||");
      printf("%-5s", "ESTOQUE");
      printf("\n");
-     printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("-----------------------------------------------------------------------------------------------------------------------");
      printf("\n"); 
      while (fread(produto, sizeof(Produto), 1, fp)) { 
-        if (produto->status_p != 'a') {
-          printf("%-14s", produto->cod_p);
+        if (produto->status_p == 'i') {
+          printf("%-14ld", produto->cod_p);
           printf("||");
           printf("%-40s", produto->desc_p);
           printf("||");
@@ -469,7 +828,7 @@ void relat_prod_inativos(void) {
           printf("||");
           printf("%-12s", produto->marca_p);
           printf("||");
-          printf("%-9.2f", produto->valor_p);
+          printf("%11.2f", produto->valor_p);
           printf("||");
           printf("%-5d", produto->quant_p);
           printf("\n");
@@ -484,14 +843,19 @@ void relat_prod_inativos(void) {
 
 
 
-void relat_produtos_por_marca(void) {
+
+
+
+
+void relat_prod_por_marca(void) {
     char marca_p[12];
-    printf("\n");
-    printf("Digite a marca desejada(sem acentos): ");
+    printf("\nDigite a marca desejada: ");
     scanf("%11s", marca_p);
     getchar();
+
     FILE* fp;
     Produto produto;
+
     system("clear||cls");
     printf("\n");
     printf("---------------------------------------------------------------------------------------------------------------------------------");
@@ -501,93 +865,59 @@ void relat_produtos_por_marca(void) {
     printf("                    ===================================================                    \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("\n");
+     printf("%-15s", "CODIGO");
+     printf("||");
+     printf("%-42s", "DESCRICAO");
+     printf("||");
+     printf("%-14s", "COR");
+     printf("||");
+     printf("%-14s", "MARCA");
+     printf("||");
+     printf("%-11s", "VALOR");
+     printf("||");
+     printf("%-7s", "ESTOQUE");
+     printf("\n");
+     printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("\n"); 
 
     fp = fopen("produtos.dat", "rb");
     if (fp == NULL) {
         printf(">>> ERRO ao abrir o arquivo!\n");
         printf(">>> Verifique se já existe um produto cadastrado!\n");
+        printf(">>> ATENCAO: Nao usar acentuacao ou caracteres especiais.\n");
+        printf("\n");
         printf(">>> Tecle <ENTER> para voltar...\n");
         getchar();
         return;
     }
 
-    Node* inicio = NULL;
-    Node* atual = NULL;
+    int encontrou = 0; // Flag para verificar se pelo menos um produto foi encontrado
+
+
 
     while (fread(&produto, sizeof(Produto), 1, fp)) {
         if (produto.status_p != 'i' && strcmp(produto.marca_p, marca_p) == 0) {
-            Node* novo = (Node*)malloc(sizeof(Node));
-            if (novo == NULL) {
-                printf(">>> Erro de alocacao de memoria! <<<\n");
-                return;
-            }
+            encontrou = 1; // Indica que um produto foi encontrado
 
-            novo->produto = produto;
-            novo->prox = NULL;
 
-            if (inicio == NULL) {
-                inicio = novo;
-            } else {
-                atual->prox = novo;
-            }
-
-            atual = novo;
+            printf("%-14ld || %-40s || %-12s || %-12s || %-9.2f || %-5d\n",
+                   produto.cod_p, produto.desc_p, produto.cor_p,
+                   produto.marca_p, produto.valor_p, produto.quant_p);
         }
     }
 
     fclose(fp);
 
-    if (inicio == NULL) {
+    if (!encontrou) {
         printf(">>> Nenhum produto encontrado para a marca '%s'!\n", marca_p);
-        printf("\n");
-        printf(">>> Por favor, verifique se digitou corretamente!\n");
-        printf(">>> ATENCAO: Caracteres sensives a Maiuscula e Minuscula.\n");
-        printf(">>> ATENCAO: Nao usar acentuacao ou caracteres especiais.\n");
-        printf("\n");
-        printf(">>> Tecle <ENTER> para voltar ao menu anterior...\n");
-        getchar();
-        return;
+        printf("\n>>> Por favor, verifique se digitou corretamente!\n");
+        printf(">>> ATENCAO: Caracteres sensiveis a maiusculas e minusculas.\n");
+        printf(">>> ATENCAO: Nao usar acentos ou caracteres especiais.\n");
     }
 
-    // Imprime os produtos filtrados por marca
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
-    printf("\n");
-    printf("%-14s", "CODIGO");
-    printf("||");
-    printf("%-40s", "DESCRICAO");
-    printf("||");
-    printf("%-12s", "COR");
-    printf("||");
-    printf("%-12s", "MARCA");
-    printf("||");
-    printf("%-9s", "VALOR");
-    printf("||");
-    printf("%-5s", "ESTOQUE");
-    printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
-    printf("\n");
-    atual = inicio;
-    while (atual != NULL) {
-        printf("%-14s", atual->produto.cod_p);
-        printf("||");
-        printf("%-40s", atual->produto.desc_p);
-        printf("||");
-        printf("%-12s", atual->produto.cor_p);
-        printf("||");
-        printf("%-12s", atual->produto.marca_p);
-        printf("||");
-        printf("%-9.2f", atual->produto.valor_p);
-        printf("||");
-        printf("%-5d", atual->produto.quant_p);
-        printf("\n");
-
-        Node* temp = atual;
-        atual = atual->prox;
-        free(temp); // Libera cada nó da lista
-    }
-    printf("\n");
-    printf("\n");
-    printf(">>> Tecle <ENTER> para voltar ao menu...  <<<\n");
+    printf("\n>>> Tecle <ENTER> para voltar ao menu... <<<\n");
     getchar();
 }
 
@@ -595,224 +925,225 @@ void relat_produtos_por_marca(void) {
 
 
 
-
-void relat_clientes_por_cidade(void) {
-    char cidade_cli[25];
-    printf("Digite a cidade(sem acentos): ");
-    scanf("%11s", cidade_cli);
+void relat_prod_por_cor(void) {
+      char cor_p[12];
+    printf("\nDigite a COR desejada: ");
+    scanf("%11s", cor_p);
     getchar();
+
     FILE* fp;
-    Cliente cliente;
+    Produto produto;
+
     system("clear||cls");
     printf("\n");
     printf("---------------------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
-    printf("                    = = = =  RELATORIO || CLIENTES POR CIDADE   = = = =                    \n");
+    printf("                    = = = =    RELATORIO || PRODUTOS POR COR    = = = =                    \n");
     printf("                    ===================================================                    \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
-    fp = fopen("cli.dat", "rb");
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("\n");
+     printf("%-15s", "CODIGO");
+     printf("||");
+     printf("%-42s", "DESCRICAO");
+     printf("||");
+     printf("%-14s", "COR");
+     printf("||");
+     printf("%-14s", "MARCA");
+     printf("||");
+     printf("%-11s", "VALOR");
+     printf("||");
+     printf("%-7s", "ESTOQUE");
+     printf("\n");
+     printf("---------------------------------------------------------------------------------------------------------------------------------");
+     printf("\n"); 
+
+    fp = fopen("produtos.dat", "rb");
     if (fp == NULL) {
         printf(">>> ERRO ao abrir o arquivo!\n");
-        printf(">>> Talvez ainda nao existam cadastrados!\n");
-        printf(">>> Realize um cadastro e volte aqui...\n");
+        printf(">>> Verifique se já existe um produto cadastrado!\n");
+        printf(">>> ATENCAO: Nao usar acentuacao ou caracteres especiais.\n");
+        printf("\n");
+        printf(">>> Tecle <ENTER> para voltar...\n");
         getchar();
         return;
     }
 
-    Node2* inicio = NULL;
-    Node2* atual = NULL;
+    int encontrou = 0; // Flag para verificar se pelo menos um produto foi encontrado
 
-    while (fread(&cliente, sizeof(Cliente), 1, fp)) {
-        // char cidade1[25];
-        // char cidade2[25];
-        // strcpy(cidade1, cliente.cidade);
-        // strcpy(cidade2, cidade);
-        // toupper() ver funcao que converte string inteira em maiusculas
-        if (cliente.status_cli != 'i' && strcmp(cliente.cidade_cli, cidade_cli) == 0) {
-            Node2* novo = (Node2*)malloc(sizeof(Node2));
-            if (novo == NULL) {
-                printf(">>> Erro de alocacao de memoria! <<<\n");
-                return;
-            }
+      while (fread(&produto, sizeof(Produto), 1, fp)) {
+        if (produto.status_p != 'i' && strcmp(produto.cor_p, cor_p) == 0) {
+            encontrou = 1; // Indica que um produto foi encontrado
 
-            novo->cliente = cliente;
-            novo->prox = NULL;
 
-            if (inicio == NULL) {
-                inicio = novo;
-            } else {
-                atual->prox = novo;
-            }
-
-            atual = novo;
+            printf("%-14ld || %-40s || %-12s || %-12s || %-9.2f || %-5d\n",
+                   produto.cod_p, produto.desc_p, produto.cor_p,
+                   produto.marca_p, produto.valor_p, produto.quant_p);
         }
     }
 
     fclose(fp);
 
-    if (inicio == NULL) {
-        printf(">>> Nenhum cliente encontrado na cidade '%s'!\n", cidade_cli);
-        printf("\n");
-        printf(">>> Por favor, verifique se digitou corretamente!\n");
-        printf(">>> ATENCAO: Caracteres sensives a Maiuscula e Minuscula.\n");
-        printf(">>> ATENCAO: Nao usar acentuacao ou caracteres especiais.\n");
-        printf("\n");
-        printf(">>> Tecle <ENTER> para voltar ao menu anterior...\n");
-        getchar();
-        return;
+    if (!encontrou) {
+        printf(">>> Nenhum produto encontrado para a marca '%s'!\n", cor_p);
+        printf("\n>>> Por favor, verifique se digitou corretamente!\n");
+        printf(">>> ATENCAO: Caracteres sensiveis a maiusculas e minusculas.\n");
+        printf(">>> ATENCAO: Nao usar acentos ou caracteres especiais.\n");
     }
 
-    // Imprime os produtos filtrados por marca
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
-    printf("\n");
-    printf("%-25s", "CIDADE");
-    printf("||");
-    printf("%-12s", "CPF");
-    printf("||");
-    printf("%-40s", "NOME");
-    printf("||");
-    printf("%-12s", "TELEFONE");
-    printf("||");
-    printf("%-11s", "DATA NASC");
-    printf("||");
-    printf("%-33s", "E-MAIL");
-    printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
-    printf("\n");
-    atual = inicio;
-    while (atual != NULL) {
-        printf("%-25s", atual->cliente.cidade_cli);
-        printf("||");
-        printf("%-12s", atual->cliente.cpf_cli);
-        printf("||");
-        printf("%-40s", atual->cliente.nome_cli);
-        printf("||");
-        printf("%-12s", atual->cliente.fone_cli);
-        printf("||");
-        printf("%-11s", atual->cliente.nasc_cli);
-        printf("||");
-        printf("%-33s", atual->cliente.email_cli);
-        printf("\n");
-
-        Node2* temp = atual;
-        atual = atual->prox;
-        free(temp); // Libera cada nó da lista
-    }
-    printf("\n");
-    printf("\n");
-    printf(">>> Tecle <ENTER> para voltar ao menu...\n");
+    printf("\n>>> Tecle <ENTER> para voltar ao menu... <<<\n");
     getchar();
+}
+ 
+
+
+
+
+
+
+
+
+
+//void relat_clientes_por_cidade(void) {
+    
+
+
+
+
+//void relat_colab_por_funcao(void) {
+    
+
+
+
+
+void tela_relat_vendas(void){
+    char opcao;
+    Vendas* venda_x = NULL;
+    Vendas* venda_z = NULL;
+
+
+    do {
+        opcao = relat_vendas();
+        switch(opcao) {
+            case '1':   relat_todas_vendas();
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para continuar...\n");
+                        getchar();
+                        break;
+            case '2':   relat_vendas_exc();;
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para continuar...\n");
+                        getchar();
+                        break;
+            case '3':   venda_z = malloc(sizeof(Vendas)); 
+                        if (venda_z == NULL) {
+                          printf("Erro ao alocar memória para venda_z!\n");
+                          exit(EXIT_FAILURE); 
+                        }
+                        relat_vendas_cpf_cli(venda_z);
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para continuar...\n");
+                        free(venda_z);
+                        getchar();
+                        break;
+            case '4':   venda_x = malloc(sizeof(Vendas)); 
+                        if (venda_x == NULL) {
+                          printf("Erro ao alocar memória para venda_z!\n");
+                          exit(EXIT_FAILURE); 
+                        }
+                        relat_vendas_cpf_colab(venda_x);
+                        printf("\n");
+                        printf(">>> Tecle <ENTER> para continuar...\n");
+                        free(venda_x);
+                        getchar();
+                        break;
+          } 		
+    } while (opcao != '0');
 }
 
 
 
-
-void relat_colab_por_funcao(void) {
-    char func_colab[15];
-    printf("Digite a funcao (sem acentos): ");
-    scanf("%15s", func_colab);
+char relat_vendas(void) {
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///                                                                         ///\n");
+    printf("///           ==========  SISTEMA LOJA DE BICICLETAS   ==========           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///=========================================================================///\n");
+    printf("///                                                                         ///\n");
+    printf("///           ============    RELATORIOS - VENDAS    ===========            ///\n");
+    printf("///                                                                         ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            1. VENDAS - ATIVAS                                           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            2. VENDAS - EXCLUIDAS                                        ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            3. VENDAS - por CPF do CLIENTE                               ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            4. VENDAS - por CPF do COLABORADOR                           ///\n");
+    printf("///                                                                         ///\n");
+    printf("///            0. Voltar ao menu anterior                                   ///\n");
+    printf("///                                                                         ///\n");
+    printf("\n");
+    printf(">>>>>>>       Escolha a opcao desejada: ");
+    scanf("%c", &op);
     getchar();
+    printf("\n");
+    printf(">>>>>>  Processando... <<<<<\n");
+    sleep(1);
+    return op;
+ }
+
+
+
+
+ void relat_todas_vendas(void) {
     FILE* fp;
-    Colab colab;
+    Vendas* venda;
     system("clear||cls");
     printf("\n");
     printf("---------------------------------------------------------------------------------------------------------------------------------");
     printf("                                                                                           \n");
     printf("                    ===================================================                    \n");
-    printf("                    = = =  RELATORIO || COLABORADORES POR FUNCAO  = = =                    \n");
+    printf("                    =======    RELATORIO || VENDAS REALIZADAS    ======                    \n");
     printf("                    ===================================================                    \n");
     printf("                                                                                           \n");
     printf("                                                                                           \n");
-
-    fp = fopen("colab.dat", "rb");
+    
+    venda = (Vendas*) malloc(sizeof(Vendas));
+    fp = fopen("vendas.dat", "rb");
     if (fp == NULL) {
-        printf(">>> ERRO ao abrir o arquivo!\n");
-        printf(">>> Talvez ainda nao existam colaboradores cadastrados!\n");
-        printf(">>> Realize um cadastro e volte aqui...\n");
+        printf(">>> Processando...\n");
+        sleep(1);
+        printf(">>> Houve um erro ao abrir o arquivo!\n");
+        printf(">>> Tecle <ENTER> para continuar...\n");
         getchar();
-        return;
     }
-
-    Node3* inicio = NULL;
-    Node3* atual = NULL;
-
-    while (fread(&colab, sizeof(Colab), 1, fp)) {
-        if (colab.status_colab != 'i' && strcmp(colab.func_colab, func_colab) == 0) {
-            Node3* novo = (Node3*)malloc(sizeof(Node3));
-            if (novo == NULL) {
-                printf(">>> Erro de alocacao de memoria! <<<\n");
-                return;
-            }
-
-            novo->colab = colab;
-            novo->prox = NULL;
-
-            if (inicio == NULL) {
-                inicio = novo;
-            } else {
-                atual->prox = novo;
-            }
-
-            atual = novo;
+    printf("%-13s", "CUPOM");
+    printf("||");
+    printf("%-51s", "CODIGO PRODUTO");
+    printf("||");
+    printf("%-13s", "CPF");
+    printf("\n");
+    printf("%14s", "|");
+    printf("%51s", "|");
+    printf("\n");
+    while (fread(venda, sizeof(Vendas), 1, fp)) { 
+        if (venda->status != 'e') {
+            printf("%-13s", venda->cupom);
+            printf("|");
+            printf("%-50ld", venda->cod_p);
+            printf("|");
+            printf("%-13s", venda->cpf_cli);
+            printf("\n");
         }
     }
-
     fclose(fp);
-
-    if (inicio == NULL) {
-        printf(">>> Nenhum colaborador(a) encontrado(a) na funcao '%s'!\n", func_colab);
-        printf("\n");
-        printf(">>> Por favor, verifique se digitou corretamente! <<<\n");
-        printf(">>> ATENCAO: Caracteres sensives a Maiuscula e Minuscula. <<<\n");
-        printf(">>> ATENCAO: Nao usar acentuacao ou caracteres especiais. <<<\n");
-        printf("\n");
-        printf(">>> Tecle <ENTER> para voltar ao menu anterior... <<<\n");
-        getchar();
-        return;
-    }
-
-    // Imprime os produtos filtrados por marca
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
-    printf("\n");
-    printf("\n");
-    printf("%-15s", "FUNCAO");
-    printf("||");
-    printf("%-12s", "CPF");
-    printf("||");
-    printf("%-40s", "NOME");
-    printf("||");
-    printf("%-12s", "TELEFONE");
-    printf("||");
-    printf("%-11s", "DATA NASC");
-    printf("||");
-    printf("%-33s", "E-MAIL");
-    printf("\n");
-    printf("---------------------------------------------------------------------------------------------------------------------------------");
-    printf("\n");
-    atual = inicio;
-    while (atual != NULL) {
-        printf("%-15s", atual->colab.func_colab);
-        printf("||");
-        printf("%-12s", atual->colab.cpf_colab);
-        printf("||");
-        printf("%-40s", atual->colab.nome_colab);
-        printf("||");
-        printf("%-12s", atual->colab.fone_colab);
-        printf("||");
-        printf("%-11s", atual->colab.nasc_colab);
-        printf("||");
-        printf("%-33s", atual->colab.email_colab);
-        printf("\n");
-
-        Node3* temp = atual;
-        atual = atual->prox;
-        free(temp); // Libera cada nó da lista
-    }
-    printf("\n");
-    printf("\n");
-    printf(">>> Tecle <ENTER> para voltar ao menu... <<<\n");
+    free(venda);
     getchar();
 }
 
@@ -820,6 +1151,252 @@ void relat_colab_por_funcao(void) {
 
 
 
+void relat_vendas_exc(void) {
+    FILE* fp;
+    Vendas* venda;
+    system("clear||cls");
+    printf("\n");
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("                                                                                           \n");
+    printf("                    ===================================================                    \n");
+    printf("                    =======    RELATORIO || VENDAS EXCLUIDAS     ======                    \n");
+    printf("                    ===================================================                    \n");
+    printf("                                                                                           \n");
+    printf("                                                                                           \n");
+    
+    venda = (Vendas*) malloc(sizeof(Vendas));
+    fp = fopen("vendas.dat", "rb");
+    if (fp == NULL) {
+        printf(">>> Processando...\n");
+        sleep(1);
+        printf(">>> Houve um erro ao abrir o arquivo!\n");
+        printf(">>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    printf("%-13s", "CUPOM");
+    printf("||");
+    printf("%-51s", "CODIGO PRODUTO");
+    printf("||");
+    printf("%-13s", "CPF");
+    printf("\n");
+    printf("%14s", "|");
+    printf("%51s", "|");
+    printf("\n");
+    while (fread(venda, sizeof(Vendas), 1, fp)) { 
+        if (venda->status != 'a') {
+            printf("%-13s", venda->cupom);
+            printf("|");
+            printf("%-50ld", venda->cod_p);
+            printf("|");
+            printf("%-13s", venda->cpf_cli);
+            printf("\n");
+        }
+    }
+    fclose(fp);
+    free(venda);
+    getchar();
+}
+
+
+
+
+void relat_vendas_cpf_cli(Vendas* venda) {
+    FILE* fp;
+    char* nome_cli;
+    char* desc_p;
+    char cpf_cli[12];
+    system("clear||cls");
+    printf("\n");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
+    printf("                                                                                           \n");
+    printf("                    ===================================================                    \n");
+    printf("                    ===    RELATORIO || VENDAS por CLIENTE (CPF)    ===                    \n");
+    printf("                    ===================================================                    \n");
+    printf("                                                                                           \n");
+    printf(">>>>>  Digite o CPF do Cliente: ");
+    fgets(cpf_cli, 12, stdin);
+    printf("\n");
+    getchar();
+    //venda = (Vendas*) malloc(sizeof(Vendas));
+    fp = fopen("vendas.dat", "rb");
+    if (fp == NULL) {
+        printf(">>> Processando...\n");
+        sleep(1);
+        printf(">>>  Erro na abertura do arquivo!\n");
+        printf(">>>  Talvez ainda nao haja vendas neste CPF...\n");
+        printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+        getchar();
+    }
+    printf("-----------------------------------------------------------------------------------------------------------------------");
+    printf("\n");
+    printf("%-7s", "CUPOM");
+    printf("||");
+    printf("%-14s", "COD. PROD.");
+    printf("||");
+    printf("%-25s", "PRODUTO");
+    printf("||");
+    printf("%-25s", "CLIENTE");
+    printf("||");
+    printf("%-14s", "VALOR TOTAL");
+    printf("||");
+    printf("%-20s", "DATA/HORA");
+    printf("\n");
+    printf("-----------------------------------------------------------------------------------------------------------------------");
+    printf("\n");
+    while (fread(venda, sizeof(Vendas), 1, fp) == 1){
+        if (strcmp(venda->cpf_cli, cpf_cli) == 0){
+            nome_cli = get_cli(cpf_cli);
+            desc_p = get_prod(venda->cod_p);
+            printf("%-7s", venda->cupom);
+            printf("||");
+            printf("%-14ld", venda->cod_p);
+            printf("||");
+            printf("%-25s", desc_p);
+            printf("||");
+            printf("%-25s", nome_cli);
+            printf("||");
+            printf("R$ %-11.2f", venda->preco);
+            printf("||");
+            printf("%-20s", venda->dataHora);
+            printf("\n");
+        }
+    }
+    fclose(fp);
+}
+
+
+
+
+
+
+void relat_vendas_cpf_colab(Vendas* venda) {
+    FILE* fp;
+    char* nome_colab;
+    char* desc_p;
+    char cpf_colab[12];
+    system("clear||cls");
+    printf("\n");
+    printf("---------------------------------------------------------------------------------------------------------------------------------");
+    printf("                                                                                           \n");
+    printf("                    ===================================================                    \n");
+    printf("                    ===   RELATORIO || VENDAS por VENDEDOR (CPF)    ===                    \n");
+    printf("                    ===================================================                    \n");
+    printf("                                                                                           \n");
+    printf(">>>>>  Digite o CPF do Vendedor: ");
+    fgets(cpf_colab, 12, stdin);
+    printf("\n");
+    getchar();
+    venda = (Vendas*) malloc(sizeof(Vendas));
+    fp = fopen("vendas.dat", "rb");
+    if (fp == NULL) {
+        printf(">>> Processando...\n");
+        sleep(1);
+        printf(">>>  Erro na abertura do arquivo!\n");
+        printf(">>>  Talvez ainda nao haja vendas neste CPF...\n");
+        printf(">>>  Tecle <ENTER> para voltar...\n");
+        getchar();
+    }
+    printf("%-10s", "CUPOM");
+    printf("||");
+    printf("%-14s", "COD. PRODUTO");
+    printf("||");
+    printf("%-19s", "PRODUTO");
+    printf("||");
+    printf("%-19s", "VENDEDOR");
+    printf("||");
+    printf("%-12s", "VALOR");
+    printf("||");
+    printf("%-10s", "DATA DA VENDA");
+    printf("\n");
+    printf("%8s", "||");
+    printf("%14s", "||");
+    printf("%20s", "||");
+    printf("%20s", "||");
+    printf("%13s", "||");
+    printf("\n");
+    while (fread(venda, sizeof(Vendas), 1, fp) == 1){
+        if (strcmp(venda->cpf_colab, cpf_colab) == 0){
+            nome_colab = get_colab(cpf_colab);
+            desc_p = get_prod(venda->cod_p);
+            printf("%-11s", venda->cupom);
+            printf("%-15ld", venda->cod_p);
+            printf("%-20s", desc_p);
+            printf("%-20s", nome_colab);
+            printf("R$ %-10.2f", venda->preco);
+            printf("%-17s", venda->dataHora);
+            printf("\n");
+        }
+    }
+    fclose(fp);
+    free(venda);
+}
+
+
+
+
+
+
+
+
+
+char *get_cli(const char *cpf_cli) {
+  Cliente cliente;
+  FILE* fp = fopen("cli.dat", "rb");
+
+  if (fp == NULL) {
+    printf(">>>   Processando...\n");
+    sleep(1);
+    printf(">>>   Erro ao abrir o arquivo!\n");
+    printf(">>>   Tecle <ENTER> para continuar...\n");
+    getchar();
+  }
+  while (fread(&cliente, sizeof(cliente), 1, fp) == 1) {
+    if(strcmp(cliente.cpf_cli, cpf_cli) == 0) {
+      char *z = (char *)malloc(strlen(cliente.nome_cli) + 1);
+      if (z == NULL) {
+        printf(">>>  Ocorreu um erro.\n");
+        fclose(fp);
+        return NULL;
+      }
+      strcpy(z, cliente.nome_cli);
+      fclose(fp);
+      return z;
+    }
+  }
+  fclose(fp);
+  return NULL;
+}
+
+
+
+
+char *get_colab(const char *cpf_colab) {
+  Colab colab;
+  FILE* fp = fopen("colab.dat", "rb");
+
+  if (fp == NULL) {
+    printf(">>>  Processando...\n");
+    sleep(1);
+    printf(">>>   Erro ao abrir o arquivo!\n");
+    printf(">>>   Tecle <ENTER> para continuar...\n");
+    getchar();
+  }
+  while (fread(&colab, sizeof(colab), 1, fp) == 1) {
+    if(strcmp(colab.cpf_colab, cpf_colab) == 0) {
+      char *x = (char *)malloc(strlen(colab.nome_colab) + 1);
+      if (x == NULL) {
+        printf(">>>  Ocorreu um erro.\n");
+        fclose(fp);
+        return NULL;
+      }
+      strcpy(x, colab.nome_colab);
+      fclose(fp);
+      return x;
+    }
+  }
+  fclose(fp);
+  return NULL;
+}
 
 
 

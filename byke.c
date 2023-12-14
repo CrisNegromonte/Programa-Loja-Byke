@@ -41,7 +41,7 @@ int main(void){
                         break;
             case '3': 	menu_produtos();
                         break;
-            case '4': 	//menu_vendas();
+            case '4': 	menu_vendas();
                         break;
             case '5': 	menu_relatorios();
                         break;
