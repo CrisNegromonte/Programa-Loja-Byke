@@ -77,7 +77,7 @@ char tela_vendas(void) {
   	getchar();
 	  printf("\n");
     //printf(">>>>>>  Processando...  <<<<<<<\n");
-    sleep(1);
+    
 	  return op;
 }
 
@@ -140,12 +140,12 @@ char tela_vendas(void) {
     //getchar();
      
     printf("                               Venda Efetivada!                                \n");
+    sleep(1);
     printf("===============================================================================\n");
     printf("                  Tecle <ENTER> para voltar ao menu anterior...                \n");
     printf("\n");
     //sleep(1);
     getchar();
-    //limpa_buffer();
     return venda;
 }
 
@@ -320,6 +320,7 @@ void ler_Datahora(char* dataHora) {
 void listar_vendas(void) {
   FILE* fp;
   Vendas* venda;
+  system("clear||cls");
   printf("\n ======================   TODAS AS VENDAS   ===================== \n");
   venda = (Vendas*) malloc(sizeof(Vendas));
   system("clear||cls");
