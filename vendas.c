@@ -406,7 +406,8 @@ char* get_prod(const long int cod_p) {
      printf(">>> Processando...\n");
      sleep(1);
      printf(">>> Houve um erro ao abrir o arquivo!\n");
-     printf(">>> Tecle <ENTER> para continuar...\n");
+      printf(">>> Talvez nao exista produto com esse codigo!\n");
+     printf(">>> Tecle <ENTER> para voltar...\n");
      getchar();
    }
    while (fread(&produto, sizeof(produto), 1, fp) == 1) {

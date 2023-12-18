@@ -166,7 +166,8 @@ void relat_todos_clientes(void) {
       printf(">>>>>>>>  Processando...   <<<<<<<<\n");
       sleep(1);
       printf(">>> ERRO ao abrir o arquivo!\n");
-      printf(">>> Verifique se ja existe cliente cadastrado! \n");
+      printf(">>> Talvez ainda nao exista cliente cadastrado! \n");
+      printf(">>> Cadastre um cliente e volte aqui... \n");
       printf(">>> Tecle <ENTER> para voltar...\n");
       getchar();
     }
@@ -230,7 +231,8 @@ void relat_cli_inativos(void) {
       printf(">>>>>>>>  Processando...   <<<<<<<<\n");
       sleep(1);
       printf(">>> ERRO ao abrir o arquivo!\n");
-      printf(">>> Verifique se ja existe cliente cadastrado! \n");
+      printf(">>> Talvez ainda nao exista cliente cadastrado e excluido! \n");
+      printf(">>> Cadastre e exclua um cliente e volte aqui... \n");
       printf(">>> Tecle <ENTER> para voltar...\n");
       getchar();
     }
@@ -281,9 +283,9 @@ void relat_cli_alfa(void) {
         printf(">>> Processando...\n");
         sleep(1);
         printf(">>> Erro ao abrir o arquivo!\n");
-        printf(">>> Tecle <ENTER> para continuar...\n");
-        printf(">>> Talvez ainda nao existam clientes para listar...\n");
-        printf(">>> Cadastre clientes e volte aqui...\n");
+        printf(">>> Talvez ainda nao exista cliente cadastrado! \n");
+        printf(">>> Cadastre clientes e volte aqui... \n");
+        printf(">>> Tecle <ENTER> para voltar ao menu anterior...\n");
         getchar();
     }
     printf("\n");
@@ -454,8 +456,9 @@ void relat_todos_colab(void) {
       printf(">>>>>>>>  Processando...   <<<<<<<<\n");
       sleep(1);
       printf(">>> ERRO ao abrir o arquivo!\n");
-      printf(">>> Verifique se ja existe colaborador(a) cadastrado(a)! \n");
-      printf(">>> Tecle <ENTER> para voltar...\n");
+       printf(">>> Talvez ainda nao exista colaborador cadastrado! \n");
+       printf(">>> Cadastre um colaborador e volte aqui... \n");
+       printf(">>> Tecle <ENTER> para voltar ao menu anterior...\n");
       getchar();
     }
     printf("-----------------------------------------------------------------------------------------------------------------------");
@@ -518,8 +521,9 @@ void relat_colab_inativos(void) {
       printf(">>>>>>>>  Processando...   <<<<<<<<\n");
       sleep(1);
       printf(">>> ERRO ao abrir o arquivo!\n");
-      printf(">>> Verifique se ja existe colaborador(a) cadastrado(a)! \n");
-      printf(">>> Tecle <ENTER> para voltar...\n");
+      printf(">>> Talvez ainda nao exista colaborador cadastrado! \n");
+      printf(">>> Cadastre e exclua um colaborador e volte aqui... \n");
+      printf(">>> Tecle <ENTER> para voltar ao menu anterior...\n");
       getchar();
     }
     printf("-----------------------------------------------------------------------------------------------------------------------");
@@ -571,8 +575,9 @@ void relat_colab_alfa(void) {
         printf(">>> Processando...\n");
         sleep(1);
         printf(">>> Erro ao abrir o arquivo!\n");
-        printf(">>> Talvez ainda nao existam colaboradores para listar...\n");
-        printf(">>> Cadastre colaboradores e volte aqui...\n");
+         printf(">>> Talvez ainda nao exista colaborador cadastrado! \n");
+        printf(">>> Cadastre colaboradores e volte aqui... \n");
+        printf(">>> Tecle <ENTER> para voltar ao menu anterior...\n");
         getchar();
     }
     printf("\n");
@@ -748,8 +753,9 @@ void relat_todos_prod(void) {
         printf(">>> Processando...\n");
         sleep(1);
         printf(">>> ERRO ao abrir o arquivo!\n");
-        printf(">>> Verifique se ja existe produto cadastrado! \n");
-        printf(">>> Tecle <ENTER> para voltar...\n");
+        printf(">>> Talvez ainda nao exista produto cadastrado! \n");
+        printf(">>> Cadastre um produto e volte aqui... \n");
+        printf(">>> Tecle <ENTER> para voltar ao menu anterior...\n");;
         getchar();
     }
      printf("-----------------------------------------------------------------------------------------------------------------------");
@@ -814,8 +820,9 @@ void relat_prod_inativos(void) {
         printf("\t\t\t>>> Processando...\n");
         sleep(1);
         printf(">>> ERRO ao abrir o arquivo!\n");
-        printf(">>> Verifique se ja existe produto cadastrado! \n");
-        printf(">>> Tecle <ENTER> para voltar...\n");
+         printf(">>> Talvez ainda nao exista produto cadastrado e excluido! \n");
+        printf(">>> Cadastre e exclua produtos e volte aqui... \n");
+        printf(">>> Tecle <ENTER> para voltar ao menu anterior...\n");
         getchar();
     }
      printf("-----------------------------------------------------------------------------------------------------------------------");
@@ -1140,6 +1147,7 @@ char relat_vendas(void) {
         printf(">>> Houve um erro ao abrir o arquivo!\n");
         printf(">>> Talvez ainda nao exista venda para listar...\n");
         printf(">>> Efetue uma venda e volte aqui...\n");
+        printf(">>> Digite <ENTER> para voltar ao menu anterior...\n");
         getchar();
     }
     printf("-----------------------------------------------------------------------------------------------------------------------");
@@ -1203,8 +1211,8 @@ void relat_vendas_exc(void) {
         printf(">>> Processando...\n");
         sleep(1);
         printf(">>> Houve um erro ao abrir o arquivo!\n");
-        printf(">>> Talvez ainda nao exista venda para listar...\n");
-        printf(">>> Efetue uma venda e volte aqui...\n");
+        printf(">>> Talvez ainda nao exista venda efetuada e excluida para listar...\n");
+        printf(">>> Efetue e exclua uma venda e volte aqui...\n");
         getchar();
     }
     printf("-----------------------------------------------------------------------------------------------------------------------");
@@ -1260,7 +1268,7 @@ void relat_vendas_cpf_cli(Vendas* venda) {
     printf("                    ===    RELATORIO || VENDAS por CLIENTE (CPF)    ===                    \n");
     printf("                    ===================================================                    \n");
     printf("                                                                                           \n");
-    printf(">>>>>  Digite o CPF do Cliente: ");
+    printf(">>>>>  Digite o CPF do Cliente (11 dig.): ");
     fgets(cpf_cli, 12, stdin);
     printf("\n");
     getchar();
@@ -1271,7 +1279,7 @@ void relat_vendas_cpf_cli(Vendas* venda) {
         sleep(1);
         printf(">>>  Erro na abertura do arquivo!\n");
         printf(">>>  Talvez ainda nao haja vendas neste CPF...\n");
-        printf(">>> Tecle <ENTER> para voltar...\n");
+        printf(">>>  Tecle <ENTER> para voltar...\n");
         getchar();
     }
     printf("-----------------------------------------------------------------------------------------------------------------------");
@@ -1329,7 +1337,7 @@ void relat_vendas_cpf_colab(Vendas* venda) {
     printf("                    ===   RELATORIO || VENDAS por VENDEDOR (CPF)    ===                    \n");
     printf("                    ===================================================                    \n");
     printf("                                                                                           \n");
-    printf(">>>>>  Digite o CPF do Vendedor: ");
+    printf(">>>>>  Digite o CPF do Vendedor (11 dig): ");
     fgets(cpf_colab, 12, stdin);
     printf("\n");
     getchar();
@@ -1397,7 +1405,8 @@ char *get_cli(const char *cpf_cli) {
     printf(">>>   Processando...\n");
     sleep(1);
     printf(">>>   Erro ao abrir o arquivo!\n");
-    printf(">>>   Tecle <ENTER> para continuar...\n");
+    printf(">>>   Nao encontrado. Verifique se o CPF esta correto...\n");
+    printf(">>>   Tecle <ENTER> para voltar ao menu anterior...\n");
     getchar();
   }
   while (fread(&cliente, sizeof(cliente), 1, fp) == 1) {
@@ -1427,8 +1436,8 @@ char *get_colab(const char *cpf_colab) {
   if (fp == NULL) {
     printf(">>>  Processando...\n");
     sleep(1);
-    printf(">>>   Erro ao abrir o arquivo!\n");
-    printf(">>>   Tecle <ENTER> para continuar...\n");
+    printf(">>>   Nao encontrado. Verifique se o CPF esta correto...\n");
+    printf(">>>   Tecle <ENTER> para voltar ao menu anterior...\n");
     getchar();
   }
   while (fread(&colab, sizeof(colab), 1, fp) == 1) {

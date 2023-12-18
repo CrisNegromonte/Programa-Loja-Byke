@@ -320,7 +320,7 @@ void ler_cpf_colab (char* cpf_colab) {
 // Funcao adaptada do programa exemplo do Prof. Flavius Gorgonio
 void ler_nome_colab (char* nome_colab) {
   fflush(stdin);
-  printf("Digite o nome: ");
+  printf("Digite o nome (sem acentos): ");
   fgets(nome_colab, 38, stdin); 
   // Remove o caractere de nova linha do final, se houver
   int tam = strlen(nome_colab);
@@ -346,7 +346,7 @@ void ler_nome_colab (char* nome_colab) {
 
 void ler_func_colab (char* func_colab) {
   fflush(stdin);
-  printf("Digite a funcao: ");
+  printf("Digite a funcao (sem acentos) ");
   fgets(func_colab, 15, stdin); 
   // Remove o caractere de nova linha do final, se houver
   int tam = strlen(func_colab);

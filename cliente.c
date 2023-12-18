@@ -350,7 +350,7 @@ void ler_cpf_cli (char* cpf_cli) {
 
 void ler_nome_cli(char* nome_cli) {
   fflush(stdin);
-  printf("Digite o nome: ");
+  printf("Digite o nome (sem acentos): ");
   fgets(nome_cli, 38, stdin); 
   // Remove o caractere de nova linha do final, se houver
   int tam = strlen(nome_cli);
@@ -376,7 +376,7 @@ void ler_nome_cli(char* nome_cli) {
 
 void ler_cidade_cli(char* cidade_cli) {
   fflush(stdin);
-  printf("Cidade: ");
+  printf("Cidade (sem acentos): ");
   fgets(cidade_cli, 25, stdin); 
    //Remove o caractere de nova linha do final, se houver
   int tam = strlen(cidade_cli);

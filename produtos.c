@@ -427,7 +427,7 @@ void grava_prod(Produto* produto) {
 
 void ler_desc_p(char* desc_p) {
     fflush(stdin);
-    printf("Descricao: ");
+    printf("Descricao (sem acentos): ");
     fgets(desc_p, 40, stdin); 
     int tam = strlen(desc_p);
     if (tam > 0 && desc_p[tam - 1] == '\n') {  
@@ -465,7 +465,7 @@ void ler_desc_p(char* desc_p) {
 
 
 void ler_cod_p(long int* cod_p) {
-    printf("Codigo do Produto: ");
+    printf("Codigo do Produto (ate 8 dig.): ");
     scanf("%ld", cod_p);
 
     // Limpa o buffer para evitar problemas com a entrada de dados posterior
